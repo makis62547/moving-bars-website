@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Deine eigenen globalen Styles kommen später hierhin */
+html, body {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ff8a30; /* dein Orange */
+}

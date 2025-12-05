@@ -1,0 +1,15 @@
+---
+import "../styles/globals.css";
+---
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <slot name="head" />
+  </head>
+
+  <body class="bg-black text-white font-body antialiased">
+    <slot />
+  </body>
+</html>
