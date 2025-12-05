@@ -1,20 +1,88 @@
 <section
-  class="relative h-[70vh] flex items-center justify-center text-center bg-cover bg-center"
-  style="background-image: url('/images/hero.jpg');"
+  class="relative overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black text-white"
+  aria-labelledby="hero-heading"
 >
-  <div class="bg-black/60 p-8 rounded-xl">
-    <h1 class="text-3xl md:text-5xl font-heading font-bold mb-4">
-      Mobile Cocktailbar für Events in Berlin
-    </h1>
-    <p class="max-w-xl mx-auto text-lg opacity-90">
-      Full-Service Cocktail Catering · Mobile Bars · Workshops
-    </p>
+  <div class="absolute inset-0 bg-[url('/images/hero.jpg')] bg-cover bg-center opacity-40" aria-hidden="true"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-black via-black/70 to-black" aria-hidden="true"></div>
+  <div class="relative max-w-6xl mx-auto px-6 py-24 lg:py-32 grid lg:grid-cols-2 gap-12 items-center">
+    <div class="space-y-6">
+      <p class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3 py-2 text-sm uppercase tracking-[0.2em] text-orange-300">
+        Berlin & Umgebung · Full Service
+      </p>
+      <h1 id="hero-heading" class="text-4xl md:text-5xl font-heading font-bold leading-tight">
+        Mobile Cocktailbar mit Premium-Barkeepern für Events jeder Größe
+      </h1>
+      <p class="text-lg text-white/80 max-w-xl">
+        Wir bringen Bar-Feeling, Signature Drinks und geschulte Barkeeper direkt zu Ihrer Veranstaltung – inklusive Equipment,
+        hochwertigen Zutaten und detailverliebtem Service.
+      </p>
 
-    <a
-      href="/anfrage"
-      class="inline-block mt-6 bg-orange-600 hover:bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold uppercase tracking-wide"
-    >
-      Jetzt unverbindlich anfragen
-    </a>
+      <div class="flex flex-wrap gap-4">
+        <a
+          href="/anfrage"
+          class="inline-flex items-center gap-2 rounded-full bg-orange-500 px-6 py-3 text-black font-semibold uppercase tracking-wide shadow-lg shadow-orange-500/30 hover:bg-orange-400 transition"
+        >
+          Jetzt unverbindlich anfragen
+        </a>
+        <a
+          href="#leistungen"
+          class="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 font-semibold hover:border-orange-400 hover:text-orange-200 transition"
+        >
+          Leistungen entdecken
+        </a>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-sm text-white/70">
+        <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+          <p class="text-2xl font-heading font-bold text-white">14+</p>
+          <p>Jahre Event-Erfahrung</p>
+        </div>
+        <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+          <p class="text-2xl font-heading font-bold text-white">500+</p>
+          <p>erfolgreiche Veranstaltungen</p>
+        </div>
+        <div class="rounded-xl border border-white/10 bg-white/5 p-4">
+          <p class="text-2xl font-heading font-bold text-white">24/7</p>
+          <p>Rundum-Service & Support</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative">
+      <div class="absolute inset-0 -skew-y-6 rounded-3xl bg-gradient-to-br from-orange-500/30 via-fuchsia-500/20 to-cyan-400/20 blur-3xl" aria-hidden="true"></div>
+      <div class="relative rounded-3xl border border-white/10 bg-white/5 backdrop-blur p-6 shadow-2xl">
+        <div class="flex items-start gap-4">
+          <div class="h-12 w-12 rounded-full bg-orange-500/20 border border-orange-400/50 flex items-center justify-center text-2xl">🍹</div>
+          <div>
+            <h2 class="text-xl font-heading font-semibold">Signature Cocktail Menü</h2>
+            <p class="text-white/70">Individuell auf Ihr Event abgestimmt – von Klassikern bis zu eigens kreierten Drinks.</p>
+          </div>
+        </div>
+
+        <div class="mt-6 grid gap-4">
+          <div class="flex items-center justify-between rounded-xl border border-white/10 bg-black/40 px-4 py-3">
+            <div>
+              <p class="font-semibold">Bar-Setup & Equipment</p>
+              <p class="text-sm text-white/60">Mobile Bars, Glaswaren, Eis & professionelle Tools inklusive</p>
+            </div>
+            <span class="text-orange-300 font-semibold">Bereit</span>
+          </div>
+          <div class="flex items-center justify-between rounded-xl border border-white/10 bg-black/40 px-4 py-3">
+            <div>
+              <p class="font-semibold">Premium Zutaten</p>
+              <p class="text-sm text-white/60">Frische Säfte, hausgemachte Sirups & Marken-Spirituosen</p>
+            </div>
+            <span class="text-orange-300 font-semibold">Inklusive</span>
+          </div>
+          <div class="flex items-center justify-between rounded-xl border border-white/10 bg-black/40 px-4 py-3">
+            <div>
+              <p class="font-semibold">Versierte Barkeeper</p>
+              <p class="text-sm text-white/60">Geschulte Profis mit Show-Elementen & Gastgeberschaft</p>
+            </div>
+            <span class="text-orange-300 font-semibold">On Tour</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>

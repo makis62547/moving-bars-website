@@ -1,0 +1,47 @@
+<section id="referenzen" class="max-w-6xl mx-auto px-6 py-20 space-y-10">
+  <div class="flex items-start justify-between gap-6 flex-col md:flex-row">
+    <div class="space-y-3 max-w-xl">
+      <p class="text-orange-300 uppercase tracking-[0.2em] text-sm">Referenzen</p>
+      <h2 class="text-3xl md:text-4xl font-heading font-bold">Gäste, die wiederkommen – Marken, die vertrauen</h2>
+      <p class="text-white/70">
+        Vom Startup bis zum Konzern: Wir begleiten Events in ganz Deutschland und liefern ein Bar-Erlebnis, das Emotionen weckt.
+      </p>
+    </div>
+    <div class="flex flex-wrap gap-3 text-sm text-white/70">
+      <span class="rounded-full border border-white/15 px-4 py-2">Adidas</span>
+      <span class="rounded-full border border-white/15 px-4 py-2">Meta</span>
+      <span class="rounded-full border border-white/15 px-4 py-2">Zalando</span>
+      <span class="rounded-full border border-white/15 px-4 py-2">Hubspot</span>
+      <span class="rounded-full border border-white/15 px-4 py-2">Tech Open Air</span>
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-6">
+    {[
+      {
+        quote:
+          "Unsere Gäste haben noch Wochen später von den Drinks geschwärmt. Setup, Ablauf & Personal waren perfekt abgestimmt.",
+        name: "Julia K.",
+        role: "Event Managerin, Berlin",
+      },
+      {
+        quote: "Reibungsloser Messeauftritt mit gebrandeter Bar. Die Barkeeper waren nicht nur schnell, sondern auch großartige Gastgeber.",
+        name: "Lars M.",
+        role: "Head of Marketing",
+      },
+      {
+        quote: "Besonders die alkoholfreien Signature Drinks kamen unglaublich gut an. Wir buchen wieder!",
+        name: "Sophie R.",
+        role: "People & Culture",
+      },
+    ].map((testimonial) => (
+      <article class="rounded-2xl border border-white/10 bg-white/5 p-6 flex flex-col gap-4">
+        <p class="text-lg text-white/80 leading-relaxed">“{testimonial.quote}”</p>
+        <div>
+          <p class="font-heading font-semibold">{testimonial.name}</p>
+          <p class="text-white/60 text-sm">{testimonial.role}</p>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
