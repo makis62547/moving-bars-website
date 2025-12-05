@@ -1,0 +1,68 @@
+<section id="leistungen" class="max-w-6xl mx-auto px-6 py-20 space-y-10">
+  <div class="flex items-start justify-between gap-8 flex-col md:flex-row">
+    <div class="space-y-3 max-w-2xl">
+      <p class="text-orange-300 uppercase tracking-[0.2em] text-sm">Leistungen</p>
+      <h2 class="text-3xl md:text-4xl font-heading font-bold">Alles, was Ihr Event braucht – aus einer Hand</h2>
+      <p class="text-white/70 text-lg">
+        Ob Corporate Event, Hochzeit oder Festival: Wir liefern modulare Bar-Konzepte inklusive Drinks, Barkeepern, Equipment und
+        Ablaufplanung.
+      </p>
+    </div>
+    <a
+      href="/anfrage"
+      class="inline-flex items-center gap-2 rounded-full border border-orange-400 px-5 py-3 font-semibold text-orange-200 hover:bg-orange-500/10"
+    >
+      Konzept anfordern
+    </a>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {[
+      {
+        title: "Cocktail Catering",
+        description: "Signature Drinks, Barkeeper & Bar-Setup für Firmenfeiern, Galas & Messeauftritte.",
+        badge: "Beliebt bei Unternehmen",
+      },
+      {
+        title: "Mobile Bars",
+        description: "Modulare, elegante Bar-Module in verschiedenen Finishes inklusive Branding-Optionen.",
+        badge: "Modular",
+      },
+      {
+        title: "Cocktailkurse",
+        description: "Interaktive Workshops für Teams oder private Gruppen mit Rezeptheften und Bar Tools.",
+        badge: "Team-Building",
+      },
+      {
+        title: "Kaffee Catering",
+        description: "Barista-Qualität mit Siebträgermaschinen, Latte Art & Spezialitätenkaffee.",
+        badge: "Morning Events",
+      },
+      {
+        title: "Getränke-Logistik",
+        description: "Planung, Einkauf und Kühlung von Spirituosen, Softdrinks und Mischungen – inklusive Lieferung.",
+        badge: "Rundum-Service",
+      },
+      {
+        title: "Brand Activation",
+        description: "Gebrandete Bars, thematische Drinks & Social-Media-taugliche Setups für Produktlaunches.",
+        badge: "Marketing",
+      },
+    ].map((service) => (
+      <article class="group rounded-2xl border border-white/10 bg-white/5 p-6 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-orange-500/20 via-transparent to-cyan-400/10"></div>
+        <div class="relative flex flex-col h-full gap-4">
+          <span class="self-start rounded-full bg-orange-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-orange-200">
+            {service.badge}
+          </span>
+          <h3 class="text-xl font-heading font-semibold">{service.title}</h3>
+          <p class="text-white/70 flex-1">{service.description}</p>
+          <a href="/kontakt" class="inline-flex items-center gap-2 text-orange-300 font-semibold group-hover:translate-x-1 transition-transform">
+            Mehr erfahren
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

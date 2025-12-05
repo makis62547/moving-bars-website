@@ -2,17 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Deine eigenen globalen Styles kommen später hierhin */
-html, body {
-  background-color: #000000;
-  color: #ffffff;
+:root {
+  --bg: #050505;
+  --text: #f7f7f7;
+  --accent: #ff8a30;
+}
+
+html,
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.font-heading {
+  font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
 }
 
 a {
-  color: #ffffff;
+  color: inherit;
   text-decoration: none;
 }
 
 a:hover {
-  color: #ff8a30; /* dein Orange */
+  color: var(--accent);
+}
+
+.input {
+  @apply w-full rounded-xl border border-white/15 bg-black/40 px-4 py-3 text-white placeholder:text-white/50 focus:border-orange-400 focus:outline-none;
 }

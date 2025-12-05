@@ -1,17 +1,31 @@
-<header class="w-full bg-black border-b border-white/10">
+<header class="sticky top-0 z-50 w-full backdrop-blur bg-black/70 border-b border-white/10">
   <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
     <a href="/" class="flex items-center gap-3">
-      <img src="/images/logo-white.png" alt="moving bars" class="h-8 md:h-10" />
-
-
+      <img src="/images/logo-white.png" alt="moving bars" class="h-10" />
+      <div class="hidden sm:flex flex-col leading-tight">
+        <span class="text-sm uppercase tracking-[0.2em] text-orange-400">Premium</span>
+        <span class="font-semibold text-lg">Moving Bars</span>
+      </div>
     </a>
 
-    <nav class="hidden md:flex gap-8 text-sm uppercase tracking-wide font-semibold">
-      <a href="/cocktail-catering" class="hover:text-orange-500">Cocktail Catering</a>
-      <a href="/mobile-bar" class="hover:text-orange-500">Mobile Bar</a>
-      <a href="/cocktailkurse" class="hover:text-orange-500">Cocktailkurse</a>
-      <a href="/kaffeecatering" class="hover:text-orange-500">Kaffee Catering</a>
-      <a href="/kontakt" class="hover:text-orange-500">Kontakt</a>
+    <nav class="hidden md:flex items-center gap-8 text-sm uppercase tracking-wide font-semibold">
+      <a href="#leistungen" class="hover:text-orange-400 transition-colors">Leistungen</a>
+      <a href="#ablauf" class="hover:text-orange-400 transition-colors">Ablauf</a>
+      <a href="#referenzen" class="hover:text-orange-400 transition-colors">Referenzen</a>
+      <a href="#kontakt" class="hover:text-orange-400 transition-colors">Kontakt</a>
+      <a
+        href="/anfrage"
+        class="ml-4 inline-flex items-center gap-2 rounded-full bg-orange-500 px-4 py-2 text-black hover:bg-orange-400 transition"
+      >
+        Angebot anfragen
+      </a>
     </nav>
+
+    <a
+      href="/anfrage"
+      class="md:hidden inline-flex items-center gap-2 rounded-full bg-orange-500 px-4 py-2 text-black hover:bg-orange-400 transition"
+    >
+      Anfragen
+    </a>
   </div>
 </header>

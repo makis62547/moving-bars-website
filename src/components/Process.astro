@@ -1,0 +1,47 @@
+<section id="ablauf" class="max-w-6xl mx-auto px-6 py-20 space-y-10">
+  <div class="space-y-3">
+    <p class="text-orange-300 uppercase tracking-[0.2em] text-sm">Ablauf</p>
+    <h2 class="text-3xl md:text-4xl font-heading font-bold">So läuft die Zusammenarbeit</h2>
+    <p class="text-white/70 max-w-2xl">
+      Wir übernehmen die komplette Planung und Durchführung. Transparent, schnell und zuverlässig – damit Sie sich voll auf Ihre
+      Gäste konzentrieren können.
+    </p>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6">
+    {[
+      {
+        title: "Bedarfsanalyse",
+        text: "Telefonisches Briefing zu Anlass, Gästeanzahl, Location und gewünschten Drinks.",
+        action: "Termin vereinbaren",
+      },
+      {
+        title: "Konzept & Angebot",
+        text: "Individuelle Barkonzepte inkl. Menüs, Branding und Personalplanung – transparent kalkuliert.",
+        action: "Konzept erhalten",
+      },
+      {
+        title: "Aufbau & Showtime",
+        text: "Lieferung, Aufbau, Kühlung und Bar-Setup. Unsere Barkeeper empfangen Ihre Gäste mit Signature Drinks.",
+        action: "Event genießen",
+      },
+      {
+        title: "Nachbereitung",
+        text: "Abbau, Reinigung und detailliertes Reporting zu Verbrauch und Feedback Ihrer Gäste.",
+        action: "Sorglos abschließen",
+      },
+    ].map((step, index) => (
+      <article class="relative rounded-2xl border border-white/10 bg-white/5 p-6 flex flex-col gap-3">
+        <div class="absolute -left-3 -top-3 h-12 w-12 rounded-2xl bg-orange-500/80 text-black font-heading font-bold flex items-center justify-center shadow-lg shadow-orange-500/30">
+          {index + 1}
+        </div>
+        <h3 class="text-xl font-heading font-semibold">{step.title}</h3>
+        <p class="text-white/70 flex-1">{step.text}</p>
+        <div class="flex items-center justify-between">
+          <span class="text-orange-200 font-semibold">{step.action}</span>
+          <span aria-hidden="true" class="text-white/50">→</span>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
