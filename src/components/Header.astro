@@ -1,33 +1,18 @@
----
-const navLinks = [
-  { href: "#services", label: "Services" },
-  { href: "#experience", label: "Experience" },
-  { href: "#gallery", label: "Gallery" },
-  { href: "#contact", label: "Kontakt" },
-];
----
+<header class="w-full bg-black border-b border-white/10 sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto flex items-center justify-between px-6 py-3">
 
-<header class="border-b border-white/10 bg-black/60 backdrop-blur-0">
-  <div class="mx-auto flex max-w-6xl items-center justify-between gap-8 px-6 py-4">
-    <div class="flex items-center gap-3">
-      <div class="h-8 w-8 bg-[#D38B45]" aria-hidden="true"></div>
-      <div class="flex flex-col leading-none">
-        <span class="text-sm font-semibold tracking-[0.2em] uppercase">Moving Bars</span>
-        <span class="text-[11px] tracking-[0.2em] uppercase text-white/60">Berlin</span>
-      </div>
-    </div>
+    <!-- ✔ Dein echtes Logo -->
+    <a href="/" class="flex items-center">
+      <img src="/images/logo-white.png" alt="Moving Bars" class="h-10 w-auto" />
+    </a>
 
-    <nav class="hidden items-center gap-6 uppercase tracking-[0.2em] text-xs md:flex">
-      {navLinks.map((link) => (
-        <a class="transition-colors hover:text-[#D38B45]" href={link.href}>{link.label}</a>
-      ))}
+    <!-- ✔ Menü-Navigation -->
+    <nav class="hidden md:flex gap-8 text-sm uppercase tracking-wide font-semibold">
+      <a href="#services" class="hover:text-[#D38B45]">Leistungen</a>
+      <a href="#experience" class="hover:text-[#D38B45]">Erfahrung</a>
+      <a href="#gallery" class="hover:text-[#D38B45]">Galerie</a>
+      <a href="#contact" class="hover:text-[#D38B45]">Kontakt</a>
     </nav>
 
-    <a
-      class="border border-white/20 bg-black px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-colors hover:border-[#D38B45] hover:text-[#D38B45]"
-      href="#contact"
-    >
-      Anfragen
-    </a>
   </div>
 </header>
