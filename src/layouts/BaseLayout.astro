@@ -2,25 +2,30 @@
 import "../styles/globals.css";
 ---
 
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@400;500;700;800;900&display=swap"
       rel="stylesheet"
     />
+
     <title>Moving Bars · Mobile Cocktailbar & Catering Berlin</title>
     <meta
       name="description"
-      content="Mobile Cocktailbars, Premium-Barkeeper und Full-Service-Catering für Events in Berlin und deutschlandweit. Signature Drinks, mobile Bars & Workshops."
+      content="Mobile Cocktailbars, Premium-Barkeeper und Full-Service-Catering für Events in Berlin und deutschlandweit."
     />
+
     <slot name="head" />
   </head>
 
-  <body class="bg-black text-white font-sans antialiased min-h-screen">
+  <!-- WICHTIG: Padding für Header -->
+  <body class="bg-black text-white antialiased min-h-screen pt-[90px]">
     <slot />
   </body>
 </html>
