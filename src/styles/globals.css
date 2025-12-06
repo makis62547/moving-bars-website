@@ -39,3 +39,9 @@ img {
 *, *::before, *::after {
   box-sizing: border-box;
 }
+
+[data-parallax="bg"] {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
