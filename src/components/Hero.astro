@@ -1,56 +1,30 @@
----
-const bullets = [
-  "FAIRE PREISE",
-  "LANGJÄHRIGE ERFAHRUNG",
-  "BESTE COCKTAILS & LONGDRINKS",
-  "FÜR PRIVAT & FIRMEN - EVENTS",
-];
----
-
 <section
   id="hero"
-  class="relative h-[95vh] w-full overflow-hidden bg-black text-white"
+  class="relative h-[90vh] w-full bg-cover bg-center flex items-center"
+  style="background-image: url('/images/hero.jpg');"
 >
+  <div class="absolute inset-0 bg-black/50"></div>
 
-  <!-- Hintergrundbild -->
-  <div 
-    class="absolute inset-0 bg-cover bg-center"
-    style="background-image: url('/images/hero.jpg');"
-  ></div>
+  <div class="relative z-10 max-w-6xl mx-auto px-6">
+    <img src="/images/logo-white.png" alt="Logo" class="h-16 mb-10" />
 
-  <!-- Schwarzes Overlay -->
-  <div class="absolute inset-0 bg-black/60"></div>
-
-  <!-- Logo oben links -->
-  <div class="absolute top-8 left-8 z-20">
-    <img src="/images/logo-white.png" alt="moving bars" class="h-20" />
-  </div>
-
-  <!-- Zentrierter Content -->
-  <div class="relative z-10 flex h-full flex-col items-center justify-center text-center px-6">
-    
-    <ul class="space-y-5 text-xl md:text-2xl font-medium tracking-wide">
-      {bullets.map((item) => (
-        <li class="flex items-center gap-4 justify-center">
-          <span class="text-[#D38B45] text-3xl">✔</span>
-          {item}
-        </li>
-      ))}
+    <ul class="space-y-4 text-2xl md:text-3xl font-semibold tracking-wide">
+      <li class="flex items-center gap-3">
+        <span class="text-[#D38B45]">✔</span> Faire Preise
+      </li>
+      <li class="flex items-center gap-3">
+        <span class="text-[#D38B45]">✔</span> Langjährige Erfahrung
+      </li>
+      <li class="flex items-center gap-3">
+        <span class="text-[#D38B45]">✔</span> Beste Cocktails & Longdrinks
+      </li>
+      <li class="flex items-center gap-3">
+        <span class="text-[#D38B45]">✔</span> Für Privat & Firmen-Events
+      </li>
     </ul>
-
-    <!-- Pfeil nach unten -->
-    <div class="absolute bottom-16 flex justify-center w-full">
-      <span class="text-white text-4xl animate-bounce">⌄</span>
-    </div>
-
   </div>
 
-  <!-- CTA jetzt anfragen — unten rechts -->
-  <a
-    href="#contact"
-    class="absolute bottom-10 right-10 bg-black/70 border border-[#D38B45] text-[#D38B45] px-6 py-3 text-sm uppercase tracking-wide hover:bg-[#D38B45] hover:text-black transition"
-  >
-    Jetzt anfragen
-  </a>
-
+  <div class="absolute bottom-8 w-full flex justify-center">
+    <span class="text-white text-3xl animate-bounce">⌄</span>
+  </div>
 </section>
