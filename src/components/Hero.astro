@@ -25,7 +25,7 @@ import Header from "./Header.astro";
     position: relative;
     min-height: 100vh;
     width: 100%;
-    overflow: hidden;
+    overflow: visible;
     background: #000;
   }
 
@@ -51,6 +51,7 @@ import Header from "./Header.astro";
     left: 0;
     right: 0;
     height: var(--header-h);
+    overflow: visible;
     z-index: 40;
   }
 
@@ -59,19 +60,17 @@ import Header from "./Header.astro";
     inset: 0;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     text-align: left;
     color: #fff;
     padding: 140px 1.5rem 0;
-    width: min(1100px, 100%);
-    margin-right: auto;
-    margin-left: clamp(2.5rem, 12vw, 9rem);
+    width: 100%;
     z-index: 20;
   }
 
   .hero-usp {
-    display: grid;
+    display: inline-grid;
     gap: 1.75rem;
     font-size: clamp(1.2rem, 2.1vw, 1.8rem);
     font-weight: 300;
@@ -81,17 +80,52 @@ import Header from "./Header.astro";
     list-style: none;
     padding: 0;
     margin: 0;
+    width: min(820px, 92vw);
   }
 
   .hero-usp li {
     display: flex;
     align-items: center;
     gap: 0.6rem;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: uspIn 700ms ease forwards;
+  }
+
+  .hero-usp li:nth-child(1) {
+    animation-delay: 0ms;
+  }
+
+  .hero-usp li:nth-child(2) {
+    animation-delay: 250ms;
+  }
+
+  .hero-usp li:nth-child(3) {
+    animation-delay: 500ms;
+  }
+
+  .hero-usp li:nth-child(4) {
+    animation-delay: 750ms;
   }
 
   .hero-check {
     color: #d38b45;
     margin-right: 0.5rem;
+  }
+
+  @keyframes uspIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-usp li {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
   }
 
   .hero-arrow {
