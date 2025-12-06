@@ -1,5 +1,6 @@
 ---
 import Header from "./Header.astro";
+import cocktailIcon from "../assets/icons/cocktail.svg";
 ---
 
 <section id="hero" class="hero">
@@ -29,7 +30,9 @@ import Header from "./Header.astro";
           <span class="intro-eyebrow-divider" aria-hidden="true">|</span>
           <span class="intro-eyebrow-base">MIETEN</span>
         </p>
-        <h1 id="intro-title" class="intro-title">IN BERLIN</h1>
+        <h1 id="intro-title" class="intro-title">
+          <span class="intro-title-accent">MOBILE COCKTAILBAR</span> MIETEN IN BERLIN
+        </h1>
         <p class="intro-copy">
           Wir lieben Cocktails, perfekten Getränke-Service und wir lieben Veranstaltungen. Mieten Sie unsere mobile Cocktailbar
           in Berlin oder üBARall. Von der Vorbereitung und Planung bis zur Durchführung sind wir Ihr begeisterter Partner, wenn
@@ -42,16 +45,7 @@ import Header from "./Header.astro";
       <div class="intro-divider" aria-hidden="true"></div>
 
       <div class="intro-icon" aria-hidden="true">
-        <svg viewBox="0 0 160 200" xmlns="http://www.w3.org/2000/svg" role="presentation">
-          <g fill="none" stroke="#d38b45" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M32 24h96" />
-            <path d="M40 24l40 62v74" />
-            <path d="M120 24L80 86h72" />
-            <path d="M60 160h40" />
-            <path d="M118 44c12 6 20 18 20 32 0 20-16 36-36 36" />
-            <path d="M132 58l-22 22" />
-          </g>
-        </svg>
+        <img src={cocktailIcon} alt="" loading="lazy" decoding="async" />
       </div>
     </div>
   </div>
@@ -190,9 +184,9 @@ import Header from "./Header.astro";
   .intro-panel {
     display: grid;
     grid-template-columns: 1.25fr auto 0.85fr;
-    align-items: stretch;
-    background: #0c0c0c;
-    border: 1px solid #1a1a1a;
+    align-items: flex-start;
+    background: var(--background);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.5rem, 4vw, 3rem);
     color: #f7f7f7;
     font-family: "Inter", system-ui, sans-serif;
@@ -203,6 +197,7 @@ import Header from "./Header.astro";
     display: grid;
     gap: 1rem;
     padding-right: clamp(1.25rem, 3vw, 2rem);
+    margin-top: -10px;
   }
 
   .intro-eyebrow {
@@ -239,6 +234,12 @@ import Header from "./Header.astro";
     font-weight: 300;
   }
 
+  .intro-title-accent {
+    color: #d38b45;
+    display: inline-block;
+    margin-right: 0.35ch;
+  }
+
   .intro-copy {
     margin: 0;
     font-size: 1rem;
@@ -255,15 +256,16 @@ import Header from "./Header.astro";
 
   .intro-icon {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     padding-left: clamp(1rem, 3vw, 2rem);
+    margin-top: 6px;
   }
 
-  .intro-icon svg {
+  .intro-icon img {
     width: min(240px, 38vw);
     height: auto;
-    filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+    display: block;
   }
 
   @media (max-width: 900px) {
