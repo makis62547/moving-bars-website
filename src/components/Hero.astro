@@ -46,12 +46,12 @@ import Header from "./Header.astro";
   }
 
   :global(header) {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    height: 76px;
-    z-index: 30;
+    height: 120px;
+    z-index: 40;
   }
 
   .hero-center {
@@ -61,17 +61,19 @@ import Header from "./Header.astro";
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
+    text-align: left;
     color: #fff;
-    padding: 0 1.5rem;
+    padding: 140px 1.5rem 0;
+    width: min(1100px, 100%);
+    margin: 0 auto;
     z-index: 20;
   }
 
   .hero-usp {
     display: grid;
     gap: 1.75rem;
-    font-size: clamp(2.25rem, 4vw, 3.5rem);
-    font-weight: 600;
+    font-size: clamp(1.9rem, 3.6vw, 3rem);
+    font-weight: 300;
     line-height: 1.1;
   }
 
