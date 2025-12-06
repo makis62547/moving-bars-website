@@ -1,24 +1,26 @@
-<section 
-  id="hero"
-  class="relative w-full h-[90vh] bg-cover bg-center flex items-center justify-center"
-  style="background-image: url('/images/hero.jpg');"
->
+<section id="hero" class="relative h-screen w-full overflow-hidden bg-black">
+  <!-- Background image -->
+  <img
+    src="/images/hero.jpg"
+    alt="Hero"
+    class="absolute inset-0 h-full w-full object-cover"
+  />
 
-  <!-- DUNKLER ÜBERLAY -->
-  <div class="absolute inset-0 bg-black/40"></div>
+  <!-- Dark overlay -->
+  <div class="absolute inset-0 bg-black/50"></div>
 
-  <!-- CONTENT ÜBER DEM HERO -->
-  <div class="relative z-10 text-center text-white max-w-3xl px-6">
-    <ul class="space-y-4 text-xl md:text-2xl font-semibold">
-      <li>✔ Faire Preise</li>
-      <li>✔ Langjährige Erfahrung</li>
-      <li>✔ Beste Cocktails & Longdrinks</li>
-      <li>✔ Für Privat & Firmen – Events</li>
+  <!-- Centered content -->
+  <div
+    class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4"
+  >
+    <ul class="space-y-6 text-2xl md:text-4xl font-semibold leading-relaxed drop-shadow-xl">
+      <li><span class="text-[#D38B45]">✔</span> Faire Preise</li>
+      <li><span class="text-[#D38B45]">✔</span> Langjährige Erfahrung</li>
+      <li><span class="text-[#D38B45]">✔</span> Beste Cocktails & Longdrinks</li>
+      <li><span class="text-[#D38B45]">✔</span> Für Privat & Firmen – Events</li>
     </ul>
 
-    <!-- SCROLL-PFEIL -->
-    <div class="mt-10">
-      <span class="text-4xl animate-bounce">⌄</span>
-    </div>
+    <!-- Down arrow -->
+    <div class="mt-12 text-4xl text-white/90 animate-bounce">⌄</div>
   </div>
 </section>
