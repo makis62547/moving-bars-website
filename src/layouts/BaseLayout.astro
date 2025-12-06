@@ -26,12 +26,44 @@ import "../styles/globals.css";
 
   <body class="bg-black text-white antialiased min-h-screen">
     <slot />
-    <script type="module">
-      import initParallax from "../scripts/parallax";
+    <script is:inline type="module">
+      const layers = document.querySelectorAll('[data-parallax="bg"]');
 
-      window.addEventListener("DOMContentLoaded", () => {
-        initParallax();
-      });
+      console.log("[parallax] layers:", layers.length);
+
+      if (layers.length === 0) {
+        console.warn("[parallax] no layers found");
+        return;
+      }
+
+      const motionReduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+      if (motionReduce.matches) return;
+
+      let ticking = false;
+
+      const update = () => {
+        ticking = false;
+        const scrollY = window.scrollY;
+
+        layers.forEach((layer) => {
+          const speedRaw = Number.parseFloat(layer.dataset.parallaxSpeed || "");
+          const speed = Number.isFinite(speedRaw) ? speedRaw : 0.25;
+          const y = scrollY * speed;
+          layer.style.setProperty("--py", `${y}px`);
+        });
+      };
+
+      const requestTick = () => {
+        if (!ticking) {
+          ticking = true;
+          window.requestAnimationFrame(update);
+        }
+      };
+
+      window.addEventListener("scroll", requestTick, { passive: true });
+      window.addEventListener("resize", requestTick, { passive: true });
+
+      requestTick();
     </script>
   </body>
 </html>
