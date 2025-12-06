@@ -1,26 +1,105 @@
-<section id="hero" class="relative h-screen w-full overflow-hidden bg-black">
-  <!-- Background image -->
-  <img
-    src="/images/hero.jpg"
-    alt="Hero"
-    class="absolute inset-0 h-full w-full object-cover"
-  />
+---
+import Header from "./Header.astro";
+---
 
-  <!-- Dark overlay -->
-  <div class="absolute inset-0 bg-black/50"></div>
+<section id="hero" class="hero">
+  <div class="hero-bg" role="presentation"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
 
-  <!-- Centered content -->
-  <div
-    class="absolute inset-0 z-10 flex flex-col items-center justify-center text-center text-white px-6"
-  >
-    <ul class="space-y-6 text-4xl md:text-5xl lg:text-6xl font-semibold leading-snug">
-      <li><span class="text-[#D38B45]">✔</span> Faire Preise</li>
-      <li><span class="text-[#D38B45]">✔</span> Langjährige Erfahrung</li>
-      <li><span class="text-[#D38B45]">✔</span> Beste Cocktails & Longdrinks</li>
-      <li><span class="text-[#D38B45]">✔</span> Für Privat & Firmen – Events</li>
+  <Header />
+
+  <div class="hero-center">
+    <ul class="hero-usp">
+      <li><span class="hero-check">✔</span> Faire Preise</li>
+      <li><span class="hero-check">✔</span> Langjährige Erfahrung</li>
+      <li><span class="hero-check">✔</span> Beste Cocktails & Longdrinks</li>
+      <li><span class="hero-check">✔</span> Für Privat & Firmen – Events</li>
     </ul>
 
-    <!-- Down arrow -->
-    <div class="mt-12 text-4xl text-white/90 animate-bounce">⌄</div>
+    <div class="hero-arrow">⌄</div>
   </div>
 </section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url("/images/hero.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.55) 100%);
+    z-index: 5;
+  }
+
+  :global(header) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 76px;
+    z-index: 30;
+  }
+
+  .hero-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    padding: 0 1.5rem;
+    z-index: 20;
+  }
+
+  .hero-usp {
+    display: grid;
+    gap: 1.75rem;
+    font-size: clamp(2.25rem, 4vw, 3.5rem);
+    font-weight: 600;
+    line-height: 1.1;
+  }
+
+  .hero-check {
+    color: #d38b45;
+    margin-right: 0.5rem;
+  }
+
+  .hero-arrow {
+    margin-top: 3rem;
+    font-size: clamp(2.5rem, 4vw, 3.75rem);
+    color: rgba(255, 255, 255, 0.9);
+    animation: bounce 1.5s infinite;
+  }
+
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+  }
+
+  :global(header nav) {
+    display: flex;
+    gap: 56px;
+    white-space: nowrap;
+  }
+</style>
