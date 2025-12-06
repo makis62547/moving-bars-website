@@ -1,3 +1,7 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
 <footer class="border-t border-white/10 bg-black/80">
   <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between gap-6">
     <div class="space-y-3 max-w-lg">
@@ -5,7 +9,7 @@
       <p class="text-white/70">
         Mobile Cocktailbars, geschulte Barkeeper und detailverliebte Konzepte für Events in Berlin und deutschlandweit.
       </p>
-      <p class="text-white/50 text-sm">© {new Date().getFullYear()} Moving Bars. Alle Rechte vorbehalten.</p>
+      <p class="text-white/50 text-sm">© {currentYear} Moving Bars. Alle Rechte vorbehalten.</p>
     </div>
     <div class="grid grid-cols-2 gap-6 text-sm text-white/70">
       <div class="space-y-2">
