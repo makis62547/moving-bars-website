@@ -20,6 +20,43 @@ import Header from "./Header.astro";
   </div>
 </section>
 
+<section class="intro" aria-labelledby="intro-title">
+  <div class="intro-shell">
+    <div class="intro-panel">
+      <div class="intro-text">
+        <p class="intro-eyebrow">
+          <span class="intro-eyebrow-highlight">MOBILE COCKTAILBAR</span>
+          <span class="intro-eyebrow-divider" aria-hidden="true">|</span>
+          <span class="intro-eyebrow-base">MIETEN</span>
+        </p>
+        <h1 id="intro-title" class="intro-title">IN BERLIN</h1>
+        <p class="intro-copy">
+          Wir lieben Cocktails, perfekten Getränke-Service und wir lieben Veranstaltungen. Mieten Sie unsere mobile Cocktailbar
+          in Berlin oder üBARall. Von der Vorbereitung und Planung bis zur Durchführung sind wir Ihr begeisterter Partner, wenn
+          es darum geht ein besonderes Erlebnis für Ihre Gäste entstehen zu lassen. Die mobile Cocktailbar, der perfekte Drink,
+          der schnelle Service, der Barkeeper, der bei der 2. Bestellung weiß, was man trinkt oder einfach das Lächeln, mit dem
+          das Getränk serviert wurde – wir wollen begeistern!
+        </p>
+      </div>
+
+      <div class="intro-divider" aria-hidden="true"></div>
+
+      <div class="intro-icon" aria-hidden="true">
+        <svg viewBox="0 0 160 200" xmlns="http://www.w3.org/2000/svg" role="presentation">
+          <g fill="none" stroke="#d38b45" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M32 24h96" />
+            <path d="M40 24l40 62v74" />
+            <path d="M120 24L80 86h72" />
+            <path d="M60 160h40" />
+            <path d="M118 44c12 6 20 18 20 32 0 20-16 36-36 36" />
+            <path d="M132 58l-22 22" />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
 <style>
   .hero {
     position: relative;
@@ -137,5 +174,122 @@ import Header from "./Header.astro";
     display: flex;
     gap: 56px;
     white-space: nowrap;
+  }
+
+  .intro {
+    background: #000;
+    padding: 44px 0 96px;
+  }
+
+  .intro-shell {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+
+  .intro-panel {
+    display: grid;
+    grid-template-columns: 1.25fr auto 0.85fr;
+    align-items: stretch;
+    background: #0c0c0c;
+    border: 1px solid #1a1a1a;
+    padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.5rem, 4vw, 3rem);
+    color: #f7f7f7;
+    font-family: "Inter", system-ui, sans-serif;
+    letter-spacing: normal;
+  }
+
+  .intro-text {
+    display: grid;
+    gap: 1rem;
+    padding-right: clamp(1.25rem, 3vw, 2rem);
+  }
+
+  .intro-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: #f5f5f5;
+  }
+
+  .intro-eyebrow-highlight {
+    color: #d38b45;
+    font-weight: 500;
+  }
+
+  .intro-eyebrow-base {
+    color: #ffffff;
+  }
+
+  .intro-eyebrow-divider {
+    color: rgba(255, 255, 255, 0.45);
+    font-weight: 300;
+    letter-spacing: 0;
+  }
+
+  .intro-title {
+    margin: 0;
+    font-size: clamp(2.5rem, 4.8vw, 3.75rem);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 300;
+  }
+
+  .intro-copy {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.7;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .intro-divider {
+    width: 1px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.35) 50%, rgba(255, 255, 255, 0) 100%);
+    margin: 0 clamp(1.4rem, 3vw, 2.4rem);
+  }
+
+  .intro-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: clamp(1rem, 3vw, 2rem);
+  }
+
+  .intro-icon svg {
+    width: min(240px, 38vw);
+    height: auto;
+    filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+  }
+
+  @media (max-width: 900px) {
+    .intro-panel {
+      grid-template-columns: 1fr;
+      row-gap: 1.5rem;
+    }
+
+    .intro-divider {
+      height: 1px;
+      width: 100%;
+      margin: clamp(1rem, 3vw, 1.5rem) 0;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.35) 50%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    .intro-text {
+      padding-right: 0;
+    }
+
+    .intro-icon {
+      padding-left: 0;
+      justify-content: flex-start;
+    }
+
+    .intro-shell {
+      padding: 0 1.5rem;
+    }
   }
 </style>
