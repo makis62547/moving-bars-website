@@ -1,29 +1,27 @@
 ---
-const currentYear = new Date().getFullYear();
+const contactLines = [
+  "hello@movingbars.de",
+  "+49 30 1234567",
+  "Berlin · deutschlandweit"
+];
 ---
 
-<footer class="border-t border-white/10 bg-black/80">
-  <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between gap-6">
-    <div class="space-y-3 max-w-lg">
-      <img src="/images/logo-white.png" alt="Moving Bars" class="h-10" />
-      <p class="text-white/70">
-        Mobile Cocktailbars, geschulte Barkeeper und detailverliebte Konzepte für Events in Berlin und deutschlandweit.
-      </p>
-      <p class="text-white/50 text-sm">© {currentYear} Moving Bars. Alle Rechte vorbehalten.</p>
+<footer class="border-t border-white/10 bg-black" id="contact">
+  <div class="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 md:flex-row md:items-start md:justify-between">
+    <div class="flex flex-col gap-3">
+      <p class="text-xs uppercase tracking-[0.35em] text-white/60">Kontakt</p>
+      <h3 class="text-xl font-semibold">Moving Bars</h3>
+      <div class="flex flex-col gap-1 text-sm text-white/80">
+        {contactLines.map((line) => (
+          <span>{line}</span>
+        ))}
+      </div>
     </div>
-    <div class="grid grid-cols-2 gap-6 text-sm text-white/70">
-      <div class="space-y-2">
-        <p class="text-white font-semibold">Leistungen</p>
-        <a href="#leistungen" class="block hover:text-orange-300">Catering</a>
-        <a href="#leistungen" class="block hover:text-orange-300">Mobile Bar</a>
-        <a href="#leistungen" class="block hover:text-orange-300">Workshops</a>
-      </div>
-      <div class="space-y-2">
-        <p class="text-white font-semibold">Kontakt</p>
-        <a href="mailto:hallo@movingbars.de" class="block hover:text-orange-300">hallo@movingbars.de</a>
-        <a href="tel:+493011223344" class="block hover:text-orange-300">+49 (0)30 112 233 44</a>
-        <a href="/kontakt" class="block hover:text-orange-300">Kontaktformular</a>
-      </div>
+
+    <div class="flex flex-col gap-2 text-xs uppercase tracking-[0.2em] text-white/60">
+      <span>Mobile Cocktailbars</span>
+      <span>Workshops & Tasting</span>
+      <span>Logistik & Planung</span>
     </div>
   </div>
 </footer>

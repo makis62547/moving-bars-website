@@ -2,23 +2,75 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
-import Services from "../components/Services.astro";
-import Highlights from "../components/Highlights.astro";
-import Process from "../components/Process.astro";
-import Testimonials from "../components/Testimonials.astro";
-import ContactCTA from "../components/ContactCTA.astro";
+import SplitSection from "../components/SplitSection.astro";
+import SectionTitle from "../components/SectionTitle.astro";
 import Footer from "../components/Footer.astro";
+
+const servicePoints = [
+  "Mobile Cocktailbars mit modularem Aufbau und klarer Linienführung.",
+  "Signature-Drinks, Klassiker und alkoholfreie Optionen abgestimmt auf Ihr Event.",
+  "Komplettes Barkonzept inklusive Equipment, Logistik und Personal.",
+];
+
+const experiencePoints = [
+  "Eingespielte Teams für Markenaktivierungen, Messen und Private Events.",
+  "Durchgetaktete Abläufe, pünktliche Lieferung und präzise Timecodes.",
+  "Dokumentation, Fotos und Reporting auf Wunsch verfügbar.",
+];
+
+const galleryImages = [
+  { src: "/images/placeholder-1.jpg", caption: "Setup · Klare Kanten" },
+  { src: "/images/placeholder-2.jpg", caption: "Signature Drinks" },
+  { src: "/images/placeholder-3.jpg", caption: "Workshops & Tastings" },
+  { src: "/images/placeholder-4.jpg", caption: "Crew & Logistik" },
+];
 ---
 
 <BaseLayout>
   <Header />
-  <main>
+  <main class="bg-black">
     <Hero />
-    <Services />
-    <Highlights />
-    <Process />
-    <Testimonials />
-    <ContactCTA />
+
+    <SplitSection
+      id="services"
+      label="Services"
+      title="Mobile Bars, Drinks und Produktion aus einem Guss"
+      description="Wir bauen Bars, liefern Getränke mit Charakter und koordinieren das Team vor Ort. Alles reduziert, klar und ohne Umwege."
+      image="/images/placeholder-1.jpg"
+      items={servicePoints}
+      linkText="Leistungen ansehen"
+    />
+
+    <SplitSection
+      id="experience"
+      label="Experience"
+      title="Erprobte Abläufe für Events jeder Größe"
+      description="Von 20 bis 2000 Gästen: Wir planen präzise, arbeiten mit festen Checklisten und halten Timings ein. So bleibt die Bar die zuverlässig ruhige Achse Ihres Events."
+      image="/images/placeholder-2.jpg"
+      items={experiencePoints}
+      linkText="Abläufe besprechen"
+      reversed
+    />
+
+    <section class="border-b border-white/10" id="gallery">
+      <div class="mx-auto max-w-6xl px-6 py-14">
+        <SectionTitle
+          label="Gallery"
+          title="Strenge Ästhetik, klare Farben"
+          description="Schwarze Grundfläche, weißes Licht, ein Akzent in Orange. Unsere Bars funktionieren auf Bühnen, in Lofts und Outdoor."
+        />
+        <div class="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-4">
+          {galleryImages.map((entry) => (
+            <figure class="border border-white/10 bg-black">
+              <img alt={entry.caption} class="h-40 w-full object-cover" src={entry.src} />
+              <figcaption class="border-t border-white/10 px-4 py-3 text-xs uppercase tracking-[0.2em] text-white/60">
+                {entry.caption}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
   </main>
   <Footer />
 </BaseLayout>
