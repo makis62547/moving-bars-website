@@ -1,5 +1,6 @@
 const DEFAULT_SPEED = 0.25;
 const SPEED_FALLBACK_RANGE = { min: 0.05, max: 1 };
+const BASE_SCALE = 1.05;
 
 type ParallaxElement = HTMLElement & {
   dataset: {
@@ -19,10 +20,11 @@ export default function initParallax(): void {
   if (typeof window === "undefined") return;
 
   const motionPrefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-  if (motionPrefersReduced.matches) return;
-
   const candidates = Array.from(document.querySelectorAll<ParallaxElement>("[data-parallax='bg']"));
-  if (!candidates.length) return;
+
+  console.log("[parallax] layers:", candidates.length, "reduce-motion:", motionPrefersReduced.matches);
+
+  if (motionPrefersReduced.matches || !candidates.length) return;
 
   const activeElements = new Set<ParallaxElement>();
   let ticking = false;
@@ -34,7 +36,9 @@ export default function initParallax(): void {
     activeElements.forEach((element) => {
       const speed = parseSpeed(element);
       const y = scrollY * speed;
-      element.style.transform = `translate3d(0, ${y}px, 0)`;
+      const transform = `translate3d(0, ${y}px, 0) scale(${BASE_SCALE})`;
+      element.style.transform = transform;
+      console.log("[parallax] update", { y, transform });
     });
   };
 
