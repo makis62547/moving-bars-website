@@ -55,12 +55,13 @@ import Header from "./Header.astro";
     z-index: 40;
   }
 
+  /* Center layer: keep overall centering, but nudge the USP block up/right */
   .hero-center {
     position: absolute;
     inset: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center;      /* stays visually in the middle */
     justify-content: center;
     text-align: left;
     color: #fff;
@@ -73,14 +74,17 @@ import Header from "./Header.astro";
     display: inline-grid;
     gap: 1.75rem;
     font-size: clamp(1.2rem, 2.1vw, 1.8rem);
-    font-weight: 300;
-    font-family: "Inter", "Montserrat", system-ui, sans-serif;
+    font-weight: 200; /* thinner */
+    font-family: "Inter", system-ui, sans-serif; /* lighter feel than Montserrat-heavy headings */
     text-transform: uppercase;
     line-height: 1.45;
     list-style: none;
     padding: 0;
     margin: 0;
     width: min(820px, 92vw);
+
+    /* NUDGE: a bit up and a bit right (tweak values as needed) */
+    transform: translate(22px, -18px);
   }
 
   .hero-usp li {
@@ -92,21 +96,10 @@ import Header from "./Header.astro";
     animation: uspIn 700ms ease forwards;
   }
 
-  .hero-usp li:nth-child(1) {
-    animation-delay: 0ms;
-  }
-
-  .hero-usp li:nth-child(2) {
-    animation-delay: 250ms;
-  }
-
-  .hero-usp li:nth-child(3) {
-    animation-delay: 500ms;
-  }
-
-  .hero-usp li:nth-child(4) {
-    animation-delay: 750ms;
-  }
+  .hero-usp li:nth-child(1) { animation-delay: 0ms; }
+  .hero-usp li:nth-child(2) { animation-delay: 250ms; }
+  .hero-usp li:nth-child(3) { animation-delay: 500ms; }
+  .hero-usp li:nth-child(4) { animation-delay: 750ms; }
 
   .hero-check {
     color: #d38b45;
@@ -136,13 +129,8 @@ import Header from "./Header.astro";
   }
 
   @keyframes bounce {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(10px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
   }
 
   :global(header nav) {
