@@ -29,7 +29,9 @@ import "../styles/globals.css";
     <script type="module">
       import initParallax from "../scripts/parallax";
 
-      initParallax();
+      window.addEventListener("DOMContentLoaded", () => {
+        initParallax();
+      });
     </script>
   </body>
 </html>
