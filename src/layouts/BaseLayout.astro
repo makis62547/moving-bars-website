@@ -1,5 +1,6 @@
 ---
 import "../styles/globals.css";
+import Header from "../components/Header.astro";
 ---
 
 <html lang="de">
@@ -26,6 +27,7 @@ import "../styles/globals.css";
 
   <!-- WICHTIG: Padding für Header -->
   <body class="bg-black text-white antialiased min-h-screen pt-[90px]">
+    <Header />
     <slot />
   </body>
 </html>
