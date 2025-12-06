@@ -41,3 +41,9 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+## Parallax nutzen
+
+- Füge dem Hintergrund-Layer `data-parallax="bg"` und z. B. `data-parallax-speed="0.25"` hinzu (empfohlener Bereich: 0.15–0.35).
+- Das Skript `src/scripts/parallax.ts` initialisiert automatisch alle Parallax-Elemente und respektiert `prefers-reduced-motion`.
+- Der Effekt nutzt ausschließlich `transform: translate3d` und wird via `requestAnimationFrame` getaktet.
