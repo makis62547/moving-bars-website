@@ -9,7 +9,7 @@
   --border: rgba(255, 255, 255, 0.1);
   --header-h: 72px;
   --container-max: 1240px;
-  --container-pad: 3rem;
+  --container-pad: 2rem;
 }
 
 html, body {
