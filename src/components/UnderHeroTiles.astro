@@ -9,11 +9,10 @@ const sliderImages = [
 
 <section class="under-hero-tiles" aria-label="Ergänzende Informationen">
   <div class="tiles-shell">
-    <!-- TILE 1 (Vorlage): Icon links | orangener Strich | H2 (bewusst 2 Zeilen) + Text volle Breite -->
+    <!-- TILE 1: Icon links | orangener Strich | H2 (2 Zeilen) + Text volle Breite -->
     <article class="tile tile--intro">
       <div class="intro">
         <div class="intro__icon" aria-hidden="true">
-          <!-- Platzhalter-Icon (3 Personen) -->
           <svg class="intro__svg" viewBox="0 0 128 128" role="img" aria-label="">
             <g fill="currentColor">
               <circle cx="64" cy="42" r="18" />
@@ -30,7 +29,7 @@ const sliderImages = [
 
         <div class="intro__copy">
           <h2>
-            <span class="h2-nowrap">
+            <span class="h2-line1">
               <span class="h2-accent">PRIVATE FEIER</span> – MESSEPARTY –
             </span>
             <br />
@@ -108,23 +107,23 @@ const sliderImages = [
 </section>
 
 <script>
-  const sliders = document.querySelectorAll('[data-slider]');
+  const sliders = document.querySelectorAll("[data-slider]");
 
   sliders.forEach((slider) => {
-    const track = slider.querySelector('.slider-track');
-    const prev = slider.querySelector('.slider-btn.prev');
-    const next = slider.querySelector('.slider-btn.next');
+    const track = slider.querySelector(".slider-track");
+    const prev = slider.querySelector(".slider-btn.prev");
+    const next = slider.querySelector(".slider-btn.next");
 
     if (!track || !prev || !next) return;
 
     const scrollAmount = () => track.clientWidth * 0.9;
 
-    prev.addEventListener('click', () => {
-      track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+    prev.addEventListener("click", () => {
+      track.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
     });
 
-    next.addEventListener('click', () => {
-      track.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+    next.addEventListener("click", () => {
+      track.scrollBy({ left: scrollAmount(), behavior: "smooth" });
     });
   });
 </script>
@@ -136,9 +135,9 @@ const sliderImages = [
     padding: clamp(2.5rem, 6vw, 4.5rem) var(--content-pad) clamp(3rem, 8vw, 5rem);
   }
 
-  /* Wichtig: hier machen wir die Sektion auf Desktop breiter (weniger leere Fläche rechts) */
-  .under-hero-tiles .tiles-shell {
-    max-width: min(1320px, 92vw);
+  .tiles-shell {
+    /* breiter -> weniger “leere Fläche rechts” */
+    max-width: min(1400px, 94vw);
     margin: 0 auto;
     display: grid;
     gap: clamp(1.5rem, 3vw, 2.25rem);
@@ -273,7 +272,7 @@ const sliderImages = [
     }
   }
 
-  /* --- TILE 1: wie Original --- */
+  /* ===== TILE 1: FIX gegen “gestaucht” ===== */
   .tile--intro {
     border: none;
     background: transparent;
@@ -281,31 +280,35 @@ const sliderImages = [
   }
 
   .tile--intro .intro {
-    display: grid;
-    /* Icon bekommt genug Platz, Text nutzt die volle restliche Breite */
-    grid-template-columns: clamp(200px, 18vw, 280px) 1px minmax(0, 1fr);
+    display: flex;
     align-items: center;
     gap: clamp(1.25rem, 3vw, 3rem);
+    width: 100%;
   }
 
   .tile--intro .intro__icon {
+    flex: 0 0 clamp(220px, 18vw, 300px);
+    display: flex;
+    justify-content: flex-end; /* Icon direkt an den Strich */
+    align-items: center;
     color: rgba(211, 139, 69, 0.95);
-    display: grid;
-    place-items: center;
   }
 
   .tile--intro .intro__svg {
-    width: min(220px, 100%);
+    width: min(240px, 100%);
     height: auto;
     display: block;
   }
 
   .tile--intro .intro__sep {
+    flex: 0 0 1px;
     align-self: stretch;
     background: rgba(211, 139, 69, 0.75);
   }
 
   .tile--intro .intro__copy {
+    flex: 1 1 auto;
+    min-width: 0;
     width: 100%;
     max-width: none !important;
   }
@@ -325,36 +328,44 @@ const sliderImages = [
     color: rgba(211, 139, 69, 0.95);
   }
 
-  /* Hält die erste Zeile zusammen (damit nicht zu früh umbricht) */
-  .tile--intro .intro__copy .h2-nowrap {
-    white-space: nowrap;
+  .tile--intro .intro__copy .h2-line1 {
+    white-space: nowrap; /* verhindert “zu frühes” Brechen */
   }
 
-  /* DAS ist der “Gestauch-Fix”: Absatz darf normal umbrechen, keine pre-line Effekte */
+  /* HIER ist der entscheidende Fix: globale p-Regeln überschreiben */
   .tile--intro .intro__copy p {
     margin: 1rem 0 0;
     color: rgba(247, 247, 247, 0.82);
     line-height: 1.75;
     font-weight: 300;
-    width: 100%;
+
+    width: 100% !important;
     max-width: none !important;
     white-space: normal !important;
+    display: block !important;
   }
 
   @media (max-width: 720px) {
     .tile--intro .intro {
-      grid-template-columns: 1fr;
+      flex-direction: column;
+      align-items: flex-start;
       gap: 1rem;
     }
-    .tile--intro .intro__sep {
-      width: 100%;
-      height: 1px;
+    .tile--intro .intro__icon {
+      justify-content: flex-start;
+      flex-basis: auto;
+      width: auto;
     }
     .tile--intro .intro__svg {
       width: 160px;
     }
-    .tile--intro .intro__copy .h2-nowrap {
-      white-space: normal; /* mobile darf umbrechen */
+    .tile--intro .intro__sep {
+      width: 100%;
+      height: 1px;
+      align-self: auto;
+    }
+    .tile--intro .intro__copy .h2-line1 {
+      white-space: normal;
     }
   }
 </style>
