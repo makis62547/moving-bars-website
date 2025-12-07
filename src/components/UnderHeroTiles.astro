@@ -9,17 +9,36 @@ const sliderImages = [
 
 <section class="under-hero-tiles" aria-label="Ergänzende Informationen">
   <div class="tiles-shell">
-    <article class="tile">
-      <div class="tile-visual icon" aria-hidden="true"></div>
-      <div class="tile-copy">
-        <p class="tile-label">Placeholder Headline</p>
-        <p class="tile-text">
-          Kurzer Blindtext als Platzhalter. Hier steht ein kompakter Absatz, der den Nutzen der Leistung in ein bis zwei
-          Sätzen beschreibt.
-        </p>
+    <!-- TILE 1 (Vorlage): Icon links | orangener Strich | H2 + Text -->
+    <article class="tile tile--intro">
+      <div class="intro">
+        <div class="intro__icon" aria-hidden="true">
+          <!-- Platzhalter-Icon (3 Personen) -->
+          <svg viewBox="0 0 128 128" width="140" height="140" role="img" aria-label="">
+            <g fill="currentColor">
+              <circle cx="64" cy="42" r="18" />
+              <path d="M34 108c0-18 14-32 30-32s30 14 30 32H34z" />
+              <circle cx="30" cy="50" r="14" opacity="0.95" />
+              <path d="M8 108c0-14 11-25 24-25s24 11 24 25H8z" opacity="0.95" />
+              <circle cx="98" cy="50" r="14" opacity="0.95" />
+              <path d="M72 108c0-14 11-25 24-25s24 11 24 25H72z" opacity="0.95" />
+            </g>
+          </svg>
+        </div>
+
+        <div class="intro__sep" aria-hidden="true"></div>
+
+        <div class="intro__copy">
+          <h2>PRIVATE FEIER – MESSEPARTY – GROSSVERANSTALTUNG</h2>
+          <p>
+            Kurzer Blindtext als Platzhalter. Hier steht ein kompakter Absatz, der den Nutzen der Leistung in ein bis
+            zwei Sätzen beschreibt.
+          </p>
+        </div>
       </div>
     </article>
 
+    <!-- TILE 2: Text links / Slider rechts -->
     <article class="tile">
       <div class="tile-copy">
         <p class="tile-label">Slider rechts</p>
@@ -42,6 +61,7 @@ const sliderImages = [
       </div>
     </article>
 
+    <!-- TILE 3: Slider links / Text rechts -->
     <article class="tile">
       <div class="tile-visual">
         <div class="slider" data-slider>
@@ -64,6 +84,7 @@ const sliderImages = [
       </div>
     </article>
 
+    <!-- TILE 4: Icon links / Text rechts (simple placeholder) -->
     <article class="tile">
       <div class="tile-visual icon" aria-hidden="true"></div>
       <div class="tile-copy">
@@ -112,6 +133,7 @@ const sliderImages = [
     gap: clamp(1.5rem, 3vw, 2.25rem);
   }
 
+  /* Base tile */
   .tile {
     display: grid;
     grid-template-columns: 1fr;
@@ -156,6 +178,7 @@ const sliderImages = [
     font-weight: 300;
   }
 
+  /* Slider */
   .slider {
     position: relative;
     width: 100%;
@@ -239,6 +262,65 @@ const sliderImages = [
 
     .tile:nth-of-type(2n) {
       grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    }
+  }
+
+  /* --- Tile 1 exakt wie Vorlage: Icon | orangener Strich | H2 + Text --- */
+  .tile--intro {
+    border: none;
+    background: transparent;
+    padding: 0;
+  }
+
+  .tile--intro .intro {
+    display: grid;
+    grid-template-columns: auto 1px minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(1rem, 3vw, 2.5rem);
+  }
+
+  .tile--intro .intro__icon {
+    color: rgba(211, 139, 69, 0.95);
+    width: clamp(140px, 16vw, 190px);
+    display: grid;
+    place-items: center;
+  }
+
+  .tile--intro .intro__sep {
+    align-self: stretch;
+    background: rgba(211, 139, 69, 0.75);
+  }
+
+  .tile--intro .intro__copy h2 {
+    margin: 0;
+    color: rgba(211, 139, 69, 0.95);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    font-size: clamp(1.35rem, 2.6vw, 2.5rem);
+    line-height: 1.12;
+  }
+
+  .tile--intro .intro__copy p {
+    margin: 0.85rem 0 0;
+    color: rgba(247, 247, 247, 0.82);
+    line-height: 1.75;
+    font-weight: 300;
+    max-width: 80ch;
+  }
+
+  @media (max-width: 720px) {
+    .tile--intro .intro {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .tile--intro .intro__sep {
+      width: 100%;
+      height: 1px;
+    }
+    .tile--intro .intro__icon {
+      width: auto;
+      justify-items: start;
     }
   }
 </style>
