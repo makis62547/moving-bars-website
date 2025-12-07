@@ -262,11 +262,12 @@ const sliderImages = [
   }
 
   @media (min-width: 900px) {
-    .tile {
+    /* IMPORTANT: Intro-Tile NICHT in 2 Spalten splitten */
+    .tile:not(.tile--intro) {
       grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
       align-items: center;
     }
-    .tile:nth-of-type(2n) {
+    .tile:not(.tile--intro):nth-of-type(2n) {
       grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
     }
   }
@@ -287,7 +288,7 @@ const sliderImages = [
   }
 
   .tile--intro .intro__icon {
-    justify-self: end;          /* Icon an den Strich ziehen */
+    justify-self: end; /* Icon an den Strich ziehen */
     display: grid;
     place-items: center end;
     color: rgba(211, 139, 69, 0.95);
@@ -328,11 +329,18 @@ const sliderImages = [
     white-space: nowrap; /* verhindert zu frühes Brechen */
   }
 
-  /* DAS ist der Kernfix: Absatz bekommt exakt die gleiche Spaltenbreite wie H2 */
+  /* Absatz: exakt volle Breite der Textspalte (wie die H2) – überschreibt globale p-Regeln */
   .under-hero-tiles .tile--intro .intro__copy .intro__paragraph {
     margin: 1rem 0 0 !important;
     padding: 0 !important;
 
     width: 100% !important;
     max-width: none !important;
-    max-inline-size: none !
+    max-inline-size: none !important;
+    justify-self: stretch !important;
+
+    color: rgba(247, 247, 247, 0.8);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+</style>
