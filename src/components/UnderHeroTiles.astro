@@ -354,7 +354,7 @@ const sliderImages = [
     backface-visibility: hidden;
   }
 
-  /* ✅ Buttons ohne weiße Rahmen (border/outline/box-shadow weg) */
+  /* ✅ Buttons komplett ohne “weiße Linien” (deckend + alle Defaults aus) */
   :global([data-uh-tiles] .slider-btn) {
     position: absolute;
     top: 50%;
@@ -363,26 +363,40 @@ const sliderImages = [
     height: 44px;
     border-radius: 0;
 
-    border: 0 !important;        /* ✅ weg */
-    outline: 0 !important;       /* ✅ weg */
-    box-shadow: none !important; /* ✅ weg */
+    -webkit-appearance: none !important;
+    appearance: none !important;
 
-    background: rgba(0, 0, 0, 0.55);
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+
+    /* deckend schwarz verhindert “durchscheinende Kanten” */
+    background: #000 !important;
     color: #fff;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
     display: grid;
     place-items: center;
     cursor: pointer;
     z-index: 6;
+
+    background-clip: padding-box;
   }
 
-  /* Hover/Focus: auch keine Linien */
+  :global([data-uh-tiles] .slider-btn::before),
+  :global([data-uh-tiles] .slider-btn::after) {
+    content: none !important;
+  }
+
   :global([data-uh-tiles] .slider-btn:hover),
   :global([data-uh-tiles] .slider-btn:focus),
   :global([data-uh-tiles] .slider-btn:focus-visible) {
     border: 0 !important;
     outline: 0 !important;
     box-shadow: none !important;
-    background: rgba(211, 139, 69, 0.92);
+    background: rgba(211, 139, 69, 0.92) !important;
   }
 
   :global([data-uh-tiles] .slider-btn.prev) { left: 12px; }
