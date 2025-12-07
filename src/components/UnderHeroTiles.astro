@@ -9,7 +9,7 @@ const sliderImages = [
 
 <section class="under-hero-tiles" aria-label="Ergänzende Informationen">
   <div class="tiles-shell">
-    <!-- TILE 1: Icon links | orangener Strich | H2 (2 Zeilen) + Text volle Breite -->
+    <!-- TILE 1 -->
     <article class="tile tile--intro">
       <div class="intro">
         <div class="intro__icon" aria-hidden="true">
@@ -47,7 +47,7 @@ const sliderImages = [
       </div>
     </article>
 
-    <!-- TILE 2: Text links / Slider rechts -->
+    <!-- TILE 2 -->
     <article class="tile">
       <div class="tile-copy">
         <p class="tile-label">Slider rechts</p>
@@ -77,7 +77,7 @@ const sliderImages = [
       </div>
     </article>
 
-    <!-- TILE 3: Slider links / Text rechts -->
+    <!-- TILE 3 -->
     <article class="tile">
       <div class="tile-visual">
         <div class="slider" data-slider>
@@ -107,7 +107,7 @@ const sliderImages = [
       </div>
     </article>
 
-    <!-- TILE 4: Icon links / Text rechts (simple placeholder) -->
+    <!-- TILE 4 -->
     <article class="tile">
       <div class="tile-visual icon" aria-hidden="true"></div>
       <div class="tile-copy">
@@ -120,80 +120,64 @@ const sliderImages = [
   </div>
 </section>
 
-<script>
-  // --- Slider Controls ---
-  const sliders = document.querySelectorAll("[data-slider]");
+<script is:inline>
+  // --- Slider Controls + Parallax (robust) ---
+  const onReady = () => {
+    // Slider buttons
+    document.querySelectorAll("[data-slider]").forEach((slider) => {
+      const track = slider.querySelector(".slider-track");
+      const prev = slider.querySelector(".slider-btn.prev");
+      const next = slider.querySelector(".slider-btn.next");
+      if (!track || !prev || !next) return;
 
-  sliders.forEach((slider) => {
-    const track = slider.querySelector(".slider-track");
-    const prev = slider.querySelector(".slider-btn.prev");
-    const next = slider.querySelector(".slider-btn.next");
-
-    if (!track || !prev || !next) return;
-
-    const scrollAmount = () => track.clientWidth * 0.9;
-
-    prev.addEventListener("click", () => {
-      track.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+      const scrollAmount = () => track.clientWidth * 0.9;
+      prev.addEventListener("click", () => track.scrollBy({ left: -scrollAmount(), behavior: "smooth" }));
+      next.addEventListener("click", () => track.scrollBy({ left: scrollAmount(), behavior: "smooth" }));
     });
 
-    next.addEventListener("click", () => {
-      track.scrollBy({ left: scrollAmount(), behavior: "smooth" });
-    });
-  });
+    // Parallax
+    const prefersReduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    const els = Array.from(document.querySelectorAll(".parallax-img"));
+    if (prefersReduced || !els.length) return;
 
-  // --- Parallax for ALL image tiles (square slides) ---
-  const prefersReduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
-  const parallaxEls = Array.from(document.querySelectorAll(".parallax-img"));
-
-  if (!prefersReduced && parallaxEls.length) {
     let ticking = false;
-
     const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
 
-    const updateParallax = () => {
+    const update = () => {
       ticking = false;
-
       const vh = window.innerHeight || 1;
       const viewportCenter = vh * 0.5;
 
-      // Base amplitude in px (subtle + premium, nicht wackelig)
-      const baseAmp = 22;
+      // Mehr sichtbar als vorher (sonst "merkt man nix")
+      const baseAmp = 42;
 
-      for (const el of parallaxEls) {
-        const rect = el.getBoundingClientRect();
-        // wenn weit außerhalb: trotzdem zurücksetzen (verhindert "stuck" states)
-        const elementCenter = rect.top + rect.height * 0.5;
-
-        // Normalisierte Distanz zum Viewport-Zentrum (-1..1 grob)
-        const norm = (elementCenter - viewportCenter) / vh;
-
-        // Optionaler Speed-Faktor pro Element
+      for (const el of els) {
+        const r = el.getBoundingClientRect();
+        const center = r.top + r.height * 0.5;
+        const norm = (center - viewportCenter) / vh; // grob -1..1
         const speed = parseFloat(el.dataset.parallax || "1") || 1;
-
-        // Translate: gegenläufig zur Scrollrichtung, subtile Bewegung
-        const y = clamp(-norm * baseAmp * speed, -baseAmp * 1.4, baseAmp * 1.4);
-
+        const y = clamp(-norm * baseAmp * speed, -baseAmp * 1.6, baseAmp * 1.6);
         el.style.setProperty("--parallaxY", `${y}px`);
       }
     };
 
-    const requestTick = () => {
+    const tick = () => {
       if (ticking) return;
       ticking = true;
-      requestAnimationFrame(updateParallax);
+      requestAnimationFrame(update);
     };
 
-    window.addEventListener("scroll", requestTick, { passive: true });
-    window.addEventListener("resize", requestTick);
+    window.addEventListener("scroll", tick, { passive: true });
+    window.addEventListener("resize", tick);
+    document.querySelectorAll(".slider-track").forEach((t) => t.addEventListener("scroll", tick, { passive: true }));
 
-    // Auch bei horizontalem Track-Scroll neu rendern (optional, fühlt sich "alive" an)
-    document.querySelectorAll(".slider-track").forEach((track) => {
-      track.addEventListener("scroll", requestTick, { passive: true });
-    });
+    tick();
+  };
 
-    // Initial
-    requestTick();
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", onReady);
+  } else {
+    onReady();
   }
 </script>
 
@@ -211,7 +195,6 @@ const sliderImages = [
     gap: clamp(1.5rem, 3vw, 2.25rem);
   }
 
-  /* Base tile */
   .tile {
     display: grid;
     grid-template-columns: 1fr;
@@ -256,90 +239,7 @@ const sliderImages = [
     font-weight: 300;
   }
 
-  /* Slider */
-  .slider {
-    position: relative;
-    width: 100%;
-  }
-
-  .slider-track {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(160px, 1fr);
-    gap: 0.85rem;
-    overflow-x: auto;
-    padding: 0.25rem 0.5rem;
-    scroll-snap-type: x mandatory;
-    scroll-padding: 0.5rem;
-    scrollbar-width: thin;
-  }
-
-  .slider-track::-webkit-scrollbar {
-    height: 6px;
-  }
-
-  .slider-track::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 999px;
-  }
-
-  /* ✅ QUADRATISCHE BILDERKACHELN */
-  .slide {
-    scroll-snap-align: start;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background: rgba(255, 255, 255, 0.04);
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-    aspect-ratio: 1 / 1; /* <-- macht die Kachel quadratisch */
-  }
-
-  /* ✅ Parallax-Image: leicht größer als Container, damit Bewegung keine Kanten zeigt */
-  .slide img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 118%;
-    object-fit: cover;
-    display: block;
-
-    transform: translate3d(0, var(--parallaxY, 0px), 0);
-    will-change: transform;
-    backface-visibility: hidden;
-  }
-
-  .slider-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.65);
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    cursor: pointer;
-    transition: background 150ms ease, border-color 150ms ease, opacity 150ms ease;
-  }
-
-  .slider-btn:hover,
-  .slider-btn:focus-visible {
-    background: rgba(211, 139, 69, 0.95);
-    border-color: rgba(211, 139, 69, 0.8);
-    outline: none;
-  }
-
-  .slider-btn.prev { left: 0; }
-  .slider-btn.next { right: 0; }
-
-  @media (max-width: 720px) {
-    .slider-btn { display: none; }
-  }
-
   @media (min-width: 900px) {
-    /* IMPORTANT: Intro-Tile NICHT in 2 Spalten splitten */
     .tile:not(.tile--intro) {
       grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
       align-items: center;
@@ -349,7 +249,7 @@ const sliderImages = [
     }
   }
 
-  /* ===== TILE 1: Layout exakt + Absatz volle Spaltenbreite ===== */
+  /* TILE 1 */
   .tile--intro {
     border: none;
     background: transparent;
@@ -365,7 +265,7 @@ const sliderImages = [
   }
 
   .tile--intro .intro__icon {
-    justify-self: end; /* Icon an den Strich ziehen */
+    justify-self: end;
     display: grid;
     place-items: center end;
     color: rgba(211, 139, 69, 0.95);
@@ -403,26 +303,112 @@ const sliderImages = [
   }
 
   .tile--intro .intro__copy .h2-line1 {
-    white-space: nowrap; /* verhindert zu frühes Brechen */
+    white-space: nowrap;
   }
 
-  /* Absatz: exakt volle Breite der Textspalte (wie die H2) – überschreibt globale p-Regeln */
   .under-hero-tiles .tile--intro .intro__copy .intro__paragraph {
     margin: 1rem 0 0 !important;
     padding: 0 !important;
-
     width: 100% !important;
     max-width: none !important;
     max-inline-size: none !important;
     justify-self: stretch !important;
-
     color: rgba(247, 247, 247, 0.8);
     line-height: 1.7;
     font-weight: 300;
   }
 
-  /* Reduce Motion: Parallax deaktivieren */
+  /* =========================
+     SLIDER + SQUARE TILES + PARALLAX
+     => bewusst global, damit es IMMER greift
+     ========================= */
+  .under-hero-tiles :global(.slider) {
+    position: relative;
+    width: 100%;
+  }
+
+  .under-hero-tiles :global(.slider-track) {
+    display: grid;
+    grid-auto-flow: column;
+
+    /* Wichtig: feste, responsive Kachelbreite -> optisch "kachelig" */
+    grid-auto-columns: clamp(150px, 16vw, 230px);
+
+    gap: 0.85rem;
+    overflow-x: auto;
+    padding: 0.25rem 0.5rem;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0.5rem;
+    scrollbar-width: thin;
+  }
+
+  .under-hero-tiles :global(.slider-track::-webkit-scrollbar) {
+    height: 6px;
+  }
+
+  .under-hero-tiles :global(.slider-track::-webkit-scrollbar-thumb) {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+  }
+
+  /* ✅ Quadratische Kachel – unabhängig vom Bild */
+  .under-hero-tiles :global(.slide) {
+    scroll-snap-align: start;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 1 / 1;
+  }
+
+  /* ✅ Parallax: Bild größer als Container, bewegt sich in Y */
+  .under-hero-tiles :global(.slide > .parallax-img) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 135%;
+    object-fit: cover;
+    display: block;
+    transform: translate3d(0, var(--parallaxY, 0px), 0);
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+
+  .under-hero-tiles :global(.slider-btn) {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.65);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: background 150ms ease, border-color 150ms ease, opacity 150ms ease;
+  }
+
+  .under-hero-tiles :global(.slider-btn:hover),
+  .under-hero-tiles :global(.slider-btn:focus-visible) {
+    background: rgba(211, 139, 69, 0.95);
+    border-color: rgba(211, 139, 69, 0.8);
+    outline: none;
+  }
+
+  .under-hero-tiles :global(.slider-btn.prev) { left: 0; }
+  .under-hero-tiles :global(.slider-btn.next) { right: 0; }
+
+  @media (max-width: 720px) {
+    .under-hero-tiles :global(.slider-btn) { display: none; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .slide img { transform: none !important; height: 100% !important; }
+    .under-hero-tiles :global(.slide > .parallax-img) {
+      transform: none !important;
+      height: 100% !important;
+    }
   }
 </style>
