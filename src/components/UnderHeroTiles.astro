@@ -47,26 +47,20 @@ const sliderImages = [
       </div>
     </article>
 
-    <!-- ✅ NUR DER BEREICH NACH TILE 1: QUADRATISCHE KACHELN -->
+    <!-- ✅ NACH TILE 1: NUR STRUKTUR (keine Platzhalter-Texte) -->
     <div class="tiles-squares" aria-label="Quadratische Kacheln">
       <!-- TILE 2 -->
       <article class="tile tile--square">
-        <div class="tile-copy">
-          <p class="tile-label">Slider rechts</p>
-          <p class="tile-text">
-            Links Text, rechts ein horizontaler Slider mit quadratischen Bildern. Scrollbar oder per Buttons navigierbar.
-          </p>
-        </div>
         <div class="tile-visual">
           <div class="slider" data-slider>
             <button class="slider-btn prev" type="button" aria-label="Vorheriges Bild">‹</button>
             <div class="slider-track" tabindex="0">
               {sliderImages.map((src, index) => (
-                <div class="slide" aria-label={`Platzhalterbild ${index + 1}`}>
+                <div class="slide" aria-label={`Bild ${index + 1}`}>
                   <img
                     class="parallax-img"
                     data-parallax="1"
-                    alt="Platzhalter"
+                    alt=""
                     src={src}
                     loading="lazy"
                     decoding="async"
@@ -86,11 +80,11 @@ const sliderImages = [
             <button class="slider-btn prev" type="button" aria-label="Vorheriges Bild">‹</button>
             <div class="slider-track" tabindex="0">
               {sliderImages.map((src, index) => (
-                <div class="slide" aria-label={`Platzhalterbild ${index + 1}`}>
+                <div class="slide" aria-label={`Bild ${index + 1}`}>
                   <img
                     class="parallax-img"
                     data-parallax="1"
-                    alt="Platzhalter"
+                    alt=""
                     src={src}
                     loading="lazy"
                     decoding="async"
@@ -101,33 +95,18 @@ const sliderImages = [
             <button class="slider-btn next" type="button" aria-label="Nächstes Bild">›</button>
           </div>
         </div>
-
-        <div class="tile-copy">
-          <p class="tile-label">Slider links</p>
-          <p class="tile-text">
-            Links der quadratische Slider, rechts kurzer Blindtext. Auch hier nur Platzhalter – Inhalte folgen später.
-          </p>
-        </div>
       </article>
 
-      <!-- TILE 4 -->
+      <!-- TILE 4 (nur Kreis-Icon als Platzhalter entfernt -> leerer Block) -->
       <article class="tile tile--square">
-        <div class="tile-visual icon" aria-hidden="true"></div>
-        <div class="tile-copy">
-          <p class="tile-label">Placeholder Headline</p>
-          <p class="tile-text">
-            Noch ein kurzer Blindtext mit Icon als Akzent. Alle Angaben sind temporär und dienen nur dem Layout-Test.
-          </p>
-        </div>
+        <div class="tile-visual"></div>
       </article>
     </div>
   </div>
 </section>
 
 <script is:inline>
-  // --- Slider Controls + Parallax (robust) ---
   const onReady = () => {
-    // Slider buttons
     document.querySelectorAll("[data-slider]").forEach((slider) => {
       const track = slider.querySelector(".slider-track");
       const prev = slider.querySelector(".slider-btn.prev");
@@ -139,7 +118,6 @@ const sliderImages = [
       next.addEventListener("click", () => track.scrollBy({ left: scrollAmount(), behavior: "smooth" }));
     });
 
-    // Parallax
     const prefersReduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
     const els = Array.from(document.querySelectorAll(".parallax-img"));
     if (prefersReduced || !els.length) return;
@@ -151,14 +129,12 @@ const sliderImages = [
       ticking = false;
       const vh = window.innerHeight || 1;
       const viewportCenter = vh * 0.5;
-
-      // Mehr sichtbar als vorher (sonst "merkt man nix")
       const baseAmp = 42;
 
       for (const el of els) {
         const r = el.getBoundingClientRect();
         const center = r.top + r.height * 0.5;
-        const norm = (center - viewportCenter) / vh; // grob -1..1
+        const norm = (center - viewportCenter) / vh;
         const speed = parseFloat(el.dataset.parallax || "1") || 1;
         const y = clamp(-norm * baseAmp * speed, -baseAmp * 1.6, baseAmp * 1.6);
         el.style.setProperty("--parallaxY", `${y}px`);
@@ -174,15 +150,11 @@ const sliderImages = [
     window.addEventListener("scroll", tick, { passive: true });
     window.addEventListener("resize", tick);
     document.querySelectorAll(".slider-track").forEach((t) => t.addEventListener("scroll", tick, { passive: true }));
-
     tick();
   };
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", onReady);
-  } else {
-    onReady();
-  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", onReady);
+  else onReady();
 </script>
 
 <style>
@@ -206,42 +178,9 @@ const sliderImages = [
     padding: clamp(1.25rem, 3vw, 1.75rem);
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: rgba(255, 255, 255, 0.02);
-    border-radius: 18px;
-  }
 
-  .tile-visual {
-    display: grid;
-    place-items: center;
-  }
-
-  .tile-visual.icon {
-    width: clamp(72px, 12vw, 96px);
-    height: clamp(72px, 12vw, 96px);
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%, rgba(211, 139, 69, 0.9), rgba(211, 139, 69, 0.45));
-    border: 1px solid rgba(211, 139, 69, 0.5);
-    box-shadow: 0 0 0 8px rgba(211, 139, 69, 0.08);
-  }
-
-  .tile-copy {
-    display: grid;
-    gap: 0.35rem;
-    font-family: "Inter", system-ui, sans-serif;
-  }
-
-  .tile-label {
-    font-size: clamp(1.05rem, 2.2vw, 1.35rem);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin: 0;
-    color: #fff;
-  }
-
-  .tile-text {
-    margin: 0;
-    color: rgba(247, 247, 247, 0.8);
-    line-height: 1.7;
-    font-weight: 300;
+    /* ✅ keine runden Ecken */
+    border-radius: 0;
   }
 
   @media (min-width: 900px) {
@@ -254,7 +193,7 @@ const sliderImages = [
     }
   }
 
-  /* TILE 1 (bleibt wie gehabt) */
+  /* TILE 1 (unverändert lassen, auch ohne runde Ecken) */
   .tile--intro {
     border: none;
     background: transparent;
@@ -325,7 +264,7 @@ const sliderImages = [
   }
 
   /* =====================================================
-     NUR NACH TILE 1: Quadratische Kacheln (Tiles 2–4)
+     NUR NACH TILE 1: QUADRATISCHE KACHELN (Tiles 2–4)
      ===================================================== */
   .tiles-squares {
     display: grid;
@@ -333,20 +272,18 @@ const sliderImages = [
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   }
 
-  /* ✅ Erzwingt echte Quadrate */
   .tiles-squares > .tile.tile--square {
     aspect-ratio: 1 / 1 !important;
     min-height: 0;
     overflow: hidden;
     align-content: start;
 
-    /* Innenlayout fürs Quadrat */
     display: grid;
-    grid-template-rows: auto minmax(0, 1fr);
-    gap: clamp(0.85rem, 2vw, 1.1rem);
+    grid-template-rows: minmax(0, 1fr);
+    gap: 0;
+    padding: clamp(0.9rem, 2vw, 1.1rem);
   }
 
-  /* ✅ Visual darf im Quadrat wirklich Höhe nutzen */
   .tiles-squares .tile-visual {
     min-height: 0;
     align-self: stretch;
@@ -369,22 +306,19 @@ const sliderImages = [
   :global([data-uh-tiles] .slider) {
     position: relative;
     width: 100%;
+    height: 100%;
   }
 
   :global([data-uh-tiles] .slider-track) {
     display: grid;
     grid-auto-flow: column;
-
-    /* feste Kachelbreite im Slider */
     grid-auto-columns: clamp(150px, 16vw, 240px) !important;
-
     gap: 0.85rem;
     overflow-x: auto;
     padding: 0.25rem 0.5rem;
     scroll-snap-type: x mandatory;
     scroll-padding: 0.5rem;
     scrollbar-width: thin;
-
     height: 100%;
     align-items: center;
   }
@@ -395,15 +329,14 @@ const sliderImages = [
 
   :global([data-uh-tiles] .slider-track::-webkit-scrollbar-thumb) {
     background: rgba(255, 255, 255, 0.2);
-    border-radius: 999px;
+    border-radius: 0;
   }
 
-  /* ✅ Quadratische Slide-Kachel */
   :global([data-uh-tiles] .slide) {
     scroll-snap-align: start;
     border: 1px solid rgba(255, 255, 255, 0.12);
     background: rgba(255, 255, 255, 0.04);
-    border-radius: 10px;
+    border-radius: 0; /* ✅ keine runden Ecken */
     overflow: hidden !important;
     position: relative !important;
     aspect-ratio: 1 / 1 !important;
@@ -430,7 +363,7 @@ const sliderImages = [
     border: 1px solid rgba(255, 255, 255, 0.2);
     width: 36px;
     height: 36px;
-    border-radius: 50%;
+    border-radius: 0; /* ✅ keine runden Ecken */
     display: grid;
     place-items: center;
     cursor: pointer;
