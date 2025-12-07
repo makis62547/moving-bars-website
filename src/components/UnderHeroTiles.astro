@@ -36,7 +36,7 @@ const sliderImages = [
             GROSSVERANSTALTUNG
           </h2>
 
-          <p>
+          <p class="intro__paragraph">
             Seit der Gründung im Jahr 2000 ist moving bars Ihr kompetenter Partner im Bereich Cocktail Catering und mobile
             Cocktailbar mieten auf Messen und Events in Berlin, Deutschland und ganz Europa. Vom Sektempfang bis zur
             Cocktailparty mit Showprogramm, bieten wir Ihnen professionelle Lösungen und begeistern mit der liebevollen
@@ -136,7 +136,6 @@ const sliderImages = [
   }
 
   .tiles-shell {
-    /* breiter -> weniger “leere Fläche rechts” */
     max-width: min(1400px, 94vw);
     margin: 0 auto;
     display: grid;
@@ -272,7 +271,7 @@ const sliderImages = [
     }
   }
 
-  /* ===== TILE 1: FIX gegen “gestaucht” ===== */
+  /* ===== TILE 1: Layout exakt + Absatz volle Spaltenbreite ===== */
   .tile--intro {
     border: none;
     background: transparent;
@@ -280,37 +279,35 @@ const sliderImages = [
   }
 
   .tile--intro .intro {
-    display: flex;
+    display: grid;
+    grid-template-columns: clamp(240px, 20vw, 320px) 1px minmax(0, 1fr);
+    column-gap: clamp(1.25rem, 3vw, 3rem);
     align-items: center;
-    gap: clamp(1.25rem, 3vw, 3rem);
     width: 100%;
   }
 
   .tile--intro .intro__icon {
-    flex: 0 0 clamp(220px, 18vw, 300px);
-    display: flex;
-    justify-content: flex-end; /* Icon direkt an den Strich */
-    align-items: center;
+    justify-self: end;          /* Icon an den Strich ziehen */
+    display: grid;
+    place-items: center end;
     color: rgba(211, 139, 69, 0.95);
   }
 
   .tile--intro .intro__svg {
-    width: min(240px, 100%);
+    width: min(260px, 100%);
     height: auto;
     display: block;
   }
 
   .tile--intro .intro__sep {
-    flex: 0 0 1px;
     align-self: stretch;
     background: rgba(211, 139, 69, 0.75);
   }
 
   .tile--intro .intro__copy {
-    flex: 1 1 auto;
-    min-width: 0;
     width: 100%;
     max-width: none !important;
+    min-width: 0;
   }
 
   .tile--intro .intro__copy h2 {
@@ -319,9 +316,8 @@ const sliderImages = [
     text-transform: uppercase;
     letter-spacing: 0.06em;
     font-weight: 500;
-    font-size: clamp(1.6rem, 2.9vw, 3.1rem);
-    line-height: 1.08;
-    white-space: normal;
+    font-size: clamp(1.8rem, 3.1vw, 3.2rem);
+    line-height: 1.06;
   }
 
   .tile--intro .intro__copy .h2-accent {
@@ -329,43 +325,14 @@ const sliderImages = [
   }
 
   .tile--intro .intro__copy .h2-line1 {
-    white-space: nowrap; /* verhindert “zu frühes” Brechen */
+    white-space: nowrap; /* verhindert zu frühes Brechen */
   }
 
-  /* HIER ist der entscheidende Fix: globale p-Regeln überschreiben */
-  .tile--intro .intro__copy p {
-    margin: 1rem 0 0;
-    color: rgba(247, 247, 247, 0.82);
-    line-height: 1.75;
-    font-weight: 300;
+  /* DAS ist der Kernfix: Absatz bekommt exakt die gleiche Spaltenbreite wie H2 */
+  .under-hero-tiles .tile--intro .intro__copy .intro__paragraph {
+    margin: 1rem 0 0 !important;
+    padding: 0 !important;
 
     width: 100% !important;
     max-width: none !important;
-    white-space: normal !important;
-    display: block !important;
-  }
-
-  @media (max-width: 720px) {
-    .tile--intro .intro {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1rem;
-    }
-    .tile--intro .intro__icon {
-      justify-content: flex-start;
-      flex-basis: auto;
-      width: auto;
-    }
-    .tile--intro .intro__svg {
-      width: 160px;
-    }
-    .tile--intro .intro__sep {
-      width: 100%;
-      height: 1px;
-      align-self: auto;
-    }
-    .tile--intro .intro__copy .h2-line1 {
-      white-space: normal;
-    }
-  }
-</style>
+    max-inline-size: none !
