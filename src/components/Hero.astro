@@ -28,7 +28,7 @@ import Header from "./Header.astro";
 </section>
 
 <section id="hero-h1" class="intro" aria-labelledby="intro-title">
-  <div class="intro-shell">
+  <div class="intro-shell site-container">
     <div class="intro-panel">
       <div class="intro-text">
         <h1 id="intro-title" class="intro-title">
@@ -185,10 +185,6 @@ import Header from "./Header.astro";
   }
 
   .intro-shell {
-    max-width: 1240px;
-    margin: 0 auto;
-    /* Match Header wrapper (max-w-[1240px] mx-auto px-12) */
-    padding-inline: 3rem;
     display: flex;
     justify-content: flex-start;
   }
@@ -198,7 +194,9 @@ import Header from "./Header.astro";
     grid-template-columns: minmax(0, 0.72fr) 1px minmax(0, 0.28fr);
     align-items: flex-start;
     background: var(--background);
-    padding: clamp(1.25rem, 2.6vw, 2.25rem) clamp(1.5rem, 3.5vw, 2.75rem);
+    padding-top: clamp(1.25rem, 2.6vw, 2.25rem);
+    padding-right: clamp(1.5rem, 3.5vw, 2.75rem);
+    padding-bottom: clamp(1.25rem, 2.6vw, 2.25rem);
     padding-left: 0;
     color: #f7f7f7;
     font-family: "Inter", system-ui, sans-serif;
@@ -284,7 +282,7 @@ import Header from "./Header.astro";
     }
 
     .intro-shell {
-      padding-inline: 3rem;
+      padding-inline: var(--container-pad);
     }
   }
 </style>
