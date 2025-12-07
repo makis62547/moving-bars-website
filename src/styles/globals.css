@@ -8,6 +8,8 @@
   --accent: #d38b45;
   --border: rgba(255, 255, 255, 0.1);
   --header-h: 72px;
+  --container-max: 1240px;
+  --container-pad: 3rem;
 }
 
 html, body {
@@ -46,4 +48,10 @@ img {
   will-change: transform;
   transform: translate3d(0, var(--py), 0) scale(1.05);
   backface-visibility: hidden;
+}
+
+.site-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-inline: var(--container-pad);
 }
