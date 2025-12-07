@@ -187,17 +187,17 @@ import Header from "./Header.astro";
   .intro-shell {
     max-width: 1240px;
     margin: 0 auto;
-    padding: 0 3rem;
+    padding: 0 clamp(2.25rem, 4vw, 3rem);
     display: flex;
     justify-content: flex-start;
   }
 
   .intro-panel {
     display: grid;
-    grid-template-columns: minmax(0, 0.62fr) 1px minmax(0, 0.38fr);
+    grid-template-columns: minmax(0, 0.72fr) 1px minmax(0, 0.28fr);
     align-items: flex-start;
     background: var(--background);
-    padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.5rem, 4vw, 3rem);
+    padding: clamp(1.25rem, 2.6vw, 2.25rem) clamp(1.5rem, 3.5vw, 2.75rem);
     color: #f7f7f7;
     font-family: "Inter", system-ui, sans-serif;
     letter-spacing: normal;
@@ -242,22 +242,22 @@ import Header from "./Header.astro";
   }
 
   .intro-icon {
-  min-height: 100%;
-  margin-top: 6px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-}
+    min-height: 100%;
+    margin-top: 6px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
 
-.intro-icon::before {
-  content: "";
-  display: block;
-  width: clamp(56px, 6vw, 76px);
-  height: clamp(56px, 6vw, 76px);
-  background: radial-gradient(circle at 30% 30%, rgba(211, 139, 69, 0.85), rgba(211, 139, 69, 0.6));
-  mask-image: radial-gradient(circle, #000 65%, transparent 70%);
-  border: 1px solid rgba(211, 139, 69, 0.4);
-}
+  .intro-icon::before {
+    content: "";
+    display: block;
+    width: clamp(48px, 5vw, 64px);
+    height: clamp(48px, 5vw, 64px);
+    background: radial-gradient(circle at 30% 30%, rgba(211, 139, 69, 0.85), rgba(211, 139, 69, 0.6));
+    mask-image: radial-gradient(circle, #000 65%, transparent 70%);
+    border: 1px solid rgba(211, 139, 69, 0.4);
+  }
 
 
   @media (max-width: 900px) {
