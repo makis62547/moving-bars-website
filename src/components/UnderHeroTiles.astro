@@ -58,7 +58,7 @@ const sliderImagesDefault = [
       </div>
     </article>
 
-    <!-- ✅ AB HIER: FULL WIDTH KACHELN (bis an Viewport-Rand) -->
+    <!-- ✅ AB HIER: FULL WIDTH KACHELN -->
     <div class="wide-rows" aria-label="Text und Slider Kacheln">
       <!-- ROW 1: links Text, rechts Slider -->
       <div class="wide-row">
@@ -196,7 +196,7 @@ const sliderImagesDefault = [
     color: #f7f7f7;
     padding: clamp(2.5rem, 6vw, 4.5rem) var(--content-pad) clamp(3rem, 8vw, 5rem);
     margin: 0;
-    overflow-x: clip; /* ✅ kein horizontaler Scroll */
+    overflow-x: clip;
   }
 
   .tiles-shell {
@@ -226,8 +226,6 @@ const sliderImagesDefault = [
 
   @media (min-width: 900px) {
     .wide-row { grid-template-columns: 1fr 1fr; }
-
-    /* seam killer (Mitte) */
     .wide-row::after{
       content:"";
       position:absolute;
@@ -282,12 +280,16 @@ const sliderImagesDefault = [
     font-weight: 300;
   }
 
+  /* ✅ WICHTIG: echte Höhe für Panels (damit Slider 100% füllen kann) */
   .panel {
     border: 0 !important;
     outline: 0 !important;
     box-shadow: none !important;
     background: #000 !important;
+
+    height: clamp(360px, 42vw, 560px);
     min-height: clamp(360px, 42vw, 560px);
+
     overflow: hidden;
     display: grid;
   }
@@ -339,6 +341,7 @@ const sliderImagesDefault = [
   .panel-cta:hover,
   .panel-cta:focus-visible { outline: none; background: rgba(211, 139, 69, 0.14); border-color: rgba(211, 139, 69, 0.9); }
 
+  /* Slider */
   :global([data-uh-tiles] .slider) { position: relative; width: 100%; height: 100%; background: #000; overflow: hidden; }
 
   :global([data-uh-tiles] .slider)::before,
@@ -425,7 +428,11 @@ const sliderImagesDefault = [
 
   @media (max-width: 720px) {
     :global([data-uh-tiles] .slider-btn) { display: none; }
-    .panel { min-height: clamp(300px, 78vw, 460px); }
+
+    .panel {
+      height: clamp(300px, 78vw, 460px);
+      min-height: clamp(300px, 78vw, 460px);
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
