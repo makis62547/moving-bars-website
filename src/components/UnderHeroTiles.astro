@@ -178,13 +178,19 @@ const sliderImages = [
 </script>
 
 <style>
+  /* ✅ Harter “alles ist wirklich schwarz” Fix:
+     - setzt Hintergrund auf Section UND Container
+     - entfernt potenzielle “transparent + anderer Body-Hintergrund” Effekte
+     - killt ggf. 1px seams durch negative margins */
   .under-hero-tiles {
-    background: #000;
+    background: #000 !important;
     color: #f7f7f7;
     padding: clamp(2.5rem, 6vw, 4.5rem) var(--content-pad) clamp(3rem, 8vw, 5rem);
+    margin: 0;
   }
 
   .tiles-shell {
+    background: #000 !important;
     width: 100%;
     max-width: none;
     margin: 0;
@@ -192,8 +198,21 @@ const sliderImages = [
     gap: clamp(1.5rem, 3vw, 2.25rem);
   }
 
+  /* optional: falls ein “Gap”/Seam vom vorherigen Abschnitt kommt */
+  .under-hero-tiles::before,
+  .under-hero-tiles::after {
+    content: "";
+    display: block;
+    height: 0;
+    background: #000;
+  }
+
   /* Intro bleibt wie gehabt */
-  .tile--intro { border: none; background: transparent; padding: 0; }
+  .tile--intro {
+    border: none;
+    background: transparent;
+    padding: 0;
+  }
 
   .tile--intro .intro {
     display: grid;
@@ -217,6 +236,7 @@ const sliderImages = [
     font-size: clamp(1.8rem, 3.1vw, 3.2rem);
     line-height: 1.06;
   }
+
   .tile--intro .intro__copy .h2-accent { color: rgba(211, 139, 69, 0.95); }
   .tile--intro .intro__copy .h2-line1 { white-space: nowrap; }
 
@@ -233,20 +253,26 @@ const sliderImages = [
   }
 
   /* Rows */
-  .wide-rows { display: grid; gap: 0; }
+  .wide-rows { display: grid; gap: 0; background: #000 !important; }
   .wide-row { display: grid; grid-template-columns: 1fr; gap: 0; }
   @media (min-width: 900px) { .wide-row { grid-template-columns: 1fr 1fr; } }
 
   .panel {
     border: none;
     border-radius: 0;
-    background: rgba(255, 255, 255, 0.02);
+    background: #000 !important; /* ✅ wirklich schwarz, kein “grau” */
     min-height: clamp(360px, 42vw, 560px);
     overflow: hidden;
     display: grid;
   }
 
-  .panel--text { background: #050505; padding: clamp(1.25rem, 3vw, 2.25rem); align-items: center; }
+  /* Textseiten ebenfalls schwarz (kein #050505) */
+  .panel--text {
+    background: #000 !important;
+    padding: clamp(1.25rem, 3vw, 2.25rem);
+    align-items: center;
+  }
+
   .panel-inner { max-width: 74ch; display: grid; gap: 0.9rem; }
 
   .panel-title {
@@ -256,10 +282,9 @@ const sliderImages = [
     font-weight: 500;
     font-size: clamp(1.6rem, 2.4vw, 2.6rem);
     line-height: 1.05;
-    color: #fff; /* ✅ Standard: weiß */
+    color: #fff;
   }
 
-  /* ✅ nur der markierte Teil wird orange */
   .accent { color: rgba(211, 139, 69, 0.95); }
 
   .panel-sep { height: 1px; background: rgba(211, 139, 69, 0.75); width: 100%; }
@@ -291,7 +316,7 @@ const sliderImages = [
   .panel-cta:focus-visible { outline: none; background: rgba(211, 139, 69, 0.14); border-color: rgba(211, 139, 69, 0.9); }
 
   /* Slider */
-  :global([data-uh-tiles] .slider) { position: relative; width: 100%; height: 100%; }
+  :global([data-uh-tiles] .slider) { position: relative; width: 100%; height: 100%; background: #000; }
 
   :global([data-uh-tiles] .slider-track) {
     display: flex;
@@ -300,6 +325,7 @@ const sliderImages = [
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    background: #000;
   }
   :global([data-uh-tiles] .slider-track::-webkit-scrollbar) { display: none; }
 
@@ -309,7 +335,7 @@ const sliderImages = [
     scroll-snap-align: start;
     position: relative;
     overflow: hidden;
-    background: #0b0b0b;
+    background: #000; /* ✅ kein Grau */
   }
 
   :global([data-uh-tiles] .slide > .parallax-img) {
