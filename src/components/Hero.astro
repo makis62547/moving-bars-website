@@ -34,7 +34,8 @@ import Header from "./Header.astro";
     <div class="intro-panel">
       <div class="intro-text">
         <h1 id="intro-title" class="intro-title">
-          <span class="intro-title-accent">MOBILE COCKTAILBAR</span> MIETEN IN BERLIN
+          <span class="intro-title-line intro-title-line-primary">Mobile Cocktailbar mieten</span>
+          <span class="intro-title-line">in Berlin</span>
         </h1>
         <p class="intro-copy">
           Wir lieben Cocktails, perfekten Getränke-Service und wir lieben Veranstaltungen. Mieten Sie unsere mobile Cocktailbar
@@ -203,16 +204,24 @@ import Header from "./Header.astro";
 
   .intro-title {
     margin: 0;
-    font-size: clamp(2.5rem, 4.8vw, 3.75rem);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-weight: 300;
+    font-size: clamp(2.1rem, 3.6vw, 3.4rem);
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.01em;
   }
 
-  .intro-title-accent {
-    color: #d38b45;
-    display: inline-block;
-    margin-right: 0.35ch;
+  .intro-title-line {
+    display: block;
+  }
+
+  .intro-title-line-primary {
+    white-space: normal;
+  }
+
+  @media (min-width: 1024px) {
+    .intro-title-line-primary {
+      white-space: nowrap;
+    }
   }
 
   .intro-copy {

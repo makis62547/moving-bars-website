@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
+import ParallaxBanner from "../components/ParallaxBanner.astro";
 import SplitSection from "../components/SplitSection.astro";
 import SectionTitle from "../components/SectionTitle.astro";
 import Footer from "../components/Footer.astro";
@@ -28,6 +29,12 @@ const galleryImages = [
 <BaseLayout>
   <main class="bg-black">
     <Hero />
+
+    <ParallaxBanner
+      src="/cocktail-catering-moving-bars.jpg"
+      alt="Cocktail Catering von Moving Bars"
+      height="clamp(180px, 32vh, 340px)"
+    />
 
     <SplitSection
       id="services"
