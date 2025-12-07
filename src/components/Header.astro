@@ -1,4 +1,5 @@
 ---
+// src/components/Header.astro
 const navLinks = [
   { href: "/cocktail-catering", label: "Cocktail Catering" },
   { href: "/mobile-bar", label: "Mobile Bar" },
@@ -129,11 +130,19 @@ const navLinks = [
     overflow: visible;
   }
 
+  /* WICHTIG: gleiche linke Kante wie H1-Block (intro-shell) */
+  .header-inner.site-container{
+    max-width: calc(var(--content-max) + 120px);
+    margin: 0 auto;
+    padding-left: clamp(0px, 1vw, 12px);
+    padding-right: clamp(8px, 1.8vw, 18px);
+  }
+
   .logo {
     display: flex;
-    align-items: flex-end; /* am unteren Rand des Header-Balkens ankern */
+    align-items: flex-end;
     height: 100%;
-    padding: 0;            /* nichts hoch/runter schieben */
+    padding: 0;
     flex: 0 0 auto;
     flex-shrink: 0;
     white-space: nowrap;
@@ -141,13 +150,12 @@ const navLinks = [
   }
 
   .logo img {
-    height: clamp(90px, 10vw, 140px); /* NICHT ändern, falls aktuell passend */
+    height: clamp(90px, 10vw, 140px);
     width: auto;
     display: block;
     object-fit: contain;
     max-width: none;
-
-    transform: translateY(50%); /* Logo-Mitte = Unterkante Header */
+    transform: translateY(50%);
   }
 
   .nav-link {
