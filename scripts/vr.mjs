@@ -35,9 +35,14 @@ async function ensureDir(dirPath) {
   await fs.mkdir(dirPath, { recursive: true });
 }
 
-async function saveScreenshot(page, filepath) {
+async function saveScreenshot(page, filepath, options = {}) {
   await ensureDir(path.dirname(filepath));
-  await page.screenshot({ path: filepath, fullPage: true });
+  await page.screenshot({
+    path: filepath,
+    fullPage: false,
+    scale: 'css',
+    ...options,
+  });
 }
 
 async function waitForStability(page) {
@@ -96,13 +101,20 @@ async function closeCookieBanner(page) {
   return false;
 }
 
-async function capturePageScreenshot(browser, viewport, url, outputPath) {
-  const context = await browser.newContext({ viewport });
+async function capturePageScreenshot(browser, viewport, url, outputPath, fullPagePath) {
+  const context = await browser.newContext({
+    viewport,
+    deviceScaleFactor: 1,
+    screen: { width: viewport.width, height: viewport.height },
+  });
   const page = await context.newPage();
   await page.goto(url, { waitUntil: 'networkidle' });
   await waitForStability(page);
   await closeCookieBanner(page);
   await saveScreenshot(page, outputPath);
+  if (fullPagePath) {
+    await saveScreenshot(page, fullPagePath, { fullPage: true });
+  }
   await context.close();
 }
 
@@ -143,16 +155,18 @@ function getOutputPaths(viewport, pageName) {
   const baseline = path.join(OUTPUT_ROOT, 'baseline', label, `${pageName}.png`);
   const current = path.join(OUTPUT_ROOT, 'current', label, `${pageName}.png`);
   const diff = path.join(OUTPUT_ROOT, 'diff', label, `${pageName}.png`);
-  return { baseline, current, diff };
+  const baselineFullPage = path.join(OUTPUT_ROOT, 'baseline-fullpage', label, `${pageName}.png`);
+  const currentFullPage = path.join(OUTPUT_ROOT, 'current-fullpage', label, `${pageName}.png`);
+  return { baseline, current, diff, baselineFullPage, currentFullPage };
 }
 
 async function createBaseline(browser, baseUrl) {
   for (const viewport of VIEWPORTS) {
     for (const page of PAGES) {
       const targetUrl = new URL(page.path, baseUrl).toString();
-      const { baseline } = getOutputPaths(viewport, page.name);
+      const { baseline, baselineFullPage } = getOutputPaths(viewport, page.name);
       console.log(`Creating baseline for ${targetUrl} at ${viewportLabel(viewport)}`);
-      await capturePageScreenshot(browser, viewport, targetUrl, baseline);
+      await capturePageScreenshot(browser, viewport, targetUrl, baseline, baselineFullPage);
     }
   }
 }
@@ -161,9 +175,9 @@ async function createCurrent(browser, baseUrl) {
   for (const viewport of VIEWPORTS) {
     for (const page of PAGES) {
       const targetUrl = new URL(page.path, baseUrl).toString();
-      const { current } = getOutputPaths(viewport, page.name);
+      const { current, currentFullPage } = getOutputPaths(viewport, page.name);
       console.log(`Capturing current for ${targetUrl} at ${viewportLabel(viewport)}`);
-      await capturePageScreenshot(browser, viewport, targetUrl, current);
+      await capturePageScreenshot(browser, viewport, targetUrl, current, currentFullPage);
     }
   }
 }
