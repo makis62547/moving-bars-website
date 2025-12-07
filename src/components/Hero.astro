@@ -1,6 +1,5 @@
 ---
 import Header from "./Header.astro";
-import ParallaxBanner from "./ParallaxBanner.astro";
 ---
 
 <section id="hero" class="hero">
@@ -30,12 +29,6 @@ import ParallaxBanner from "./ParallaxBanner.astro";
   </div>
 </section>
 
-<ParallaxBanner
-  src="/cocktail-catering-moving-bars.jpg"
-  alt="Cocktail Catering Moving Bars"
-  height="clamp(300px, 45vh, 560px)"
-/>
-
 <section id="hero-h1" class="intro" aria-labelledby="intro-title">
   <div class="intro-shell site-container">
     <div class="intro-panel">
@@ -57,6 +50,15 @@ import ParallaxBanner from "./ParallaxBanner.astro";
       <div class="intro-icon" aria-hidden="true"></div>
     </div>
   </div>
+</section>
+
+<section class="intro-banner" aria-hidden="true">
+  <div
+    class="intro-banner-bg parallax-bg"
+    data-parallax="bg"
+    data-parallax-speed="0.25"
+    role="presentation"
+  ></div>
 </section>
 
 <style>
@@ -163,6 +165,8 @@ import ParallaxBanner from "./ParallaxBanner.astro";
     cursor: pointer;
     text-decoration: none;
     align-self: center;
+    margin-left: auto;
+    margin-right: auto;
     animation: bounce 1.5s infinite;
   }
 
@@ -211,7 +215,7 @@ import ParallaxBanner from "./ParallaxBanner.astro";
 
   .intro-title {
     margin: 0;
-    font-size: clamp(2.5rem, 4.8vw, 3.6rem);
+    font-size: clamp(2.25rem, 4.4vw, 3.25rem);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     font-weight: 300;
@@ -255,6 +259,25 @@ import ParallaxBanner from "./ParallaxBanner.astro";
     background: radial-gradient(circle at 30% 30%, rgba(211, 139, 69, 0.85), rgba(211, 139, 69, 0.6));
     mask-image: radial-gradient(circle, #000 65%, transparent 70%);
     border: 1px solid rgba(211, 139, 69, 0.4);
+  }
+
+  .intro-banner {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    height: clamp(360px, 50vh, 640px);
+    overflow: hidden;
+    background: #000;
+  }
+
+  .intro-banner-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url("/cocktail-catering-moving-bars.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
 
