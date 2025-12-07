@@ -84,36 +84,35 @@ import Header from "./Header.astro";
     inset: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;      /* stays visually in the middle */
+    align-items: flex-start;
     justify-content: center;
     text-align: left;
     color: #fff;
-    padding: 140px 1.5rem 0;
-    width: 100%;
+    padding: calc(var(--header-h) + 72px) var(--gutter) 120px;
+    width: min(100%, var(--container-max));
+    margin: 0 auto;
     z-index: 20;
   }
 
   .hero-usp {
-    display: inline-grid;
-    gap: 1.75rem;
-    font-size: clamp(1.2rem, 2.1vw, 1.8rem);
-    font-weight: 200; /* thinner */
-    font-family: "Inter", system-ui, sans-serif; /* lighter feel than Montserrat-heavy headings */
+    display: grid;
+    gap: 1.4rem;
+    font-size: clamp(1.05rem, 1.8vw, 1.65rem);
+    font-weight: 400;
+    font-family: "Montserrat", "Inter", system-ui, sans-serif;
     text-transform: uppercase;
-    line-height: 1.45;
+    letter-spacing: 0.12em;
+    line-height: 1.55;
     list-style: none;
     padding: 0;
     margin: 0;
-    width: min(820px, 92vw);
-
-    /* NUDGE: a bit up and a bit right (tweak values as needed) */
-    transform: translate(22px, -18px);
+    width: min(720px, 82vw);
   }
 
   .hero-usp li {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.55rem;
     opacity: 0;
     transform: translateY(10px);
     animation: uspIn 700ms ease forwards;
@@ -145,10 +144,10 @@ import Header from "./Header.astro";
   }
 
   .hero-arrow {
-    margin-top: 3rem;
-    font-size: clamp(2.5rem, 4vw, 3.75rem);
-    color: rgba(255, 255, 255, 0.9);
-    animation: bounce 1.5s infinite;
+    margin-top: 2.25rem;
+    font-size: clamp(2.25rem, 3.5vw, 3.25rem);
+    color: rgba(255, 255, 255, 0.82);
+    animation: bounce 1.6s infinite;
   }
 
   @keyframes bounce {
@@ -158,19 +157,19 @@ import Header from "./Header.astro";
 
   :global(header nav) {
     display: flex;
-    gap: 56px;
+    gap: var(--nav-gap);
     white-space: nowrap;
   }
 
   .intro {
-    background: #000;
-    padding: 44px 0 96px;
+    background: #050505;
+    padding: 52px 0 110px;
   }
 
   .intro-shell {
-    max-width: 1240px;
+    max-width: var(--container-max);
     margin: 0 auto;
-    padding: 0 3rem;
+    padding: 0 var(--gutter);
     display: flex;
     justify-content: flex-start;
   }
@@ -179,9 +178,9 @@ import Header from "./Header.astro";
     display: grid;
     grid-template-columns: minmax(0, 0.62fr) 1px minmax(0, 0.38fr);
     align-items: flex-start;
-    background: var(--background);
-    padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.5rem, 4vw, 3rem);
-    color: #f7f7f7;
+    background: #0b0b0b;
+    padding: clamp(2rem, 3vw, 2.75rem) clamp(1.75rem, 4vw, 3.25rem);
+    color: #f5f5f5;
     font-family: "Inter", system-ui, sans-serif;
     letter-spacing: normal;
     width: 100%;
@@ -189,16 +188,16 @@ import Header from "./Header.astro";
 
   .intro-text {
     display: grid;
-    gap: 1rem;
-    padding-right: clamp(1.25rem, 3vw, 2rem);
-    margin-top: -10px;
+    gap: 1.05rem;
+    padding-right: clamp(1.35rem, 3vw, 2.4rem);
+    margin-top: -6px;
   }
 
   .intro-title {
     margin: 0;
-    font-size: clamp(2.5rem, 4.8vw, 3.75rem);
+    font-size: clamp(2.35rem, 4.4vw, 3.65rem);
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     font-weight: 300;
   }
 
@@ -210,16 +209,16 @@ import Header from "./Header.astro";
 
   .intro-copy {
     margin: 0;
-    font-size: 1rem;
-    line-height: 1.7;
+    font-size: 1.02rem;
+    line-height: 1.64;
     font-weight: 300;
-    color: rgba(255, 255, 255, 0.92);
+    color: rgba(255, 255, 255, 0.9);
   }
 
   .intro-divider {
-    width: 1px;
-    background: rgba(211, 139, 69, 0.7);
-    margin: clamp(0.4rem, 1.5vw, 0.85rem) clamp(1.4rem, 3vw, 2.4rem);
+    width: 1.5px;
+    background: var(--accent);
+    margin: clamp(0.2rem, 1.3vw, 0.65rem) clamp(1.2rem, 2.6vw, 2rem);
     align-self: stretch;
     border-radius: 0;
   }
@@ -227,6 +226,20 @@ import Header from "./Header.astro";
   .intro-icon {
     min-height: 100%;
     margin-top: 6px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .intro-icon::before {
+    content: "";
+    display: block;
+    width: clamp(56px, 6vw, 76px);
+    height: clamp(56px, 6vw, 76px);
+    background: radial-gradient(circle at 30% 30%, rgba(211, 139, 69, 0.85), rgba(211, 139, 69, 0.6));
+    mask-image: radial-gradient(circle, #000 65%, transparent 70%);
+    border: 1px solid rgba(211, 139, 69, 0.4);
+  }
   }
 
   @media (max-width: 900px) {
@@ -239,7 +252,7 @@ import Header from "./Header.astro";
       height: 1px;
       width: 100%;
       margin: clamp(1rem, 3vw, 1.5rem) 0;
-      background: rgba(211, 139, 69, 0.7);
+      background: var(--accent);
     }
 
     .intro-text {

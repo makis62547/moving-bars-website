@@ -7,7 +7,12 @@
   --text: #ffffff;
   --accent: #d38b45;
   --border: rgba(255, 255, 255, 0.1);
-  --header-h: 72px;
+  --container-max: 1180px;
+  --gutter: 32px;
+  --header-h: 96px;
+  --logo-h: 112px;
+  --nav-gap: 32px;
+  --nav-size: 0.95rem;
 }
 
 html, body {
