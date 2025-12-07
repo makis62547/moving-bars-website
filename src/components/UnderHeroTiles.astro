@@ -9,12 +9,12 @@ const sliderImages = [
 
 <section class="under-hero-tiles" aria-label="Ergänzende Informationen">
   <div class="tiles-shell">
-    <!-- TILE 1 (Vorlage): Icon links | orangener Strich | H2 (2 Zeilen) + Text volle Spaltenbreite -->
+    <!-- TILE 1 (Vorlage): Icon links | orangener Strich | H2 (bewusst 2 Zeilen) + Text volle Breite -->
     <article class="tile tile--intro">
       <div class="intro">
         <div class="intro__icon" aria-hidden="true">
           <!-- Platzhalter-Icon (3 Personen) -->
-          <svg viewBox="0 0 128 128" width="140" height="140" role="img" aria-label="">
+          <svg class="intro__svg" viewBox="0 0 128 128" role="img" aria-label="">
             <g fill="currentColor">
               <circle cx="64" cy="42" r="18" />
               <path d="M34 108c0-18 14-32 30-32s30 14 30 32H34z" />
@@ -30,10 +30,13 @@ const sliderImages = [
 
         <div class="intro__copy">
           <h2>
-            <span class="h2-accent">PRIVATE FEIER</span> – MESSEPARTY –
-            <br class="h2-br" />
+            <span class="h2-nowrap">
+              <span class="h2-accent">PRIVATE FEIER</span> – MESSEPARTY –
+            </span>
+            <br />
             GROSSVERANSTALTUNG
           </h2>
+
           <p>
             Seit der Gründung im Jahr 2000 ist moving bars Ihr kompetenter Partner im Bereich Cocktail Catering und mobile
             Cocktailbar mieten auf Messen und Events in Berlin, Deutschland und ganz Europa. Vom Sektempfang bis zur
@@ -133,8 +136,9 @@ const sliderImages = [
     padding: clamp(2.5rem, 6vw, 4.5rem) var(--content-pad) clamp(3rem, 8vw, 5rem);
   }
 
-  .tiles-shell {
-    max-width: var(--content-max);
+  /* Wichtig: hier machen wir die Sektion auf Desktop breiter (weniger leere Fläche rechts) */
+  .under-hero-tiles .tiles-shell {
+    max-width: min(1320px, 92vw);
     margin: 0 auto;
     display: grid;
     gap: clamp(1.5rem, 3vw, 2.25rem);
@@ -256,9 +260,7 @@ const sliderImages = [
   .slider-btn.next { right: 0; }
 
   @media (max-width: 720px) {
-    .slider-btn {
-      display: none;
-    }
+    .slider-btn { display: none; }
   }
 
   @media (min-width: 900px) {
@@ -266,13 +268,12 @@ const sliderImages = [
       grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
       align-items: center;
     }
-
     .tile:nth-of-type(2n) {
       grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
     }
   }
 
-  /* --- Tile 1: Icon | orangener Strich | H2 (2 Zeilen) + Text volle Spaltenbreite --- */
+  /* --- TILE 1: wie Original --- */
   .tile--intro {
     border: none;
     background: transparent;
@@ -281,17 +282,22 @@ const sliderImages = [
 
   .tile--intro .intro {
     display: grid;
-    /* Icon bewusst schmal -> Copy bekommt max. Platz */
-    grid-template-columns: clamp(96px, 11vw, 130px) 1px minmax(0, 1fr);
+    /* Icon bekommt genug Platz, Text nutzt die volle restliche Breite */
+    grid-template-columns: clamp(200px, 18vw, 280px) 1px minmax(0, 1fr);
     align-items: center;
-    gap: clamp(1rem, 3vw, 2.5rem);
+    gap: clamp(1.25rem, 3vw, 3rem);
   }
 
   .tile--intro .intro__icon {
     color: rgba(211, 139, 69, 0.95);
-    width: 100%;
     display: grid;
     place-items: center;
+  }
+
+  .tile--intro .intro__svg {
+    width: min(220px, 100%);
+    height: auto;
+    display: block;
   }
 
   .tile--intro .intro__sep {
@@ -310,26 +316,31 @@ const sliderImages = [
     text-transform: uppercase;
     letter-spacing: 0.06em;
     font-weight: 500;
-    font-size: clamp(1.35rem, 2.4vw, 2.6rem);
-    line-height: 1.12;
-    /* erlaubt/gewollt: 2 Zeilen (durch <br>) */
+    font-size: clamp(1.6rem, 2.9vw, 3.1rem);
+    line-height: 1.08;
     white-space: normal;
   }
 
-  .tile--intro .intro__copy h2 .h2-accent {
+  .tile--intro .intro__copy .h2-accent {
     color: rgba(211, 139, 69, 0.95);
   }
 
+  /* Hält die erste Zeile zusammen (damit nicht zu früh umbricht) */
+  .tile--intro .intro__copy .h2-nowrap {
+    white-space: nowrap;
+  }
+
+  /* DAS ist der “Gestauch-Fix”: Absatz darf normal umbrechen, keine pre-line Effekte */
   .tile--intro .intro__copy p {
-    margin: 0.85rem 0 0;
+    margin: 1rem 0 0;
     color: rgba(247, 247, 247, 0.82);
     line-height: 1.75;
     font-weight: 300;
     width: 100%;
-    max-width: none !important; /* überschreibt evtl. globale max-width Regeln */
+    max-width: none !important;
+    white-space: normal !important;
   }
 
-  /* Mobile: stapeln + Strich horizontal */
   @media (max-width: 720px) {
     .tile--intro .intro {
       grid-template-columns: 1fr;
@@ -339,9 +350,11 @@ const sliderImages = [
       width: 100%;
       height: 1px;
     }
-    .tile--intro .intro__icon {
-      width: auto;
-      justify-items: start;
+    .tile--intro .intro__svg {
+      width: 160px;
+    }
+    .tile--intro .intro__copy .h2-nowrap {
+      white-space: normal; /* mobile darf umbrechen */
     }
   }
 </style>
