@@ -8,8 +8,10 @@
   --accent: #d38b45;
   --border: rgba(255, 255, 255, 0.1);
   --header-h: 72px;
-  --container-max: 1240px;
-  --container-pad: 2rem;
+  --content-max: 1240px;
+  --content-pad: clamp(18px, 3vw, 48px);
+  --container-max: var(--content-max);
+  --container-pad: var(--content-pad);
 }
 
 html, body {
@@ -51,7 +53,7 @@ img {
 }
 
 .site-container {
-  max-width: var(--container-max);
+  max-width: var(--content-max);
   margin: 0 auto;
-  padding-inline: var(--container-pad);
+  padding-inline: var(--content-pad);
 }

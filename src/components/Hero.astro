@@ -9,21 +9,23 @@ import Header from "./Header.astro";
   <Header />
 
   <div class="hero-center">
-    <ul class="hero-usp">
-      <li><span class="hero-check">✔</span><span>Faire Preise</span></li>
-      <li><span class="hero-check">✔</span><span>Langjährige Erfahrung</span></li>
-      <li><span class="hero-check">✔</span><span>Beste Cocktails & Longdrinks</span></li>
-      <li><span class="hero-check">✔</span><span>Für Privat & Firmen – Events</span></li>
-    </ul>
+    <div class="hero-shell">
+      <ul class="hero-usp">
+        <li><span class="hero-check">✔</span><span>Faire Preise</span></li>
+        <li><span class="hero-check">✔</span><span>Langjährige Erfahrung</span></li>
+        <li><span class="hero-check">✔</span><span>Beste Cocktails & Longdrinks</span></li>
+        <li><span class="hero-check">✔</span><span>Für Privat & Firmen – Events</span></li>
+      </ul>
 
-    <a
-      class="hero-arrow"
-      href="#hero-h1"
-      aria-label="Zum Abschnitt: Mobile Cocktailbar mieten in Berlin"
-      title="Zum Abschnitt: Mobile Cocktailbar mieten in Berlin"
-    >
-      ⌄
-    </a>
+      <a
+        class="hero-arrow"
+        href="#hero-h1"
+        aria-label="Zum Abschnitt: Mobile Cocktailbar mieten in Berlin"
+        title="Zum Abschnitt: Mobile Cocktailbar mieten in Berlin"
+      >
+        ⌄
+      </a>
+    </div>
   </div>
 </section>
 
@@ -75,29 +77,26 @@ import Header from "./Header.astro";
     z-index: 5;
   }
 
-  :global(header) {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: var(--header-h);
-    overflow: visible;
-    z-index: 40;
-  }
-
-  /* Center layer: keep overall centering, but nudge the USP block up/right */
   .hero-center {
     position: absolute;
     inset: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;      /* stays visually in the middle */
+    align-items: stretch;
     justify-content: center;
-    text-align: left;
-    color: #fff;
-    padding: 140px 1.5rem 0;
     width: 100%;
     z-index: 20;
+    color: #fff;
+  }
+
+  .hero-shell {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: 140px var(--content-pad) 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2.5rem;
     transform: translateY(-18px);
   }
 
@@ -113,9 +112,7 @@ import Header from "./Header.astro";
     padding: 0;
     margin: 0;
     width: min(820px, 92vw);
-
-    /* NUDGE: a bit up and a bit right (tweak values as needed) */
-    transform: translate(22px, -62px);
+    transform: translateY(-32px);
   }
 
   .hero-usp li {
@@ -153,7 +150,6 @@ import Header from "./Header.astro";
   }
 
   .hero-arrow {
-    margin-top: 3rem;
     font-size: clamp(2.5rem, 4vw, 3.75rem);
     color: rgba(255, 255, 255, 0.9);
     display: inline-block;
@@ -170,12 +166,6 @@ import Header from "./Header.astro";
   @keyframes bounce {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(10px); }
-  }
-
-  :global(header nav) {
-    display: flex;
-    gap: 56px;
-    white-space: nowrap;
   }
 
   .intro {
