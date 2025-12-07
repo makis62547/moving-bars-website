@@ -126,27 +126,28 @@ const navLinks = [
     justify-content: space-between;
     gap: 1.5rem;
     height: 100%;
+    overflow: visible;
   }
 
   .logo {
     display: flex;
-    align-items: flex-end;
+    align-items: flex-end; /* am unteren Rand des Header-Balkens ankern */
     height: 100%;
-    padding-top: 8px;
-    padding-bottom: 10px;
+    padding: 0;            /* nichts hoch/runter schieben */
     flex: 0 0 auto;
     flex-shrink: 0;
-    overflow: visible;
     white-space: nowrap;
+    overflow: visible;
   }
 
   .logo img {
-    height: clamp(78px, 8.5vw, 120px);
+    height: clamp(90px, 10vw, 140px); /* NICHT ändern, falls aktuell passend */
     width: auto;
     display: block;
-    transform: none;
     object-fit: contain;
     max-width: none;
+
+    transform: translateY(50%); /* Logo-Mitte = Unterkante Header */
   }
 
   .nav-link {
