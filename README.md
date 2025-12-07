@@ -31,7 +31,7 @@ Kommandos (immer im Repo-Root ausführen):
 Workflow-Empfehlung:
 
 1. `npm install` (falls noch nicht geschehen) und `npx playwright install chromium` zum Laden des Browsers.
-2. Referenz ziehen: `npm run vr:baseline`.
+2. Referenz ziehen: `npm run vr:baseline` (nach Änderungen an den Screenshot-Einstellungen unbedingt erneuern).
 3. Dev-Server starten: `npm run dev`.
 4. Vergleich fahren: `npm run vr` (CI-geeignet, bricht bei nennenswerten Diffs ab).
 5. Bei gewollten Änderungen Baseline bewusst erneuern: `npm run vr:update`.
@@ -41,6 +41,7 @@ Stabilitäts-Features des Skripts:
 - Warten auf `networkidle` und geladene Webfonts (`document.fonts.ready`).
 - CSS-Injektion deaktiviert Animationen/Transitions, vermeidet Soft-UI/Blur-Effekte.
 - Cookie-Banner wird robust über Button-Texte (Deutsch/Englisch) weggeclickt, keine fragilen Selektoren.
+- Screenshots werden viewport-basiert (kein `fullPage`) mit `scale: "css"` erstellt; optionale Vollseiten-Shots landen separat unter `vr/*-fullpage/...`.
 
 Troubleshooting:
 
