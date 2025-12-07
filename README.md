@@ -1,14 +1,8 @@
-# Astro Starter Kit: Minimal
+# Moving Bars Website
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Dieses Projekt baut die Seite https://www.moving-bars.de/ in Astro nach und bringt ein robustes Visual-Regression-Setup mit.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+## 🚀 Projektstruktur
 
 ```text
 /
@@ -16,31 +10,43 @@ Inside of your Astro project, you'll see the following folders and files:
 ├── src/
 │   └── pages/
 │       └── index.astro
+├── scripts/
+│   └── vr.mjs
+├── vr/
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🧪 Visuelle Regression
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Dev-Dependencies: `playwright`, `pixelmatch`, `pngjs` (siehe `package.json`). Playwright benötigt lokal einen Chromium-Download (`npx playwright install chromium`).
 
-Any static assets, like images, can be placed in the `public/` directory.
+Kommandos (immer im Repo-Root ausführen):
 
-## 🧞 Commands
+| Command | Aktion |
+| :-- | :-- |
+| `npm run vr:baseline` | Zieht Referenz-Screenshots von https://www.moving-bars.de/ und legt sie in `vr/baseline/<viewport>/<page>.png` ab. |
+| `npm run vr` | Fotografiert die lokale Seite (`http://localhost:4321/` muss laufen) und vergleicht gegen die Baseline. Diffs landen in `vr/diff/...`; Exit-Code 1 bei Abweichungen >0,5 %. |
+| `npm run vr:update` | Überschreibt die Baseline bewusst mit den aktuellen lokalen Screenshots. |
 
-All commands are run from the root of the project, from a terminal:
+Workflow-Empfehlung:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+1. `npm install` (falls noch nicht geschehen) und `npx playwright install chromium` zum Laden des Browsers.
+2. Referenz ziehen: `npm run vr:baseline`.
+3. Dev-Server starten: `npm run dev`.
+4. Vergleich fahren: `npm run vr` (CI-geeignet, bricht bei nennenswerten Diffs ab).
+5. Bei gewollten Änderungen Baseline bewusst erneuern: `npm run vr:update`.
 
-## 👀 Want to learn more?
+Stabilitäts-Features des Skripts:
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Warten auf `networkidle` und geladene Webfonts (`document.fonts.ready`).
+- CSS-Injektion deaktiviert Animationen/Transitions, vermeidet Soft-UI/Blur-Effekte.
+- Cookie-Banner wird robust über Button-Texte (Deutsch/Englisch) weggeclickt, keine fragilen Selektoren.
+
+Troubleshooting:
+
+- **Fehlende Baseline:** `npm run vr:baseline` ausführen.
+- **Playwright fehlt:** `npx playwright install chromium` (bzw. `--with-deps` in CI-Containern).
+- **Registry/Proxy blockiert Downloads:** ggf. Proxy-Variablen anpassen oder alternative Registry nutzen; danach erneut `npm install` ausführen.
 
 ## Parallax nutzen
 
