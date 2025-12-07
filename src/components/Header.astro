@@ -9,69 +9,92 @@ const navLinks = [
 ];
 ---
 
-<header
-  class="
-    fixed top-0 left-0 right-0 z-50
-    bg-[rgba(0,0,0,0.55)]
-    h-[var(--header-h)]
-    overflow-visible
-  "
->
-  <div
-    class="
-      max-w-[1240px] mx-auto
-      flex h-full items-center justify-between
-      px-12
-      overflow-visible
-    "
-  >
+<header class="site-header">
+  <div class="header-shell">
     <!-- Logo -->
-    <a
-      href="/"
-      class="
-        relative
-        flex h-full items-start
-        pt-[10px]
-        overflow-visible
-      "
-      aria-label="Startseite"
-    >
-      <img
-        src="/images/logo-white.png"
-        alt="moving bars logo"
-        class="
-          h-[140px] w-auto
-          translate-y-[8px]
-          select-none
-        "
-      />
+    <a href="/" class="logo" aria-label="Startseite">
+      <img src="/images/logo-white.png" alt="moving bars logo" class="logo-img" />
     </a>
 
     <!-- Navigation -->
-    <nav
-      class="
-        flex h-full flex-nowrap items-center justify-center
-        gap-14
-        text-sm md:text-base
-        font-light
-      "
-      aria-label="Hauptnavigation"
-    >
+    <nav class="main-nav" aria-label="Hauptnavigation">
       {navLinks.map((link) => (
-        <a
-          href={link.href}
-          class="
-            text-white
-            whitespace-nowrap
-            tracking-normal
-            normal-case
-            hover:text-[#D38B45]
-            transition-colors
-          "
-        >
+        <a href={link.href} class="nav-link">
           {link.label}
         </a>
       ))}
     </nav>
   </div>
 </header>
+
+<style>
+  .site-header {
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: var(--header-h);
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 50;
+    overflow: visible;
+  }
+
+  .header-shell {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(1rem, 3vw, 2rem);
+  }
+
+  .logo {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 6px;
+  }
+
+  .logo-img {
+    height: var(--logo-h);
+    width: auto;
+    translate: 0 6px;
+    user-select: none;
+  }
+
+  .main-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--nav-gap);
+    white-space: nowrap;
+    font-size: var(--nav-size);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .nav-link {
+    color: #fff;
+    transition: color 150ms ease;
+  }
+
+  .nav-link:hover {
+    color: var(--accent);
+  }
+
+  @media (max-width: 960px) {
+    .header-shell {
+      padding-inline: 24px;
+      gap: 1.25rem;
+    }
+
+    .main-nav {
+      gap: 18px;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+    }
+
+    .logo-img {
+      height: 96px;
+    }
+  }
+</style>
