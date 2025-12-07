@@ -9,7 +9,7 @@ const sliderImages = [
 
 <section class="under-hero-tiles" aria-label="Ergänzende Informationen">
   <div class="tiles-shell">
-    <!-- TILE 1 (Vorlage): Icon links | orangener Strich | H2 + Text -->
+    <!-- TILE 1 (Vorlage): Icon links | orangener Strich | H2 (2 Zeilen) + Text volle Spaltenbreite -->
     <article class="tile tile--intro">
       <div class="intro">
         <div class="intro__icon" aria-hidden="true">
@@ -30,7 +30,9 @@ const sliderImages = [
 
         <div class="intro__copy">
           <h2>
-            <span class="h2-accent">PRIVATE FEIER</span> – MESSEPARTY – GROSSVERANSTALTUNG
+            <span class="h2-accent">PRIVATE FEIER</span> – MESSEPARTY –
+            <br class="h2-br" />
+            GROSSVERANSTALTUNG
           </h2>
           <p>
             Seit der Gründung im Jahr 2000 ist moving bars Ihr kompetenter Partner im Bereich Cocktail Catering und mobile
@@ -270,7 +272,7 @@ const sliderImages = [
     }
   }
 
-  /* --- Tile 1: Icon | orangener Strich | H2 + Text (breit + H2 eine Zeile) --- */
+  /* --- Tile 1: Icon | orangener Strich | H2 (2 Zeilen) + Text volle Spaltenbreite --- */
   .tile--intro {
     border: none;
     background: transparent;
@@ -279,6 +281,7 @@ const sliderImages = [
 
   .tile--intro .intro {
     display: grid;
+    /* Icon bewusst schmal -> Copy bekommt max. Platz */
     grid-template-columns: clamp(96px, 11vw, 130px) 1px minmax(0, 1fr);
     align-items: center;
     gap: clamp(1rem, 3vw, 2.5rem);
@@ -297,7 +300,8 @@ const sliderImages = [
   }
 
   .tile--intro .intro__copy {
-    max-width: none;
+    width: 100%;
+    max-width: none !important;
   }
 
   .tile--intro .intro__copy h2 {
@@ -308,6 +312,8 @@ const sliderImages = [
     font-weight: 500;
     font-size: clamp(1.35rem, 2.4vw, 2.6rem);
     line-height: 1.12;
+    /* erlaubt/gewollt: 2 Zeilen (durch <br>) */
+    white-space: normal;
   }
 
   .tile--intro .intro__copy h2 .h2-accent {
@@ -319,14 +325,8 @@ const sliderImages = [
     color: rgba(247, 247, 247, 0.82);
     line-height: 1.75;
     font-weight: 300;
-    max-width: none;
-  }
-
-  /* Desktop: Headline MUSS in eine Zeile (wenn Platz da ist) */
-  @media (min-width: 900px) {
-    .tile--intro .intro__copy h2 {
-      white-space: nowrap;
-    }
+    width: 100%;
+    max-width: none !important; /* überschreibt evtl. globale max-width Regeln */
   }
 
   /* Mobile: stapeln + Strich horizontal */
@@ -342,9 +342,6 @@ const sliderImages = [
     .tile--intro .intro__icon {
       width: auto;
       justify-items: start;
-    }
-    .tile--intro .intro__copy h2 {
-      white-space: normal;
     }
   }
 </style>
