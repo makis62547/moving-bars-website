@@ -270,7 +270,7 @@ const sliderImages = [
     }
   }
 
-  /* --- Tile 1: Icon | orangener Strich | H2 + Text --- */
+  /* --- Tile 1: Icon | orangener Strich | H2 + Text (breit + H2 eine Zeile) --- */
   .tile--intro {
     border: none;
     background: transparent;
@@ -279,14 +279,14 @@ const sliderImages = [
 
   .tile--intro .intro {
     display: grid;
-    grid-template-columns: clamp(120px, 14vw, 160px) 1px minmax(0, 1.6fr);
+    grid-template-columns: clamp(96px, 11vw, 130px) 1px minmax(0, 1fr);
     align-items: center;
     gap: clamp(1rem, 3vw, 2.5rem);
   }
 
   .tile--intro .intro__icon {
     color: rgba(211, 139, 69, 0.95);
-    width: clamp(120px, 14vw, 160px);
+    width: 100%;
     display: grid;
     place-items: center;
   }
@@ -297,21 +297,21 @@ const sliderImages = [
   }
 
   .tile--intro .intro__copy {
-    max-width: 92ch;
+    max-width: none;
   }
 
   .tile--intro .intro__copy h2 {
     margin: 0;
-    color: #fff; /* gesamter H2 weiß */
+    color: #fff;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     font-weight: 500;
-    font-size: clamp(1.35rem, 2.6vw, 2.5rem);
+    font-size: clamp(1.35rem, 2.4vw, 2.6rem);
     line-height: 1.12;
   }
 
   .tile--intro .intro__copy h2 .h2-accent {
-    color: rgba(211, 139, 69, 0.95); /* nur PRIVATE FEIER orange */
+    color: rgba(211, 139, 69, 0.95);
   }
 
   .tile--intro .intro__copy p {
@@ -319,9 +319,17 @@ const sliderImages = [
     color: rgba(247, 247, 247, 0.82);
     line-height: 1.75;
     font-weight: 300;
-    max-width: 92ch;
+    max-width: none;
   }
 
+  /* Desktop: Headline MUSS in eine Zeile (wenn Platz da ist) */
+  @media (min-width: 900px) {
+    .tile--intro .intro__copy h2 {
+      white-space: nowrap;
+    }
+  }
+
+  /* Mobile: stapeln + Strich horizontal */
   @media (max-width: 720px) {
     .tile--intro .intro {
       grid-template-columns: 1fr;
@@ -334,6 +342,9 @@ const sliderImages = [
     .tile--intro .intro__icon {
       width: auto;
       justify-items: start;
+    }
+    .tile--intro .intro__copy h2 {
+      white-space: normal;
     }
   }
 </style>
