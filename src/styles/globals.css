@@ -9,9 +9,7 @@
   --border: rgba(255, 255, 255, 0.1);
   --header-h: 72px;
   --content-max: 1240px;
-  --content-pad: clamp(18px, 3vw, 48px);
-  --container-max: var(--content-max);
-  --container-pad: var(--content-pad);
+  --content-pad: clamp(10px, 1.8vw, 24px); /* kleiner = weiter links */
 }
 
 html, body {
@@ -55,5 +53,6 @@ img {
 .site-container {
   max-width: var(--content-max);
   margin: 0 auto;
-  padding-inline: var(--content-pad);
+  padding-left: var(--content-pad);
+  padding-right: var(--content-pad);
 }

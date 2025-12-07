@@ -129,10 +129,11 @@ const navLinks = [
   }
 
   .logo {
-    position: relative;
     display: flex;
-    align-items: flex-start;
-    padding-top: 10px;
+    align-items: flex-end;
+    height: 100%;
+    padding-top: 8px;
+    padding-bottom: 10px;
     flex: 0 0 auto;
     flex-shrink: 0;
     overflow: visible;
@@ -140,11 +141,10 @@ const navLinks = [
   }
 
   .logo img {
-    height: clamp(90px, 10vw, 140px);
+    height: clamp(78px, 8.5vw, 120px);
     width: auto;
-    transform: translateY(8px);
-    user-select: none;
-    flex-shrink: 0;
+    display: block;
+    transform: none;
     object-fit: contain;
     max-width: none;
   }
