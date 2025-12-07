@@ -1,14 +1,20 @@
 ---
----
-const sliderImages = [
-  "/images/cocktail-cosmopolitan.jpg", // ✅ neu: erstes Bild
-  "/images/placeholder-1.jpg",
-  "/images/placeholder-2.jpg",
-  "/images/placeholder-3.jpg",
-  "/images/placeholder-4.jpg",
-];
----
+const img = (p: string) => new URL(p, import.meta.env.BASE_URL).toString();
 
+const sliderImagesCocktails = [
+  img("images/cocktail-cosmopolitan.jpg"), // ✅ erstes Bild im Cocktail-Slider
+  img("images/placeholder-1.jpg"),
+  img("images/placeholder-2.jpg"),
+  img("images/placeholder-3.jpg"),
+  img("images/placeholder-4.jpg"),
+];
+
+const sliderImagesDefault = [
+  img("images/placeholder-1.jpg"),
+  img("images/placeholder-2.jpg"),
+  img("images/placeholder-3.jpg"),
+  img("images/placeholder-4.jpg"),
+];
 ---
 
 <section class="under-hero-tiles" aria-label="Ergänzende Informationen" data-uh-tiles>
@@ -79,9 +85,9 @@ const sliderImages = [
           <div class="slider" data-slider>
             <button class="slider-btn prev" type="button" aria-label="Vorheriges Bild">‹</button>
             <div class="slider-track" tabindex="0" aria-label="Bildergalerie">
-              {sliderImages.map((src, index) => (
+              {sliderImagesCocktails.map((src, index) => (
                 <div class="slide" aria-label={`Bild ${index + 1}`}>
-                  <img class="parallax-img" data-parallax="1" alt="" src={src} loading="lazy" decoding="async" />
+                  <img class="parallax-img" data-parallax="1" alt="Cocktail" src={src} loading="lazy" decoding="async" />
                 </div>
               ))}
             </div>
@@ -96,7 +102,7 @@ const sliderImages = [
           <div class="slider" data-slider>
             <button class="slider-btn prev" type="button" aria-label="Vorheriges Bild">‹</button>
             <div class="slider-track" tabindex="0" aria-label="Bildergalerie">
-              {sliderImages.map((src, index) => (
+              {sliderImagesDefault.map((src, index) => (
                 <div class="slide" aria-label={`Bild ${index + 1}`}>
                   <img class="parallax-img" data-parallax="1" alt="" src={src} loading="lazy" decoding="async" />
                 </div>
@@ -174,6 +180,7 @@ const sliderImages = [
     window.addEventListener("scroll", tick, { passive: true });
     window.addEventListener("resize", tick);
     document.querySelectorAll(".slider-track").forEach((t) => t.addEventListener("scroll", tick, { passive: true }));
+
     tick();
   };
 
@@ -329,10 +336,10 @@ const sliderImages = [
     width: 100%;
     height: 100%;
     background: #000;
-    overflow: hidden; /* ✅ wichtig */
+    overflow: hidden;
   }
 
-  /* ✅ harte “Edge Masks” links/rechts (killt jede weiße Linie, egal woher) */
+  /* ✅ Edge Masks links/rechts */
   :global([data-uh-tiles] .slider)::before,
   :global([data-uh-tiles] .slider)::after {
     content: "";
@@ -342,7 +349,7 @@ const sliderImages = [
     width: 18px;
     background: #000;
     pointer-events: none;
-    z-index: 4; /* unter Buttons (6), über Bild */
+    z-index: 4;
   }
   :global([data-uh-tiles] .slider)::before { left: 0; }
   :global([data-uh-tiles] .slider)::after { right: 0; }
@@ -368,7 +375,7 @@ const sliderImages = [
     background: #000;
   }
 
-  /* ✅ Bild minimal “überziehen” links/rechts, um Subpixel-Seams zu killen */
+  /* ✅ Bild “überziehen” gegen Subpixel-Seams */
   :global([data-uh-tiles] .slide > .parallax-img) {
     position: absolute;
     top: -2px;
@@ -382,7 +389,7 @@ const sliderImages = [
     backface-visibility: hidden;
   }
 
-  /* Buttons komplett ohne “weiße Linien” */
+  /* Buttons */
   :global([data-uh-tiles] .slider-btn) {
     position: absolute;
     top: 50%;
