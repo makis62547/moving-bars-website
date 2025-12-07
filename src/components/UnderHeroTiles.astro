@@ -47,18 +47,24 @@ const sliderImages = [
       </div>
     </article>
 
-    <!-- ✅ AB HIER: 2 ZEILEN, JEWEILS VOLLE BREITE: (Text | Slider) dann (Slider | Text) -->
+    <!-- ✅ AB HIER: (Text | Slider) dann (Slider | Text) – volle Breite -->
     <div class="wide-rows" aria-label="Text und Slider Kacheln">
       <!-- ROW 1: links Text, rechts Slider -->
       <div class="wide-row">
         <article class="panel panel--text" aria-label="Text links">
           <div class="panel-inner">
-            <h3 class="panel-title">FEINSTE COCKTAILS & LONGDRINKS</h3>
+            <h3 class="panel-title panel-title--orange">FEINSTE COCKTAILS & LONGDRINKS</h3>
             <div class="panel-sep" aria-hidden="true"></div>
+
             <p class="panel-text">
-              Wenn Sie unsere mobile Cocktailbar mieten, mixen wir für Sie und Ihre Gäste klassische und moderne Cocktails oder/und Longdrinks aus besten Zutaten. Wir arbeiten mit bekannten Markenspirituosen, hochwertigen Fruchtsäften der Marke Bauer Fruchtsaft, Fillern von Thomas Henry und frischen Zutaten, die wir mit Sachverstand aussuchen und verarbeiten. Haben Sie genaue Vorstellungen oder einen Lieblingscocktail? Suchen Sie einen farblich auf Ihr Firmenlogo abgestimmten CI-Drink? Soll es etwas Besonderes sein, wie molekulare Cocktails? Wir helfen Ihnen bei der Auswahl!
-Sprechen Sie mit uns, wir beraten Sie gerne.
+              Wenn Sie unsere mobile Cocktailbar mieten, mixen wir für Sie und Ihre Gäste klassische und moderne Cocktails
+              oder/und Longdrinks aus besten Zutaten. Wir arbeiten mit bekannten Markenspirituosen, hochwertigen
+              Fruchtsäften der Marke Bauer Fruchtsaft, Fillern von Thomas Henry und frischen Zutaten, die wir mit
+              Sachverstand aussuchen und verarbeiten. Haben Sie genaue Vorstellungen oder einen Lieblingscocktail? Suchen
+              Sie einen farblich auf Ihr Firmenlogo abgestimmten CI-Drink? Soll es etwas Besonderes sein, wie molekulare
+              Cocktails? Wir helfen Ihnen bei der Auswahl! Sprechen Sie mit uns, wir beraten Sie gerne.
             </p>
+
             <a class="panel-cta" href="#" aria-label="Cocktail Menüs ansehen">HIER UNSERE COCKTAIL MENUS ANSEHEN</a>
           </div>
         </article>
@@ -69,14 +75,7 @@ Sprechen Sie mit uns, wir beraten Sie gerne.
             <div class="slider-track" tabindex="0" aria-label="Bildergalerie">
               {sliderImages.map((src, index) => (
                 <div class="slide" aria-label={`Bild ${index + 1}`}>
-                  <img
-                    class="parallax-img"
-                    data-parallax="1"
-                    alt=""
-                    src={src}
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  <img class="parallax-img" data-parallax="1" alt="" src={src} loading="lazy" decoding="async" />
                 </div>
               ))}
             </div>
@@ -93,14 +92,7 @@ Sprechen Sie mit uns, wir beraten Sie gerne.
             <div class="slider-track" tabindex="0" aria-label="Bildergalerie">
               {sliderImages.map((src, index) => (
                 <div class="slide" aria-label={`Bild ${index + 1}`}>
-                  <img
-                    class="parallax-img"
-                    data-parallax="1"
-                    alt=""
-                    src={src}
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  <img class="parallax-img" data-parallax="1" alt="" src={src} loading="lazy" decoding="async" />
                 </div>
               ))}
             </div>
@@ -110,11 +102,16 @@ Sprechen Sie mit uns, wir beraten Sie gerne.
 
         <article class="panel panel--text" aria-label="Text rechts">
           <div class="panel-inner">
-            <h3 class="panel-title">MOBILE BAR MIETEN IN BERLIN</h3>
+            <h3 class="panel-title panel-title--orange">MOBILE BAR MIETEN IN BERLIN</h3>
             <div class="panel-sep" aria-hidden="true"></div>
             <p class="panel-text">
-              Unsere mobile Bar ist das Ergebnis aus über 20 Jahren Erfahrung. Full Service, Barkeeper, Bar & Setup –
-              alles aus einer Hand, damit Ihr Event reibungslos läuft.
+              Unsere mobile Bar ist das Ergebnis aus über 20 Jahren Erfahrung im Bereich Cocktail Catering und mobile
+              Cocktailbar mieten in Berlin und üBARall in Deutschland. Das System stellt gleichermaßen beide Seiten
+              zufrieden: Den Gast, durch das ansprechende, zeitlose Design und den Event-Profi durch kompromisslose
+              Ausstattung und Flexibilität. Durch die unterschiedlichen Beleuchtungs- und Gestaltungsmöglichkeiten passt
+              die mobile Bar sich jeder Situation und Umgebung an. Hochwertiger Edelstahl und weißes Acrylglas sorgen für
+              ein zeitloses Design. Unsere mobile Bar ist mit moderner LED-RGBW-Technik hinterleuchtet und läßt sich auf
+              jeden gewünschten Farbton einstellen.
             </p>
             <a class="panel-cta" href="/anfrage" aria-label="Jetzt anfragen">JETZT ANFRAGEN</a>
           </div>
@@ -126,7 +123,6 @@ Sprechen Sie mit uns, wir beraten Sie gerne.
 
 <script is:inline>
   const onReady = () => {
-    // Slider buttons
     document.querySelectorAll("[data-slider]").forEach((slider) => {
       const track = slider.querySelector(".slider-track");
       const prev = slider.querySelector(".slider-btn.prev");
@@ -138,7 +134,6 @@ Sprechen Sie mit uns, wir beraten Sie gerne.
       next.addEventListener("click", () => track.scrollBy({ left: scrollAmount(), behavior: "smooth" }));
     });
 
-    // Parallax
     const prefersReduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
     const els = Array.from(document.querySelectorAll(".parallax-img"));
     if (prefersReduced || !els.length) return;
@@ -179,14 +174,13 @@ Sprechen Sie mit uns, wir beraten Sie gerne.
 </script>
 
 <style>
-  .under-hero-tiles{
-    background:#000;
-    color:#f7f7f7;
+  .under-hero-tiles {
+    background: #000;
+    color: #f7f7f7;
     padding: clamp(2.5rem, 6vw, 4.5rem) var(--content-pad) clamp(3rem, 8vw, 5rem);
   }
 
-  /* ✅ “Über komplette Breite der Page” */
-  .tiles-shell{
+  .tiles-shell {
     width: 100%;
     max-width: none;
     margin: 0;
@@ -194,18 +188,14 @@ Sprechen Sie mit uns, wir beraten Sie gerne.
     gap: clamp(1.5rem, 3vw, 2.25rem);
   }
 
-  /* =========================
-     TILE 1 (dein H2 Block)
-     ========================= */
-  .tile{ border-radius: 0; }
-
-  .tile--intro{
+  /* TILE 1 (H2 Block) – unverändert */
+  .tile--intro {
     border: none;
     background: transparent;
     padding: 0;
   }
 
-  .tile--intro .intro{
+  .tile--intro .intro {
     display: grid;
     grid-template-columns: clamp(240px, 20vw, 320px) 1px minmax(0, 1fr);
     column-gap: clamp(1.25rem, 3vw, 3rem);
@@ -213,20 +203,33 @@ Sprechen Sie mit uns, wir beraten Sie gerne.
     width: 100%;
   }
 
-  .tile--intro .intro__icon{
+  .tile--intro .intro__icon {
     justify-self: end;
     display: grid;
     place-items: center end;
     color: rgba(211, 139, 69, 0.95);
   }
 
-  .tile--intro .intro__svg{ width: min(260px, 100%); height:auto; display:block; }
-  .tile--intro .intro__sep{ align-self: stretch; background: rgba(211, 139, 69, 0.75); }
-  .tile--intro .intro__copy{ width:100%; max-width:none!important; min-width:0; }
+  .tile--intro .intro__svg {
+    width: min(260px, 100%);
+    height: auto;
+    display: block;
+  }
 
-  .tile--intro .intro__copy h2{
-    margin:0;
-    color:#fff;
+  .tile--intro .intro__sep {
+    align-self: stretch;
+    background: rgba(211, 139, 69, 0.75);
+  }
+
+  .tile--intro .intro__copy {
+    width: 100%;
+    max-width: none !important;
+    min-width: 0;
+  }
+
+  .tile--intro .intro__copy h2 {
+    margin: 0;
+    color: #fff;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     font-weight: 500;
@@ -234,10 +237,15 @@ Sprechen Sie mit uns, wir beraten Sie gerne.
     line-height: 1.06;
   }
 
-  .tile--intro .intro__copy .h2-accent{ color: rgba(211, 139, 69, 0.95); }
-  .tile--intro .intro__copy .h2-line1{ white-space: nowrap; }
+  .tile--intro .intro__copy .h2-accent {
+    color: rgba(211, 139, 69, 0.95);
+  }
 
-  .under-hero-tiles .tile--intro .intro__copy .intro__paragraph{
+  .tile--intro .intro__copy .h2-line1 {
+    white-space: nowrap;
+  }
+
+  .under-hero-tiles .tile--intro .intro__copy .intro__paragraph {
     margin: 1rem 0 0 !important;
     padding: 0 !important;
     width: 100% !important;
@@ -249,71 +257,74 @@ Sprechen Sie mit uns, wir beraten Sie gerne.
     font-weight: 300;
   }
 
-  /* =========================
-     ZWEI “VOLLBREITE” ROWS
-     ========================= */
-  .wide-rows{
+  /* ZWEI VOLLBREITE ZEILEN */
+  .wide-rows {
     display: grid;
-    gap: 0; /* wie im Original: Kacheln stoßen an */
+    gap: 0;
   }
 
-  .wide-row{
+  .wide-row {
     display: grid;
     grid-template-columns: 1fr;
     gap: 0;
   }
 
-  @media (min-width: 900px){
-    .wide-row{
+  @media (min-width: 900px) {
+    .wide-row {
       grid-template-columns: 1fr 1fr;
     }
   }
 
-  .panel{
+  .panel {
     border: none;
     border-radius: 0;
-    background: rgba(255,255,255,0.02);
-    min-height: clamp(340px, 40vw, 520px); /* ✅ gleiche Höhe für Text & Slider */
+    background: rgba(255, 255, 255, 0.02);
+    min-height: clamp(360px, 42vw, 560px);
     overflow: hidden;
     display: grid;
   }
 
-  .panel--text{
+  .panel--text {
     background: #050505;
     padding: clamp(1.25rem, 3vw, 2.25rem);
     align-items: center;
   }
 
-  .panel-inner{
-    max-width: 70ch;
+  .panel-inner {
+    max-width: 74ch;
     display: grid;
     gap: 0.9rem;
   }
 
-  .panel-title{
-    margin:0;
+  .panel-title {
+    margin: 0;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     font-weight: 500;
     font-size: clamp(1.6rem, 2.4vw, 2.6rem);
     line-height: 1.05;
+    color: #fff;
   }
 
-  .panel-sep{
+  .panel-title--orange {
+    color: rgba(211, 139, 69, 0.95);
+  }
+
+  .panel-sep {
     height: 1px;
     background: rgba(211, 139, 69, 0.75);
     width: 100%;
   }
 
-  .panel-text{
-    margin:0;
-    color: rgba(247,247,247,0.82);
+  .panel-text {
+    margin: 0;
+    color: rgba(247, 247, 247, 0.82);
     line-height: 1.7;
     font-weight: 300;
     font-family: "Inter", system-ui, sans-serif;
   }
 
-  .panel-cta{
+  .panel-cta {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -329,22 +340,20 @@ Sprechen Sie mit uns, wir beraten Sie gerne.
   }
 
   .panel-cta:hover,
-  .panel-cta:focus-visible{
+  .panel-cta:focus-visible {
     outline: none;
     background: rgba(211, 139, 69, 0.14);
     border-color: rgba(211, 139, 69, 0.9);
   }
 
-  /* =========================
-     SLIDER (1 Bild pro View, wie im Original)
-     ========================= */
-  :global([data-uh-tiles] .slider){
+  /* SLIDER */
+  :global([data-uh-tiles] .slider) {
     position: relative;
     width: 100%;
     height: 100%;
   }
 
-  :global([data-uh-tiles] .slider-track){
+  :global([data-uh-tiles] .slider-track) {
     display: flex;
     height: 100%;
     overflow-x: auto;
@@ -352,9 +361,11 @@ Sprechen Sie mit uns, wir beraten Sie gerne.
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
-  :global([data-uh-tiles] .slider-track::-webkit-scrollbar){ display:none; }
+  :global([data-uh-tiles] .slider-track::-webkit-scrollbar) {
+    display: none;
+  }
 
-  :global([data-uh-tiles] .slide){
+  :global([data-uh-tiles] .slide) {
     flex: 0 0 100%;
     height: 100%;
     scroll-snap-align: start;
@@ -363,7 +374,7 @@ Sprechen Sie mit uns, wir beraten Sie gerne.
     background: #0b0b0b;
   }
 
-  :global([data-uh-tiles] .slide > .parallax-img){
+  :global([data-uh-tiles] .slide > .parallax-img) {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -375,15 +386,15 @@ Sprechen Sie mit uns, wir beraten Sie gerne.
     backface-visibility: hidden;
   }
 
-  :global([data-uh-tiles] .slider-btn){
+  :global([data-uh-tiles] .slider-btn) {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     width: 44px;
     height: 44px;
     border-radius: 0;
-    border: 1px solid rgba(255,255,255,0.22);
-    background: rgba(0,0,0,0.55);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(0, 0, 0, 0.55);
     color: #fff;
     display: grid;
     place-items: center;
@@ -392,22 +403,30 @@ Sprechen Sie mit uns, wir beraten Sie gerne.
   }
 
   :global([data-uh-tiles] .slider-btn:hover),
-  :global([data-uh-tiles] .slider-btn:focus-visible){
+  :global([data-uh-tiles] .slider-btn:focus-visible) {
     outline: none;
     background: rgba(211, 139, 69, 0.92);
     border-color: rgba(211, 139, 69, 0.92);
   }
 
-  :global([data-uh-tiles] .slider-btn.prev){ left: 12px; }
-  :global([data-uh-tiles] .slider-btn.next){ right: 12px; }
-
-  @media (max-width: 720px){
-    :global([data-uh-tiles] .slider-btn){ display:none; }
-    .panel{ min-height: clamp(280px, 72vw, 420px); }
+  :global([data-uh-tiles] .slider-btn.prev) {
+    left: 12px;
+  }
+  :global([data-uh-tiles] .slider-btn.next) {
+    right: 12px;
   }
 
-  @media (prefers-reduced-motion: reduce){
-    :global([data-uh-tiles] .slide > .parallax-img){
+  @media (max-width: 720px) {
+    :global([data-uh-tiles] .slider-btn) {
+      display: none;
+    }
+    .panel {
+      min-height: clamp(300px, 78vw, 460px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global([data-uh-tiles] .slide > .parallax-img) {
       transform: none !important;
       height: 100% !important;
     }
