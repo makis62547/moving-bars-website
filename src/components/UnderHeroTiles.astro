@@ -5,7 +5,6 @@ const sliderImages = [
   "/images/placeholder-3.jpg",
   "/images/placeholder-4.jpg",
 ];
-import cocktailIconUrl from "../assets/icons/cocktail.svg?url";
 ---
 
 <section class="under-hero-tiles" aria-label="Ergänzende Informationen" data-uh-tiles>
@@ -13,8 +12,17 @@ import cocktailIconUrl from "../assets/icons/cocktail.svg?url";
     <!-- TILE 1 (Intro bleibt breit) -->
     <article class="tile tile--intro">
       <div class="intro">
-        <div class="intro__icon" aria-hidden="true" style={`--cocktail-icon: url(${cocktailIconUrl})`}>
-          <span class="intro__icon-mark"></span>
+        <div class="intro__icon" aria-hidden="true">
+          <svg class="intro__svg" viewBox="0 0 128 128" role="img" aria-label="">
+            <g fill="currentColor">
+              <circle cx="64" cy="42" r="18" />
+              <path d="M34 108c0-18 14-32 30-32s30 14 30 32H34z" />
+              <circle cx="30" cy="50" r="14" opacity="0.95" />
+              <path d="M8 108c0-14 11-25 24-25s24 11 24 25H8z" opacity="0.95" />
+              <circle cx="98" cy="50" r="14" opacity="0.95" />
+              <path d="M72 108c0-14 11-25 24-25s24 11 24 25H72z" opacity="0.95" />
+            </g>
+          </svg>
         </div>
 
         <div class="intro__sep" aria-hidden="true"></div>
@@ -292,37 +300,15 @@ import cocktailIconUrl from "../assets/icons/cocktail.svg?url";
 
   .tile--intro .intro__icon {
     justify-self: end;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
+    display: grid;
+    place-items: center end;
+    color: rgba(211, 139, 69, 0.95);
   }
 
-  .tile--intro .intro__icon-mark {
-    position: relative;
-    width: clamp(168px, 22vw, 220px);
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: radial-gradient(circle at 36% 34%, rgba(211, 139, 69, 0.35), rgba(211, 139, 69, 0.16)),
-      rgba(211, 139, 69, 0.08);
-    border: 1px solid rgba(211, 139, 69, 0.42);
-    box-shadow: 0 0 0 10px rgba(211, 139, 69, 0.06);
-    overflow: hidden;
-  }
-
-  .tile--intro .intro__icon-mark::after {
-    content: "";
-    position: absolute;
-    inset: 20%;
-    background: #d38b45;
-    mask-image: var(--cocktail-icon);
-    mask-repeat: no-repeat;
-    mask-position: center;
-    mask-size: contain;
-    -webkit-mask-image: var(--cocktail-icon);
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    -webkit-mask-size: contain;
-    filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.32));
+  .tile--intro .intro__svg {
+    width: min(260px, 100%);
+    height: auto;
+    display: block;
   }
 
   .tile--intro .intro__sep {
