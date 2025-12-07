@@ -6,7 +6,10 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "vr:baseline": "node scripts/vr.mjs baseline",
+    "vr": "node scripts/vr.mjs run",
+    "vr:update": "node scripts/vr.mjs update"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
@@ -17,5 +20,10 @@
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
     "tailwindcss": "^4.1.17"
+  },
+  "devDependencies": {
+    "pixelmatch": "^5.3.0",
+    "playwright": "^1.50.1",
+    "pngjs": "^7.0.0"
   }
 }
