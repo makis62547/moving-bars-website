@@ -61,7 +61,14 @@ const sliderImages = [
           <div class="slider-track" tabindex="0">
             {sliderImages.map((src, index) => (
               <div class="slide" aria-label={`Platzhalterbild ${index + 1}`}>
-                <img alt="Platzhalter" src={src} loading="lazy" />
+                <img
+                  class="parallax-img"
+                  data-parallax="1"
+                  alt="Platzhalter"
+                  src={src}
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
             ))}
           </div>
@@ -78,7 +85,14 @@ const sliderImages = [
           <div class="slider-track" tabindex="0">
             {sliderImages.map((src, index) => (
               <div class="slide" aria-label={`Platzhalterbild ${index + 1}`}>
-                <img alt="Platzhalter" src={src} loading="lazy" />
+                <img
+                  class="parallax-img"
+                  data-parallax="1"
+                  alt="Platzhalter"
+                  src={src}
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
             ))}
           </div>
@@ -107,6 +121,7 @@ const sliderImages = [
 </section>
 
 <script>
+  // --- Slider Controls ---
   const sliders = document.querySelectorAll("[data-slider]");
 
   sliders.forEach((slider) => {
@@ -126,6 +141,60 @@ const sliderImages = [
       track.scrollBy({ left: scrollAmount(), behavior: "smooth" });
     });
   });
+
+  // --- Parallax for ALL image tiles (square slides) ---
+  const prefersReduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+  const parallaxEls = Array.from(document.querySelectorAll(".parallax-img"));
+
+  if (!prefersReduced && parallaxEls.length) {
+    let ticking = false;
+
+    const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+
+    const updateParallax = () => {
+      ticking = false;
+
+      const vh = window.innerHeight || 1;
+      const viewportCenter = vh * 0.5;
+
+      // Base amplitude in px (subtle + premium, nicht wackelig)
+      const baseAmp = 22;
+
+      for (const el of parallaxEls) {
+        const rect = el.getBoundingClientRect();
+        // wenn weit außerhalb: trotzdem zurücksetzen (verhindert "stuck" states)
+        const elementCenter = rect.top + rect.height * 0.5;
+
+        // Normalisierte Distanz zum Viewport-Zentrum (-1..1 grob)
+        const norm = (elementCenter - viewportCenter) / vh;
+
+        // Optionaler Speed-Faktor pro Element
+        const speed = parseFloat(el.dataset.parallax || "1") || 1;
+
+        // Translate: gegenläufig zur Scrollrichtung, subtile Bewegung
+        const y = clamp(-norm * baseAmp * speed, -baseAmp * 1.4, baseAmp * 1.4);
+
+        el.style.setProperty("--parallaxY", `${y}px`);
+      }
+    };
+
+    const requestTick = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(updateParallax);
+    };
+
+    window.addEventListener("scroll", requestTick, { passive: true });
+    window.addEventListener("resize", requestTick);
+
+    // Auch bei horizontalem Track-Scroll neu rendern (optional, fühlt sich "alive" an)
+    document.querySelectorAll(".slider-track").forEach((track) => {
+      track.addEventListener("scroll", requestTick, { passive: true });
+    });
+
+    // Initial
+    requestTick();
+  }
 </script>
 
 <style>
@@ -214,6 +283,7 @@ const sliderImages = [
     border-radius: 999px;
   }
 
+  /* ✅ QUADRATISCHE BILDERKACHELN */
   .slide {
     scroll-snap-align: start;
     border: 1px solid rgba(255, 255, 255, 0.12);
@@ -221,14 +291,21 @@ const sliderImages = [
     border-radius: 10px;
     overflow: hidden;
     position: relative;
+    aspect-ratio: 1 / 1; /* <-- macht die Kachel quadratisch */
   }
 
+  /* ✅ Parallax-Image: leicht größer als Container, damit Bewegung keine Kanten zeigt */
   .slide img {
+    position: absolute;
+    inset: 0;
     width: 100%;
-    height: 100%;
-    aspect-ratio: 1 / 1;
+    height: 118%;
     object-fit: cover;
     display: block;
+
+    transform: translate3d(0, var(--parallaxY, 0px), 0);
+    will-change: transform;
+    backface-visibility: hidden;
   }
 
   .slider-btn {
@@ -342,5 +419,10 @@ const sliderImages = [
     color: rgba(247, 247, 247, 0.8);
     line-height: 1.7;
     font-weight: 300;
+  }
+
+  /* Reduce Motion: Parallax deaktivieren */
+  @media (prefers-reduced-motion: reduce) {
+    .slide img { transform: none !important; height: 100% !important; }
   }
 </style>
