@@ -58,7 +58,7 @@ const sliderImagesDefault = [
       </div>
     </article>
 
-    <!-- ✅ AB HIER -->
+    <!-- ✅ AB HIER: FULL WIDTH KACHELN (bis an Viewport-Rand) -->
     <div class="wide-rows" aria-label="Text und Slider Kacheln">
       <!-- ROW 1: links Text, rechts Slider -->
       <div class="wide-row">
@@ -119,6 +119,7 @@ const sliderImagesDefault = [
               <span class="accent">MOBILE BAR</span> MIETEN IN BERLIN
             </h3>
             <div class="panel-sep" aria-hidden="true"></div>
+
             <p class="panel-text">
               Unsere mobile Bar ist das Ergebnis aus über 20 Jahren Erfahrung im Bereich Cocktail Catering und mobile
               Cocktailbar mieten in Berlin und üBARall in Deutschland. Das System stellt gleichermaßen beide Seiten
@@ -128,6 +129,7 @@ const sliderImagesDefault = [
               ein zeitloses Design. Unsere mobile Bar ist mit moderner LED-RGBW-Technik hinterleuchtet und läßt sich auf
               jeden gewünschten Farbton einstellen.
             </p>
+
             <a class="panel-cta" href="/anfrage" aria-label="Jetzt anfragen">JETZT ANFRAGEN</a>
           </div>
         </article>
@@ -194,7 +196,7 @@ const sliderImagesDefault = [
     color: #f7f7f7;
     padding: clamp(2.5rem, 6vw, 4.5rem) var(--content-pad) clamp(3rem, 8vw, 5rem);
     margin: 0;
-    overflow-x: clip; /* ✅ wichtig: kein horizontaler Scroll durch “full bleed” */
+    overflow-x: clip; /* ✅ kein horizontaler Scroll */
   }
 
   .tiles-shell {
@@ -204,6 +206,39 @@ const sliderImagesDefault = [
     margin: 0;
     display: grid;
     gap: clamp(1.5rem, 3vw, 2.25rem);
+  }
+
+  /* ✅ FULL BLEED nur für Kacheln nach dem H2-Block */
+  .wide-rows {
+    background: #000 !important;
+    margin-left: calc(var(--content-pad) * -1);
+    margin-right: calc(var(--content-pad) * -1);
+    width: calc(100% + (var(--content-pad) * 2));
+  }
+
+  .wide-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    background: #000 !important;
+    position: relative;
+  }
+
+  @media (min-width: 900px) {
+    .wide-row { grid-template-columns: 1fr 1fr; }
+
+    /* seam killer (Mitte) */
+    .wide-row::after{
+      content:"";
+      position:absolute;
+      top:0; bottom:0;
+      left:50%;
+      width:2px;
+      transform: translateX(-1px);
+      background:#000;
+      pointer-events:none;
+      z-index: 5;
+    }
   }
 
   /* Intro (H2 Block) */
@@ -245,39 +280,6 @@ const sliderImagesDefault = [
     color: rgba(247, 247, 247, 0.8);
     line-height: 1.7;
     font-weight: 300;
-  }
-
-  /* Rows */
-  .wide-rows { display: grid; gap: 0; background: #000 !important; }
-
-  .wide-row {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0;
-    background: #000 !important;
-    position: relative;
-  }
-
-  /* ✅ Full bleed nach rechts: NUR die rechte Kachel pro Zeile */
-  .wide-row > .panel:last-child {
-    margin-right: calc(var(--content-pad) * -1);
-  }
-
-  @media (min-width: 900px) {
-    .wide-row { grid-template-columns: 1fr 1fr; }
-
-    /* seam killer (Mitte) */
-    .wide-row::after{
-      content:"";
-      position:absolute;
-      top:0; bottom:0;
-      left:50%;
-      width:2px;
-      transform: translateX(-1px);
-      background:#000;
-      pointer-events:none;
-      z-index: 5;
-    }
   }
 
   .panel {
@@ -337,16 +339,8 @@ const sliderImagesDefault = [
   .panel-cta:hover,
   .panel-cta:focus-visible { outline: none; background: rgba(211, 139, 69, 0.14); border-color: rgba(211, 139, 69, 0.9); }
 
-  /* Slider */
-  :global([data-uh-tiles] .slider) {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    overflow: hidden;
-  }
+  :global([data-uh-tiles] .slider) { position: relative; width: 100%; height: 100%; background: #000; overflow: hidden; }
 
-  /* Edge Masks links/rechts */
   :global([data-uh-tiles] .slider)::before,
   :global([data-uh-tiles] .slider)::after {
     content: "";
@@ -402,20 +396,15 @@ const sliderImagesDefault = [
     width: 44px;
     height: 44px;
     border-radius: 0;
-
     -webkit-appearance: none !important;
     appearance: none !important;
-
     border: 0 !important;
     outline: 0 !important;
     box-shadow: none !important;
-
     background: #000 !important;
     color: #fff;
-
     padding: 0 !important;
     margin: 0 !important;
-
     display: grid;
     place-items: center;
     cursor: pointer;
