@@ -1,9 +1,34 @@
 ---
-const sliderImages = [
-  "/images/placeholder-1.jpg",
-  "/images/placeholder-2.jpg",
-  "/images/placeholder-3.jpg",
-  "/images/placeholder-4.jpg",
+const rows = [
+  {
+    textTitle: "Feinste Cocktails & Longdrinks",
+    textBody:
+      "Wenn Sie unsere mobile Cocktailbar mieten, mixen wir für Sie und Ihre Gäste klassische und moderne Cocktails und/oder Longdrinks aus besten Zutaten. Sprechen Sie mit uns – wir beraten Sie gerne.",
+    cta: {
+      href: "/cocktail-catering",
+      label: "Hier unsere Cocktail Menüs ansehen",
+    },
+    slides: [
+      { src: "/images/cocktail-catering-moving-bars.jpg", alt: "Cocktail Catering Bar mit beleuchtetem Tresen" },
+      { src: "/images/cocktail-show-buchen-berlin.jpg", alt: "Barkeeper bei der Moving Bars Cocktail Show" },
+    ],
+    reverse: false,
+  },
+  {
+    textTitle: "Mobile Bar mieten in Berlin",
+    textBody:
+      "Unsere mobile Bar ist das Ergebnis aus über 20 Jahren Erfahrung. Full Service, Barkeeper, Bar & Setup – alles aus einer Hand, damit Ihr Event reibungslos läuft.",
+    cta: {
+      href: "/anfrage",
+      label: "Jetzt anfragen",
+    },
+    slides: [
+      { src: "/images/mobile-bar-mieten-berlin.jpg", alt: "Elegante mobile Bar mit moderner Beleuchtung" },
+      { src: "/images/kaffee-catering-berlin.jpg", alt: "Kaffee Catering Barista Station von Moving Bars" },
+      { src: "/images/cocktailkurse-berlin.jpg", alt: "Shaker und Zutaten für einen Cocktailkurs" },
+    ],
+    reverse: true,
+  },
 ];
 ---
 
@@ -47,79 +72,43 @@ const sliderImages = [
       </div>
     </article>
 
-    <!-- ✅ AB HIER: 2 ZEILEN, JEWEILS VOLLE BREITE: (Text | Slider) dann (Slider | Text) -->
     <div class="wide-rows" aria-label="Text und Slider Kacheln">
-      <!-- ROW 1: links Text, rechts Slider -->
-      <div class="wide-row">
-        <article class="panel panel--text" aria-label="Text links">
-          <div class="panel-inner">
-            <h3 class="panel-title">FEINSTE COCKTAILS & LONGDRINKS</h3>
-            <div class="panel-sep" aria-hidden="true"></div>
-            <p class="panel-text">
-              Wenn Sie unsere mobile Cocktailbar mieten, mixen wir für Sie und Ihre Gäste klassische und moderne Cocktails
-              und/oder Longdrinks aus besten Zutaten. Sprechen Sie mit uns – wir beraten Sie gerne.
-            </p>
-            <a class="panel-cta" href="#" aria-label="Cocktail Menüs ansehen">HIER UNSERE COCKTAIL MENUS ANSEHEN</a>
-          </div>
-        </article>
-
-        <article class="panel panel--slider" aria-label="Slider rechts">
-          <div class="slider" data-slider>
-            <button class="slider-btn prev" type="button" aria-label="Vorheriges Bild">‹</button>
-            <div class="slider-track" tabindex="0" aria-label="Bildergalerie">
-              {sliderImages.map((src, index) => (
-                <div class="slide" aria-label={`Bild ${index + 1}`}>
-                  <img
-                    class="parallax-img"
-                    data-parallax="1"
-                    alt=""
-                    src={src}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-              ))}
+      {rows.map((row, rowIndex) => (
+        <div class="wide-row">
+          <article class={`panel panel--text ${row.reverse ? "panel--text-right" : ""}`} aria-label="Textpanel">
+            <div class="panel-inner">
+              <p class="panel-kicker">Moving Bars</p>
+              <h3 class="panel-title">{row.textTitle}</h3>
+              <div class="panel-sep" aria-hidden="true"></div>
+              <p class="panel-text">{row.textBody}</p>
+              <a class="panel-cta" href={row.cta.href}>{row.cta.label}</a>
             </div>
-            <button class="slider-btn next" type="button" aria-label="Nächstes Bild">›</button>
-          </div>
-        </article>
-      </div>
+          </article>
 
-      <!-- ROW 2: links Slider, rechts Text -->
-      <div class="wide-row">
-        <article class="panel panel--slider" aria-label="Slider links">
-          <div class="slider" data-slider>
-            <button class="slider-btn prev" type="button" aria-label="Vorheriges Bild">‹</button>
-            <div class="slider-track" tabindex="0" aria-label="Bildergalerie">
-              {sliderImages.map((src, index) => (
-                <div class="slide" aria-label={`Bild ${index + 1}`}>
-                  <img
-                    class="parallax-img"
-                    data-parallax="1"
-                    alt=""
-                    src={src}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-              ))}
+          <article class={`panel panel--slider ${row.reverse ? "panel--slider-left" : ""}`} aria-label="Bild-Slider">
+            <div class="slider" data-slider>
+              <button class="slider-btn prev" type="button" aria-label="Vorheriges Bild">‹</button>
+              <div class="slider-track" tabindex="0" aria-label={`Bildergalerie ${rowIndex + 1}`}>
+                {row.slides.map((slide, index) => (
+                  <div class="slide" aria-label={`Bild ${index + 1}`}>
+                    <img
+                      class="parallax-img"
+                      data-parallax="1"
+                      alt={slide.alt}
+                      src={slide.src}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                ))}
+              </div>
+              <button class="slider-btn next" type="button" aria-label="Nächstes Bild">›</button>
+              <div class="slider-fade slider-fade--left" aria-hidden="true"></div>
+              <div class="slider-fade slider-fade--right" aria-hidden="true"></div>
             </div>
-            <button class="slider-btn next" type="button" aria-label="Nächstes Bild">›</button>
-          </div>
-        </article>
-
-        <article class="panel panel--text" aria-label="Text rechts">
-          <div class="panel-inner">
-            <h3 class="panel-title">MOBILE BAR MIETEN IN BERLIN</h3>
-            <div class="panel-sep" aria-hidden="true"></div>
-            <p class="panel-text">
-              Unsere mobile Bar ist das Ergebnis aus über 20 Jahren Erfahrung. Full Service, Barkeeper, Bar & Setup –
-              alles aus einer Hand, damit Ihr Event reibungslos läuft.
-            </p>
-            <a class="panel-cta" href="/anfrage" aria-label="Jetzt anfragen">JETZT ANFRAGEN</a>
-          </div>
-        </article>
-      </div>
+          </article>
+        </div>
+      ))}
     </div>
   </div>
 </section>
@@ -180,12 +169,11 @@ const sliderImages = [
 
 <style>
   .under-hero-tiles{
-    background:#000;
+    background: radial-gradient(circle at 20% 20%, rgba(211, 139, 69, 0.05), transparent 38%), #000;
     color:#f7f7f7;
     padding: clamp(2.5rem, 6vw, 4.5rem) var(--content-pad) clamp(3rem, 8vw, 5rem);
   }
 
-  /* ✅ “Über komplette Breite der Page” */
   .tiles-shell{
     width: 100%;
     max-width: none;
@@ -194,9 +182,6 @@ const sliderImages = [
     gap: clamp(1.5rem, 3vw, 2.25rem);
   }
 
-  /* =========================
-     TILE 1 (dein H2 Block)
-     ========================= */
   .tile{ border-radius: 0; }
 
   .tile--intro{
@@ -249,12 +234,9 @@ const sliderImages = [
     font-weight: 300;
   }
 
-  /* =========================
-     ZWEI “VOLLBREITE” ROWS
-     ========================= */
   .wide-rows{
     display: grid;
-    gap: 0; /* wie im Original: Kacheln stoßen an */
+    gap: 0;
   }
 
   .wide-row{
@@ -267,27 +249,52 @@ const sliderImages = [
     .wide-row{
       grid-template-columns: 1fr 1fr;
     }
+
+    .panel--slider-left{ order: -1; }
+    .panel--text-right{ order: 1; }
   }
 
   .panel{
     border: none;
     border-radius: 0;
     background: rgba(255,255,255,0.02);
-    min-height: clamp(340px, 40vw, 520px); /* ✅ gleiche Höhe für Text & Slider */
+    min-height: clamp(340px, 40vw, 520px);
     overflow: hidden;
     display: grid;
   }
 
   .panel--text{
     background: #050505;
-    padding: clamp(1.25rem, 3vw, 2.25rem);
+    padding: clamp(1.25rem, 3vw, 2.4rem);
     align-items: center;
+    position: relative;
+    isolation: isolate;
+  }
+
+  .panel--text::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 18% 14%, rgba(211, 139, 69, 0.12), transparent 42%);
+    opacity: 0.8;
+    z-index: 0;
   }
 
   .panel-inner{
-    max-width: 70ch;
+    max-width: 72ch;
     display: grid;
     gap: 0.9rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .panel-kicker{
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.82rem;
+    color: rgba(211, 139, 69, 0.9);
+    font-weight: 600;
   }
 
   .panel-title{
@@ -307,7 +314,7 @@ const sliderImages = [
 
   .panel-text{
     margin:0;
-    color: rgba(247,247,247,0.82);
+    color: rgba(247,247,247,0.84);
     line-height: 1.7;
     font-weight: 300;
     font-family: "Inter", system-ui, sans-serif;
@@ -321,7 +328,7 @@ const sliderImages = [
     text-transform: uppercase;
     letter-spacing: 0.08em;
     font-size: 0.95rem;
-    padding: 0.95rem 1.1rem;
+    padding: 0.95rem 1.15rem;
     border: 1px solid rgba(211, 139, 69, 0.6);
     color: rgba(211, 139, 69, 0.95);
     background: transparent;
@@ -375,6 +382,13 @@ const sliderImages = [
     backface-visibility: hidden;
   }
 
+  :global([data-uh-tiles] .slide::after){
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0) 40%);
+  }
+
   :global([data-uh-tiles] .slider-btn){
     position: absolute;
     top: 50%;
@@ -401,9 +415,23 @@ const sliderImages = [
   :global([data-uh-tiles] .slider-btn.prev){ left: 12px; }
   :global([data-uh-tiles] .slider-btn.next){ right: 12px; }
 
+  .slider-fade{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: clamp(28px, 4vw, 48px);
+    pointer-events: none;
+    background: linear-gradient(90deg, #000 0%, rgba(0,0,0,0) 100%);
+    z-index: 1;
+  }
+
+  .slider-fade--left{ left: 0; }
+  .slider-fade--right{ right: 0; transform: scaleX(-1); }
+
   @media (max-width: 720px){
     :global([data-uh-tiles] .slider-btn){ display:none; }
     .panel{ min-height: clamp(280px, 72vw, 420px); }
+    .panel-cta{ width: 100%; justify-content: center; }
   }
 
   @media (prefers-reduced-motion: reduce){
