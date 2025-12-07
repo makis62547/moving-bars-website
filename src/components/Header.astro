@@ -1,4 +1,5 @@
 ---
+---
 const navLinks = [
   { href: "/cocktail-catering", label: "Cocktail Catering" },
   { href: "/mobile-bar", label: "Mobile Bar" },
@@ -9,135 +10,59 @@ const navLinks = [
 ];
 ---
 
-<header
-  class="
-    fixed top-0 left-0 right-0 z-50
-    bg-[rgba(0,0,0,0.55)]
-    h-[var(--header-h)]
-    overflow-visible
-  "
->
-  <div class="site-container flex h-full items-center justify-between gap-6 overflow-visible">
-    <!-- Logo -->
-    <a
-      href="/"
-      class="
-        relative
-        flex h-full items-start
-        shrink-0
-        pt-[10px]
-        overflow-visible
-        whitespace-nowrap
-      "
-      aria-label="Startseite"
-    >
-      <img
-        src="/images/logo-white.png"
-        alt="moving bars logo"
-        class="
-          h-[140px] w-auto
-          translate-y-[8px]
-          select-none
-          shrink-0
-          object-contain
-        "
-      />
+<header class="site-header">
+  <div class="header-inner site-container">
+    <a href="/" class="logo" aria-label="Startseite">
+      <img src="/images/logo-white.png" alt="moving bars logo" />
     </a>
 
-    <!-- Navigation -->
-    <nav
-      class="
-        hidden h-full flex-nowrap items-center justify-center
-        gap-12
-        text-sm md:text-base
-        font-light
-        lg:flex
-      "
-      aria-label="Hauptnavigation"
-    >
+    <nav class="nav-desktop" aria-label="Hauptnavigation">
       {navLinks.map((link) => (
-        <a
-          href={link.href}
-          class="
-            text-white
-            whitespace-nowrap
-            tracking-normal
-            normal-case
-            hover:text-[#D38B45]
-            transition-colors
-          "
-        >
-          {link.label}
-        </a>
+        <a href={link.href} class="nav-link">{link.label}</a>
       ))}
     </nav>
 
-    <!-- Mobile menu button -->
-    <button
-      type="button"
-      class="
-        inline-flex items-center gap-2
-        rounded-md
-        px-3 py-2
-        text-sm font-medium
-        text-white
-        ring-offset-2 ring-offset-black
-        transition-colors
-        hover:text-[#D38B45]
-        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D38B45]
-        lg:hidden
-      "
-      aria-label="Menü umschalten"
-      aria-expanded="false"
-      aria-controls="mobile-nav"
-      data-menu-button
-    >
-      <span class="uppercase tracking-wide">Menu</span>
-      <span class="block h-5 w-6" aria-hidden="true">
-        <span class="block h-[2px] w-full bg-white"></span>
-        <span class="mt-1 block h-[2px] w-full bg-white"></span>
-        <span class="mt-1 block h-[2px] w-full bg-white"></span>
-      </span>
-    </button>
+    <div class="nav-mobile">
+      <button
+        type="button"
+        class="menu-button"
+        aria-label="Menü öffnen"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        data-menu-button
+      >
+        <span class="menu-label">Menu</span>
+        <span class="menu-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </div>
   </div>
 
-  <!-- Mobile navigation overlay -->
-  <div id="mobile-nav" class="mobile-nav" data-menu-panel>
-    <div class="mobile-nav-backdrop" data-menu-backdrop aria-hidden="true"></div>
-    <div class="mobile-nav-panel">
-      <div class="site-container">
-        <nav class="mobile-nav-links" aria-label="Hauptnavigation mobil">
-          {navLinks.map((link) => (
-            <a
-              href={link.href}
-              class="
-                text-white
-                py-2
-                text-base
-                font-light
-                tracking-normal
-                normal-case
-                hover:text-[#D38B45]
-                transition-colors
-              "
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
-      </div>
+  <div id="mobile-nav" class="mobile-overlay" data-menu-panel>
+    <button type="button" class="mobile-close" aria-label="Menü schließen" data-menu-close>
+      ✕
+    </button>
+    <div class="mobile-overlay-inner">
+      <nav class="mobile-nav" aria-label="Hauptnavigation mobil">
+        {navLinks.map((link) => (
+          <a href={link.href} class="mobile-nav-link">{link.label}</a>
+        ))}
+      </nav>
     </div>
   </div>
 </header>
 
 <script>
-  const header = document.querySelector("header");
+  const header = document.querySelector(".site-header");
   const button = header?.querySelector("[data-menu-button]");
   const panel = header?.querySelector("[data-menu-panel]");
-  const backdrop = header?.querySelector("[data-menu-backdrop]");
+  const closeButton = header?.querySelector("[data-menu-close]");
   const links = Array.from(panel?.querySelectorAll("a") ?? []);
 
-  if (header && button && panel) {
+  if (header && button && panel && closeButton) {
     const closeMenu = () => {
       header.classList.remove("is-open");
       button.setAttribute("aria-expanded", "false");
@@ -157,7 +82,7 @@ const navLinks = [
     };
 
     button.addEventListener("click", toggleMenu);
-    backdrop?.addEventListener("click", closeMenu);
+    closeButton.addEventListener("click", closeMenu);
     links.forEach((link) => link.addEventListener("click", closeMenu));
 
     const handleKey = (event) => {
@@ -168,14 +93,13 @@ const navLinks = [
 
     document.addEventListener("keydown", handleKey);
 
-    const handleClickOutside = (event) => {
-      const target = event.target;
-      if (!panel.contains(target) && !button.contains(target)) {
+    const handleOverlayClick = (event) => {
+      if (event.target === panel) {
         closeMenu();
       }
     };
 
-    document.addEventListener("click", handleClickOutside);
+    panel.addEventListener("click", handleOverlayClick);
 
     window.addEventListener("resize", () => {
       if (window.innerWidth >= 1024) {
@@ -186,48 +110,202 @@ const navLinks = [
 </script>
 
 <style>
-  .mobile-nav {
-    display: none;
-  }
-
-  :global(header.is-open) .mobile-nav {
-    display: block;
-  }
-
-  .mobile-nav-backdrop {
+  .site-header {
     position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(2px);
-    z-index: 45;
-  }
-
-  .mobile-nav-panel {
-    position: fixed;
-    top: var(--header-h);
+    top: 0;
     left: 0;
     right: 0;
-    max-height: calc(100vh - var(--header-h));
-    overflow-y: auto;
-    background: rgba(0, 0, 0, 0.95);
-    border-top: 1px solid rgba(211, 139, 69, 0.35);
-    padding: 1.25rem 0 2rem;
     z-index: 50;
+    height: var(--header-h);
+    background: rgba(0, 0, 0, 0.55);
+    overflow: visible;
   }
 
-  .mobile-nav-links {
+  .header-inner {
     display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    height: 100%;
   }
 
-  .mobile-nav-links a {
-    width: 100%;
+  .logo {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    padding-top: 10px;
+    flex: 0 0 auto;
+    flex-shrink: 0;
+    overflow: visible;
+    white-space: nowrap;
+  }
+
+  .logo img {
+    height: clamp(90px, 10vw, 140px);
+    width: auto;
+    transform: translateY(8px);
+    user-select: none;
+    flex-shrink: 0;
+    object-fit: contain;
+    max-width: none;
+  }
+
+  .nav-link {
+    color: #fff;
+    font-size: clamp(0.95rem, 1vw, 1.05rem);
+    font-weight: 300;
+    text-transform: none;
+    letter-spacing: normal;
+    white-space: nowrap;
+    transition: color 150ms ease;
+  }
+
+  .nav-link:hover,
+  .nav-link:focus-visible {
+    color: #d38b45;
+  }
+
+  .nav-desktop {
+    display: none;
+    align-items: center;
+    gap: 3.5rem;
+    height: 100%;
+  }
+
+  .nav-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
   }
 
   @media (min-width: 1024px) {
-    .mobile-nav {
-      display: none !important;
+    .nav-desktop {
+      display: flex;
+    }
+
+    .nav-mobile {
+      display: none;
+    }
+  }
+
+  .menu-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 0.85rem;
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: color 150ms ease, border-color 150ms ease, background-color 150ms ease;
+  }
+
+  .menu-button:hover,
+  .menu-button:focus-visible {
+    color: #d38b45;
+    border-color: rgba(211, 139, 69, 0.7);
+    outline: none;
+  }
+
+  .menu-label {
+    display: block;
+    letter-spacing: 0.12em;
+  }
+
+  .menu-icon {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 26px;
+    height: 20px;
+  }
+
+  .menu-icon span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: currentColor;
+  }
+
+  .mobile-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 200ms ease;
+    z-index: 45;
+  }
+
+  .mobile-overlay-inner {
+    width: 100%;
+    max-width: var(--content-max);
+    padding: 0 var(--content-pad);
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    text-align: center;
+  }
+
+  .mobile-nav-link {
+    color: #fff;
+    font-size: clamp(1.2rem, 4vw, 1.6rem);
+    font-weight: 300;
+    line-height: 1.7;
+    transition: color 150ms ease;
+  }
+
+  .mobile-nav-link:hover,
+  .mobile-nav-link:focus-visible {
+    color: #d38b45;
+  }
+
+  .mobile-close {
+    position: absolute;
+    top: clamp(18px, 3vw, 32px);
+    right: clamp(18px, 3vw, 32px);
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: #fff;
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: color 150ms ease, border-color 150ms ease, background-color 150ms ease;
+  }
+
+  .mobile-close:hover,
+  .mobile-close:focus-visible {
+    color: #d38b45;
+    border-color: rgba(211, 139, 69, 0.75);
+    outline: none;
+  }
+
+  .site-header.is-open .mobile-overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  @media (min-width: 1024px) {
+    .mobile-overlay {
+      display: none;
     }
   }
 </style>
