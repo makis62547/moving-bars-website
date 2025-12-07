@@ -15,9 +15,11 @@ const LOCAL_BASE = 'http://localhost:4321';
 const OUTPUT_ROOT = 'vr';
 const DIFF_THRESHOLD = 0.005; // 0.5%
 
-// Default run focuses on the home page only. Extend this list locally if needed
-// for additional checks.
-const PAGES = [{ name: 'home', path: '/' }];
+const PAGES = [
+  { name: 'home', path: '/' },
+  { name: 'cocktail-catering', path: '/cocktail-catering' },
+  { name: 'mobile-bar', path: '/mobile-bar' },
+];
 
 const MODES = {
   BASELINE: 'baseline',
