@@ -16,11 +16,18 @@ import Header from "./Header.astro";
       <li><span class="hero-check">✔</span><span>Für Privat & Firmen – Events</span></li>
     </ul>
 
-    <div class="hero-arrow">⌄</div>
+    <a
+      class="hero-arrow"
+      href="#hero-h1"
+      aria-label="Zum Abschnitt: Mobile Cocktailbar mieten in Berlin"
+      title="Zum Abschnitt: Mobile Cocktailbar mieten in Berlin"
+    >
+      ⌄
+    </a>
   </div>
 </section>
 
-<section class="intro" aria-labelledby="intro-title">
+<section id="hero-h1" class="intro" aria-labelledby="intro-title">
   <div class="intro-shell">
     <div class="intro-panel">
       <div class="intro-text">
@@ -149,7 +156,15 @@ import Header from "./Header.astro";
     margin-top: 3rem;
     font-size: clamp(2.5rem, 4vw, 3.75rem);
     color: rgba(255, 255, 255, 0.9);
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
     animation: bounce 1.5s infinite;
+  }
+
+  .hero-arrow:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 6px;
   }
 
   @keyframes bounce {
@@ -166,6 +181,7 @@ import Header from "./Header.astro";
   .intro {
     background: #000;
     padding: 44px 0 96px;
+    scroll-margin-top: calc(var(--header-h) + 32px);
   }
 
   .intro-shell {
