@@ -1,5 +1,6 @@
 ---
 import Header from "./Header.astro";
+import ParallaxBanner from "./ParallaxBanner.astro";
 ---
 
 <section id="hero" class="hero">
@@ -28,6 +29,12 @@ import Header from "./Header.astro";
     </div>
   </div>
 </section>
+
+<ParallaxBanner
+  src="/cocktail-catering-moving-bars.jpg"
+  alt="Cocktail Catering Moving Bars"
+  height="clamp(300px, 45vh, 560px)"
+/>
 
 <section id="hero-h1" class="intro" aria-labelledby="intro-title">
   <div class="intro-shell site-container">
@@ -155,6 +162,7 @@ import Header from "./Header.astro";
     display: inline-block;
     cursor: pointer;
     text-decoration: none;
+    align-self: center;
     animation: bounce 1.5s infinite;
   }
 
@@ -203,7 +211,7 @@ import Header from "./Header.astro";
 
   .intro-title {
     margin: 0;
-    font-size: clamp(2.5rem, 4.8vw, 3.75rem);
+    font-size: clamp(2.5rem, 4.8vw, 3.6rem);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     font-weight: 300;

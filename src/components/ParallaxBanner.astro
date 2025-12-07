@@ -1,0 +1,87 @@
+---
+const {
+  src,
+  alt = "Moving Bars",
+  height = "clamp(300px, 45vh, 560px)",
+} = Astro.props;
+---
+
+<section class="mb-parallax full-bleed" style={`--mb-h:${height};`}>
+  <div class="mb-parallax__inner">
+    <img data-mb-parallax-img class="mb-parallax__img" src={src} alt={alt} loading="eager" decoding="async" fetchpriority="high" />
+  </div>
+</section>
+
+<script is:inline>
+(() => {
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+
+  const banners = Array.from(document.querySelectorAll('.mb-parallax'));
+  if (!banners.length) return;
+
+  let ticking = false;
+
+  const update = () => {
+    ticking = false;
+    const vh = window.innerHeight || 1;
+
+    for (const el of banners) {
+      const img = el.querySelector('[data-mb-parallax-img]');
+      if (!img) continue;
+
+      const r = el.getBoundingClientRect();
+      if (r.bottom <= 0 || r.top >= vh) continue;
+
+      const progress = (r.top + r.height / 2 - vh / 2) / vh;
+      const y = Math.max(-42, Math.min(42, progress * -34));
+      img.style.transform = `translate3d(0, ${y}px, 0) scale(1.08)`;
+    }
+  };
+
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', () => { update(); }, { passive: true });
+  window.addEventListener('load', () => { update(); }, { passive: true });
+
+  update();
+})();
+</script>
+
+<style>
+.full-bleed{
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+.mb-parallax{
+  height: var(--mb-h);
+  overflow: hidden;
+}
+
+.mb-parallax__inner{
+  position: relative;
+  height: 100%;
+}
+
+.mb-parallax__img{
+  position: absolute;
+  inset: -12%;
+  width: 124%;
+  height: 124%;
+  object-fit: cover;
+  object-position: center;
+  will-change: transform;
+  transform: translate3d(0,0,0) scale(1.08);
+}
+
+@media (prefers-reduced-motion: reduce){
+  .mb-parallax__img{ transform: none !important; }
+}
+</style>
