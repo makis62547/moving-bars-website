@@ -178,10 +178,7 @@ const sliderImages = [
 </script>
 
 <style>
-  /* ✅ Harter “alles ist wirklich schwarz” Fix:
-     - setzt Hintergrund auf Section UND Container
-     - entfernt potenzielle “transparent + anderer Body-Hintergrund” Effekte
-     - killt ggf. 1px seams durch negative margins */
+  /* ✅ kompletter Bereich wirklich schwarz */
   .under-hero-tiles {
     background: #000 !important;
     color: #f7f7f7;
@@ -198,21 +195,8 @@ const sliderImages = [
     gap: clamp(1.5rem, 3vw, 2.25rem);
   }
 
-  /* optional: falls ein “Gap”/Seam vom vorherigen Abschnitt kommt */
-  .under-hero-tiles::before,
-  .under-hero-tiles::after {
-    content: "";
-    display: block;
-    height: 0;
-    background: #000;
-  }
-
-  /* Intro bleibt wie gehabt */
-  .tile--intro {
-    border: none;
-    background: transparent;
-    padding: 0;
-  }
+  /* Intro (dein H2 Block) */
+  .tile--intro { border: none; background: transparent; padding: 0; }
 
   .tile--intro .intro {
     display: grid;
@@ -254,19 +238,46 @@ const sliderImages = [
 
   /* Rows */
   .wide-rows { display: grid; gap: 0; background: #000 !important; }
-  .wide-row { display: grid; grid-template-columns: 1fr; gap: 0; }
-  @media (min-width: 900px) { .wide-row { grid-template-columns: 1fr 1fr; } }
 
+  .wide-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    background: #000 !important;
+  }
+
+  @media (min-width: 900px) {
+    .wide-row { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ✅ WICHTIG: keine Trennlinie in der Mitte (kein border, kein box-shadow, kein outline) */
   .panel {
-    border: none;
-    border-radius: 0;
-    background: #000 !important; /* ✅ wirklich schwarz, kein “grau” */
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    background: #000 !important;
     min-height: clamp(360px, 42vw, 560px);
     overflow: hidden;
     display: grid;
   }
 
-  /* Textseiten ebenfalls schwarz (kein #050505) */
+  /* Falls irgendwo ein 1px “Hairline” durch Subpixel entsteht: überdecken */
+  @media (min-width: 900px) {
+    .wide-row { position: relative; }
+    .wide-row::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;              /* ✅ überdeckt die Naht */
+      transform: translateX(-1px);
+      background: #000;        /* ✅ gleiche Farbe wie Hintergrund */
+      pointer-events: none;
+      z-index: 5;
+    }
+  }
+
   .panel--text {
     background: #000 !important;
     padding: clamp(1.25rem, 3vw, 2.25rem);
@@ -286,7 +297,6 @@ const sliderImages = [
   }
 
   .accent { color: rgba(211, 139, 69, 0.95); }
-
   .panel-sep { height: 1px; background: rgba(211, 139, 69, 0.75); width: 100%; }
 
   .panel-text {
@@ -335,7 +345,7 @@ const sliderImages = [
     scroll-snap-align: start;
     position: relative;
     overflow: hidden;
-    background: #000; /* ✅ kein Grau */
+    background: #000;
   }
 
   :global([data-uh-tiles] .slide > .parallax-img) {
@@ -363,7 +373,7 @@ const sliderImages = [
     display: grid;
     place-items: center;
     cursor: pointer;
-    z-index: 2;
+    z-index: 6;
   }
 
   :global([data-uh-tiles] .slider-btn:hover),
