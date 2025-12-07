@@ -9,7 +9,7 @@ const sliderImages = [
 
 <section class="under-hero-tiles" aria-label="Ergänzende Informationen" data-uh-tiles>
   <div class="tiles-shell">
-    <!-- TILE 1 -->
+    <!-- TILE 1 (Intro bleibt breit) -->
     <article class="tile tile--intro">
       <div class="intro">
         <div class="intro__icon" aria-hidden="true">
@@ -47,76 +47,81 @@ const sliderImages = [
       </div>
     </article>
 
-    <!-- TILE 2 -->
-    <article class="tile">
-      <div class="tile-copy">
-        <p class="tile-label">Slider rechts</p>
-        <p class="tile-text">
-          Links Text, rechts ein horizontaler Slider mit quadratischen Bildern. Scrollbar oder per Buttons navigierbar.
-        </p>
-      </div>
-      <div class="tile-visual">
-        <div class="slider" data-slider>
-          <button class="slider-btn prev" type="button" aria-label="Vorheriges Bild">‹</button>
-          <div class="slider-track" tabindex="0">
-            {sliderImages.map((src, index) => (
-              <div class="slide" aria-label={`Platzhalterbild ${index + 1}`}>
-                <img
-                  class="parallax-img"
-                  data-parallax="1"
-                  alt="Platzhalter"
-                  src={src}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-            ))}
-          </div>
-          <button class="slider-btn next" type="button" aria-label="Nächstes Bild">›</button>
+    <!-- ✅ Ab hier: QUADRATISCHE KACHELN als Grid -->
+    <div class="tiles-grid" aria-label="Platzhalter-Kacheln">
+      <!-- TILE 2 (Square) -->
+      <article class="tile tile--square">
+        <div class="tile-copy">
+          <p class="tile-label">Slider rechts</p>
+          <p class="tile-text">
+            Links Text, rechts ein horizontaler Slider mit quadratischen Bildern. Scrollbar oder per Buttons navigierbar.
+          </p>
         </div>
-      </div>
-    </article>
 
-    <!-- TILE 3 -->
-    <article class="tile">
-      <div class="tile-visual">
-        <div class="slider" data-slider>
-          <button class="slider-btn prev" type="button" aria-label="Vorheriges Bild">‹</button>
-          <div class="slider-track" tabindex="0">
-            {sliderImages.map((src, index) => (
-              <div class="slide" aria-label={`Platzhalterbild ${index + 1}`}>
-                <img
-                  class="parallax-img"
-                  data-parallax="1"
-                  alt="Platzhalter"
-                  src={src}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-            ))}
+        <div class="tile-visual">
+          <div class="slider" data-slider>
+            <button class="slider-btn prev" type="button" aria-label="Vorheriges Bild">‹</button>
+            <div class="slider-track" tabindex="0">
+              {sliderImages.map((src, index) => (
+                <div class="slide" aria-label={`Platzhalterbild ${index + 1}`}>
+                  <img
+                    class="parallax-img"
+                    data-parallax="1"
+                    alt="Platzhalter"
+                    src={src}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              ))}
+            </div>
+            <button class="slider-btn next" type="button" aria-label="Nächstes Bild">›</button>
           </div>
-          <button class="slider-btn next" type="button" aria-label="Nächstes Bild">›</button>
         </div>
-      </div>
-      <div class="tile-copy">
-        <p class="tile-label">Slider links</p>
-        <p class="tile-text">
-          Links der quadratische Slider, rechts kurzer Blindtext. Auch hier nur Platzhalter – Inhalte folgen später.
-        </p>
-      </div>
-    </article>
+      </article>
 
-    <!-- TILE 4 -->
-    <article class="tile">
-      <div class="tile-visual icon" aria-hidden="true"></div>
-      <div class="tile-copy">
-        <p class="tile-label">Placeholder Headline</p>
-        <p class="tile-text">
-          Noch ein kurzer Blindtext mit Icon als Akzent. Alle Angaben sind temporär und dienen nur dem Layout-Test.
-        </p>
-      </div>
-    </article>
+      <!-- TILE 3 (Square) – Copy oben, Slider unten (damit’s in Quadraten sauber wirkt) -->
+      <article class="tile tile--square">
+        <div class="tile-copy">
+          <p class="tile-label">Slider links</p>
+          <p class="tile-text">
+            Quadratischer Slider + kurzer Blindtext. Inhalte folgen später.
+          </p>
+        </div>
+
+        <div class="tile-visual">
+          <div class="slider" data-slider>
+            <button class="slider-btn prev" type="button" aria-label="Vorheriges Bild">‹</button>
+            <div class="slider-track" tabindex="0">
+              {sliderImages.map((src, index) => (
+                <div class="slide" aria-label={`Platzhalterbild ${index + 1}`}>
+                  <img
+                    class="parallax-img"
+                    data-parallax="1"
+                    alt="Platzhalter"
+                    src={src}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              ))}
+            </div>
+            <button class="slider-btn next" type="button" aria-label="Nächstes Bild">›</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- TILE 4 (Square) -->
+      <article class="tile tile--square">
+        <div class="tile-visual icon" aria-hidden="true"></div>
+        <div class="tile-copy">
+          <p class="tile-label">Placeholder Headline</p>
+          <p class="tile-text">
+            Noch ein kurzer Blindtext mit Icon als Akzent. Alle Angaben sind temporär und dienen nur dem Layout-Test.
+          </p>
+        </div>
+      </article>
+    </div>
   </div>
 </section>
 
@@ -195,13 +200,22 @@ const sliderImages = [
     gap: clamp(1.5rem, 3vw, 2.25rem);
   }
 
+  /* ✅ Neues Grid für die quadratischen Platzhalter-Kacheln */
+  .tiles-grid {
+    display: grid;
+    gap: clamp(1.1rem, 2.2vw, 1.6rem);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    align-items: stretch;
+  }
+
   .tile {
     display: grid;
     grid-template-columns: 1fr;
-    gap: clamp(1rem, 3vw, 1.5rem);
-    padding: clamp(1.25rem, 3vw, 1.75rem);
+    gap: clamp(1rem, 2.2vw, 1.25rem);
+    padding: clamp(1.25rem, 2.6vw, 1.6rem);
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: rgba(255, 255, 255, 0.02);
+    border-radius: 18px;
   }
 
   .tile-visual {
@@ -239,12 +253,31 @@ const sliderImages = [
     font-weight: 300;
   }
 
+  /* ✅ Quadratisch + interne Aufteilung */
+  .tile--square {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    align-content: start;
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+
+  .tile--square .tile-visual {
+    min-height: 0;
+    align-self: stretch;
+    place-items: stretch;
+  }
+
+  .tile--square .slider {
+    height: 100%;
+  }
+
+  /* (Wichtig) Die alte Desktop-2-Spalten-Regel darf Square-Tiles NICHT betreffen */
   @media (min-width: 900px) {
-    .tile:not(.tile--intro) {
+    .tile:not(.tile--intro):not(.tile--square) {
       grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
       align-items: center;
     }
-    .tile:not(.tile--intro):nth-of-type(2n) {
+    .tile:not(.tile--intro):not(.tile--square):nth-of-type(2n) {
       grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
     }
   }
@@ -254,6 +287,7 @@ const sliderImages = [
     border: none;
     background: transparent;
     padding: 0;
+    border-radius: 0;
   }
 
   .tile--intro .intro {
@@ -331,7 +365,7 @@ const sliderImages = [
     display: grid;
     grid-auto-flow: column;
 
-    /* Wichtig: feste, responsive Kachelbreite -> optisch "kachelig" */
+    /* Kachelbreite im Slider */
     grid-auto-columns: clamp(150px, 16vw, 240px) !important;
 
     gap: 0.85rem;
@@ -340,6 +374,10 @@ const sliderImages = [
     scroll-snap-type: x mandatory;
     scroll-padding: 0.5rem;
     scrollbar-width: thin;
+
+    /* ✅ in Square-Tiles darf der Track die Höhe nutzen */
+    height: 100%;
+    align-items: center;
   }
 
   :global([data-uh-tiles] .slider-track::-webkit-scrollbar) {
@@ -351,7 +389,7 @@ const sliderImages = [
     border-radius: 999px;
   }
 
-  /* ✅ Quadratische Kachel – unabhängig vom Bild */
+  /* ✅ Quadratische Slide-Kachel */
   :global([data-uh-tiles] .slide) {
     scroll-snap-align: start;
     border: 1px solid rgba(255, 255, 255, 0.12);
@@ -389,6 +427,7 @@ const sliderImages = [
     place-items: center;
     cursor: pointer;
     transition: background 150ms ease, border-color 150ms ease, opacity 150ms ease;
+    z-index: 2;
   }
 
   :global([data-uh-tiles] .slider-btn:hover),
