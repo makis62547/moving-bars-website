@@ -1,6 +1,7 @@
 ---
 // src/components/Hero.astro
 import Header from "./Header.astro";
+import cocktailIconUrl from "../assets/icons/cocktail.svg?url";
 ---
 
 <section id="hero" class="hero">
@@ -48,7 +49,9 @@ import Header from "./Header.astro";
 
       <div class="intro-divider" aria-hidden="true"></div>
 
-      <div class="intro-icon" aria-hidden="true"></div>
+      <div class="intro-icon" aria-hidden="true">
+        <img src={cocktailIconUrl} alt="Cocktail" width="64" height="64" loading="eager" decoding="async" />
+      </div>
     </div>
   </div>
 
@@ -264,14 +267,10 @@ import Header from "./Header.astro";
     justify-content: center;
   }
 
-  .intro-icon::before {
-    content: "";
-    display: block;
+  .intro-icon img {
     width: clamp(48px, 5vw, 64px);
     height: clamp(48px, 5vw, 64px);
-    background: radial-gradient(circle at 30% 30%, rgba(211, 139, 69, 0.85), rgba(211, 139, 69, 0.6));
-    mask-image: radial-gradient(circle, #000 65%, transparent 70%);
-    border: 1px solid rgba(211, 139, 69, 0.4);
+    display: block;
   }
 
   .intro-banner {
