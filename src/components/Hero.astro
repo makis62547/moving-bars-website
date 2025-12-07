@@ -187,7 +187,8 @@ import Header from "./Header.astro";
   .intro-shell {
     max-width: 1240px;
     margin: 0 auto;
-    padding: 0 3rem;
+    /* Match Header wrapper (max-w-[1240px] mx-auto px-12) */
+    padding-inline: 3rem;
     display: flex;
     justify-content: flex-start;
   }
@@ -283,7 +284,7 @@ import Header from "./Header.astro";
     }
 
     .intro-shell {
-      padding: 0 3rem;
+      padding-inline: 3rem;
     }
   }
 </style>
