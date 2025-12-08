@@ -232,12 +232,14 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
   }
 
   /* ✅ natürlicher Zeilenabstand + weniger "Gap" zwischen Zeilen */
-  .intro-title {
-    margin: 0;
-    display: grid;
-    gap: 0.06em;        /* vorher 0.15em -> zu groß */
-    line-height: 1.02;  /* kompakter wie Original */
-  }
+  .intro-title{
+  margin: 0;
+  display: flex;          /* statt grid */
+  flex-direction: column; /* echte 2 Zeilen */
+  gap: 0;                 /* kein künstlicher Zeilenabstand */
+  line-height: 0.95;      /* enger */
+}
+
 
   .intro-title-accent {
     color: #d38b45;
