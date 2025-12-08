@@ -65,6 +65,19 @@ img {
 }
 
 @layer components {
+  .display-heading {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 200;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .display-size-h1 {
+    font-size: clamp(2.25rem, 4.4vw, 3.25rem);
+    line-height: 1.05;
+  }
+
   .hero-heading {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -79,9 +92,9 @@ img {
   }
 
   .hero-title {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 200;
-    letter-spacing: 0.02em;
+    font-family: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
     text-transform: uppercase;
     display: block;
   }
