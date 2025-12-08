@@ -36,9 +36,18 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
     <div class="intro-panel">
       <div class="intro-text">
         <h1 id="intro-title" class="intro-title hero-heading display-heading display-size-h1">
-          MOBILE COCKTAILBAR MIETEN<br />
-          IN BERLIN
-        </h1>
+  <span class="intro-title-line1">
+    <span class="intro-title-accent">MOBILE COCKTAILBAR</span> MIETEN
+  </span><br />
+  IN BERLIN
+</h1>
+@media (min-width: 901px) {
+  .intro-title-line1 {
+    white-space: nowrap;
+    display: inline-block;
+  }
+}
+
         <p class="intro-copy">
           Wir lieben Cocktails, perfekten Getränke-Service und wir lieben Veranstaltungen. Mieten Sie unsere mobile Cocktailbar
           in Berlin oder üBARall. Von der Vorbereitung und Planung bis zur Durchführung sind wir Ihr begeisterter Partner, wenn
