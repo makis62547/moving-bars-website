@@ -380,13 +380,14 @@ const sliderImagesDefault = [
   }
 
   :global([data-uh-tiles] .slide > .parallax-img) {
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    height: calc(120% + 4px);
-    object-fit: cover;
-    display: block;
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center;
+    display: block !important;
+
     transform: translate3d(0, var(--parallaxY, 0px), 0);
     will-change: transform;
     backface-visibility: hidden;
