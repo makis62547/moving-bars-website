@@ -36,17 +36,11 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
     <div class="intro-panel">
       <div class="intro-text">
         <h1 id="intro-title" class="intro-title hero-heading display-heading display-size-h1">
-  <span class="intro-title-line1">
-    <span class="intro-title-accent">MOBILE COCKTAILBAR</span> MIETEN
-  </span><br />
-  IN BERLIN
-</h1>
-@media (min-width: 901px) {
-  .intro-title-line1 {
-    white-space: nowrap;
-    display: inline-block;
-  }
-}
+          <span class="intro-title-line1">
+            <span class="intro-title-accent">MOBILE COCKTAILBAR</span> MIETEN
+          </span><br />
+          IN BERLIN
+        </h1>
 
         <p class="intro-copy">
           Wir lieben Cocktails, perfekten Getränke-Service und wir lieben Veranstaltungen. Mieten Sie unsere mobile Cocktailbar
@@ -298,7 +292,7 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
   .intro-banner-bg {
     position: absolute;
     inset: 0;
-   background-image: url("/images/cocktail-catering-moving-bars.jpg");
+    background-image: url("/images/cocktail-catering-moving-bars.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -329,8 +323,12 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
   @media (min-width: 901px) {
     .intro-panel {
       min-height: clamp(400px, 34vw, 520px);
+    }
 
-
+    /* ✅ verhindert 3. Zeile: "MOBILE COCKTAILBAR MIETEN" bleibt zusammen */
+    .intro-title-line1 {
+      white-space: nowrap;
+      display: inline-block;
     }
   }
 </style>
