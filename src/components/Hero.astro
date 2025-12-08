@@ -1,7 +1,7 @@
 ---
 // src/components/Hero.astro
 import Header from "./Header.astro";
-import cocktailIconUrl from "../assets/icons/cocktail.svg?url";
+import CocktailIcon from "./icons/CocktailIcon.astro";
 ---
 
 <section id="hero" class="hero">
@@ -50,7 +50,7 @@ import cocktailIconUrl from "../assets/icons/cocktail.svg?url";
       <div class="intro-divider" aria-hidden="true"></div>
 
       <div class="intro-icon" aria-hidden="true">
-        <img src={cocktailIconUrl} alt="Cocktail" width="300" height="300" loading="eager" decoding="async" />
+        <CocktailIcon class="intro-cocktail-icon" size="clamp(140px, 18vw, 230px)" />
       </div>
     </div>
   </div>
@@ -267,7 +267,7 @@ import cocktailIconUrl from "../assets/icons/cocktail.svg?url";
     justify-content: center;
   }
 
-  .intro-icon img {
+  .intro-cocktail-icon {
     width: clamp(140px, 18vw, 230px);
     height: clamp(140px, 18vw, 230px);
     display: block;

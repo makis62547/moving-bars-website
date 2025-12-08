@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import CocktailIcon from "../components/icons/CocktailIcon.astro";
 
 const iconModules = import.meta.glob("../assets/icons/*.svg", {
   eager: true,
@@ -25,6 +26,16 @@ const icons = Object.entries(iconModules)
         </div>
       ))}
     </div>
+
+    <section class="mask-preview" aria-label="PNG Mask Vorschau">
+      <h2>cocktail.png als CSS Mask</h2>
+      <div class="icon">
+        <div class="icon-svg mask-icon">
+          <CocktailIcon size={40} />
+        </div>
+        <span>cocktail.png</span>
+      </div>
+    </section>
   </main>
 </BaseLayout>
 
@@ -43,6 +54,20 @@ const icons = Object.entries(iconModules)
     grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 20px;
     width: min(1200px, 100%);
+  }
+
+  .mask-preview {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .mask-preview h2 {
+    color: #fff;
+    margin: 0;
+    font-size: 18px;
   }
 
   @media (max-width: 1024px) {
@@ -80,6 +105,10 @@ const icons = Object.entries(iconModules)
     justify-content: center;
     width: 40px;
     height: 40px;
+  }
+
+  .icon-svg.mask-icon {
+    background: transparent;
   }
 
   .icon svg {
