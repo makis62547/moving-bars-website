@@ -20,7 +20,7 @@ const sliderImagesDefault = [
 
 <section class="under-hero-tiles" aria-label="Ergänzende Informationen" data-uh-tiles>
   <div class="tiles-shell">
-    <!-- ✅ H2 / INTRO BLOCK: UNVERÄNDERT -->
+    <!-- ✅ H2 / INTRO BLOCK: unverändert -->
     <article class="tile tile--intro">
       <div class="intro">
         <div class="intro__icon" aria-hidden="true">
@@ -58,11 +58,11 @@ const sliderImagesDefault = [
       </div>
     </article>
 
-    <!-- ✅ AB HIER: FULL WIDTH KACHELN -->
-    <div class="wide-rows" aria-label="Text und Slider Kacheln">
-      <!-- ROW 1: links Text, rechts Slider -->
+    <!-- ✅ NUR das was danach kommt: 2×2 Quadrate, full-bleed -->
+    <div class="wide-rows" aria-label="Quadrat-Kacheln">
+      <!-- ROW 1: Text | Slider -->
       <div class="wide-row">
-        <article class="panel panel--text" aria-label="Text links">
+        <article class="panel panel--text" aria-label="Feinste Cocktails Text">
           <div class="panel-inner">
             <h3 class="panel-title">
               <span class="accent">FEINSTE</span> COCKTAILS & LONGDRINKS
@@ -82,7 +82,7 @@ const sliderImagesDefault = [
           </div>
         </article>
 
-        <article class="panel panel--slider" aria-label="Slider rechts">
+        <article class="panel panel--slider" aria-label="Feinste Cocktails Slider">
           <div class="slider" data-slider>
             <button class="slider-btn prev" type="button" aria-label="Vorheriges Bild">‹</button>
             <div class="slider-track" tabindex="0" aria-label="Bildergalerie">
@@ -97,9 +97,9 @@ const sliderImagesDefault = [
         </article>
       </div>
 
-      <!-- ROW 2: links Slider, rechts Text -->
+      <!-- ROW 2: Slider | Text -->
       <div class="wide-row">
-        <article class="panel panel--slider" aria-label="Slider links">
+        <article class="panel panel--slider" aria-label="Mobile Bar Slider">
           <div class="slider" data-slider>
             <button class="slider-btn prev" type="button" aria-label="Vorheriges Bild">‹</button>
             <div class="slider-track" tabindex="0" aria-label="Bildergalerie">
@@ -113,7 +113,7 @@ const sliderImagesDefault = [
           </div>
         </article>
 
-        <article class="panel panel--text" aria-label="Text rechts">
+        <article class="panel panel--text" aria-label="Mobile Bar Text">
           <div class="panel-inner">
             <h3 class="panel-title">
               <span class="accent">MOBILE BAR</span> MIETEN IN BERLIN
@@ -140,6 +140,7 @@ const sliderImagesDefault = [
 
 <script is:inline>
   const onReady = () => {
+    // Slider buttons
     document.querySelectorAll("[data-slider]").forEach((slider) => {
       const track = slider.querySelector(".slider-track");
       const prev = slider.querySelector(".slider-btn.prev");
@@ -151,6 +152,7 @@ const sliderImagesDefault = [
       next.addEventListener("click", () => track.scrollBy({ left: scrollAmount(), behavior: "smooth" }));
     });
 
+    // Parallax (stärker)
     const prefersReduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
     const els = Array.from(document.querySelectorAll(".parallax-img"));
     if (prefersReduced || !els.length) return;
@@ -162,25 +164,17 @@ const sliderImagesDefault = [
       ticking = false;
       const vh = window.innerHeight || 1;
       const viewportCenter = vh * 0.5;
-      const baseAmp = 140;
-      const panelAmp = 60;
+
+      // ✅ deutlich stärker als vorher
+      const baseAmp = 160;
 
       for (const el of els) {
         const r = el.getBoundingClientRect();
         const center = r.top + r.height * 0.5;
-        const norm = (center - viewportCenter) / vh;
+        const norm = (center - viewportCenter) / vh; // ca. -1..1
         const speed = parseFloat(el.dataset.parallax || "1") || 1;
         const y = clamp(-norm * baseAmp * speed, -baseAmp * 1.6, baseAmp * 1.6);
         el.style.setProperty("--parallaxY", `${y}px`);
-      }
-
-      const textPanels = Array.from(document.querySelectorAll(".panel--text"));
-      for (const panel of textPanels) {
-        const r = panel.getBoundingClientRect();
-        const center = r.top + r.height * 0.5;
-        const norm = (center - viewportCenter) / vh;
-        const y = clamp(-norm * panelAmp, -panelAmp * 1.2, panelAmp * 1.2);
-        panel.style.setProperty("--panelY", `${y}px`);
       }
     };
 
@@ -193,6 +187,7 @@ const sliderImagesDefault = [
     window.addEventListener("scroll", tick, { passive: true });
     window.addEventListener("resize", tick);
     document.querySelectorAll(".slider-track").forEach((t) => t.addEventListener("scroll", tick, { passive: true }));
+
     tick();
   };
 
@@ -206,56 +201,17 @@ const sliderImagesDefault = [
     color: #f7f7f7;
     padding: clamp(2.5rem, 6vw, 4.5rem) var(--content-pad) clamp(3rem, 8vw, 5rem);
     margin: 0;
-    overflow-x: clip;
+    overflow-x: clip; /* verhindert 1px Scroll durch 100vw */
   }
 
   .tiles-shell {
-    background: #000 !important;
-    width: 100%;
-    max-width: none;
-    margin: 0;
+    max-width: min(1400px, 94vw);
+    margin: 0 auto;
     display: grid;
     gap: clamp(1.5rem, 3vw, 2.25rem);
   }
 
-  /* ✅ FULL BLEED nur für Kacheln nach dem H2-Block */
-  .wide-rows {
-    background: #000 !important;
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-  }
-
-  .wide-row {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0;
-    background: #000 !important;
-    position: relative;
-  }
-
-  @media (min-width: 900px) {
-    .wide-row { grid-template-columns: 1fr 1fr; }
-    .wide-row::after{
-      content:"";
-      position:absolute;
-      top:0; bottom:0;
-      left:50%;
-      width:2px;
-      transform: translateX(-1px);
-      background:#000;
-      pointer-events:none;
-      z-index: 5;
-    }
-
-    .panel {
-      aspect-ratio: 1 / 1;
-      height: auto;
-      min-height: 0;
-    }
-  }
-
-  /* Intro (H2 Block) */
+  /* ---------- INTRO / H2 (unverändert) ---------- */
   .tile--intro { border: none; background: transparent; padding: 0; }
 
   .tile--intro .intro {
@@ -266,9 +222,24 @@ const sliderImagesDefault = [
     width: 100%;
   }
 
-  .tile--intro .intro__icon { justify-self: end; display: grid; place-items: center end; color: rgba(211, 139, 69, 0.95); }
-  .tile--intro .intro__svg { width: min(260px, 100%); height: auto; display: block; }
-  .tile--intro .intro__sep { align-self: stretch; background: rgba(211, 139, 69, 0.75); }
+  .tile--intro .intro__icon {
+    justify-self: end;
+    display: grid;
+    place-items: center end;
+    color: rgba(211, 139, 69, 0.95);
+  }
+
+  .tile--intro .intro__svg {
+    width: min(260px, 100%);
+    height: auto;
+    display: block;
+  }
+
+  .tile--intro .intro__sep {
+    align-self: stretch;
+    background: rgba(211, 139, 69, 0.75);
+  }
+
   .tile--intro .intro__copy { width: 100%; max-width: none !important; min-width: 0; }
 
   .tile--intro .intro__copy h2 {
@@ -296,26 +267,52 @@ const sliderImagesDefault = [
     font-weight: 300;
   }
 
-  /* ✅ WICHTIG: echte Höhe für Panels (damit Slider 100% füllen kann) */
+  /* ---------- 2×2 Quadrate full-bleed ---------- */
+  .wide-rows {
+    /* echtes full-bleed: ignoriert Containerbreite und content pad */
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    background: #000;
+  }
+
+  .wide-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;              /* ✅ kein Spalt */
+    background: #000;    /* ✅ falls rounding, bleibt schwarz */
+  }
+
+  @media (min-width: 900px) {
+    .wide-row { grid-template-columns: 1fr 1fr; }
+  }
+
   .panel {
+    background: #000 !important;
     border: 0 !important;
     outline: 0 !important;
     box-shadow: none !important;
-    background: #000 !important;
-
-    height: clamp(360px, 42vw, 560px);
-    min-height: clamp(360px, 42vw, 560px);
-
+    border-radius: 0 !important;
     overflow: hidden;
-    display: grid;
+    position: relative;
+
+    /* ✅ Quadrat: auf Desktop 50vw hoch, weil Spalte 50vw breit */
+    height: auto;
+  }
+
+  @media (min-width: 900px) {
+    .panel { height: 50vw; } /* ✅ echtes Quadrat pro Kachel */
+  }
+
+  /* Mobile: nicht zwingend Quadrat (besser lesbar) */
+  @media (max-width: 899px) {
+    .panel { min-height: 360px; }
   }
 
   .panel--text {
-    background: #000 !important;
-    padding: clamp(1.25rem, 3vw, 2.25rem);
+    display: grid;
     align-items: center;
-    transform: translate3d(0, var(--panelY, 0px), 0);
-    will-change: transform;
+    padding: clamp(1.25rem, 3vw, 2.25rem);
   }
 
   .panel-inner { max-width: 74ch; display: grid; gap: 0.9rem; }
@@ -357,19 +354,24 @@ const sliderImagesDefault = [
   }
 
   .panel-cta:hover,
-  .panel-cta:focus-visible { outline: none; background: rgba(211, 139, 69, 0.14); border-color: rgba(211, 139, 69, 0.9); }
+  .panel-cta:focus-visible {
+    outline: none;
+    background: rgba(211, 139, 69, 0.14);
+    border-color: rgba(211, 139, 69, 0.9);
+  }
 
-  /* Slider */
-  :global([data-uh-tiles] .slider) { position: relative; width: 100%; height: 100%; background: #000; overflow: hidden; }
-
-  :global([data-uh-tiles] .slider),
-  :global([data-uh-tiles] .slider-track),
-  :global([data-uh-tiles] .slide) {
+  /* ---------- Slider (ohne Ränder / ohne Masken) ---------- */
+  :global([data-uh-tiles] .slider) {
+    position: relative;
+    width: 100%;
     height: 100%;
+    background: #000;
+    overflow: hidden;
   }
 
   :global([data-uh-tiles] .slider-track) {
     display: flex;
+    width: 100%;
     height: 100%;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
@@ -382,6 +384,7 @@ const sliderImagesDefault = [
 
   :global([data-uh-tiles] .slide) {
     flex: 0 0 100%;
+    width: 100%;
     height: 100%;
     scroll-snap-align: start;
     position: relative;
@@ -389,6 +392,7 @@ const sliderImagesDefault = [
     background: #000;
   }
 
+  /* ✅ Bild füllt komplett + Parallax mit leichter Overscan via scale */
   :global([data-uh-tiles] .slide > .parallax-img) {
     position: absolute !important;
     inset: 0 !important;
@@ -398,27 +402,32 @@ const sliderImagesDefault = [
     object-position: center;
     display: block !important;
 
-    transform: translate3d(0, var(--parallaxY, 0px), 0);
+    transform: translate3d(0, var(--parallaxY, 0px), 0) scale(1.08);
     will-change: transform;
     backface-visibility: hidden;
   }
 
+  /* Buttons – ohne Borders/Outlines, kein Rand */
   :global([data-uh-tiles] .slider-btn) {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     width: 44px;
     height: 44px;
-    border-radius: 0;
+    border-radius: 999px;
+
     -webkit-appearance: none !important;
     appearance: none !important;
     border: 0 !important;
     outline: 0 !important;
     box-shadow: none !important;
-    background: #000 !important;
+
+    background: rgba(0,0,0,0.55) !important;
     color: #fff;
+
     padding: 0 !important;
     margin: 0 !important;
+
     display: grid;
     place-items: center;
     cursor: pointer;
@@ -428,31 +437,20 @@ const sliderImagesDefault = [
   :global([data-uh-tiles] .slider-btn:hover),
   :global([data-uh-tiles] .slider-btn:focus),
   :global([data-uh-tiles] .slider-btn:focus-visible) {
-    border: 0 !important;
-    outline: 0 !important;
-    box-shadow: none !important;
     background: rgba(211, 139, 69, 0.92) !important;
+    outline: none !important;
   }
 
-  :global([data-uh-tiles] .slider-btn.prev) { left: 12px; }
-  :global([data-uh-tiles] .slider-btn.next) { right: 12px; }
+  :global([data-uh-tiles] .slider-btn.prev) { left: 14px; }
+  :global([data-uh-tiles] .slider-btn.next) { right: 14px; }
 
   @media (max-width: 720px) {
     :global([data-uh-tiles] .slider-btn) { display: none; }
-
-    .panel {
-      height: clamp(300px, 78vw, 460px);
-      min-height: clamp(300px, 78vw, 460px);
-    }
   }
 
   @media (prefers-reduced-motion: reduce) {
     :global([data-uh-tiles] .slide > .parallax-img) {
       transform: none !important;
-      height: 100% !important;
-      top: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
     }
   }
 </style>
