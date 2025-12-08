@@ -209,12 +209,11 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
 
   .intro-panel {
     display: grid;
-    grid-template-columns: minmax(0, 0.72fr) 1px minmax(0, 0.28fr);
+    grid-template-columns: minmax(0, 0.62fr) 1px minmax(0, 0.38fr);
     align-items: flex-start;
     background: var(--background);
-    padding-top: clamp(1.25rem, 2.6vw, 2.25rem);
+    padding-block: clamp(3.5rem, 6vw, 6rem);
     padding-right: clamp(1.5rem, 3.5vw, 2.75rem);
-    padding-bottom: 0 !important;
     padding-left: 0;
     color: #f7f7f7;
     font-family: "Inter", system-ui, sans-serif;
@@ -311,6 +310,12 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
 
     .intro-icon {
       min-height: 0;
+    }
+  }
+
+  @media (min-width: 901px) {
+    .intro-panel {
+      min-height: clamp(520px, 48vw, 680px);
     }
   }
 </style>
