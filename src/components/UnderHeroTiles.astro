@@ -162,7 +162,8 @@ const sliderImagesDefault = [
       ticking = false;
       const vh = window.innerHeight || 1;
       const viewportCenter = vh * 0.5;
-      const baseAmp = 42;
+      const baseAmp = 140;
+      const panelAmp = 60;
 
       for (const el of els) {
         const r = el.getBoundingClientRect();
@@ -171,6 +172,15 @@ const sliderImagesDefault = [
         const speed = parseFloat(el.dataset.parallax || "1") || 1;
         const y = clamp(-norm * baseAmp * speed, -baseAmp * 1.6, baseAmp * 1.6);
         el.style.setProperty("--parallaxY", `${y}px`);
+      }
+
+      const textPanels = Array.from(document.querySelectorAll(".panel--text"));
+      for (const panel of textPanels) {
+        const r = panel.getBoundingClientRect();
+        const center = r.top + r.height * 0.5;
+        const norm = (center - viewportCenter) / vh;
+        const y = clamp(-norm * panelAmp, -panelAmp * 1.2, panelAmp * 1.2);
+        panel.style.setProperty("--panelY", `${y}px`);
       }
     };
 
@@ -211,9 +221,9 @@ const sliderImagesDefault = [
   /* ✅ FULL BLEED nur für Kacheln nach dem H2-Block */
   .wide-rows {
     background: #000 !important;
-    margin-left: calc(var(--content-pad) * -1);
-    margin-right: calc(var(--content-pad) * -1);
-    width: calc(100% + (var(--content-pad) * 2));
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
   }
 
   .wide-row {
@@ -236,6 +246,12 @@ const sliderImagesDefault = [
       background:#000;
       pointer-events:none;
       z-index: 5;
+    }
+
+    .panel {
+      aspect-ratio: 1 / 1;
+      height: auto;
+      min-height: 0;
     }
   }
 
@@ -298,6 +314,8 @@ const sliderImagesDefault = [
     background: #000 !important;
     padding: clamp(1.25rem, 3vw, 2.25rem);
     align-items: center;
+    transform: translate3d(0, var(--panelY, 0px), 0);
+    will-change: transform;
   }
 
   .panel-inner { max-width: 74ch; display: grid; gap: 0.9rem; }
@@ -344,19 +362,11 @@ const sliderImagesDefault = [
   /* Slider */
   :global([data-uh-tiles] .slider) { position: relative; width: 100%; height: 100%; background: #000; overflow: hidden; }
 
-  :global([data-uh-tiles] .slider)::before,
-  :global([data-uh-tiles] .slider)::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 18px;
-    background: #000;
-    pointer-events: none;
-    z-index: 4;
+  :global([data-uh-tiles] .slider),
+  :global([data-uh-tiles] .slider-track),
+  :global([data-uh-tiles] .slide) {
+    height: 100%;
   }
-  :global([data-uh-tiles] .slider)::before { left: 0; }
-  :global([data-uh-tiles] .slider)::after { right: 0; }
 
   :global([data-uh-tiles] .slider-track) {
     display: flex;
