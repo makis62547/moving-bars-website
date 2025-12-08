@@ -36,8 +36,8 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
     <div class="intro-panel">
       <div class="intro-text">
         <h1 id="intro-title" class="intro-title hero-heading display-heading display-size-h1">
-          <span class="intro-title-accent hero-kicker">MOBILE COCKTAILBAR</span>
-          <span class="hero-title">MIETEN IN BERLIN</span>
+          MOBILE COCKTAILBAR MIETEN<br />
+          IN BERLIN
         </h1>
         <p class="intro-copy">
           Wir lieben Cocktails, perfekten Getränke-Service und wir lieben Veranstaltungen. Mieten Sie unsere mobile Cocktailbar
@@ -225,9 +225,9 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
   .intro-text {
     display: grid;
     gap: 1rem;
-    padding-right: clamp(0.75rem, 1.2vw, 1.25rem);
+    padding-right: clamp(1rem, 2vw, 1.75rem);
     margin-top: -10px;
-    max-width: 56ch;
+    max-width: none;
   }
 
   .intro-title {
@@ -244,11 +244,13 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
 
   .intro-copy {
     margin: 0;
+    max-width: none;
     font-size: clamp(1.02rem, 1.1vw, 1.15rem);
     line-height: 1.7;
     font-weight: 300;
     color: rgba(255, 255, 255, 0.86);
     text-shadow: 0 0 14px rgba(255, 255, 255, 0.08);
+    text-wrap: pretty;
   }
 
   .intro-divider {
