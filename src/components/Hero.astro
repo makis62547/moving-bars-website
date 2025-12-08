@@ -225,8 +225,9 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
   .intro-text {
     display: grid;
     gap: 1rem;
-    padding-right: clamp(1.25rem, 3vw, 2rem);
+    padding-right: clamp(0.75rem, 1.2vw, 1.25rem);
     margin-top: -10px;
+    max-width: 56ch;
   }
 
   .intro-title {
@@ -243,10 +244,11 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
 
   .intro-copy {
     margin: 0;
-    font-size: 1rem;
+    font-size: clamp(1.02rem, 1.1vw, 1.15rem);
     line-height: 1.7;
     font-weight: 300;
-    color: rgba(255, 255, 255, 0.92);
+    color: rgba(255, 255, 255, 0.86);
+    text-shadow: 0 0 14px rgba(255, 255, 255, 0.08);
   }
 
   .intro-divider {
