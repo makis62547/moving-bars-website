@@ -36,10 +36,8 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
     <div class="intro-panel">
       <div class="intro-text">
         <h1 id="intro-title" class="intro-title hero-heading display-heading display-size-h1">
-          <span class="intro-title-line1">
-            <span class="intro-title-accent">MOBILE COCKTAILBAR</span> MIETEN
-          </span><br />
-          IN BERLIN
+          <span class="intro-title-accent">MOBILE COCKTAILBAR</span><br />
+          MIETEN IN BERLIN
         </h1>
 
         <p class="intro-copy">
@@ -233,10 +231,12 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
     max-width: none;
   }
 
+  /* ✅ natürlicher Zeilenabstand + weniger "Gap" zwischen Zeilen */
   .intro-title {
     margin: 0;
     display: grid;
-    gap: 0.15em;
+    gap: 0.06em;        /* vorher 0.15em -> zu groß */
+    line-height: 1.02;  /* kompakter wie Original */
   }
 
   .intro-title-accent {
@@ -323,12 +323,6 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
   @media (min-width: 901px) {
     .intro-panel {
       min-height: clamp(400px, 34vw, 520px);
-    }
-
-    /* ✅ verhindert 3. Zeile: "MOBILE COCKTAILBAR MIETEN" bleibt zusammen */
-    .intro-title-line1 {
-      white-space: nowrap;
-      display: inline-block;
     }
   }
 </style>
