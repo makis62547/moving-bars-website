@@ -4,7 +4,7 @@ interface Props {
   class?: string;
 }
 
-const { size = 24, class: className }: Props = Astro.props;
+const { size = 30, class: className }: Props = Astro.props;
 const sizeValue = typeof size === "number" ? `${size}px` : size;
 
 // Vite/Astro gibt dir so eine saubere URL fürs Asset
