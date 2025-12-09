@@ -1,0 +1,20 @@
+:root {
+  --space-xxs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 20px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-xxl: 72px;
+
+  --hero-up-offset: -32px;
+  --hero-shell-offset: -18px;
+  --hero-top-padding: 140px;
+
+  --intro-padding-block: clamp(1.25rem, 2.4vw, 2.6rem);
+  --intro-padding-right: clamp(1.5rem, 3.5vw, 2.75rem);
+  --intro-text-gap: 1rem;
+
+  --intro-divider-margin-v: clamp(0.4rem, 1.5vw, 0.85rem);
+  --intro-divider-margin-h: clamp(1.4rem, 3vw, 2.4rem);
+}

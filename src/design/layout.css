@@ -1,0 +1,13 @@
+:root {
+  --content-max: 1240px;
+  --content-pad: clamp(10px, 1.8vw, 24px);
+  --header-h: 72px;
+
+  --intro-grid-left: 0.62fr;
+  --intro-grid-divider: 1px;
+  --intro-grid-right: 0.38fr;
+
+  --banner-height: clamp(520px, 75vh, 980px);
+
+  --parallax-speed-default: 0.25;
+}
