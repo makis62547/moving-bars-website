@@ -273,13 +273,14 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
     border-radius: 0;
   }
 
-  .intro-icon {
-    min-height: 100%;
-    margin-top: 6px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-  }
+.intro-icon {
+  min-height: var(--intro-icon-size);
+  height: var(--intro-icon-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
 .intro-cocktail-icon {
   width: 300px;
