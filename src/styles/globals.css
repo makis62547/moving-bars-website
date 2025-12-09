@@ -1,6 +1,3 @@
-@import "/src/design/typography.css";
-@import "/src/design/spacing.css";
-@import "/src/design/layout.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
