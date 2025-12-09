@@ -1,17 +1,8 @@
----
-interface Props {
-  class?: string;
-}
-
-const { class: className }: Props = Astro.props;
-
-// Vite/Astro gibt dir so eine saubere URL fürs Asset
-import cocktailPngUrl from "../../assets/icons/cocktail.png?url";
----
-
 <span
-  class={`cocktail-icon${className ? ` ${className}` : ""}`}
+  class:list={["cocktail-icon", className]}
   style={`
+    width: var(--intro-icon-size, 200px);
+    height: var(--intro-icon-size, 200px);
     background-color: var(--accent, #c9682a);
     -webkit-mask-image: url('${cocktailPngUrl}');
     mask-image: url('${cocktailPngUrl}');
@@ -23,6 +14,3 @@ import cocktailPngUrl from "../../assets/icons/cocktail.png?url";
     mask-size: contain;
   `}
 ></span>
-
-<style>
-</style>
