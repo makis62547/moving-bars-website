@@ -273,13 +273,22 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
     border-radius: 0;
   }
 
-.intro-icon {
-  min-height: var(--intro-icon-size);
-  height: var(--intro-icon-size);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  .intro-icon {
+    min-height: var(--intro-icon-size);
+    height: var(--intro-icon-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Verschiebung des Icons */
+    transform: translate(
+      var(--intro-icon-offset-x),
+      var(--intro-icon-offset-y)
+    );
+
+    /* horizontale Ausrichtung des Icons innerhalb der Spalte */
+    justify-content: var(--intro-icon-align);
+  }
 
 
 .intro-cocktail-icon {
