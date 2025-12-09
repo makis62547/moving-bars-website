@@ -1,3 +1,14 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className }: Props = Astro.props;
+
+// PNG richtig importieren (funktioniert in Astro/Vite)
+import cocktailPngUrl from "../../assets/icons/cocktail.png?url";
+---
+
 <span
   class:list={["cocktail-icon", className]}
   style={`
@@ -14,3 +25,9 @@
     mask-size: contain;
   `}
 ></span>
+
+<style>
+  .cocktail-icon {
+    display: inline-block;
+  }
+</style>
