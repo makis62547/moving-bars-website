@@ -282,9 +282,9 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
   }
 
   .intro-cocktail-icon {
-    width: var(--intro-icon-size);
-    height: var(--intro-icon-size);
-    transform: translateY(var(--intro-icon-offset-y));
+    width: var(--intro-icon-size, clamp(140px, 18vw, 230px));
+    height: var(--intro-icon-size, clamp(140px, 18vw, 230px));
+    transform: translateY(var(--intro-icon-offset-y, 0px));
     display: block;
   }
 
