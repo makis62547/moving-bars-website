@@ -15,3 +15,11 @@
   --body-size: clamp(1.02rem, 1.1vw, 1.15rem);
   --body-line: 1.7;
 }
+
+@layer base {
+  h1,
+  h2,
+  h3 {
+    line-height: var(--heading-line-height);
+  }
+}
