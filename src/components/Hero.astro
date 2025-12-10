@@ -284,14 +284,8 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
     display: flex;
     align-items: center;
     justify-content: center;
-
-    /* Verschiebung des Icons */
-    transform: translate(
-      var(--intro-icon-offset-x),
-      var(--intro-icon-offset-y)
-    );
-
-    /* horizontale Ausrichtung des Icons innerhalb der Spalte */
+    transform: translateX(var(--intro-icon-offset-x))
+      translateY(var(--intro-icon-offset-y));
     justify-content: var(--intro-icon-align);
   }
 
