@@ -75,7 +75,7 @@ img {
 
   .display-size-h1 {
     font-size: clamp(2.25rem, 4.4vw, 3.25rem);
-    line-height: 1.05;
+    line-height: var(--heading-line-height);
   }
 
   .hero-heading {
