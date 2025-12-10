@@ -268,10 +268,14 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
 
   .intro-divider {
     width: 1px;
+    height: var(--intro-divider-height);
     background: rgba(211, 139, 69, 0.7);
-    margin: clamp(0.4rem, 1.5vw, 0.85rem) clamp(1.4rem, 3vw, 2.4rem);
-    align-self: stretch;
-    border-radius: 0;
+    margin: 0 clamp(1.4rem, 3vw, 2.4rem);
+    transform: translate(
+      var(--intro-divider-offset-x),
+      var(--intro-divider-offset-y)
+    );
+    align-self: center;
   }
 
   .intro-icon {
