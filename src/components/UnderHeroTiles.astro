@@ -242,7 +242,7 @@ const sliderImagesDefault = [
     background: rgba(211, 139, 69, 0.75);
   }
 
-  .tile--intro .intro__copy { width: 100%; max-width: none !important; min-width: 0; }
+  .tile--intro .intro__copy { width: 100%; max-width: var(--section-text-width) !important; min-width: 0; }
 
   .tile--intro .intro__copy h2 {
     margin: 0;
@@ -314,7 +314,7 @@ const sliderImagesDefault = [
     height: var(--tile-media-height);
   }
 
-  .panel-inner { max-width: var(--text-max-width); display: grid; gap: var(--text-block-gap); }
+  .panel-inner { max-width: var(--tile-text-width); display: grid; gap: var(--text-block-gap); }
 
   .panel-title {
     margin: 0;
