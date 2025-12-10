@@ -23,4 +23,8 @@
   h3 {
     line-height: var(--heading-line-height) !important;
   }
+
+  p {
+    max-width: var(--paragraph-text-width);
+  }
 }
