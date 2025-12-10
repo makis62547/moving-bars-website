@@ -229,10 +229,10 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
 
   .intro-text {
     display: grid;
-    gap: 1rem;
+    gap: var(--text-block-gap);
     padding-right: clamp(1rem, 2vw, 1.75rem);
     margin-top: -10px;
-    max-width: none;
+    max-width: var(--text-max-width);
   }
 
   /* ✅ natürlicher Zeilenabstand + weniger "Gap" zwischen Zeilen */
@@ -256,13 +256,14 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
 
   .intro-copy {
     margin: 0;
-    max-width: none;
+    max-width: var(--text-max-width);
     font-size: clamp(1.02rem, 1.1vw, 1.15rem);
     line-height: 1.7;
     font-weight: 300;
     color: rgba(255, 255, 255, 0.86);
     text-shadow: 0 0 14px rgba(255, 255, 255, 0.08);
     text-wrap: pretty;
+    gap: var(--text-block-gap);
   }
 
   .intro-divider {
