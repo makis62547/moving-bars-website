@@ -150,7 +150,7 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
   .hero-usp li:nth-child(4) { animation-delay: 750ms; }
 
   .hero-check {
-    color: #d38b45;
+    color: var(--accent);
     margin-right: 0.5rem;
   }
 
@@ -249,7 +249,7 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
   }
 
   .intro-title-accent {
-    color: #d38b45;
+    color: var(--accent);
     display: inline-block;
     margin-right: 0;
   }
@@ -269,7 +269,7 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
   .intro-divider {
     width: 1px;
     height: var(--intro-divider-height);
-    background: rgba(211, 139, 69, 0.7);
+    background: var(--accent-light);
     margin: 0 clamp(1.4rem, 3vw, 2.4rem);
     transform: translate(
       var(--intro-divider-offset-x),
@@ -293,7 +293,7 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
 .intro-cocktail-icon {
   width: 300px;
   height: 300px;
-  background-color: red !important;
+  background-color: var(--accent) !important;
 }
 
 
@@ -327,7 +327,7 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
       height: 1px;
       width: 100%;
       margin: clamp(1rem, 3vw, 1.5rem) 0;
-      background: rgba(211, 139, 69, 0.7);
+      background: var(--accent-light);
     }
 
     .intro-text {

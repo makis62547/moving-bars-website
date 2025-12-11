@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
   <title id="title">Cocktailglas Icon</title>
   <desc id="desc">Illustration eines Cocktailglases mit Orangenscheibe</desc>
-  <g fill="#d38b45">
+  <g fill="var(--accent)">
     <path d="M80 80h352L256 272 80 80Z"/>
     <path d="M318 80 352 40l18 14-34 40h-18l34-40z"/>
     <path d="M256 272c-2 0-4-.8-5.5-2.3L133 142h246L262 269.7c-1.5 1.5-3.5 2.3-5.7 2.3Zm-70-114c17.6 25.9 34 38.9 66 60 35-23.6 58.8-42.1 78-60h-144Z"/>
