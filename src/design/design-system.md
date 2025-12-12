@@ -10,7 +10,7 @@ Es dient als Referenz für konsistente Weiterentwicklung – ohne bestehende Kom
 ### Primärfarben
 - Hintergrund: #000000
 - Text: #ffffff
-- Akzent: #d38b45
+- Akzent: #E07501
 - Border: rgba(255, 255, 255, 0.1)
 
 ### Zusatzfarben
