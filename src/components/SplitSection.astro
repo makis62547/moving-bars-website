@@ -16,30 +16,44 @@ const { id, label, title, description, image, items = [], linkText = "Mehr erfah
 const layoutDirection = reversed ? "md:flex-row-reverse" : "md:flex-row";
 ---
 
-<section class="border-b border-white/10" id={id}>
+<section class="border-b border-frame" id={id}>
   <div class={`mx-auto flex max-w-6xl flex-col gap-8 px-6 py-14 ${layoutDirection}`}>
     <div class="flex-1">
       <SectionTitle label={label} title={title} description={description} />
       {items.length > 0 && (
         <ul class="mt-6 grid gap-3 text-sm text-white/80">
           {items.map((item) => (
-            <li class="flex items-start gap-3 border border-white/10 px-4 py-3">
-              <span class="h-4 w-4 shrink-0 bg-[#D38B45]" aria-hidden="true"></span>
+            <li class="flex items-start gap-3 border border-frame px-4 py-3">
+              <span class="h-4 w-4 shrink-0 rounded-sm split-bullet" aria-hidden="true"></span>
               <span class="leading-relaxed">{item}</span>
             </li>
           ))}
         </ul>
       )}
       <a
-        class="mt-6 inline-flex border border-white/20 px-5 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-colors hover:border-[#D38B45] hover:text-[#D38B45]"
+        class="mt-6 inline-flex border border-frame px-5 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-colors border-accent-hover"
         href="#contact"
       >
         {linkText}
       </a>
     </div>
 
-    <div class="flex-1 border border-white/10 bg-black">
+    <div class="flex-1 border border-frame bg-black">
       <img alt={title} class="h-full w-full object-cover" src={image} />
     </div>
   </div>
 </section>
+
+<style>
+  .split-bullet {
+    background-color: var(--accent);
+  }
+
+  .border-frame {
+    border-color: var(--border);
+  }
+
+  .border-accent-hover:hover {
+    border-color: var(--accent-light);
+  }
+</style>

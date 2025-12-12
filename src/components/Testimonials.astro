@@ -8,11 +8,11 @@
       </p>
     </div>
     <div class="flex flex-wrap gap-3 text-sm text-white/70">
-      <span class="rounded-full border border-white/15 px-4 py-2">Adidas</span>
-      <span class="rounded-full border border-white/15 px-4 py-2">Meta</span>
-      <span class="rounded-full border border-white/15 px-4 py-2">Zalando</span>
-      <span class="rounded-full border border-white/15 px-4 py-2">Hubspot</span>
-      <span class="rounded-full border border-white/15 px-4 py-2">Tech Open Air</span>
+      <span class="rounded-full border border-frame px-4 py-2">Adidas</span>
+      <span class="rounded-full border border-frame px-4 py-2">Meta</span>
+      <span class="rounded-full border border-frame px-4 py-2">Zalando</span>
+      <span class="rounded-full border border-frame px-4 py-2">Hubspot</span>
+      <span class="rounded-full border border-frame px-4 py-2">Tech Open Air</span>
     </div>
   </div>
 
@@ -35,7 +35,7 @@
         role: "People & Culture",
       },
     ].map((testimonial) => (
-      <article class="rounded-2xl border border-white/10 bg-white/5 p-6 flex flex-col gap-4">
+      <article class="rounded-2xl border border-frame bg-white/5 p-6 flex flex-col gap-4">
         <p class="text-lg text-white/80 leading-relaxed">“{testimonial.quote}”</p>
         <div>
           <p class="font-heading font-semibold">{testimonial.name}</p>
@@ -45,3 +45,9 @@
     ))}
   </div>
 </section>
+
+<style>
+  .border-frame {
+    border-color: var(--border);
+  }
+</style>

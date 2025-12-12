@@ -1,5 +1,5 @@
 <section class="max-w-6xl mx-auto px-6 py-20 grid lg:grid-cols-3 gap-6">
-  <article class="lg:col-span-2 rounded-3xl border border-white/10 bg-gradient-to-br from-orange-500/10 via-white/5 to-cyan-400/10 p-8">
+<article class="lg:col-span-2 rounded-3xl border border-frame bg-gradient-to-br from-orange-500/10 via-white/5 to-cyan-400/10 p-8">
     <div class="flex items-center gap-3 mb-4">
       <span class="h-10 w-10 rounded-full bg-orange-500/30 text-black font-bold flex items-center justify-center">★</span>
       <p class="text-sm uppercase tracking-[0.2em] text-orange-200">Premium Experience</p>
@@ -10,13 +10,13 @@
       Verweilen einlädt und lange in Erinnerung bleibt.
     </p>
     <div class="mt-8 grid sm:grid-cols-3 gap-4 text-sm text-white/80">
-      <div class="rounded-2xl border border-white/10 bg-black/40 p-4">Flexible Auf- & Abbauzeiten</div>
-      <div class="rounded-2xl border border-white/10 bg-black/40 p-4">Branding & CI-konforme Menükarten</div>
-      <div class="rounded-2xl border border-white/10 bg-black/40 p-4">Food-Pairings & Zero-Waste-Ansatz</div>
+      <div class="rounded-2xl border border-frame bg-black/40 p-4">Flexible Auf- & Abbauzeiten</div>
+      <div class="rounded-2xl border border-frame bg-black/40 p-4">Branding & CI-konforme Menükarten</div>
+      <div class="rounded-2xl border border-frame bg-black/40 p-4">Food-Pairings & Zero-Waste-Ansatz</div>
     </div>
   </article>
 
-  <article class="rounded-3xl border border-white/10 bg-white/5 p-8 flex flex-col gap-4">
+  <article class="rounded-3xl border border-frame bg-white/5 p-8 flex flex-col gap-4">
     <p class="text-sm uppercase tracking-[0.2em] text-orange-200">Special</p>
     <h3 class="text-2xl">Zero- & Low-Alcohol Konzepte</h3>
     <p class="text-white/70">
@@ -30,3 +30,9 @@
     </div>
   </article>
 </section>
+
+<style>
+  .border-frame {
+    border-color: var(--border);
+  }
+</style>
