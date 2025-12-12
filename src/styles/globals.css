@@ -37,6 +37,10 @@ img {
   max-width: 100%;
 }
 
+.accent-text {
+  color: var(--accent);
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
