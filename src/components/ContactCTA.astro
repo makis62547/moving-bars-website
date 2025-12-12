@@ -12,16 +12,16 @@
       <li class="flex items-center gap-3"><span class="text-orange-300">✔</span> Aufbau, Service & Abbau inklusive</li>
     </ul>
     <div class="flex flex-wrap gap-3">
-      <a href="mailto:hallo@movingbars.de" class="rounded-full border border-white/20 px-5 py-3 font-semibold hover:border-orange-400">
+      <a href="mailto:hallo@movingbars.de" class="rounded-full border border-frame px-5 py-3 font-semibold border-accent-hover">
         hallo@movingbars.de
       </a>
-      <a href="tel:+493011223344" class="rounded-full border border-white/20 px-5 py-3 font-semibold hover:border-orange-400">
+      <a href="tel:+493011223344" class="rounded-full border border-frame px-5 py-3 font-semibold border-accent-hover">
         +49 (0)30 112 233 44
       </a>
     </div>
   </div>
 
-  <div class="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-xl space-y-4">
+  <div class="rounded-3xl border border-frame bg-white/5 p-6 shadow-xl space-y-4">
     <h3 class="text-xl">Schnellanfrage</h3>
     <form class="space-y-4">
       <div class="grid md:grid-cols-2 gap-4">
@@ -43,3 +43,13 @@
     </form>
   </div>
 </section>
+
+<style>
+  .border-frame {
+    border-color: var(--border);
+  }
+
+  .border-accent-hover:hover {
+    border-color: var(--accent-light);
+  }
+</style>

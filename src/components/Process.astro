@@ -31,7 +31,7 @@
         action: "Sorglos abschließen",
       },
     ].map((step, index) => (
-      <article class="relative rounded-2xl border border-white/10 bg-white/5 p-6 flex flex-col gap-3">
+      <article class="relative rounded-2xl border border-frame bg-white/5 p-6 flex flex-col gap-3">
         <div class="absolute -left-3 -top-3 h-12 w-12 rounded-2xl bg-orange-500/80 text-black font-heading font-bold flex items-center justify-center shadow-lg shadow-orange-500/30">
           {index + 1}
         </div>
@@ -45,3 +45,9 @@
     ))}
   </div>
 </section>
+
+<style>
+  .border-frame {
+    border-color: var(--border);
+  }
+</style>

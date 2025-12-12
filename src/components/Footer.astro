@@ -6,7 +6,7 @@ const contactLines = [
 ];
 ---
 
-<footer class="border-t border-white/10 bg-black" id="contact">
+<footer class="border-t border-frame bg-black" id="contact">
   <div class="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 md:flex-row md:items-start md:justify-between">
     <div class="flex flex-col gap-3">
       <p class="text-xs uppercase tracking-[0.35em] text-white/60">Kontakt</p>
@@ -25,3 +25,9 @@ const contactLines = [
     </div>
   </div>
 </footer>
+
+<style>
+  .border-frame {
+    border-color: var(--border);
+  }
+</style>
