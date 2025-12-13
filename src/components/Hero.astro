@@ -65,7 +65,7 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
     <div
       class="intro-banner-bg parallax-bg"
       data-parallax="bg"
-      data-parallax-speed="0.12"
+      data-parallax-speed="0.08"
     ></div>
   </div>
 </section>
@@ -312,6 +312,16 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+  }
+
+  .intro-banner-bg.parallax-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transform: translate3d(0, var(--py), 0) scale(1.18);
+    will-change: transform;
+    backface-visibility: hidden;
   }
 
   @media (max-width: 900px) {
