@@ -62,10 +62,11 @@ img {
 @layer base {
   h1,
   h2,
-  h3 {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 200;
-    letter-spacing: 0.02em;
+  h3,
+  .display-heading {
+    font-family: var(--heading-font-family);
+    font-weight: var(--heading-font-weight);
+    letter-spacing: var(--heading-letter-spacing);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
