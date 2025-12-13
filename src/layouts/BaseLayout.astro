@@ -65,7 +65,8 @@ import "../styles/globals.css";
         --section-pad-inline: var(--content-pad);
 
         /* Section-spezifische Block-Abstände – erstmal alle auf den Basiswert gelegt */
-        --intro-pad-block: var(--section-pad-block);
+        --intro-pad-block: clamp(4rem, 8vw, 6rem);
+        --intro-banner-gap: var(--intro-pad-block);
         --under-hero-pad-block: var(--section-pad-block);
         --highlights-pad-block: var(--section-pad-block);
         --services-pad-block: var(--section-pad-block);
