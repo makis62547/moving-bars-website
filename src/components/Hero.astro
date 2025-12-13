@@ -61,9 +61,13 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
   </div>
 
   <!-- Banner ABSOLUT DIREKT im Intro-Section, damit kein externer Abstand entstehen kann -->
-  <section class="intro-banner" aria-hidden="true">
-    <div class="intro-banner-bg parallax-bg" role="presentation"></div>
-  </section>
+  <div class="intro-banner">
+    <div
+      class="intro-banner-bg parallax-bg"
+      data-parallax="bg"
+      data-parallax-speed="0.12"
+    ></div>
+  </div>
 </section>
 
 <style>
@@ -190,8 +194,7 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
   /* Intro + Banner: Gap-Killer */
   .intro {
     background: #000;
-    padding: 0 var(--section-pad-inline);
-    padding-top: var(--intro-pad-block);
+    padding: var(--intro-pad-block) var(--section-pad-inline) 0;
     margin: 0;
     scroll-margin-top: calc(var(--header-h) + 32px);
   }
@@ -296,9 +299,8 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
     width: 100vw;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-    height: var(--banner-height, clamp(520px, 75vh, 980px));
+    margin-top: var(--intro-banner-gap);
+    height: var(--intro-banner-height, clamp(420px, 60vh, 760px));
     overflow: hidden;
     background: #000;
   }
