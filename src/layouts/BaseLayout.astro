@@ -60,7 +60,19 @@ import "../styles/globals.css";
         --tile-text-width: 74ch;
         --paragraph-text-width: 72ch;
 
-        --under-hero-pad-block: clamp(8rem, 8vw, 8rem);
+        /* Basis für alle Sections */
+        --section-pad-block: clamp(3rem, 7vw, 5rem);
+        --section-pad-inline: var(--content-pad);
+
+        /* Section-spezifische Block-Abstände – erstmal alle auf den Basiswert gelegt */
+        --intro-pad-block: var(--section-pad-block);
+        --under-hero-pad-block: var(--section-pad-block);
+        --highlights-pad-block: var(--section-pad-block);
+        --services-pad-block: var(--section-pad-block);
+        --process-pad-block: var(--section-pad-block);
+        --testimonials-pad-block: var(--section-pad-block);
+        --contact-pad-block: var(--section-pad-block);
+        --footer-pad-block: clamp(2rem, 5vw, 3.5rem); /* Footer darf etwas kompakter sein */
       }
       @import "/src/design/typography.css" layer(design);
       @import "/src/design/spacing.css" layer(design);
