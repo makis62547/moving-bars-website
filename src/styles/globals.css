@@ -89,9 +89,9 @@ h3,
 
 @layer components {
   .display-heading {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 200;
-    letter-spacing: 0.01em;
+    font-family: var(--heading-font-family);
+    font-weight: var(--heading-font-weight);
+    letter-spacing: var(--heading-letter-spacing);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
