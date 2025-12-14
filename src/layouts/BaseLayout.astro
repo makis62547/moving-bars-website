@@ -91,6 +91,8 @@ import "../styles/globals.css";
 
   <body class="antialiased min-h-screen">
     <slot />
-    <script type="module" src="/src/scripts/parallax.ts"></script>
+    <script type="module" is:inline>
+      import "/src/scripts/parallax.ts";
+    </script>
   </body>
 </html>
