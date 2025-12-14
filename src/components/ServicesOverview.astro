@@ -60,7 +60,13 @@ const visible = services.filter((service) => service.slug !== exclude);
         <span class="services-underline" aria-hidden="true"></span>
       </header>
 
-      <div class="services-grid" role="list">
+      <div
+        class:list={{
+          "services-grid": true,
+          "is-count-5": visible.length === 5,
+        }}
+        role="list"
+      >
         {visible.map((service) => (
           <article class="service-card" role="listitem" aria-label={service.title}>
             <div class="service-media" aria-hidden="true"></div>
@@ -80,6 +86,8 @@ const visible = services.filter((service) => service.slug !== exclude);
 
 <style>
   .services-overview {
+    --services-card-radius: 0px;
+
     position: relative;
     width: 100vw;
     margin-left: calc(50% - 50vw);
@@ -148,7 +156,7 @@ const visible = services.filter((service) => service.slug !== exclude);
     max-width: var(--services-card-width, 320px);
     background: var(--services-card-bg);
     border: var(--services-card-border);
-    border-radius: var(--services-card-radius);
+    border-radius: 0;
     box-shadow: var(--services-card-glow);
     padding: clamp(1.25rem, 2.2vw, 1.6rem);
     display: grid;
@@ -159,7 +167,7 @@ const visible = services.filter((service) => service.slug !== exclude);
   .service-media {
     width: 100%;
     aspect-ratio: var(--services-card-img-ratio);
-    border-radius: calc(var(--services-card-radius) - 4px);
+    border-radius: 0;
     background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.35), rgba(var(--accent-rgb), 0.08));
     border: 1px solid rgba(var(--accent-rgb), 0.35);
   }
@@ -194,7 +202,7 @@ const visible = services.filter((service) => service.slug !== exclude);
     background: rgba(var(--accent-rgb), 0.12);
     color: var(--accent);
     border: 1px solid rgba(var(--accent-rgb), 0.65);
-    border-radius: calc(var(--services-card-radius) - 8px);
+    border-radius: 0;
     box-shadow: 0 0 22px rgba(var(--accent-rgb), 0.28);
     transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
   }
@@ -205,6 +213,26 @@ const visible = services.filter((service) => service.slug !== exclude);
     border-color: rgba(var(--accent-rgb), 0.95);
     color: #fff;
     outline: none;
+  }
+
+  @media (min-width: 900px) {
+    .services-grid {
+      grid-template-columns: repeat(12, 1fr);
+      justify-items: stretch;
+    }
+
+    .service-card {
+      max-width: none;
+      grid-column: span 4;
+    }
+
+    .services-grid.is-count-5 > .service-card:nth-child(4) {
+      grid-column: 3 / span 4;
+    }
+
+    .services-grid.is-count-5 > .service-card:nth-child(5) {
+      grid-column: 7 / span 4;
+    }
   }
 
   @media (max-width: 820px) {
