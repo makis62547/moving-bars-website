@@ -51,6 +51,13 @@ Troubleshooting:
 
 ## Parallax nutzen
 
-- Füge dem Hintergrund-Layer `data-parallax="bg"` und z. B. `data-parallax-speed="0.25"` hinzu (empfohlener Bereich: 0.15–0.35).
-- Das Skript `src/scripts/parallax.ts` initialisiert automatisch alle Parallax-Elemente und respektiert `prefers-reduced-motion`.
-- Der Effekt nutzt ausschließlich `transform: translate3d` und wird via `requestAnimationFrame` getaktet.
+- Nutze die feste Struktur:
+  ```html
+  <section class="parallax-section" data-parallax data-speed="0.3">
+    <div class="parallax-bg" data-parallax-bg></div>
+    <div class="parallax-fg"><!-- Inhalt --></div>
+  </section>
+  ```
+- `data-speed` (Default: `0.3`), `data-start` und `data-end` steuern die ScrollTrigger-Konfiguration je Section.
+- Nur die Ebene mit `data-parallax-bg` wird bewegt (`yPercent`); Vordergrund bleibt unverändert.
+- `src/scripts/parallax.ts` lädt GSAP + ScrollTrigger erst im Client, initialisiert nach Page Load und räumt bei Astro Page Transitions sauber auf.

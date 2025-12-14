@@ -91,54 +91,6 @@ import "../styles/globals.css";
 
   <body class="antialiased min-h-screen">
     <slot />
-    <script is:inline type="module">
-      (() => {
-        const layers = document.querySelectorAll('[data-parallax="bg"]');
-        console.log("[parallax] layers:", layers.length);
-
-        if (layers.length === 0) {
-          console.warn("[parallax] no layers found");
-          return;
-        }
-
-        const motionReduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-        if (motionReduce.matches) {
-          console.log("[parallax] reduced-motion ON → disabled");
-          return;
-        }
-
-        let ticking = false;
-
-        const getScrollY = () =>
-          window.scrollY ??
-          document.scrollingElement?.scrollTop ??
-          document.documentElement.scrollTop ??
-          document.body.scrollTop ??
-          0;
-
-        const update = () => {
-          ticking = false;
-          const scrollY = getScrollY();
-
-          layers.forEach((layer) => {
-            const speedRaw = Number.parseFloat(layer.dataset.parallaxSpeed || "");
-            const speed = Number.isFinite(speedRaw) ? speedRaw : 0.25;
-            layer.style.setProperty("--py", `${scrollY * speed}px`);
-          });
-        };
-
-        const requestTick = () => {
-          if (!ticking) {
-            ticking = true;
-            requestAnimationFrame(update);
-          }
-        };
-
-        window.addEventListener("scroll", requestTick, { passive: true });
-        window.addEventListener("resize", requestTick, { passive: true });
-
-        requestTick();
-      })();
-    </script>
+    <script type="module" src="/src/scripts/parallax.ts"></script>
   </body>
 </html>
