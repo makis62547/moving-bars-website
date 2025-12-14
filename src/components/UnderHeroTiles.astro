@@ -71,7 +71,7 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
         </article>
 
         <article
-          class="panel panel--slider is-align-left"
+          class="panel panel--slider is-align-left is-cocktail"
           aria-label="Feinste Cocktails Bild"
           data-panel-parallax
           data-speed="0.35"
@@ -232,6 +232,17 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
     overflow: hidden;
     min-height: var(--tile-height);
     height: var(--tile-height);
+  }
+
+  .panel--slider.is-cocktail {
+    --bg-zoom: 12%;
+    --bg-x: 50%;
+    --bg-y: 50%;
+  }
+
+  .panel--slider.is-cocktail .panel-bg {
+    background-size: auto calc(100% + var(--bg-zoom));
+    background-position: var(--bg-x) calc(var(--bg-y) + var(--py, 0px));
   }
 
   .panel--slider .panel-bg {
