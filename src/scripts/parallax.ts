@@ -34,6 +34,7 @@ async function loadGsap() {
       }
 
       gsap.registerPlugin(ScrollTrigger);
+      console.info("[parallax] GSAP + ScrollTrigger ready");
       return { gsap, ScrollTrigger } as const;
     })
     .catch((error) => {
@@ -65,25 +66,34 @@ async function setupParallax() {
   teardown();
 
   const sections = Array.from(document.querySelectorAll<HTMLElement>("[data-parallax]"));
-  if (!sections.length) return;
+  if (!sections.length) {
+    console.warn("[parallax] No parallax sections found");
+    return;
+  }
+
+  console.info(`[parallax] Initializing ${sections.length} section(s)`);
 
   sections.forEach((section) => {
     const background = section.querySelector<HTMLElement>("[data-parallax-bg]");
-    if (!background) return;
+    if (!background) {
+      console.warn("[parallax] Section is missing [data-parallax-bg]", section);
+      return;
+    }
 
     const speed = parseSpeed(section);
     const start = parsePosition(section.dataset.start, DEFAULT_START);
     const end = parsePosition(section.dataset.end, DEFAULT_END);
-    const distance = speed * 100;
+    const distance = Math.max(30, Math.min(speed * 120, 160));
+    const scale = 1.18;
 
     background.style.willChange = "transform";
 
     const tween = gsap.fromTo(
       background,
-      { yPercent: -distance, scale: 1.15 },
+      { yPercent: -distance, scale },
       {
         yPercent: distance,
-        scale: 1.15,
+        scale,
         ease: "none",
         scrollTrigger: {
           trigger: section,
