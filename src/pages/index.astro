@@ -8,9 +8,10 @@ import BlogsOverview from "../components/BlogsOverview.astro";
 
 <BaseLayout>
   <main class="bg-black">
+    {/* Regel: Neue Blocks immer unten anfügen, außer explizit anders gewünscht. Reihenfolge: ServicesOverview -> BlogsOverview */}
     <Hero />
     <UnderHeroTiles />
-    <BlogsOverview />
     <ServicesOverview />
+    <BlogsOverview />
   </main>
 </BaseLayout>
