@@ -3,7 +3,7 @@ function initParallax() {
     return;
   }
 
-  const PARALLAX_STRENGTH = 6.4;
+  const PARALLAX_STRENGTH = 8.4;
 
   const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
