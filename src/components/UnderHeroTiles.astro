@@ -86,9 +86,7 @@ const sliderImagesDefault = [
 
         <article class="panel panel--slider" aria-label="Feinste Cocktails Slider">
           <div
-            class="panel-bg slider-bg parallax-bg"
-            data-parallax
-            data-speed="0.35"
+            class="panel-bg slider-bg"
             role="presentation"
             style={`background-image: url(${sliderImagesCocktails[0]});`}
           ></div>
@@ -116,9 +114,7 @@ const sliderImagesDefault = [
       <div class="wide-row">
         <article class="panel panel--slider" aria-label="Mobile Bar Slider">
           <div
-            class="panel-bg slider-bg parallax-bg"
-            data-parallax
-            data-speed="0.35"
+            class="panel-bg slider-bg"
             role="presentation"
             style={`background-image: url(${sliderImagesDefault[0]});`}
           ></div>
@@ -311,6 +307,13 @@ const sliderImagesDefault = [
     overflow: hidden;
   }
 
+  :global([data-uh-tiles] .panel--slider > .slider-bg) {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-position: center bottom;
+  }
+
   .panel-inner { max-width: var(--tile-text-width); display: grid; gap: var(--text-block-gap); }
 
   .panel-title {
@@ -390,13 +393,10 @@ const sliderImagesDefault = [
 
   :global([data-uh-tiles] .slide .slider-bg.parallax-bg) {
     position: absolute;
-    top: -40%;
-    left: 0;
-    right: auto;
+    inset: auto 0 0 0;
     width: 100%;
-    height: 180%;
-    bottom: auto;
-    background-position: center top;
+    height: 170%;
+    background-position: center bottom;
     backface-visibility: hidden;
   }
 
