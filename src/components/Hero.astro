@@ -76,8 +76,11 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
   }
 
   .hero-bg {
-    position: absolute;
-    inset: 0;
+    position: sticky;
+    top: clamp(-20vh, -12vw, -12vh);
+    height: clamp(120vh, 140vh, 150vh);
+    margin-top: clamp(-10vh, -6vw, -6vh);
+    margin-bottom: clamp(-10vh, -6vw, -6vh);
     background-image: url("/images/hero.jpg");
     background-size: cover;
     background-position: center;
