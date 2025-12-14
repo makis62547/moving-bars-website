@@ -60,6 +60,9 @@ img {
   width: 100%;
   z-index: 1;
   backface-visibility: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
 }
 
 .parallax-bg.is-js-parallax {
