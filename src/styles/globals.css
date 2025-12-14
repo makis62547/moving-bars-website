@@ -52,14 +52,18 @@ img {
 }
 
 .parallax-bg {
+  --parallax-offset: 0px;
+  --parallax-scale: 1;
   position: absolute;
-  inset: 0;
+  inset: -30% 0 0 0;
+  height: 160%;
+  width: 100%;
   z-index: 1;
   backface-visibility: hidden;
 }
 
 .parallax-bg.is-js-parallax {
-  transform: translate3d(0, 0, 0);
+  transform: translate3d(0, var(--parallax-offset), 0) scale(var(--parallax-scale));
   will-change: transform;
 }
 

@@ -87,18 +87,20 @@ const sliderImagesDefault = [
         <article class="panel panel--slider" aria-label="Feinste Cocktails Slider">
           <div
             class="panel-bg slider-bg parallax-bg"
-            data-parallax-bg
+            data-parallax
+            data-speed="0.35"
             role="presentation"
             style={`background-image: url(${sliderImagesCocktails[0]});`}
           ></div>
-          <div class="slider" data-slider>
-            <button class="slider-btn prev" type="button" aria-label="Vorheriges Bild">‹</button>
-            <div class="slider-track" tabindex="0" aria-label="Bildergalerie">
-              {sliderImagesCocktails.map((src, index) => (
-                <div class="slide parallax-section" data-parallax data-speed="0.6" aria-label={`Bild ${index + 1}`}>
+            <div class="slider" data-slider>
+              <button class="slider-btn prev" type="button" aria-label="Vorheriges Bild">‹</button>
+              <div class="slider-track" tabindex="0" aria-label="Bildergalerie">
+                {sliderImagesCocktails.map((src, index) => (
+                <div class="slide parallax-section" aria-label={`Bild ${index + 1}`}>
                   <div
                     class="slider-bg parallax-bg"
-                    data-parallax-bg
+                    data-parallax
+                    data-speed="0.6"
                     role="presentation"
                     style={`background-image: url(${src});`}
                   ></div>
@@ -115,18 +117,20 @@ const sliderImagesDefault = [
         <article class="panel panel--slider" aria-label="Mobile Bar Slider">
           <div
             class="panel-bg slider-bg parallax-bg"
-            data-parallax-bg
+            data-parallax
+            data-speed="0.35"
             role="presentation"
             style={`background-image: url(${sliderImagesDefault[0]});`}
           ></div>
-          <div class="slider" data-slider>
-            <button class="slider-btn prev" type="button" aria-label="Vorheriges Bild">‹</button>
-            <div class="slider-track" tabindex="0" aria-label="Bildergalerie">
-              {sliderImagesDefault.map((src, index) => (
-                <div class="slide parallax-section" data-parallax data-speed="0.6" aria-label={`Bild ${index + 1}`}>
+            <div class="slider" data-slider>
+              <button class="slider-btn prev" type="button" aria-label="Vorheriges Bild">‹</button>
+              <div class="slider-track" tabindex="0" aria-label="Bildergalerie">
+                {sliderImagesDefault.map((src, index) => (
+                <div class="slide parallax-section" aria-label={`Bild ${index + 1}`}>
                   <div
                     class="slider-bg parallax-bg"
-                    data-parallax-bg
+                    data-parallax
+                    data-speed="0.6"
                     role="presentation"
                     style={`background-image: url(${src});`}
                   ></div>
@@ -284,20 +288,10 @@ const sliderImagesDefault = [
   }
 
   .panel-bg {
-    position: absolute;
-    inset: -25% 0 0 0;
-    height: 150%;
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
     z-index: 0;
-  }
-
-  @media (hover: hover) and (pointer: fine) {
-    :global([data-uh-tiles] .panel-bg),
-    :global([data-uh-tiles] .slider .slider-bg) {
-      background-attachment: fixed;
-    }
   }
 
   .panel--text {
@@ -393,10 +387,6 @@ const sliderImagesDefault = [
   }
 
   :global([data-uh-tiles] .slide .slider-bg) {
-    position: absolute;
-    inset: -25% 0 0 0;
-    height: 150%;
-    width: 100%;
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
