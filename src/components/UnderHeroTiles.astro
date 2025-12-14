@@ -70,14 +70,24 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
           </div>
         </article>
 
-        <article class="panel panel--slider" aria-label="Feinste Cocktails Bild">
+        <article
+          class="panel panel--slider is-align-left"
+          aria-label="Feinste Cocktails Bild"
+          data-panel-parallax
+          data-speed="0.35"
+        >
           <div class="panel-bg" role="presentation" style={`background-image: url(${cocktailImage});`}></div>
         </article>
       </div>
 
       <!-- ROW 2: Bild | Text -->
       <div class="wide-row">
-        <article class="panel panel--slider" aria-label="Mobile Bar Bild">
+        <article
+          class="panel panel--slider is-align-right"
+          aria-label="Mobile Bar Bild"
+          data-panel-parallax
+          data-speed="0.35"
+        >
           <div class="panel-bg" role="presentation" style={`background-image: url(${mobileBarImage});`}></div>
         </article>
 
@@ -230,24 +240,11 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
     width: 100%;
     height: 100%;
     background-size: contain;
-    background-position: center center;
+    background-position: center calc(50% + var(--py, 0px));
     background-repeat: no-repeat;
     background-color: #000;
+    background-attachment: scroll;
     z-index: 0;
-  }
-
-  /* CSS-Parallax – IDENTISCH zum Hero */
-  @media (hover: hover) and (pointer: fine) {
-    .panel--slider .panel-bg {
-      background-attachment: fixed;
-    }
-  }
-
-  /* Mobile / Reduced Motion */
-  @media (prefers-reduced-motion: reduce) {
-    .panel--slider .panel-bg {
-      background-attachment: scroll;
-    }
   }
 
   .panel-inner { max-width: var(--tile-text-width); display: grid; gap: var(--text-block-gap); }
@@ -295,3 +292,27 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
   }
 
 </style>
+
+<script>
+  const panels = Array.from(document.querySelectorAll<HTMLElement>("[data-panel-parallax]"));
+
+  const updateParallax = () => {
+    const viewportCenter = window.innerHeight / 2;
+
+    panels.forEach((panel) => {
+      const rect = panel.getBoundingClientRect();
+      const distanceFromCenter = rect.top + rect.height / 2 - viewportCenter;
+      const speed = Number(panel.dataset.speed ?? "0.3");
+
+      panel.style.setProperty("--py", `${-distanceFromCenter * speed}px`);
+    });
+  };
+
+  const scheduleUpdate = () => {
+    requestAnimationFrame(updateParallax);
+  };
+
+  updateParallax();
+  window.addEventListener("scroll", scheduleUpdate, { passive: true });
+  window.addEventListener("resize", scheduleUpdate);
+</script>
