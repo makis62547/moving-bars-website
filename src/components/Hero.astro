@@ -4,12 +4,12 @@ import Header from "./Header.astro";
 import CocktailIcon from "./icons/CocktailIcon.astro";
 ---
 
-<section id="hero" class="hero parallax-frame">
-  <div class="hero-bg parallax-media" data-speed="0.35" role="presentation"></div>
+<section id="hero" class="hero">
+  <div class="hero-bg parallax-bg" role="presentation"></div>
 
-  <div class="parallax-content">
-    <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
 
+  <div class="hero-content">
     <Header />
 
     <div class="hero-center">
@@ -63,9 +63,8 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
   </div>
 
   <!-- Banner ABSOLUT DIREKT im Intro-Section, damit kein externer Abstand entstehen kann -->
-  <div class="intro-banner parallax-frame">
-    <div class="intro-banner-bg parallax-media" data-speed="0.4"></div>
-    <div class="parallax-content" aria-hidden="true"></div>
+  <div class="intro-banner">
+    <div class="intro-banner-bg parallax-bg" aria-hidden="true"></div>
   </div>
 </section>
 
@@ -78,12 +77,11 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
     background: #000;
   }
 
-  .hero .parallax-content {
-    height: 100%;
-  }
-
   .hero-bg {
     background-image: url("/images/hero.jpg");
+    position: absolute;
+    inset: 0;
+    z-index: 1;
   }
 
   .hero-overlay {
@@ -91,6 +89,12 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
     inset: 0;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.55) 100%);
     z-index: 5;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    height: 100%;
   }
 
   .hero-center {
@@ -295,6 +299,8 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
   .intro-banner-bg {
     background-image: url("/images/cocktail-catering-moving-bars.jpg");
     background-position: center 30%;
+    position: absolute;
+    inset: 0;
   }
 
   @media (max-width: 900px) {

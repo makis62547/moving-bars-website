@@ -2,22 +2,8 @@
 const base = (import.meta.env.BASE_URL || "/").replace(/\/?$/, "/");
 const asset = (p) => `${base}${p.replace(/^\//, "")}`;
 
-const sliderImagesCocktails = [
-  asset("images/cocktail-cosmopolitan.jpg"),
-  asset("images/russian-wild-berry-cocktail.jpg"),
-  asset("images/placeholder-1.jpg"),
-  asset("images/placeholder-2.jpg"),
-  asset("images/placeholder-3.jpg"),
-  asset("images/placeholder-4.jpg"),
-];
-
-const sliderImagesDefault = [
-  asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg"),
-  asset("images/placeholder-1.jpg"),
-  asset("images/placeholder-2.jpg"),
-  asset("images/placeholder-3.jpg"),
-  asset("images/placeholder-4.jpg"),
-];
+const cocktailImage = asset("images/russian-wild-berry-cocktail.jpg");
+const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
 ---
 
 <section class="under-hero-tiles" aria-label="Ergänzende Informationen" data-uh-tiles>
@@ -62,7 +48,7 @@ const sliderImagesDefault = [
 
     <!-- ✅ NUR das was danach kommt: 2×2 Quadrate, full-bleed -->
     <div class="wide-rows" aria-label="Quadrat-Kacheln">
-      <!-- ROW 1: Text | Slider -->
+      <!-- ROW 1: Text | Bild -->
       <div class="wide-row">
         <article class="panel panel--text" aria-label="Feinste Cocktails Text">
           <div class="panel-inner">
@@ -84,49 +70,15 @@ const sliderImagesDefault = [
           </div>
         </article>
 
-        <article class="panel panel--slider" aria-label="Feinste Cocktails Slider">
-          <div class="panel-bg slider-bg" role="presentation" style={`background-image: url(${sliderImagesCocktails[0]});`}></div>
-          <div class="slider" data-slider>
-            <button class="slider-btn prev" type="button" aria-label="Vorheriges Bild">‹</button>
-            <div class="slider-track" tabindex="0" aria-label="Bildergalerie">
-              {sliderImagesCocktails.map((src, index) => (
-                <div class="slide parallax-frame" aria-label={`Bild ${index + 1}`}>
-                  <div
-                    class="slider-bg parallax-media"
-                    data-speed="0.5"
-                    role="presentation"
-                    style={`background-image: url(${src});`}
-                  ></div>
-                  <div class="parallax-content" aria-hidden="true"></div>
-                </div>
-              ))}
-            </div>
-            <button class="slider-btn next" type="button" aria-label="Nächstes Bild">›</button>
-          </div>
+        <article class="panel panel--media" aria-label="Feinste Cocktails Bild">
+          <div class="panel-bg parallax-bg" role="presentation" style={`background-image: url(${cocktailImage});`}></div>
         </article>
       </div>
 
-      <!-- ROW 2: Slider | Text -->
+      <!-- ROW 2: Bild | Text -->
       <div class="wide-row">
-        <article class="panel panel--slider" aria-label="Mobile Bar Slider">
-          <div class="panel-bg slider-bg" role="presentation" style={`background-image: url(${sliderImagesDefault[0]});`}></div>
-          <div class="slider" data-slider>
-            <button class="slider-btn prev" type="button" aria-label="Vorheriges Bild">‹</button>
-            <div class="slider-track" tabindex="0" aria-label="Bildergalerie">
-              {sliderImagesDefault.map((src, index) => (
-                <div class="slide parallax-frame" aria-label={`Bild ${index + 1}`}>
-                  <div
-                    class="slider-bg parallax-media"
-                    data-speed="0.45"
-                    role="presentation"
-                    style={`background-image: url(${src});`}
-                  ></div>
-                  <div class="parallax-content" aria-hidden="true"></div>
-                </div>
-              ))}
-            </div>
-            <button class="slider-btn next" type="button" aria-label="Nächstes Bild">›</button>
-          </div>
+        <article class="panel panel--media" aria-label="Mobile Bar Bild">
+          <div class="panel-bg parallax-bg" role="presentation" style={`background-image: url(${mobileBarImage});`}></div>
         </article>
 
         <article class="panel panel--text" aria-label="Mobile Bar Text">
@@ -153,26 +105,6 @@ const sliderImagesDefault = [
     </div>
   </div>
 </section>
-
-<script is:inline>
-  const onReady = () => {
-    // Slider buttons
-    document.querySelectorAll("[data-slider]").forEach((slider) => {
-      const track = slider.querySelector(".slider-track");
-      const prev = slider.querySelector(".slider-btn.prev");
-      const next = slider.querySelector(".slider-btn.next");
-      if (!track || !prev || !next) return;
-
-      const scrollAmount = () => track.clientWidth;
-      prev.addEventListener("click", () => track.scrollBy({ left: -scrollAmount(), behavior: "smooth" }));
-      next.addEventListener("click", () => track.scrollBy({ left: scrollAmount(), behavior: "smooth" }));
-    });
-
-  };
-
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", onReady);
-  else onReady();
-</script>
 
 <style>
   .under-hero-tiles {
@@ -276,9 +208,8 @@ const sliderImagesDefault = [
   }
 
   .panel-bg {
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
+    position: absolute;
+    inset: 0;
     z-index: 0;
   }
 
@@ -292,18 +223,9 @@ const sliderImagesDefault = [
     padding-bottom: var(--tile-pad-y);
   }
 
-  .panel--slider {
+  .panel--media {
     min-height: var(--tile-media-height);
     height: var(--tile-media-height);
-    position: relative;
-    overflow: hidden;
-  }
-
-  :global([data-uh-tiles] .panel--slider > .slider-bg) {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background-position: center bottom;
   }
 
   .panel-inner { max-width: var(--tile-text-width); display: grid; gap: var(--text-block-gap); }
@@ -350,89 +272,4 @@ const sliderImagesDefault = [
     border-color: rgba(var(--accent-rgb), 0.9);
   }
 
-  /* ---------- Slider (ohne Ränder / ohne Masken) ---------- */
-  :global([data-uh-tiles] .slider) {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    overflow: hidden;
-    z-index: 1;
-  }
-
-  :global([data-uh-tiles] .slider-track) {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    background: #000;
-    overscroll-behavior-x: contain;
-  }
-  :global([data-uh-tiles] .slider-track::-webkit-scrollbar) { display: none; }
-
-  :global([data-uh-tiles] .slide) {
-    flex: 0 0 100%;
-    width: 100%;
-    height: 100%;
-    scroll-snap-align: start;
-    position: relative;
-    overflow: hidden;
-    background: #000;
-  }
-
-  :global([data-uh-tiles] .slide .slider-bg.parallax-media) {
-    height: 140%;
-  }
-
-  :global([data-uh-tiles] .panel--slider[data-framing="low"] .slider-bg) {
-    background-position: center 40%;
-  }
-
-  :global([data-uh-tiles] .panel--slider[data-framing="center"] .slider-bg) {
-    background-position: center center;
-  }
-
-  /* Buttons – ohne Borders/Outlines, kein Rand */
-  :global([data-uh-tiles] .slider-btn) {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 44px;
-    height: 44px;
-    border-radius: 999px;
-
-    -webkit-appearance: none !important;
-    appearance: none !important;
-    border: 0 !important;
-    outline: 0 !important;
-    box-shadow: none !important;
-
-    background: rgba(0,0,0,0.55) !important;
-    color: var(--heading-color);
-
-    padding: 0 !important;
-    margin: 0 !important;
-
-    display: grid;
-    place-items: center;
-    cursor: pointer;
-    z-index: 6;
-  }
-
-  :global([data-uh-tiles] .slider-btn:hover),
-  :global([data-uh-tiles] .slider-btn:focus),
-  :global([data-uh-tiles] .slider-btn:focus-visible) {
-    background: rgba(var(--accent-rgb), 0.92) !important;
-    outline: none !important;
-  }
-
-  :global([data-uh-tiles] .slider-btn.prev) { left: 14px; }
-  :global([data-uh-tiles] .slider-btn.next) { right: 14px; }
-
-  @media (max-width: 720px) {
-    :global([data-uh-tiles] .slider-btn) { display: none; }
-  }
 </style>
