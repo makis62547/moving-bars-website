@@ -91,6 +91,10 @@ import "../styles/globals.css";
 
   <body class="antialiased min-h-screen">
     <slot />
-    <script type="module" src="/src/scripts/parallax.client.ts"></script>
+    <script type="module" is:inline>
+      if (typeof window !== "undefined") {
+        import("/src/scripts/parallax.ts");
+      }
+    </script>
   </body>
 </html>
