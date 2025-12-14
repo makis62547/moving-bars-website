@@ -69,7 +69,7 @@ text-gap: 1rem
 
 ### Banner
 height: clamp(520px, 75vh, 980px)
-parallax-speed: 0.3
+CSS-Parallax über background-attachment
 
 ---
 
@@ -81,9 +81,8 @@ Cocktail Icon:
 ---
 
 ## 6. PARALLAX SYSTEM
-GSAP ScrollTrigger, yPercent scrub
-speed default: 0.3 (data-speed)
-nur data-parallax-bg bewegt, Vordergrund bleibt statisch
+CSS-only: background-attachment fixed (pointer: fine), scroll (pointer: coarse)
+keine JS-Abhängigkeiten
 
 ---
 
