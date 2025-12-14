@@ -101,8 +101,7 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
     position: absolute;
     inset: 0;
     display: flex;
-    flex-direction: column;
-    align-items: stretch;
+    align-items: center;
     justify-content: center;
     width: 100%;
     z-index: 20;
@@ -112,13 +111,14 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
   .hero-shell {
     max-width: var(--content-max);
     margin: 0 auto;
-    padding-top: 140px;
+    padding-top: var(--header-h);
     padding-left: var(--content-pad);
     padding-right: var(--content-pad);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 2.5rem;
+    transform: none !important;
   }
 
   .hero-usp {
