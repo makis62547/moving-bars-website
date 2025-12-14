@@ -4,9 +4,9 @@ import Header from "./Header.astro";
 import CocktailIcon from "./icons/CocktailIcon.astro";
 ---
 
-<section id="hero" class="hero parallax-section" data-parallax data-speed="0.25">
+<section id="hero" class="hero parallax-section">
   <!-- Parallax bleibt ausschließlich auf dem Hintergrund-Layer -->
-  <div class="hero-bg parallax-bg" data-parallax-bg role="presentation"></div>
+  <div class="hero-bg parallax-bg" data-parallax data-speed="0.25" role="presentation"></div>
   <div class="hero-overlay" aria-hidden="true"></div>
 
   <Header />
@@ -62,7 +62,7 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
 
   <!-- Banner ABSOLUT DIREKT im Intro-Section, damit kein externer Abstand entstehen kann -->
   <div class="intro-banner parallax-section">
-    <div class="intro-banner-bg parallax-bg"></div>
+    <div class="intro-banner-bg parallax-bg" data-parallax data-speed="0.35"></div>
   </div>
 </section>
 
@@ -76,21 +76,10 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
   }
 
 .hero-bg {
-  position: absolute;
-  inset: -25% 0 0 0;      /* Überhöhe für Bewegung */
-  height: 150%;
   background-image: url("/images/hero.jpg");
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
-  will-change: transform;
-}
-
-/* Parallax nur auf Desktop – stabil & sichtbar */
-@media (hover: hover) and (pointer: fine) {
-  .hero-bg {
-    background-attachment: fixed;
-  }
 }
 
   .hero-overlay {
@@ -311,19 +300,10 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
   }
 
   .intro-banner-bg {
-    position: absolute;
-    inset: -25% 0 0 0;
-    height: 150%;
     background-image: url("/images/cocktail-catering-moving-bars.jpg");
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
-  }
-
-  @media (hover: hover) and (pointer: fine) {
-    .intro-banner-bg {
-      background-attachment: fixed;
-    }
   }
 
   @media (max-width: 900px) {
