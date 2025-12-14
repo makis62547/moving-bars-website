@@ -189,6 +189,9 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
     width: 100vw;
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
+    display: grid;
+    gap: 0;
+    padding: 0;
     background: #000;
   }
 
@@ -198,7 +201,10 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
     gap: 0;              /* ✅ kein Spalt */
     background: #000;    /* ✅ falls rounding, bleibt schwarz */
     align-items: stretch;
+    margin: 0;
   }
+
+  .wide-row + .wide-row { margin-top: 0; }
 
   @media (min-width: 900px) {
     .wide-row { grid-template-columns: 1fr 1fr; }
@@ -212,6 +218,7 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
     border-radius: 0 !important;
     overflow: hidden;
     position: relative;
+    margin: 0;
 
     min-height: var(--tile-height);
     height: var(--tile-height);
