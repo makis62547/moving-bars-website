@@ -6,19 +6,17 @@ const {
 } = Astro.props;
 ---
 
-<section class="mb-parallax full-bleed parallax-section" style={`--mb-h:${height};`}>
-  <div class="mb-parallax__inner">
-    <img
-      class="mb-parallax__img parallax-bg"
-      data-parallax
-      data-speed="0.35"
-      src={src}
-      alt={alt}
-      loading="eager"
-      decoding="async"
-      fetchpriority="high"
-    />
-  </div>
+<section class="mb-parallax full-bleed parallax-frame" style={`--mb-h:${height};`}>
+  <img
+    class="mb-parallax__img parallax-media"
+    data-speed="0.4"
+    src={src}
+    alt={alt}
+    loading="eager"
+    decoding="async"
+    fetchpriority="high"
+  />
+  <div class="parallax-content" aria-hidden="true"></div>
 </section>
 
 <style>
@@ -30,23 +28,12 @@ const {
 
 .mb-parallax{
   height: var(--mb-h);
-  overflow: hidden;
-}
-
-
-.mb-parallax__inner{
-  position: relative;
-  height: 100%;
 }
 
 .mb-parallax__img{
-  position: absolute;
-  inset: -12%;
-  width: 124%;
-  height: 124%;
+  height: 140%;
   object-fit: cover;
-  object-position: center;
-  --parallax-scale: 1.08;
+  object-position: center bottom;
 }
 
 @media (prefers-reduced-motion: reduce){

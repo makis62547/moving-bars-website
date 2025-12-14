@@ -85,23 +85,19 @@ const sliderImagesDefault = [
         </article>
 
         <article class="panel panel--slider" aria-label="Feinste Cocktails Slider">
-          <div
-            class="panel-bg slider-bg"
-            role="presentation"
-            style={`background-image: url(${sliderImagesCocktails[0]});`}
-          ></div>
-            <div class="slider" data-slider>
-              <button class="slider-btn prev" type="button" aria-label="Vorheriges Bild">‹</button>
-              <div class="slider-track" tabindex="0" aria-label="Bildergalerie">
-                {sliderImagesCocktails.map((src, index) => (
-                <div class="slide parallax-section" aria-label={`Bild ${index + 1}`}>
+          <div class="panel-bg slider-bg" role="presentation" style={`background-image: url(${sliderImagesCocktails[0]});`}></div>
+          <div class="slider" data-slider>
+            <button class="slider-btn prev" type="button" aria-label="Vorheriges Bild">‹</button>
+            <div class="slider-track" tabindex="0" aria-label="Bildergalerie">
+              {sliderImagesCocktails.map((src, index) => (
+                <div class="slide parallax-frame" aria-label={`Bild ${index + 1}`}>
                   <div
-                    class="slider-bg parallax-bg"
-                    data-parallax
-                    data-speed="0.6"
+                    class="slider-bg parallax-media"
+                    data-speed="0.5"
                     role="presentation"
                     style={`background-image: url(${src});`}
                   ></div>
+                  <div class="parallax-content" aria-hidden="true"></div>
                 </div>
               ))}
             </div>
@@ -113,23 +109,19 @@ const sliderImagesDefault = [
       <!-- ROW 2: Slider | Text -->
       <div class="wide-row">
         <article class="panel panel--slider" aria-label="Mobile Bar Slider">
-          <div
-            class="panel-bg slider-bg"
-            role="presentation"
-            style={`background-image: url(${sliderImagesDefault[0]});`}
-          ></div>
-            <div class="slider" data-slider>
-              <button class="slider-btn prev" type="button" aria-label="Vorheriges Bild">‹</button>
-              <div class="slider-track" tabindex="0" aria-label="Bildergalerie">
-                {sliderImagesDefault.map((src, index) => (
-                <div class="slide parallax-section" aria-label={`Bild ${index + 1}`}>
+          <div class="panel-bg slider-bg" role="presentation" style={`background-image: url(${sliderImagesDefault[0]});`}></div>
+          <div class="slider" data-slider>
+            <button class="slider-btn prev" type="button" aria-label="Vorheriges Bild">‹</button>
+            <div class="slider-track" tabindex="0" aria-label="Bildergalerie">
+              {sliderImagesDefault.map((src, index) => (
+                <div class="slide parallax-frame" aria-label={`Bild ${index + 1}`}>
                   <div
-                    class="slider-bg parallax-bg"
-                    data-parallax
-                    data-speed="0.6"
+                    class="slider-bg parallax-media"
+                    data-speed="0.45"
                     role="presentation"
                     style={`background-image: url(${src});`}
                   ></div>
+                  <div class="parallax-content" aria-hidden="true"></div>
                 </div>
               ))}
             </div>
@@ -391,13 +383,8 @@ const sliderImagesDefault = [
     background: #000;
   }
 
-  :global([data-uh-tiles] .slide .slider-bg.parallax-bg) {
-    position: absolute;
-    inset: auto 0 0 0;
-    width: 100%;
-    height: 170%;
-    background-position: center bottom;
-    backface-visibility: hidden;
+  :global([data-uh-tiles] .slide .slider-bg.parallax-media) {
+    height: 140%;
   }
 
   :global([data-uh-tiles] .panel--slider[data-framing="low"] .slider-bg) {
@@ -447,12 +434,5 @@ const sliderImagesDefault = [
 
   @media (max-width: 720px) {
     :global([data-uh-tiles] .slider-btn) { display: none; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    :global([data-uh-tiles] .panel-bg),
-    :global([data-uh-tiles] .slider .slider-bg) {
-      background-attachment: scroll !important;
-    }
   }
 </style>
