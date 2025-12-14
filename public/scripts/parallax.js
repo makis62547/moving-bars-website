@@ -3,6 +3,8 @@ function initParallax() {
     return;
   }
 
+  const PARALLAX_STRENGTH = 1.6;
+
   const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   const getSpeed = (el) => {
@@ -63,7 +65,7 @@ function initParallax() {
 
     entries.forEach((entry) => {
       const progress = Math.min(1, Math.max(0, (scrollY - entry.start) / entry.total));
-      const offset = progress * entry.speed * entry.maxOffset;
+      const offset = progress * entry.speed * entry.maxOffset * PARALLAX_STRENGTH;
 
       entry.el.style.setProperty("--parallax-offset", `${offset}px`);
     });
