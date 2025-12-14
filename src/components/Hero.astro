@@ -312,11 +312,18 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
 
   .intro-banner-bg {
     position: absolute;
-    inset: 0;
+    inset: -25% 0 0 0;
+    height: 150%;
     background-image: url("/images/cocktail-catering-moving-bars.jpg");
     background-size: cover;
-    background-position: center;
+    background-position: center top;
     background-repeat: no-repeat;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .intro-banner-bg {
+      background-attachment: fixed;
+    }
   }
 
   @media (max-width: 900px) {
