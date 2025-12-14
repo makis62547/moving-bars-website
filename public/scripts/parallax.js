@@ -1,63 +1,48 @@
-function initParallax() {
-  if (typeof window === "undefined") {
-    return;
-  }
-
-  const PARALLAX_STRENGTH = 8.4;
+(function initParallax() {
+  if (typeof window === "undefined") return;
 
   const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const mediaNodes = Array.from(document.querySelectorAll(".parallax-media"));
 
-  const getSpeed = (el) => {
-    const speedAttr = parseFloat(el.dataset.speed || "0.3");
-    return Number.isFinite(speedAttr) ? speedAttr : 0.3;
+  if (!mediaNodes.length) return;
+
+  const clampSpeed = (value) => {
+    const numeric = Number.parseFloat(value);
+    if (!Number.isFinite(numeric)) return 0.4;
+    return Math.min(0.6, Math.max(0.3, numeric));
   };
 
-  const parallaxElements = Array.from(document.querySelectorAll("[data-parallax]"));
-
-  if (!parallaxElements.length) {
-    return;
-  }
-
-  const entries = parallaxElements.map((el) => {
-    const container = el.closest(".parallax-section") || el.parentElement;
-    const speed = getSpeed(el);
-    el.classList.add("is-js-parallax");
-
-    return {
-      el,
-      container,
-      speed,
-      top: 0,
-      height: 0,
-      start: 0,
-      total: 1,
-      maxOffset: 0,
-    };
-  });
+  const entries = mediaNodes.map((media) => ({
+    media,
+    frame: media.closest(".parallax-frame") || media.parentElement,
+    speed: clampSpeed(media.dataset.speed),
+    frameHeight: 0,
+    mediaHeight: 0,
+    extra: 0,
+    start: 0,
+    total: 1,
+  }));
 
   const measure = () => {
     const scrollY = window.scrollY || window.pageYOffset;
     const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
 
     entries.forEach((entry) => {
-      const target = entry.container || entry.el;
-      const rect = target.getBoundingClientRect();
-      const height = rect.height || target.offsetHeight || 0;
-      const top = rect.top + scrollY;
+      const frame = entry.frame || entry.media.parentElement;
+      const frameRect = frame.getBoundingClientRect();
+      const mediaRect = entry.media.getBoundingClientRect();
 
-      entry.height = height;
-      entry.top = top;
-      entry.start = top - viewportHeight;
-      entry.total = height + viewportHeight || 1;
-      entry.maxOffset = height * 0.3;
+      entry.frameHeight = frameRect.height;
+      entry.mediaHeight = mediaRect.height;
+      entry.extra = Math.max(0, entry.mediaHeight - entry.frameHeight);
+      entry.start = frameRect.top + scrollY - viewportHeight;
+      entry.total = entry.frameHeight + viewportHeight;
     });
   };
 
-  const applyTransforms = () => {
+  const apply = () => {
     if (reduceMotionQuery.matches) {
-      entries.forEach((entry) => {
-        entry.el.style.removeProperty("--parallax-offset");
-      });
+      entries.forEach((entry) => entry.media.style.removeProperty("transform"));
       return;
     }
 
@@ -65,18 +50,17 @@ function initParallax() {
 
     entries.forEach((entry) => {
       const progress = Math.min(1, Math.max(0, (scrollY - entry.start) / entry.total));
-      const offset = progress * entry.speed * entry.maxOffset * PARALLAX_STRENGTH;
-
-      entry.el.style.setProperty("--parallax-offset", `${offset}px`);
+      const offset = -progress * entry.extra * entry.speed;
+      entry.media.style.transform = `translate3d(0, ${offset}px, 0)`;
     });
   };
 
   let ticking = false;
   const onScroll = () => {
-    if (ticking || reduceMotionQuery.matches) return;
+    if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => {
-      applyTransforms();
+      apply();
       ticking = false;
     });
   };
@@ -87,33 +71,27 @@ function initParallax() {
     resizeTick = true;
     requestAnimationFrame(() => {
       measure();
-      applyTransforms();
+      apply();
       resizeTick = false;
     });
   };
 
   const init = () => {
-    if (!entries.length) return;
     measure();
-    applyTransforms();
+    apply();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize, { passive: true });
   };
 
   reduceMotionQuery.addEventListener("change", () => {
     if (reduceMotionQuery.matches) {
-      applyTransforms();
+      apply();
       return;
     }
     measure();
-    applyTransforms();
+    apply();
   });
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init, { once: true });
-  } else {
-    init();
-  }
-}
-
-initParallax();
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init, { once: true });
+  else init();
+})();

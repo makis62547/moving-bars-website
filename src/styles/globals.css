@@ -45,32 +45,24 @@ img {
   box-sizing: border-box;
 }
 
-.parallax-section {
+.parallax-frame {
   position: relative;
   overflow: hidden;
-  isolation: isolate;
 }
 
-.parallax-bg {
-  --parallax-offset: 0px;
-  --parallax-scale: 1;
+.parallax-media {
   position: absolute;
-  inset: -30% 0 0 0;
-  height: 160%;
+  inset-inline: 0;
+  bottom: 0;
   width: 100%;
-  z-index: 1;
-  backface-visibility: hidden;
+  height: 140%;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center top;
-}
-
-.parallax-bg.is-js-parallax {
-  transform: translate3d(0, var(--parallax-offset), 0) scale(var(--parallax-scale));
+  background-position: center bottom;
   will-change: transform;
 }
 
-.parallax-fg {
+.parallax-content {
   position: relative;
   z-index: 2;
 }
