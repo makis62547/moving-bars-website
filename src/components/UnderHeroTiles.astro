@@ -294,7 +294,8 @@ const sliderImagesDefault = [
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .panel-bg {
+    :global([data-uh-tiles] .panel-bg),
+    :global([data-uh-tiles] .slider .slider-bg) {
       background-attachment: fixed;
     }
   }
@@ -444,7 +445,8 @@ const sliderImagesDefault = [
   }
 
   @media (prefers-reduced-motion: reduce) {
-    :global([data-uh-tiles] .panel-bg) {
+    :global([data-uh-tiles] .panel-bg),
+    :global([data-uh-tiles] .slider .slider-bg) {
       background-attachment: scroll !important;
     }
   }
