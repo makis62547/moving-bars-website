@@ -89,8 +89,8 @@ const sliderImagesDefault = [
             <button class="slider-btn prev" type="button" aria-label="Vorheriges Bild">‹</button>
             <div class="slider-track" tabindex="0" aria-label="Bildergalerie">
               {sliderImagesCocktails.map((src, index) => (
-                <div class="slide" aria-label={`Bild ${index + 1}`}>
-                  <img class="parallax-img" data-parallax="1" alt="Cocktail" src={src} loading="lazy" decoding="async" />
+                <div class="slide parallax-section" data-parallax data-speed="0.6" aria-label={`Bild ${index + 1}`}>
+                  <img class="parallax-img parallax-bg" data-parallax-bg alt="Cocktail" src={src} loading="lazy" decoding="async" />
                 </div>
               ))}
             </div>
@@ -106,8 +106,8 @@ const sliderImagesDefault = [
             <button class="slider-btn prev" type="button" aria-label="Vorheriges Bild">‹</button>
             <div class="slider-track" tabindex="0" aria-label="Bildergalerie">
               {sliderImagesDefault.map((src, index) => (
-                <div class="slide" aria-label={`Bild ${index + 1}`}>
-                  <img class="parallax-img" data-parallax="1" alt="" src={src} loading="lazy" decoding="async" />
+                <div class="slide parallax-section" data-parallax data-speed="0.6" aria-label={`Bild ${index + 1}`}>
+                  <img class="parallax-img parallax-bg" data-parallax-bg alt="" src={src} loading="lazy" decoding="async" />
                 </div>
               ))}
             </div>
@@ -154,43 +154,6 @@ const sliderImagesDefault = [
       next.addEventListener("click", () => track.scrollBy({ left: scrollAmount(), behavior: "smooth" }));
     });
 
-    // Parallax (stärker)
-    const prefersReduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
-    const els = Array.from(document.querySelectorAll(".parallax-img"));
-    if (prefersReduced || !els.length) return;
-
-    let ticking = false;
-    const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
-
-    const update = () => {
-      ticking = false;
-      const vh = window.innerHeight || 1;
-      const viewportCenter = vh * 0.5;
-
-      // ✅ deutlich stärker als vorher
-      const baseAmp = 160;
-
-      for (const el of els) {
-        const r = el.getBoundingClientRect();
-        const center = r.top + r.height * 0.5;
-        const norm = (center - viewportCenter) / vh; // ca. -1..1
-        const speed = parseFloat(el.dataset.parallax || "1") || 1;
-        const y = clamp(-norm * baseAmp * speed, -baseAmp * 1.6, baseAmp * 1.6);
-        el.style.setProperty("--parallaxY", `${y}px`);
-      }
-    };
-
-    const tick = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(update);
-    };
-
-    window.addEventListener("scroll", tick, { passive: true });
-    window.addEventListener("resize", tick);
-    document.querySelectorAll(".slider-track").forEach((t) => t.addEventListener("scroll", tick, { passive: true }));
-
-    tick();
   };
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", onReady);
@@ -399,7 +362,7 @@ const sliderImagesDefault = [
     object-position: center;
     display: block !important;
 
-    transform: translate3d(0, var(--parallaxY, 0px), 0) scale(1.08);
+    transform: translate3d(0, 0, 0) scale(1.08);
     will-change: transform;
     backface-visibility: hidden;
   }

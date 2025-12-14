@@ -69,7 +69,7 @@ text-gap: 1rem
 
 ### Banner
 height: clamp(520px, 75vh, 980px)
-parallax-speed: 0.25
+parallax-speed: 0.3
 
 ---
 
@@ -81,8 +81,9 @@ Cocktail Icon:
 ---
 
 ## 6. PARALLAX SYSTEM
-transform: translate3d(0, var(--py), 0) scale(1.05)
-speed default: 0.25
+GSAP ScrollTrigger, yPercent scrub
+speed default: 0.3 (data-speed)
+nur data-parallax-bg bewegt, Vordergrund bleibt statisch
 
 ---
 

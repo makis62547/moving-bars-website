@@ -45,11 +45,24 @@ img {
   box-sizing: border-box;
 }
 
+.parallax-section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
 .parallax-bg {
-  --py: 0px;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
   will-change: transform;
-  transform: translate3d(0, var(--py), 0) scale(1.05);
+  transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
+}
+
+.parallax-fg {
+  position: relative;
+  z-index: 2;
 }
 
 .site-container {

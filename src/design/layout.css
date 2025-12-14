@@ -9,7 +9,7 @@
 
   --banner-height: clamp(520px, 75vh, 980px);
 
-  --parallax-speed-default: 0.25;
+  --parallax-speed-default: 0.3;
   --intro-icon-size: clamp(140px, 18vw, 230px);
   --intro-icon-offset-y: 0px;
 }
