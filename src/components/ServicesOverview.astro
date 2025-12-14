@@ -56,8 +56,10 @@ const visible = services.filter((service) => service.slug !== exclude);
   <div class="services-content">
     <div class="services-shell">
       <header class="services-heading">
-        <h2 class="services-title">{headline}</h2>
-        <span class="services-underline" aria-hidden="true"></span>
+        <div class="services-head">
+          <h2 class="services-title">{headline}</h2>
+          <span class="services-divider" aria-hidden="true"></span>
+        </div>
       </header>
 
       <div
@@ -131,16 +133,23 @@ const visible = services.filter((service) => service.slug !== exclude);
     letter-spacing: 0.06em;
   }
 
+  .services-head {
+    display: grid;
+    width: 100%;
+    max-width: var(--services-max-width);
+  }
+
   .services-title {
     margin: 0;
     font-size: clamp(2rem, 4.5vw, 3rem);
     color: var(--heading-color);
   }
 
-  .services-underline {
+  .services-divider {
     display: inline-block;
-    width: clamp(70px, 12vw, 120px);
-    height: 2px;
+    width: var(--services-divider-width);
+    height: var(--services-divider-height);
+    margin-top: var(--services-divider-gap);
     background: var(--accent);
   }
 
