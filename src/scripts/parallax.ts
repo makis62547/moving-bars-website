@@ -80,9 +80,10 @@ async function setupParallax() {
 
     const tween = gsap.fromTo(
       background,
-      { yPercent: -distance },
+      { yPercent: -distance, scale: 1.15 },
       {
         yPercent: distance,
+        scale: 1.15,
         ease: "none",
         scrollTrigger: {
           trigger: section,
