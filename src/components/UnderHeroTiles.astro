@@ -232,7 +232,21 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    transform: none;
+    z-index: 0;
+  }
+
+  /* CSS-Parallax – IDENTISCH zum Hero */
+  @media (hover: hover) and (pointer: fine) {
+    .panel--slider .panel-bg {
+      background-attachment: fixed;
+    }
+  }
+
+  /* Mobile / Reduced Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .panel--slider .panel-bg {
+      background-attachment: scroll;
+    }
   }
 
   .panel-inner { max-width: var(--tile-text-width); display: grid; gap: var(--text-block-gap); }
