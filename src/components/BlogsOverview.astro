@@ -4,7 +4,7 @@ const coffeeImage = "/images/moving-bars-cocktail-geschichten.jpg"; // TODO: Rep
 ---
 
 <section class="blogs-overview" aria-label="Blogübersicht">
-  <div class="blog-block">
+  <section class="blog-block">
     <div class="blog-intro">
       <div class="blog-intro-text">
         <h2 class="blog-title">
@@ -16,79 +16,73 @@ const coffeeImage = "/images/moving-bars-cocktail-geschichten.jpg"; // TODO: Rep
           consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
       </div>
-      <article
-        class="blog-intro-media panel panel--slider is-align-left is-blog-cocktail"
-        aria-label="Cocktail Blog Bild"
-        data-panel-parallax
-        data-speed="0.35"
-      >
-        <div class="panel-bg" role="presentation" style={`background-image: url(${cocktailImage});`}></div>
-      </article>
+
+      <div class="blog-intro-media is-blog-cocktail" aria-label="Cocktail Blog Bild" data-panel-parallax data-speed="0.35">
+        <div class="blog-intro-bg panel-bg" role="presentation" style={`background-image:url('${cocktailImage}')`}></div>
+      </div>
     </div>
 
     <div class="blog-posts" aria-label="Neueste Cocktail Stories">
-      <div class="posts-track">
-        <article class="post-card">
-          <div class="post-media">
-            <img src={cocktailImage} alt="Placeholder für Cocktail Story" loading="lazy" />
-          </div>
-          <div class="post-body">
-            <h3 class="post-title accent-text">SIGNATURE DRINKS</h3>
-            <p class="post-meta">12. August 2024</p>
-            <p class="post-excerpt">
-              Wie unsere Barkeeper neue Lieblingsdrinks entwickeln – von der ersten Idee bis zur perfekt ausbalancierten
-              Komposition im Glas.
-            </p>
-            <button class="post-cta" type="button">Mehr lesen</button>
-          </div>
-        </article>
-        <article class="post-card">
-          <div class="post-media">
-            <img src={cocktailImage} alt="Placeholder für Cocktail Story" loading="lazy" />
-          </div>
-          <div class="post-body">
-            <h3 class="post-title accent-text">BACKSTAGE</h3>
-            <p class="post-meta">02. August 2024</p>
-            <p class="post-excerpt">
-              Ein Blick hinter die Kulissen unserer mobilen Bars: Logistik, Setup und die kleinen Details, die Events
-              unvergesslich machen.
-            </p>
-            <button class="post-cta" type="button">Mehr lesen</button>
-          </div>
-        </article>
-        <article class="post-card">
-          <div class="post-media">
-            <img src={cocktailImage} alt="Placeholder für Cocktail Story" loading="lazy" />
-          </div>
-          <div class="post-body">
-            <h3 class="post-title accent-text">BAR TEAM</h3>
-            <p class="post-meta">21. Juli 2024</p>
-            <p class="post-excerpt">
-              Lerne das Team kennen: Persönliche Geschichten, Lieblingsdrinks und was unsere Crew bei langen Nächten
-              antreibt.
-            </p>
-            <button class="post-cta" type="button">Mehr lesen</button>
-          </div>
-        </article>
-        <article class="post-card">
-          <div class="post-media">
-            <img src={cocktailImage} alt="Placeholder für Cocktail Story" loading="lazy" />
-          </div>
-          <div class="post-body">
-            <h3 class="post-title accent-text">EVENT HIGHLIGHTS</h3>
-            <p class="post-meta">10. Juli 2024</p>
-            <p class="post-excerpt">
-              Die schönsten Momente der letzten Monate – vom Messeauftritt bis zur Rooftop-Party über den Dächern der
-              Stadt.
-            </p>
-            <button class="post-cta" type="button">Mehr lesen</button>
-          </div>
-        </article>
-      </div>
+      <article class="post-card">
+        <div class="post-media">
+          <img src={cocktailImage} alt="Placeholder für Cocktail Story" loading="lazy" />
+        </div>
+        <div class="post-body">
+          <h3 class="post-title accent-text">SIGNATURE DRINKS</h3>
+          <p class="post-meta">12. August 2024</p>
+          <p class="post-excerpt">
+            Wie unsere Barkeeper neue Lieblingsdrinks entwickeln – von der ersten Idee bis zur perfekt ausbalancierten
+            Komposition im Glas.
+          </p>
+          <button class="post-cta" type="button">Mehr lesen</button>
+        </div>
+      </article>
+      <article class="post-card">
+        <div class="post-media">
+          <img src={cocktailImage} alt="Placeholder für Cocktail Story" loading="lazy" />
+        </div>
+        <div class="post-body">
+          <h3 class="post-title accent-text">BACKSTAGE</h3>
+          <p class="post-meta">02. August 2024</p>
+          <p class="post-excerpt">
+            Ein Blick hinter die Kulissen unserer mobilen Bars: Logistik, Setup und die kleinen Details, die Events
+            unvergesslich machen.
+          </p>
+          <button class="post-cta" type="button">Mehr lesen</button>
+        </div>
+      </article>
+      <article class="post-card">
+        <div class="post-media">
+          <img src={cocktailImage} alt="Placeholder für Cocktail Story" loading="lazy" />
+        </div>
+        <div class="post-body">
+          <h3 class="post-title accent-text">BAR TEAM</h3>
+          <p class="post-meta">21. Juli 2024</p>
+          <p class="post-excerpt">
+            Lerne das Team kennen: Persönliche Geschichten, Lieblingsdrinks und was unsere Crew bei langen Nächten
+            antreibt.
+          </p>
+          <button class="post-cta" type="button">Mehr lesen</button>
+        </div>
+      </article>
+      <article class="post-card">
+        <div class="post-media">
+          <img src={cocktailImage} alt="Placeholder für Cocktail Story" loading="lazy" />
+        </div>
+        <div class="post-body">
+          <h3 class="post-title accent-text">EVENT HIGHLIGHTS</h3>
+          <p class="post-meta">10. Juli 2024</p>
+          <p class="post-excerpt">
+            Die schönsten Momente der letzten Monate – vom Messeauftritt bis zur Rooftop-Party über den Dächern der
+            Stadt.
+          </p>
+          <button class="post-cta" type="button">Mehr lesen</button>
+        </div>
+      </article>
     </div>
-  </div>
+  </section>
 
-  <div class="blog-block">
+  <section class="blog-block">
     <div class="blog-intro blog-intro--reverse">
       <div class="blog-intro-text">
         <h2 class="blog-title">
@@ -100,63 +94,57 @@ const coffeeImage = "/images/moving-bars-cocktail-geschichten.jpg"; // TODO: Rep
           gemahlenem Kaffee. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </p>
       </div>
-      <article
-        class="blog-intro-media panel panel--slider is-align-right is-blog-coffee"
-        aria-label="Kaffee Blog Bild"
-        data-panel-parallax
-        data-speed="0.35"
-      >
-        <div class="panel-bg" role="presentation" style={`background-image: url(${coffeeImage});`}></div>
-      </article>
+
+      <div class="blog-intro-media is-blog-coffee" aria-label="Kaffee Blog Bild" data-panel-parallax data-speed="0.35">
+        <div class="blog-intro-bg panel-bg" role="presentation" style={`background-image:url('${coffeeImage}')`}></div>
+      </div>
     </div>
 
     <div class="blog-posts" aria-label="Neueste Kaffee Momente">
-      <div class="posts-track">
-        <article class="post-card">
-          <div class="post-media">
-            <img src={coffeeImage} alt="Placeholder für Kaffee Story" loading="lazy" />
-          </div>
-          <div class="post-body">
-            <h3 class="post-title accent-text">LATTE ART</h3>
-            <p class="post-meta">05. August 2024</p>
-            <p class="post-excerpt">
-              Wie unsere Baristas Latte-Art auf Events zaubern und warum die richtige Milchtemperatur den Unterschied
-              macht.
-            </p>
-            <button class="post-cta" type="button">Mehr lesen</button>
-          </div>
-        </article>
-        <article class="post-card">
-          <div class="post-media">
-            <img src={coffeeImage} alt="Placeholder für Kaffee Story" loading="lazy" />
-          </div>
-          <div class="post-body">
-            <h3 class="post-title accent-text">ROAST STORIES</h3>
-            <p class="post-meta">28. Juli 2024</p>
-            <p class="post-excerpt">
-              Welche Bohnen wir wählen, wie wir mit Röstereien zusammenarbeiten und was das für den Geschmack im Cup
-              bedeutet.
-            </p>
-            <button class="post-cta" type="button">Mehr lesen</button>
-          </div>
-        </article>
-        <article class="post-card">
-          <div class="post-media">
-            <img src={coffeeImage} alt="Placeholder für Kaffee Story" loading="lazy" />
-          </div>
-          <div class="post-body">
-            <h3 class="post-title accent-text">MOBILE KAFFEEBAR</h3>
-            <p class="post-meta">18. Juli 2024</p>
-            <p class="post-excerpt">
-              Unsere Setups für Messen und Hochzeiten – welche Maschinen wir einsetzen und wie wir perfekte Crema vor Ort
-              sicherstellen.
-            </p>
-            <button class="post-cta" type="button">Mehr lesen</button>
-          </div>
-        </article>
-      </div>
+      <article class="post-card">
+        <div class="post-media">
+          <img src={coffeeImage} alt="Placeholder für Kaffee Story" loading="lazy" />
+        </div>
+        <div class="post-body">
+          <h3 class="post-title accent-text">LATTE ART</h3>
+          <p class="post-meta">05. August 2024</p>
+          <p class="post-excerpt">
+            Wie unsere Baristas Latte-Art auf Events zaubern und warum die richtige Milchtemperatur den Unterschied
+            macht.
+          </p>
+          <button class="post-cta" type="button">Mehr lesen</button>
+        </div>
+      </article>
+      <article class="post-card">
+        <div class="post-media">
+          <img src={coffeeImage} alt="Placeholder für Kaffee Story" loading="lazy" />
+        </div>
+        <div class="post-body">
+          <h3 class="post-title accent-text">ROAST STORIES</h3>
+          <p class="post-meta">28. Juli 2024</p>
+          <p class="post-excerpt">
+            Welche Bohnen wir wählen, wie wir mit Röstereien zusammenarbeiten und was das für den Geschmack im Cup
+            bedeutet.
+          </p>
+          <button class="post-cta" type="button">Mehr lesen</button>
+        </div>
+      </article>
+      <article class="post-card">
+        <div class="post-media">
+          <img src={coffeeImage} alt="Placeholder für Kaffee Story" loading="lazy" />
+        </div>
+        <div class="post-body">
+          <h3 class="post-title accent-text">MOBILE KAFFEEBAR</h3>
+          <p class="post-meta">18. Juli 2024</p>
+          <p class="post-excerpt">
+            Unsere Setups für Messen und Hochzeiten – welche Maschinen wir einsetzen und wie wir perfekte Crema vor Ort
+            sicherstellen.
+          </p>
+          <button class="post-cta" type="button">Mehr lesen</button>
+        </div>
+      </article>
     </div>
-  </div>
+  </section>
 </section>
 
 <style>
@@ -259,26 +247,23 @@ const coffeeImage = "/images/moving-bars-cocktail-geschichten.jpg"; // TODO: Rep
   }
 
   .blog-posts {
-    border-radius: 0 !important;
-  }
-
-  .posts-track {
     display: flex;
     gap: var(--blogs-gap);
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     padding-inline: clamp(1rem, 3vw, 2rem);
+    border-radius: 0 !important;
   }
 
-  .posts-track::-webkit-scrollbar { height: 10px; }
-  .posts-track::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); }
+  .blog-posts::-webkit-scrollbar { height: 10px; }
+  .blog-posts::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); }
 
   .post-card {
     background: #0b0b0b;
     border: 1px solid rgba(var(--accent-rgb), 0.25);
-    width: var(--blogs-post-snap-width);
-    flex: 0 0 var(--blogs-post-snap-width);
+    width: var(--blogs-post-snap-width, min(86vw, 720px));
+    flex: 0 0 var(--blogs-post-snap-width, min(86vw, 720px));
     scroll-snap-align: start;
     display: grid;
     grid-template-rows: auto 1fr;
@@ -289,7 +274,7 @@ const coffeeImage = "/images/moving-bars-cocktail-geschichten.jpg"; // TODO: Rep
   .post-media {
     position: relative;
     width: 100%;
-    aspect-ratio: var(--blogs-post-media-ratio);
+    aspect-ratio: var(--blogs-post-media-ratio, 16 / 9);
     overflow: hidden;
     border-radius: 0 !important;
   }
@@ -373,7 +358,6 @@ const coffeeImage = "/images/moving-bars-cocktail-geschichten.jpg"; // TODO: Rep
   .post-cta,
   .post-card *,
   .blog-posts,
-  .posts-track,
   .blogs-overview,
   .blog-block {
     border-radius: 0 !important;
