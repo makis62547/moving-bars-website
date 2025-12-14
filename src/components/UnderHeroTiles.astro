@@ -83,7 +83,7 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
       <!-- ROW 2: Bild | Text -->
       <div class="wide-row">
         <article
-          class="panel panel--slider is-align-right"
+          class="panel panel--slider is-align-right is-bar"
           aria-label="Mobile Bar Bild"
           data-panel-parallax
           data-speed="0.35"
@@ -248,6 +248,17 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
   }
 
   .panel--slider.is-cocktail .panel-bg {
+    background-size: auto calc(100% + var(--bg-zoom));
+    background-position: var(--bg-x) calc(var(--bg-y) + var(--py, 0px));
+  }
+
+  .panel--slider.is-bar {
+    --bg-zoom: 18%; /* Startwert: sollte die schwarzen Ränder killen */
+    --bg-x: 50%;
+    --bg-y: 50%;
+  }
+
+  .panel--slider.is-bar .panel-bg {
     background-size: auto calc(100% + var(--bg-zoom));
     background-position: var(--bg-x) calc(var(--bg-y) + var(--py, 0px));
   }
