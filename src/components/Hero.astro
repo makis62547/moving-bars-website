@@ -75,17 +75,23 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
     background: #000;
   }
 
+.hero-bg {
+  position: absolute;
+  inset: -25% 0 0 0;      /* Überhöhe für Bewegung */
+  height: 150%;
+  background-image: url("/images/hero.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  will-change: transform;
+}
+
+/* Parallax nur auf Desktop – stabil & sichtbar */
+@media (hover: hover) and (pointer: fine) {
   .hero-bg {
-    position: sticky;
-    top: clamp(-20vh, -12vw, -12vh);
-    height: clamp(120vh, 140vh, 150vh);
-    margin-top: clamp(-10vh, -6vw, -6vh);
-    margin-bottom: clamp(-10vh, -6vw, -6vh);
-    background-image: url("/images/hero.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-attachment: fixed;
   }
+}
 
   .hero-overlay {
     position: absolute;
