@@ -109,30 +109,24 @@ import BlogsOverview from "../components/BlogsOverview.astro";
           <ul class="contact-list">
             <li>
               <span class="contact-ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <path
-                    d="M18.4 16.7a9.84 9.84 0 0 1-4.1-.9l-.7-.3a11.31 11.31 0 0 1-4.4-4.4l-.3-.7a9.84 9.84 0 0 1-.9-4.1c0-.5.4-.9.9-.9h2.3c.5 0 .9.3 1 .8.1.6.3 1.1.5 1.6.1.4 0 .8-.3 1.1l-.7.7a8.62 8.62 0 0 0 2.8 2.8l.7-.7c.3-.3.7-.4 1.1-.3.5.2 1 .4 1.6.5.5.1.8.5.8 1v2.3c0 .5-.4.9-.9.9Z"
-                  />
+                <svg viewBox="0 0 24 24" class="contact-ico-svg">
+                  <path d="M16 1H8C6.9 1 6 1.9 6 3v18c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2Zm-4 21.2c-.66 0-1.2-.54-1.2-1.2s.54-1.2 1.2-1.2 1.2.54 1.2 1.2-.54 1.2-1.2 1.2ZM18 18H6V4h12v14Z" />
                 </svg>
               </span>
               <a href="tel:+491752221140">+49 175 2221140</a>
             </li>
             <li>
               <span class="contact-ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <path
-                    d="M6 3.5h12c.8 0 1.5.7 1.5 1.5v14c0 .8-.7 1.5-1.5 1.5H6c-.8 0-1.5-.7-1.5-1.5v-14c0-.8.7-1.5 1.5-1.5Zm0 1.5v.8l6 3.7 6-3.7V5H6Zm12 12V8.1l-5.6 3.4c-.25.15-.55.15-.8 0L6 8.1V17h12Z"
-                  />
+                <svg viewBox="0 0 24 24" class="contact-ico-svg">
+                  <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V21a1 1 0 0 1-1 1C10.07 22 2 13.93 2 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.24 1.02l-2.21 2.2Z" />
                 </svg>
               </span>
               <a href="tel:+493084108980">+49 30 8410898-0</a>
             </li>
             <li>
               <span class="contact-ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <path
-                    d="M4.5 5.25h15c.7 0 1.25.56 1.25 1.25v11c0 .69-.56 1.25-1.25 1.25h-15c-.69 0-1.25-.56-1.25-1.25v-11c0-.69.56-1.25 1.25-1.25Zm0 2.05V17.5h15V7.3l-7.24 4.55a.75.75 0 0 1-.78 0L4.5 7.3Z"
-                  />
+                <svg viewBox="0 0 24 24" class="contact-ico-svg">
+                  <path d="M4.5 5.25h15c.7 0 1.25.56 1.25 1.25v11c0 .69-.56 1.25-1.25 1.25h-15c-.69 0-1.25-.56-1.25-1.25v-11c0-.69.56-1.25 1.25-1.25Zm0 2.05V17.5h15V7.3l-7.24 4.55a.75.75 0 0 1-.78 0L4.5 7.3Z" />
                 </svg>
               </span>
               <a href="mailto:info@moving-bars.de">info@moving-bars.de</a>
@@ -141,7 +135,12 @@ import BlogsOverview from "../components/BlogsOverview.astro";
         </div>
         <div class="section-divider section-divider--vertical" aria-hidden="true"></div>
         <div class="footer-highlight" aria-hidden="true">
-          <div class="icon-placeholder">📣</div>
+          <div class="contact-big-icon">
+            <svg viewBox="0 0 24 24" class="contact-big-icon-svg">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2H9l-5 4v-4H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2Zm4 7a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm4 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm4 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z" />
+            </svg>
+            <!-- <div class="icon-placeholder">📣</div> -->
+          </div>
         </div>
       </div>
       <div class="footer-meta">
@@ -167,7 +166,7 @@ import BlogsOverview from "../components/BlogsOverview.astro";
   }
 
   .reviews-section {
-    background: #0c0c0c;
+    background: #000;
     padding: var(--section-pad-block) 0;
     color: var(--text-color);
   }
@@ -364,16 +363,17 @@ import BlogsOverview from "../components/BlogsOverview.astro";
 
   .contact-ico {
     display: inline-flex;
-    width: 28px;
-    height: 28px;
     align-items: center;
     justify-content: center;
+    color: var(--accent);
+    transform: translateY(1px);
   }
 
-  .contact-ico svg {
-    width: 100%;
-    height: 100%;
-    fill: var(--accent);
+  .contact-ico-svg {
+    width: 1.1em;
+    height: 1.1em;
+    fill: currentColor;
+    display: block;
   }
 
   .contact-list a {
@@ -392,14 +392,17 @@ import BlogsOverview from "../components/BlogsOverview.astro";
     align-items: center;
   }
 
-  .icon-placeholder {
-    width: clamp(120px, 12vw, 160px);
-    height: clamp(120px, 12vw, 160px);
-    border-radius: 0;
-    background: rgba(var(--accent-rgb), 0.12);
-    display: grid;
-    place-items: center;
-    font-size: clamp(2.5rem, 5vw, 3.4rem);
+  .contact-big-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .contact-big-icon-svg {
+    width: clamp(140px, 18vw, 240px);
+    height: auto;
+    fill: var(--accent);
+    display: block;
   }
 
   .footer-meta {
