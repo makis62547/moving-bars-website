@@ -26,11 +26,11 @@ const navLinks = [
         <a href={link.href} class="nav-link">{link.label}</a>
       ))}
       <div class="lang-switch">
-        <a href="?lang=de" class={`nav-link ${lang === "de" ? "active" : ""}`}>
+        <a href="/de/" class={`nav-link ${lang === "de" ? "active" : ""}`}>
           DE
         </a>
         <span class="lang-divider">|</span>
-        <a href="?lang=en" class={`nav-link ${lang === "en" ? "active" : ""}`}>
+        <a href="/en/" class={`nav-link ${lang === "en" ? "active" : ""}`}>
           EN
         </a>
       </div>
@@ -66,14 +66,14 @@ const navLinks = [
         ))}
         <div class="mobile-lang-switch">
           <a
-            href="?lang=de"
+            href="/de/"
             class={`mobile-nav-link ${lang === "de" ? "active" : ""}`}
           >
             DE
           </a>
           <span class="lang-divider">|</span>
           <a
-            href="?lang=en"
+            href="/en/"
             class={`mobile-nav-link ${lang === "en" ? "active" : ""}`}
           >
             EN
