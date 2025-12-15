@@ -1,6 +1,6 @@
 ---
 const cocktailImage = "/images/moving-bars-cocktail-geschichten.jpg";
-const coffeeImage = "/images/moving-bars-cocktail-geschichten.jpg"; // TODO: Replace with dedicated coffee blog visual
+const movingBarsImage = "/images/20-jahre-mobile-cocktailbar.jpg";
 
 const selectPosts = (posts) => {
   const featuredPosts = posts.filter(({ featured }) => featured);
@@ -48,33 +48,33 @@ const cocktailPosts = [
   },
 ];
 
-const coffeePosts = [
+const movingBarsPosts = [
   {
-    title: "LATTE ART",
+    title: "EVENT HIGHLIGHTS",
     date: "05. August 2024",
     excerpt:
-      "Wie unsere Baristas Latte-Art auf Events zaubern und warum die richtige Milchtemperatur den Unterschied macht.",
+      "Unsere schönsten mobilen Cocktailbar-Momente der letzten Jahre – von Rooftop-Sommernächten bis zu eleganten Galas.",
     featured: true,
-    image: coffeeImage,
-    alt: "Placeholder für Kaffee Story",
+    image: movingBarsImage,
+    alt: "Highlight der mobilen Cocktailbar",
   },
   {
-    title: "ROAST STORIES",
+    title: "SO ARBEITEN WIR",
     date: "28. Juli 2024",
     excerpt:
-      "Welche Bohnen wir wählen, wie wir mit Röstereien zusammenarbeiten und was das für den Geschmack im Cup bedeutet.",
-    featured: false,
-    image: coffeeImage,
-    alt: "Placeholder für Kaffee Story",
+      "Ein Blick in unseren Ablauf: Beratung, Planung und Bar-Setup, damit jede Veranstaltung reibungslos läuft.",
+    featured: true,
+    image: movingBarsImage,
+    alt: "Arbeitsweise der mobilen Cocktailbar",
   },
   {
-    title: "MOBILE KAFFEEBAR",
+    title: "TIPPS FÜR DEIN EVENT",
     date: "18. Juli 2024",
     excerpt:
-      "Unsere Setups für Messen und Hochzeiten – welche Maschinen wir einsetzen und wie wir perfekte Crema vor Ort sicherstellen.",
-    featured: true,
-    image: coffeeImage,
-    alt: "Placeholder für Kaffee Story",
+      "Worauf du bei der Planung einer mobilen Cocktailbar achten solltest – vom passenden Menü bis zur perfekten Gästezahl.",
+    featured: false,
+    image: movingBarsImage,
+    alt: "Planungstipps für Events",
   },
 ];
 ---
@@ -158,12 +158,12 @@ Viel Spaß beim Lesen wünscht…moving bars
       </div>
 
       <div class="blog-intro-media is-blog-coffee" aria-label="Kaffee Blog Bild" data-panel-parallax data-speed="0.35">
-        <div class="blog-intro-bg panel-bg" role="presentation" style={`background-image:url('${coffeeImage}')`}></div>
+        <div class="blog-intro-bg panel-bg" role="presentation" style={`background-image:url('${movingBarsImage}')`}></div>
       </div>
     </div>
 
     <div class="blog-posts" aria-label="Neueste Kaffee Momente">
-      {selectPosts(coffeePosts).map((post) => (
+      {selectPosts(movingBarsPosts).map((post) => (
         <article class="post-card">
           <div class="post-media">
             <img src={post.image} alt={post.alt} loading="lazy" />
