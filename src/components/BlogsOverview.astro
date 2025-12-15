@@ -86,6 +86,8 @@ Viel Spaß beim Lesen wünscht moving bars
         </div>
       </article>
     </div>
+
+    <a class="blog-cta" href="/blog/mobile-cocktailbar">Alle Artikel zur mobilen Cocktailbar</a>
   </section>
 
   <section class="blog-block">
@@ -150,6 +152,8 @@ Viel Spaß beim Lesen wünscht moving bars
         </div>
       </article>
     </div>
+
+    <a class="blog-cta" href="/blog/kaffee-catering">Alle Artikel zum Kaffee-Catering</a>
   </section>
 </section>
 
@@ -258,6 +262,21 @@ Viel Spaß beim Lesen wünscht moving bars
     gap: var(--blogs-post-grid-gap, var(--blogs-gap));
     padding-inline: clamp(1rem, 3vw, 2rem);
     border-radius: 0 !important;
+  }
+
+  .blog-cta {
+    display: inline-block;
+    margin-top: var(--blogs-cta-margin-top);
+    padding-inline: var(--blogs-cta-inline-pad);
+    font-size: var(--blogs-cta-font-size);
+    color: rgba(247, 247, 247, 0.9);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .blog-cta:focus-visible {
+    outline: 1px solid rgba(var(--accent-rgb), 0.55);
+    outline-offset: 2px;
   }
 
   .blog-posts .post-card:nth-of-type(n + 5) {
