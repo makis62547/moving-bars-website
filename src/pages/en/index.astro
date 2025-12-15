@@ -13,7 +13,7 @@ const metaDescription = t(lang, "meta.description");
 ---
 
 <BaseLayout lang={lang} title={metaTitle} description={metaDescription}>
-  <main class="bg-black">
+  <main class="bg-black text-white">
     {/* Regel: Neue Blocks immer unten anfügen, außer explizit anders gewünscht. Reihenfolge: ServicesOverview -> BlogsOverview */}
     <PageHero title={t(lang, "hero.title") ?? ""} intro={t(lang, "hero.intro") ?? ""} />
     <UnderHeroTiles />
