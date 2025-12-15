@@ -71,7 +71,13 @@ const visible = services.filter((service) => service.slug !== exclude);
       >
         {visible.map((service) => (
           <article class="service-card" role="listitem" aria-label={service.title}>
-            <div class="service-media" aria-hidden="true"></div>
+            <div
+              class:list={{
+                "service-media": true,
+                [`is-${service.slug}`]: true,
+              }}
+              aria-hidden="true"
+            ></div>
 
             <div class="service-body">
               <h3 class="service-title">{service.title}</h3>
@@ -179,6 +185,29 @@ const visible = services.filter((service) => service.slug !== exclude);
     border-radius: 0;
     background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.35), rgba(var(--accent-rgb), 0.08));
     border: 1px solid rgba(var(--accent-rgb), 0.35);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .service-media.is-cocktail-catering {
+    background-image: url("/images/cocktail-catering-moving-bars.jpg");
+  }
+
+  .service-media.is-mobile-bar {
+    background-image: url("/images/mobile-bar-mnietn.jpg");
+  }
+
+  .service-media.is-cocktail-show {
+    background-image: url("/images/cocktailshow-berlin.jpg");
+  }
+
+  .service-media.is-cocktailkurse {
+    background-image: url("/images/mobiler-cocktailkurz-berlin.jpg");
+  }
+
+  .service-media.is-kaffeecatering {
+    background-image: url("/images/kaffee-catering.jpg");
   }
 
   .service-body {
