@@ -6,11 +6,11 @@ const lang: Lang = Astro.url.searchParams.get("lang") === "en" ? "en" : "de";
 const t = i18n[lang];
 
 const navLinks = [
-  { href: "/cocktail-catering", label: t.nav.cocktail },
+  { href: "/cocktail-catering", label: t.nav.cocktailCatering },
   { href: "/mobile-bar", label: t.nav.mobileBar },
-  { href: "/cocktail-show", label: "Cocktail Show" },
-  { href: "/cocktailkurse", label: "Cocktailkurse" },
-  { href: "/kaffeecatering", label: t.nav.coffee },
+  { href: "/cocktail-show", label: t.nav.cocktailShow },
+  { href: "/cocktailkurse", label: t.nav.cocktailCourses },
+  { href: "/kaffeecatering", label: t.nav.coffeeCatering },
   { href: "/anfrage", label: t.nav.request },
 ];
 ---
