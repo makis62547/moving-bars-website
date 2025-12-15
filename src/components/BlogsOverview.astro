@@ -1,6 +1,82 @@
 ---
 const cocktailImage = "/images/moving-bars-cocktail-geschichten.jpg";
 const coffeeImage = "/images/moving-bars-cocktail-geschichten.jpg"; // TODO: Replace with dedicated coffee blog visual
+
+const selectPosts = (posts) => {
+  const featuredPosts = posts.filter(({ featured }) => featured);
+  const regularPosts = posts.filter(({ featured }) => !featured);
+
+  return [...featuredPosts, ...regularPosts].slice(0, 4);
+};
+
+const cocktailPosts = [
+  {
+    title: "SIGNATURE DRINKS",
+    date: "12. August 2024",
+    excerpt:
+      "Wie unsere Barkeeper neue Lieblingsdrinks entwickeln – von der ersten Idee bis zur perfekt ausbalancierten Komposition im Glas.",
+    featured: true,
+    image: cocktailImage,
+    alt: "Placeholder für Cocktail Story",
+  },
+  {
+    title: "BACKSTAGE",
+    date: "02. August 2024",
+    excerpt:
+      "Ein Blick hinter die Kulissen unserer mobilen Bars: Logistik, Setup und die kleinen Details, die Events unvergesslich machen.",
+    featured: false,
+    image: cocktailImage,
+    alt: "Placeholder für Cocktail Story",
+  },
+  {
+    title: "BAR TEAM",
+    date: "21. Juli 2024",
+    excerpt:
+      "Lerne das Team kennen: Persönliche Geschichten, Lieblingsdrinks und was unsere Crew bei langen Nächten antreibt.",
+    featured: true,
+    image: cocktailImage,
+    alt: "Placeholder für Cocktail Story",
+  },
+  {
+    title: "EVENT HIGHLIGHTS",
+    date: "10. Juli 2024",
+    excerpt:
+      "Die schönsten Momente der letzten Monate – vom Messeauftritt bis zur Rooftop-Party über den Dächern der Stadt.",
+    featured: false,
+    image: cocktailImage,
+    alt: "Placeholder für Cocktail Story",
+  },
+];
+
+const coffeePosts = [
+  {
+    title: "LATTE ART",
+    date: "05. August 2024",
+    excerpt:
+      "Wie unsere Baristas Latte-Art auf Events zaubern und warum die richtige Milchtemperatur den Unterschied macht.",
+    featured: true,
+    image: coffeeImage,
+    alt: "Placeholder für Kaffee Story",
+  },
+  {
+    title: "ROAST STORIES",
+    date: "28. Juli 2024",
+    excerpt:
+      "Welche Bohnen wir wählen, wie wir mit Röstereien zusammenarbeiten und was das für den Geschmack im Cup bedeutet.",
+    featured: false,
+    image: coffeeImage,
+    alt: "Placeholder für Kaffee Story",
+  },
+  {
+    title: "MOBILE KAFFEEBAR",
+    date: "18. Juli 2024",
+    excerpt:
+      "Unsere Setups für Messen und Hochzeiten – welche Maschinen wir einsetzen und wie wir perfekte Crema vor Ort sicherstellen.",
+    featured: true,
+    image: coffeeImage,
+    alt: "Placeholder für Kaffee Story",
+  },
+];
 ---
 
 <section class="blogs-overview" aria-label="Blogübersicht">
@@ -12,12 +88,28 @@ const coffeeImage = "/images/moving-bars-cocktail-geschichten.jpg"; // TODO: Rep
         </h2>
         <div class="blog-divider" aria-hidden="true"></div>
         <p class="blog-intro-copy">
-         In diesem Blog wollen wir uns immer wieder Zeit nehmen und über das Kernthema unserer Arbeit an der mobilen Cocktailbar schreiben: 
-Cocktails bzw. Mischgetränke. 
-Es sind weniger die Rezepturen oder die eigentliche Zubereitung über die wir erzählen wollen. 
-Was uns am Herzen liegt und über all die Jahre immer wieder begeistert hat sind die Geschichten, die sich hinter diesen Rezepturen verbergen. Cocktails sind nicht einfach nur Getränke, die schmecken und lustig machen, sie sind ein Teil Menschheits-Geschichte, Abenteuer und Weltreise. Geschichten über die Länder aus denen sie stammen, die Zeit aus der sie kommen, Seeräubern, die sie getrunken oder Barkeepern, die sie erfunden haben. All diese Hintergründe machen Cocktails, wie wir meinen, erst zu dem was sie sind: ein wirklich spannendes Thema. 
+         In diesem Blog wollen wir uns immer wieder Zeit nehmen und über das Kernthema unserer Arbeit an der mobilen Cocktailbar
+ schreiben:
+Cocktails bzw. Mischgetränke.
+Es sind weniger die Rezepturen oder die eigentliche Zubereitung über die wir erzählen wollen.
+Was uns am Herzen liegt und über all die Jahre immer wieder begeistert hat sind die Geschichten, die sich hinter diesen Rezeptur
+en verbergen. Cocktails sind nicht einfach nur Getränke, die schmecken und lustig machen, sie sind ein Teil Menschheits-Geschich
+te, Abenteuer und Weltreise. Geschichten über die Länder aus denen sie stammen, die Zeit aus der sie kommen, Seeräubern, die sie
+ getrunken oder Barkeepern, die sie erfunden haben. All diese Hintergründe machen Cocktails, wie wir meinen, erst zu dem was sie
+ sind: ein wirklich spannendes Thema.
 
-Früher war es wesentlicher schwieriger Informationen und Hintergründe zum Thema Cocktails zu finden. Alte Cocktailbücher waren heiß gehandelte Raritäten und die Suche danach in Antiquariaten sehr mühsam, zeitaufreibend und kostspielig. Das Internet macht eine Vielzahl an Informationen leicht und umfänglich zugänglich. Wikipedia & Co sind für jeden erreichbar und bieten eine Fülle an Informationen. Viele Originalquellen sind digitalisiert und bieten die faszinierende Möglichkeit der virtuellen Zeitreise. Wie auch bei anderen Themen, besteht die Kunst heutzutage darin, diese Informationen zu sortieren und Ihre Relevanz zu prüfen. Aus einer These wird im Netz schnell eine Tatsache, indem der eine vom anderen übernimmt bzw. Quellen nicht überprüft werden. Beim Thema Cocktails und Ihrer Geschichte haben wir es immer wieder mit Mythen und Bar-Latein zu tun. Wir haben uns vorgenommen den Ursprüngen auf den Grund zu gehen, soweit möglich Quellen zu prüfen, nach unserem Wissen zu beurteilen und zusammen zu fassen was zum jeweiligen Thema bekannt ist. Dabei hoffen wir dem interessierten Leser Informationen zu vermitteln, ohne dass er sich die Mühe machen muss dafür stundenlang im Netz zu surfen. Sollten wir eine Quelle übersehen haben oder uns eine wichtige Information entgangen sein, freuen wir uns über Anregungen und Feedback. Selbstverständlich finden sich in jedem Artikel alle Quellenangaben und Links für alle die dann noch nicht genug haben.
+Früher war es wesentlicher schwieriger Informationen und Hintergründe zum Thema Cocktails zu finden. Alte Cocktailbücher waren h
+eiß gehandelte Raritäten und die Suche danach in Antiquariaten sehr mühsam, zeitaufreibend und kostspielig. Das Internet macht e
+ine Vielzahl an Informationen leicht und umfänglich zugänglich. Wikipedia & Co sind für jeden erreichbar und bieten eine Fülle a
+n Informationen. Viele Originalquellen sind digitalisiert und bieten die faszinierende Möglichkeit der virtuellen Zeitreise. Wie
+ auch bei anderen Themen, besteht die Kunst heutzutage darin, diese Informationen zu sortieren und Ihre Relevanz zu prüfen. Aus
+einer These wird im Netz schnell eine Tatsache, indem der eine vom anderen übernimmt bzw. Quellen nicht überprüft werden. Beim T
+hema Cocktails und Ihrer Geschichte haben wir es immer wieder mit Mythen und Bar-Latein zu tun. Wir haben uns vorgenommen den Ur
+sprungen auf den Grund zu gehen, soweit möglich Quellen zu prüfen, nach unserem Wissen zu beurteilen und zusammen zu fassen was
+zum jeweiligen Thema bekannt ist. Dabei hoffen wir dem interessierten Leser Informationen zu vermitteln, ohne dass er sich die M
+ühe machen muss dafür stundenlang im Netz zu surfen. Sollten wir eine Quelle übersehen haben oder uns eine wichtige Information
+entgangen sein, freuen wir uns über Anregungen und Feedback. Selbstverständlich finden sich in jedem Artikel alle Quellenangaben
+ und Links für alle die dann noch nicht genug haben.
 
 Viel Spaß beim Lesen wünscht moving bars
         </p>
@@ -29,62 +121,19 @@ Viel Spaß beim Lesen wünscht moving bars
     </div>
 
     <div class="blog-posts" aria-label="Neueste Cocktail Stories">
-      <article class="post-card">
-        <div class="post-media">
-          <img src={cocktailImage} alt="Placeholder für Cocktail Story" loading="lazy" />
-        </div>
-        <div class="post-body">
-          <h3 class="post-title accent-text">SIGNATURE DRINKS</h3>
-          <p class="post-meta">12. August 2024</p>
-          <p class="post-excerpt">
-            Wie unsere Barkeeper neue Lieblingsdrinks entwickeln – von der ersten Idee bis zur perfekt ausbalancierten
-            Komposition im Glas.
-          </p>
-          <button class="post-cta" type="button">Mehr lesen</button>
-        </div>
-      </article>
-      <article class="post-card">
-        <div class="post-media">
-          <img src={cocktailImage} alt="Placeholder für Cocktail Story" loading="lazy" />
-        </div>
-        <div class="post-body">
-          <h3 class="post-title accent-text">BACKSTAGE</h3>
-          <p class="post-meta">02. August 2024</p>
-          <p class="post-excerpt">
-            Ein Blick hinter die Kulissen unserer mobilen Bars: Logistik, Setup und die kleinen Details, die Events
-            unvergesslich machen.
-          </p>
-          <button class="post-cta" type="button">Mehr lesen</button>
-        </div>
-      </article>
-      <article class="post-card">
-        <div class="post-media">
-          <img src={cocktailImage} alt="Placeholder für Cocktail Story" loading="lazy" />
-        </div>
-        <div class="post-body">
-          <h3 class="post-title accent-text">BAR TEAM</h3>
-          <p class="post-meta">21. Juli 2024</p>
-          <p class="post-excerpt">
-            Lerne das Team kennen: Persönliche Geschichten, Lieblingsdrinks und was unsere Crew bei langen Nächten
-            antreibt.
-          </p>
-          <button class="post-cta" type="button">Mehr lesen</button>
-        </div>
-      </article>
-      <article class="post-card">
-        <div class="post-media">
-          <img src={cocktailImage} alt="Placeholder für Cocktail Story" loading="lazy" />
-        </div>
-        <div class="post-body">
-          <h3 class="post-title accent-text">EVENT HIGHLIGHTS</h3>
-          <p class="post-meta">10. Juli 2024</p>
-          <p class="post-excerpt">
-            Die schönsten Momente der letzten Monate – vom Messeauftritt bis zur Rooftop-Party über den Dächern der
-            Stadt.
-          </p>
-          <button class="post-cta" type="button">Mehr lesen</button>
-        </div>
-      </article>
+      {selectPosts(cocktailPosts).map((post) => (
+        <article class="post-card">
+          <div class="post-media">
+            <img src={post.image} alt={post.alt} loading="lazy" />
+          </div>
+          <div class="post-body">
+            <h3 class="post-title accent-text">{post.title}</h3>
+            <p class="post-meta">{post.date}</p>
+            <p class="post-excerpt">{post.excerpt}</p>
+            <button class="post-cta" type="button">Mehr lesen</button>
+          </div>
+        </article>
+      ))}
     </div>
 
     <a class="blog-cta" href="/blog/mobile-cocktailbar">Alle Artikel zur mobilen Cocktailbar</a>
@@ -109,48 +158,19 @@ Viel Spaß beim Lesen wünscht moving bars
     </div>
 
     <div class="blog-posts" aria-label="Neueste Kaffee Momente">
-      <article class="post-card">
-        <div class="post-media">
-          <img src={coffeeImage} alt="Placeholder für Kaffee Story" loading="lazy" />
-        </div>
-        <div class="post-body">
-          <h3 class="post-title accent-text">LATTE ART</h3>
-          <p class="post-meta">05. August 2024</p>
-          <p class="post-excerpt">
-            Wie unsere Baristas Latte-Art auf Events zaubern und warum die richtige Milchtemperatur den Unterschied
-            macht.
-          </p>
-          <button class="post-cta" type="button">Mehr lesen</button>
-        </div>
-      </article>
-      <article class="post-card">
-        <div class="post-media">
-          <img src={coffeeImage} alt="Placeholder für Kaffee Story" loading="lazy" />
-        </div>
-        <div class="post-body">
-          <h3 class="post-title accent-text">ROAST STORIES</h3>
-          <p class="post-meta">28. Juli 2024</p>
-          <p class="post-excerpt">
-            Welche Bohnen wir wählen, wie wir mit Röstereien zusammenarbeiten und was das für den Geschmack im Cup
-            bedeutet.
-          </p>
-          <button class="post-cta" type="button">Mehr lesen</button>
-        </div>
-      </article>
-      <article class="post-card">
-        <div class="post-media">
-          <img src={coffeeImage} alt="Placeholder für Kaffee Story" loading="lazy" />
-        </div>
-        <div class="post-body">
-          <h3 class="post-title accent-text">MOBILE KAFFEEBAR</h3>
-          <p class="post-meta">18. Juli 2024</p>
-          <p class="post-excerpt">
-            Unsere Setups für Messen und Hochzeiten – welche Maschinen wir einsetzen und wie wir perfekte Crema vor Ort
-            sicherstellen.
-          </p>
-          <button class="post-cta" type="button">Mehr lesen</button>
-        </div>
-      </article>
+      {selectPosts(coffeePosts).map((post) => (
+        <article class="post-card">
+          <div class="post-media">
+            <img src={post.image} alt={post.alt} loading="lazy" />
+          </div>
+          <div class="post-body">
+            <h3 class="post-title accent-text">{post.title}</h3>
+            <p class="post-meta">{post.date}</p>
+            <p class="post-excerpt">{post.excerpt}</p>
+            <button class="post-cta" type="button">Mehr lesen</button>
+          </div>
+        </article>
+      ))}
     </div>
 
     <a class="blog-cta" href="/blog/kaffee-catering">Alle Artikel zum Kaffee-Catering</a>
