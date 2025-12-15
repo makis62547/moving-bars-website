@@ -1,9 +1,16 @@
 ---
 import "../styles/globals.css";
 import Header from "../components/Header.astro";
+
+const {
+  lang = "de",
+  title = "Moving Bars · Mobile Cocktailbar & Catering Berlin",
+  description =
+    "Mobile Cocktailbars, Premium-Barkeeper und Full-Service-Catering für Events in Berlin und deutschlandweit.",
+} = Astro.props;
 ---
 
-<html lang="de">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -136,17 +143,14 @@ import Header from "../components/Header.astro";
       @import "/src/design/layout.css" layer(design);
     </style>
 
-    <title>Moving Bars · Mobile Cocktailbar & Catering Berlin</title>
-    <meta
-      name="description"
-      content="Mobile Cocktailbars, Premium-Barkeeper und Full-Service-Catering für Events in Berlin und deutschlandweit."
-    />
+    <title>{title}</title>
+    <meta name="description" content={description} />
 
     <slot name="head" />
   </head>
 
   <body class="antialiased min-h-screen">
-    <Header />
+    <Header lang={lang} />
     <slot />
   </body>
 </html>

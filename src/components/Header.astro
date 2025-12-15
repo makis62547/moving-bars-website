@@ -1,18 +1,23 @@
 ---
 // src/components/Header.astro
+import type { Lang } from "../i18n";
+import { t } from "../i18n";
+
+const { lang = "de" as Lang } = Astro.props;
+
 const navLinks = [
-  { href: "/cocktail-catering", label: "Cocktail Catering" },
-  { href: "/mobile-bar", label: "Mobile Bar" },
-  { href: "/cocktail-show", label: "Cocktail Show" },
-  { href: "/cocktailkurse", label: "Cocktailkurse" },
-  { href: "/kaffeecatering", label: "Kaffee Catering" },
-  { href: "/anfrage", label: "Anfrage" },
+  { href: `/${lang}/cocktail-catering`, label: t(lang, "nav.cocktail") },
+  { href: `/${lang}/mobile-bar`, label: t(lang, "nav.mobileBar") },
+  { href: `/${lang}/kaffeecatering`, label: t(lang, "nav.coffee") },
+  { href: `/${lang}/anfrage`, label: t(lang, "nav.request") },
 ];
+
+const alternateLang = lang === "de" ? "en" : "de";
 ---
 
 <header class="site-header">
   <div class="header-inner site-container">
-    <a href="/" class="logo" aria-label="Startseite">
+    <a href={`/${lang}/`} class="logo" aria-label="Startseite">
       <img src="/images/logo-white.png" alt="moving bars logo" />
     </a>
 
@@ -20,6 +25,9 @@ const navLinks = [
       {navLinks.map((link) => (
         <a href={link.href} class="nav-link">{link.label}</a>
       ))}
+      <a class="nav-link nav-link--lang" href={`/${alternateLang}/`}>
+        {alternateLang.toUpperCase()}
+      </a>
     </nav>
 
     <div class="nav-mobile">
@@ -50,6 +58,9 @@ const navLinks = [
         {navLinks.map((link) => (
           <a href={link.href} class="mobile-nav-link">{link.label}</a>
         ))}
+        <a href={`/${alternateLang}/`} class="mobile-nav-link nav-link--lang">
+          {alternateLang.toUpperCase()}
+        </a>
       </nav>
     </div>
   </div>
