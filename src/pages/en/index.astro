@@ -1,0 +1,447 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
+import UnderHeroTiles from "../../components/UnderHeroTiles.astro";
+import ServicesOverview from "../../components/ServicesOverview.astro";
+import BlogsOverview from "../../components/BlogsOverview.astro";
+import type { Lang } from "../../i18n";
+import { t } from "../../i18n";
+
+const lang: Lang = "en";
+const metaTitle = t(lang, "meta.title");
+const metaDescription = t(lang, "meta.description");
+---
+
+<BaseLayout lang={lang} title={metaTitle} description={metaDescription}>
+  <main class="bg-black">
+    {/* Regel: Neue Blocks immer unten anfügen, außer explizit anders gewünscht. Reihenfolge: ServicesOverview -> BlogsOverview */}
+    <PageHero title={t(lang, "hero.title") ?? ""} intro={t(lang, "hero.intro") ?? ""} />
+    <UnderHeroTiles />
+    <ServicesOverview />
+    <BlogsOverview />
+    <section class="reviews-section" id="google-reviews">
+      <div class="site-container reviews-inner">
+        <div class="reviews-header">
+          <div class="reviews-meta">
+            <h2 class="section-title">
+              <span class="title-accent">GOOGLE</span> BEWERTUNGEN
+            </h2>
+            <p class="rating">5.0 ★★★★★ (123)</p>
+          </div>
+          <a class="ghost-button" href="#">Bewerten Sie uns auf Google</a>
+        </div>
+        <div class="reviews-grid">
+          <article class="review-card">
+            <div class="review-card__header">
+              <div>
+                <p class="reviewer">Max Mustermann</p>
+                <p class="timestamp">vor 14 Tagen</p>
+              </div>
+              <p class="stars">★★★★★</p>
+            </div>
+            <p class="review-text">
+              Großartiger Service und fantastische Drinks! Unsere Gäste waren begeistert – gerne wieder.
+            </p>
+          </article>
+          <article class="review-card">
+            <div class="review-card__header">
+              <div>
+                <p class="reviewer">Sophie Beispiel</p>
+                <p class="timestamp">vor 1 Monat</p>
+              </div>
+              <p class="stars">★★★★★</p>
+            </div>
+            <p class="review-text">
+              Professionelles Team, schnelle Kommunikation und eine wunderbare Atmosphäre an der Bar.
+            </p>
+          </article>
+          <article class="review-card">
+            <div class="review-card__header">
+              <div>
+                <p class="reviewer">Leon Demo</p>
+                <p class="timestamp">vor 2 Monaten</p>
+              </div>
+              <p class="stars">★★★★★</p>
+            </div>
+            <p class="review-text">
+              Stilvolle Bar, super Cocktails und sehr freundliche Barkeeper – absolute Empfehlung.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="partners-section" id="unsere-partner">
+      <div class="site-container">
+        <div class="partners-heading">
+          <h2 class="section-title">
+            <span class="title-accent">UNSERE</span> PARTNER
+          </h2>
+        </div>
+        <div class="partners-grid">
+          <div class="partner-tile">Partner Logo</div>
+          <div class="partner-tile">Partner Logo</div>
+          <div class="partner-tile">Partner Logo</div>
+          <div class="partner-tile">Partner Logo</div>
+          <div class="partner-tile">Partner Logo</div>
+          <div class="partner-tile">Partner Logo</div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="divider-strip parallax-section"
+      aria-hidden="true"
+      style="height: var(--divider-strip-height);"
+    >
+      <div
+        class="divider-strip-bg parallax-bg"
+        role="presentation"
+        style="background-image: url('/images/moving-bars-mobile-cocktailbar.jpg');"
+      ></div>
+      <div class="divider-strip-overlay" aria-hidden="true"></div>
+    </section>
+
+    <footer class="site-footer" id="kontakt">
+      <div class="site-container footer-inner">
+        <div class="footer-contact">
+<h2 class="section-title">
+  JETZT <span class="title-accent">KONTAKT</span><br />
+  AUFNEHMEN
+</h2>
+
+          <div class="section-divider" aria-hidden="true"></div>
+
+          <ul class="contact-list">
+            <li>
+              <span class="contact-ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" class="contact-ico-svg">
+                  <path d="M16 1H8C6.9 1 6 1.9 6 3v18c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2Zm-4 21.2c-.66 0-1.2-.54-1.2-1.2s.54-1.2 1.2-1.2 1.2.54 1.2 1.2-.54 1.2-1.2 1.2ZM18 18H6V4h12v14Z" />
+                </svg>
+              </span>
+              <a href="tel:+491752221140">+49 175 2221140</a>
+            </li>
+            <li>
+              <span class="contact-ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" class="contact-ico-svg">
+                  <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V21a1 1 0 0 1-1 1C10.07 22 2 13.93 2 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.24 1.02l-2.21 2.2Z" />
+                </svg>
+              </span>
+              <a href="tel:+493084108980">+49 30 8410898-0</a>
+            </li>
+            <li>
+              <span class="contact-ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" class="contact-ico-svg">
+                  <path d="M4.5 5.25h15c.7 0 1.25.56 1.25 1.25v11c0 .69-.56 1.25-1.25 1.25h-15c-.69 0-1.25-.56-1.25-1.25v-11c0-.69.56-1.25 1.25-1.25Zm0 2.05V17.5h15V7.3l-7.24 4.55a.75.75 0 0 1-.78 0L4.5 7.3Z" />
+                </svg>
+              </span>
+              <a href="mailto:info@moving-bars.de">info@moving-bars.de</a>
+            </li>
+          </ul>
+        </div>
+        <div class="section-divider section-divider--vertical" aria-hidden="true"></div>
+        <div class="footer-highlight" aria-hidden="true">
+          <div class="contact-big-icon">
+            <svg viewBox="0 0 24 24" class="contact-big-icon-svg">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2H9l-5 4v-4H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2Zm4 7a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm4 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm4 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z" />
+            </svg>
+            <!-- <div class="icon-placeholder">📣</div> -->
+          </div>
+        </div>
+      </div>
+      <div class="footer-meta">
+        <a href="#">Impressum</a>
+        <span aria-hidden="true">|</span>
+        <a href="#">Datenschutz</a>
+        <span aria-hidden="true">|</span>
+        <a href="#">AGB</a>
+      </div>
+    </footer>
+  </main>
+</BaseLayout>
+
+<style>
+  .section-title {
+    margin: 0;
+    font-size: clamp(2.1rem, 3vw, 3rem);
+    line-height: var(--heading-line-height);
+  }
+
+  .section-title .title-accent {
+    color: var(--accent);
+  }
+
+  .reviews-section {
+    background: #000;
+    padding: var(--section-pad-block) 0;
+    color: var(--text-color);
+  }
+
+  .reviews-inner {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 4vw, 3rem);
+  }
+
+  .reviews-header {
+    display: grid;
+    grid-template-columns: 1.4fr auto;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    align-items: start;
+  }
+
+  .reviews-meta .rating {
+    color: var(--text-muted-color);
+    margin: 0.5rem 0 0;
+    font-weight: 600;
+  }
+
+  .ghost-button {
+    justify-self: end;
+    align-self: start;
+    padding: 0.9rem 1.4rem;
+    border: 1px solid rgba(var(--accent-rgb), 0.7);
+    color: var(--text-color);
+    border-radius: 0;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    background: transparent;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .ghost-button:hover {
+    background: rgba(var(--accent-rgb), 0.12);
+    color: var(--accent);
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: clamp(1.2rem, 2vw, 1.8rem);
+  }
+
+  .review-card {
+    background: #0f0f0f;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0;
+    padding: clamp(1.2rem, 2.2vw, 1.6rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+  }
+
+  .review-card__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .reviewer {
+    margin: 0;
+    font-weight: 700;
+  }
+
+  .timestamp {
+    margin: 0.1rem 0 0;
+    color: var(--text-muted-color);
+    font-size: 0.95rem;
+  }
+
+  .stars {
+    margin: 0;
+    color: var(--accent);
+    font-weight: 800;
+  }
+
+  .review-text {
+    margin: 0;
+    color: #d8d8d8;
+  }
+
+  .partners-section {
+    padding: var(--section-pad-block) 0;
+    background: #000;
+  }
+
+  .partners-heading {
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .partners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--partner-grid-gap);
+  }
+
+  .partner-tile {
+    background: #ffffff;
+    color: #222;
+    height: 120px;
+    border-radius: 0;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .divider-strip{
+    position: relative;
+    overflow: hidden;
+
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+
+  .divider-strip-bg{
+    position: absolute;
+    inset: var(--divider-strip-bg-inset-top) 0 0 0;
+    height: var(--divider-strip-bg-height);
+    width: 100%;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: var(--divider-strip-bg-pos);
+  }
+
+  .divider-strip-overlay{
+    position: absolute;
+    inset: 0;
+    background: var(--divider-strip-overlay);
+  }
+
+  @media (hover: hover) and (pointer: fine){
+    .divider-strip-bg{
+      background-attachment: fixed;
+    }
+  }
+
+  .site-footer {
+    background: #000;
+    padding: var(--section-pad-block) 0 var(--footer-pad-block);
+    color: var(--text-color);
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1.5rem, 3vw, 2rem);
+    align-items: stretch;
+  }
+
+  .footer-contact .section-title {
+    margin-bottom: 0.8rem;
+  }
+
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.9;
+  }
+
+  .section-divider--vertical {
+    width: 1px;
+    height: 100%;
+    background: var(--accent);
+    opacity: 0.9;
+    margin-inline: auto;
+  }
+
+  .contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.1rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .contact-list li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  .contact-ico {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    transform: translateY(1px);
+  }
+
+  .contact-ico-svg {
+    width: 1.1em;
+    height: 1.1em;
+    fill: currentColor;
+    display: block;
+  }
+
+  .contact-list a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .contact-list a:hover {
+    color: var(--accent);
+  }
+
+  .footer-highlight {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contact-big-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .contact-big-icon-svg {
+    width: clamp(140px, 18vw, 240px);
+    height: auto;
+    fill: var(--accent);
+    display: block;
+  }
+
+  .footer-meta {
+    margin-top: clamp(2rem, 3.5vw, 3rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+    color: var(--text-muted-color);
+  }
+
+  .footer-meta a:hover {
+    color: var(--accent);
+  }
+
+  @media (max-width: 860px) {
+    .reviews-header {
+      grid-template-columns: 1fr;
+    }
+
+    .ghost-button {
+      justify-self: start;
+    }
+
+    .footer-inner {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+    }
+
+    .section-divider--vertical {
+      height: 1px;
+      width: 100%;
+    }
+  }
+</style>
