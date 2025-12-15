@@ -248,23 +248,15 @@ const coffeeImage = "/images/moving-bars-cocktail-geschichten.jpg"; // TODO: Rep
 
   .blog-posts {
     display: flex;
+    flex-direction: column;
     gap: var(--blogs-gap);
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
     padding-inline: clamp(1rem, 3vw, 2rem);
     border-radius: 0 !important;
   }
 
-  .blog-posts::-webkit-scrollbar { height: 10px; }
-  .blog-posts::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); }
-
   .post-card {
     background: #0b0b0b;
     border: 1px solid rgba(var(--accent-rgb), 0.25);
-    width: var(--blogs-post-snap-width, min(86vw, 720px));
-    flex: 0 0 var(--blogs-post-snap-width, min(86vw, 720px));
-    scroll-snap-align: start;
     display: grid;
     grid-template-rows: auto 1fr;
     min-height: 100%;
