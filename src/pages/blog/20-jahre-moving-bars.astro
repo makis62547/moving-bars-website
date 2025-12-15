@@ -1,0 +1,87 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <Fragment slot="head">
+    <title>20 Jahre Moving Bars Mobile Cocktailbar | Moving Bars</title>
+    <meta
+      name="description"
+      content="Ein ruhiger Rückblick auf zwei Jahrzehnte mobile Cocktailbar: Stationen, Erfahrungen und Geschichten aus dem Event-Alltag."
+    />
+  </Fragment>
+
+  <main class="bg-black text-white">
+    <section class="py-12 md:py-16 border-b border-[var(--border)]">
+      <div class="site-container max-w-4xl space-y-6">
+        <nav aria-label="Brotkrumen" class="text-sm text-[var(--text-muted-color)] flex gap-2">
+          <a href="/" class="hover:text-[var(--accent)]">Startseite</a>
+          <span aria-hidden="true">/</span>
+          <span class="text-white">20 Jahre Moving Bars</span>
+        </nav>
+
+        <header class="space-y-4">
+          <h1 class="display-size-h1">20 Jahre Moving Bars Mobile Cocktailbar</h1>
+          <p>
+            Zwei Jahrzehnte unterwegs mit der mobilen Cocktailbar bedeuten zahlreiche Orte, Menschen und Situationen, die unseren
+            Blick auf Veranstaltungen geprägt haben. Diese Seite sammelt Erinnerungen und Beobachtungen, die zeigen, wie sich
+            Abläufe, Technik und Gästewünsche seit der Gründung verändert haben.
+          </p>
+          <p>
+            Wir halten Eindrücke fest, die später zu ausführlichen Artikeln werden können – von frühen Einsätzen bis hin zu
+            aktuellen Projekten. Dabei geht es weniger um Selbstinszenierung, sondern um nachvollziehbare Erfahrungen, die künftige
+            Events noch besser machen können.
+          </p>
+        </header>
+      </div>
+    </section>
+
+    <section class="py-12 md:py-16">
+      <div class="site-container space-y-8">
+        <div class="flex flex-col gap-3">
+          <h2 class="text-2xl font-semibold tracking-tight">Alle Artikel</h2>
+          <p class="max-w-3xl text-[var(--text-muted-color)]">
+            Die folgenden Platzhalter zeigen die geplante Struktur für Rückblicke und Einblicke aus 20 Jahren Moving Bars. Sie
+            werden später durch echte Artikel ersetzt.
+          </p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2">
+          <article class="rounded-xl border border-[var(--border)] bg-[#0d0d0d] p-6 space-y-3" aria-label="Platzhalterartikel 1">
+            <h3 class="text-xl font-semibold">Meilensteine auf Tour</h3>
+            <p class="text-[var(--text-muted-color)]">
+              Stationen, an denen neue Konzepte entstanden sind – von Messehallen bis zu temporären Rooftop-Bars.
+            </p>
+          </article>
+
+          <article class="rounded-xl border border-[var(--border)] bg-[#0d0d0d] p-6 space-y-3" aria-label="Platzhalterartikel 2">
+            <h3 class="text-xl font-semibold">Logistik im Wandel</h3>
+            <p class="text-[var(--text-muted-color)]">
+              Welche Ausrüstung wir über die Jahre angepasst haben, damit Auf- und Abbau auch unter Zeitdruck funktionieren.
+            </p>
+          </article>
+
+          <article class="rounded-xl border border-[var(--border)] bg-[#0d0d0d] p-6 space-y-3" aria-label="Platzhalterartikel 3">
+            <h3 class="text-xl font-semibold">Teamgeschichten</h3>
+            <p class="text-[var(--text-muted-color)]">
+              Erinnerungen an besondere Nächte, improvisierte Lösungen und Momente, die das Team zusammengeschweißt haben.
+            </p>
+          </article>
+
+          <article class="rounded-xl border border-[var(--border)] bg-[#0d0d0d] p-6 space-y-3" aria-label="Platzhalterartikel 4">
+            <h3 class="text-xl font-semibold">Lernkurve bei Events</h3>
+            <p class="text-[var(--text-muted-color)]">
+              Beobachtungen, welche Abläufe sich bewährt haben und wo wir noch präzisere Prozesse aufbauen wollen.
+            </p>
+          </article>
+        </div>
+
+        <div class="flex flex-wrap gap-4 text-sm">
+          <a class="underline hover:text-[var(--accent)]" href="/blog/cocktail-geschichten">
+            Zu Cocktail Geschichten – Herkunft, Geschichte & Hintergründe
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

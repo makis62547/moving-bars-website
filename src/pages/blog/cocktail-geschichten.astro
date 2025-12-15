@@ -1,0 +1,87 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <Fragment slot="head">
+    <title>Cocktail Geschichten – Herkunft, Geschichte & Hintergründe | Moving Bars</title>
+    <meta
+      name="description"
+      content="Entdecke die Hintergründe bekannter Cocktails, ihre Herkunft und die Menschen, die sie geprägt haben. Ruhig und informativ erzählt."
+    />
+  </Fragment>
+
+  <main class="bg-black text-white">
+    <section class="py-12 md:py-16 border-b border-[var(--border)]">
+      <div class="site-container max-w-4xl space-y-6">
+        <nav aria-label="Brotkrumen" class="text-sm text-[var(--text-muted-color)] flex gap-2">
+          <a href="/" class="hover:text-[var(--accent)]">Startseite</a>
+          <span aria-hidden="true">/</span>
+          <span class="text-white">Cocktail Geschichten</span>
+        </nav>
+
+        <header class="space-y-4">
+          <h1 class="display-size-h1">Cocktail Geschichten – Herkunft, Geschichte & Hintergründe</h1>
+          <p>
+            Cocktails sind mehr als Rezepturen: Hinter jeder Mischung stehen Orte, Epochen und Menschen, die ihre Entstehung
+            geprägt haben. Auf dieser Seite sammeln wir Hintergründe zu klassischen Drinks und beleuchten, wie sich Techniken
+            und Geschmäcker über die Jahrzehnte verändert haben.
+          </p>
+          <p>
+            Wir betrachten Quellen, historische Anekdoten und kulturelle Bezüge, um einen ruhigen Blick hinter die Kulissen der
+            Barkultur zu werfen. Jede Notiz dient als Ausgangspunkt für spätere Artikel, die einzelne Drinks, Zubereitungsarten
+            oder Barkeeper-Persönlichkeiten genauer vorstellen können.
+          </p>
+        </header>
+      </div>
+    </section>
+
+    <section class="py-12 md:py-16">
+      <div class="site-container space-y-8">
+        <div class="flex flex-col gap-3">
+          <h2 class="text-2xl font-semibold tracking-tight">Alle Artikel</h2>
+          <p class="max-w-3xl text-[var(--text-muted-color)]">
+            Diese Platzhalter zeigen die geplante Struktur für zukünftige Beiträge. Titel und Kurztexte werden später durch
+            echte Inhalte ersetzt.
+          </p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2">
+          <article class="rounded-xl border border-[var(--border)] bg-[#0d0d0d] p-6 space-y-3" aria-label="Platzhalterartikel 1">
+            <h3 class="text-xl font-semibold">Vom Jerry Thomas Punch zur modernen Bar</h3>
+            <p class="text-[var(--text-muted-color)]">
+              Eine Vorschau darauf, wie frühe Rezeptbücher den Grundstein für heutige Cocktailkarten gelegt haben.
+            </p>
+          </article>
+
+          <article class="rounded-xl border border-[var(--border)] bg-[#0d0d0d] p-6 space-y-3" aria-label="Platzhalterartikel 2">
+            <h3 class="text-xl font-semibold">Bitters, Sirups und die Suche nach Balance</h3>
+            <p class="text-[var(--text-muted-color)]">
+              Ein Blick auf Zutaten, die Drinks Tiefe geben – von hausgemachten Sirups bis zu ikonischen Bittermarken.
+            </p>
+          </article>
+
+          <article class="rounded-xl border border-[var(--border)] bg-[#0d0d0d] p-6 space-y-3" aria-label="Platzhalterartikel 3">
+            <h3 class="text-xl font-semibold">Bars als Treffpunkt</h3>
+            <p class="text-[var(--text-muted-color)]">
+              Wie Bars gesellschaftliche Entwicklungen widerspiegeln und warum manche Orte zu Legenden werden.
+            </p>
+          </article>
+
+          <article class="rounded-xl border border-[var(--border)] bg-[#0d0d0d] p-6 space-y-3" aria-label="Platzhalterartikel 4">
+            <h3 class="text-xl font-semibold">Zeitreise durch Glasformen</h3>
+            <p class="text-[var(--text-muted-color)]">
+              Warum die Wahl des Glases mehr ist als Dekoration und wie Formen die Wahrnehmung eines Drinks beeinflussen.
+            </p>
+          </article>
+        </div>
+
+        <div class="flex flex-wrap gap-4 text-sm">
+          <a class="underline hover:text-[var(--accent)]" href="/blog/20-jahre-moving-bars">
+            Zu 20 Jahre Moving Bars Mobile Cocktailbar
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
