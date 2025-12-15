@@ -18,14 +18,14 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
           <li><span class="hero-check">✔</span><span>Für Privat & Firmen – Events</span></li>
         </ul>
 
-        <a
+        <button
           class="hero-arrow"
-          href="#hero-h1"
+          type="button"
           aria-label="Zum Abschnitt: Mobile Cocktailbar mieten in Berlin"
           title="Zum Abschnitt: Mobile Cocktailbar mieten in Berlin"
         >
           ⌄
-        </a>
+        </button>
       </div>
     </div>
   </div>
@@ -177,6 +177,9 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
     margin-left: auto;
     margin-right: auto;
     animation: arrowBounce var(--hero-arrow-anim-duration) ease-in-out infinite;
+    background: transparent;
+    border: none;
+    padding: 0;
   }
 
   .hero-arrow:focus-visible {
@@ -344,3 +347,15 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
     }
   }
 </style>
+
+<script>
+  const btn = document.querySelector('.hero-arrow');
+  const target = document.querySelector('#hero-h1');
+
+  if (btn && target) {
+    btn.addEventListener('click', () => {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    });
+  }
+</script>
