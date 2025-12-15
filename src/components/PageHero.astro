@@ -2,16 +2,11 @@
 const {
   title,
   intro = "",
-  backgroundImage = "/images/hero-startseite.jpg",
 } = Astro.props;
 ---
 
 <section class="page-hero">
-  <div
-    class="page-hero-bg panel-bg"
-    role="presentation"
-    style={{ backgroundImage: `url(${backgroundImage})` }}
-  ></div>
+  <div class="page-hero-bg parallax-bg" aria-hidden="true"></div>
 
   <div class="page-hero-overlay" aria-hidden="true"></div>
 
@@ -33,19 +28,22 @@ const {
   .page-hero-bg {
     position: absolute;
     inset: 0;
+    background-image: url("/images/hero.jpg");
     background-size: cover;
     background-position: center;
+    z-index: 1;
   }
 
   .page-hero-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.45);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.55) 100%);
+    z-index: 5;
   }
 
   .page-hero-inner {
     position: relative;
-    z-index: 1;
+    z-index: 10;
     height: 100%;
     display: flex;
     flex-direction: column;
