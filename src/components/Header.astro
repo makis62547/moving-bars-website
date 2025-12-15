@@ -1,12 +1,17 @@
 ---
 // src/components/Header.astro
+import { i18n, type Lang } from "../i18n";
+
+const lang: Lang = Astro.url.searchParams.get("lang") === "en" ? "en" : "de";
+const t = i18n[lang];
+
 const navLinks = [
-  { href: "/cocktail-catering", label: "Cocktail Catering" },
-  { href: "/mobile-bar", label: "Mobile Bar" },
+  { href: "/cocktail-catering", label: t.nav.cocktail },
+  { href: "/mobile-bar", label: t.nav.mobileBar },
   { href: "/cocktail-show", label: "Cocktail Show" },
   { href: "/cocktailkurse", label: "Cocktailkurse" },
-  { href: "/kaffeecatering", label: "Kaffee Catering" },
-  { href: "/anfrage", label: "Anfrage" },
+  { href: "/kaffeecatering", label: t.nav.coffee },
+  { href: "/anfrage", label: t.nav.request },
 ];
 ---
 
@@ -20,6 +25,12 @@ const navLinks = [
       {navLinks.map((link) => (
         <a href={link.href} class="nav-link">{link.label}</a>
       ))}
+      <a
+        href={lang === "de" ? "?lang=en" : "?lang=de"}
+        class="nav-link"
+      >
+        {lang === "de" ? "EN" : "DE"}
+      </a>
     </nav>
 
     <div class="nav-mobile">
@@ -50,6 +61,12 @@ const navLinks = [
         {navLinks.map((link) => (
           <a href={link.href} class="mobile-nav-link">{link.label}</a>
         ))}
+        <a
+          href={lang === "de" ? "?lang=en" : "?lang=de"}
+          class="mobile-nav-link"
+        >
+          {lang === "de" ? "EN" : "DE"}
+        </a>
       </nav>
     </div>
   </div>
