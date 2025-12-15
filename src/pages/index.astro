@@ -1,15 +1,21 @@
 ---
+import { i18n } from "../i18n";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 import UnderHeroTiles from "../components/UnderHeroTiles.astro";
 import ServicesOverview from "../components/ServicesOverview.astro";
 import BlogsOverview from "../components/BlogsOverview.astro";
+
+const lang: "de" | "en" =
+  Astro.url.searchParams.get("lang") === "en" ? "en" : "de";
+
+const t = i18n[lang];
 ---
 
 <BaseLayout>
   <main class="bg-black">
     {/* Regel: Neue Blocks immer unten anfügen, außer explizit anders gewünscht. Reihenfolge: ServicesOverview -> BlogsOverview */}
-    <Hero />
+    <Hero title={t.hero.title} intro={t.hero.intro} />
     <UnderHeroTiles />
     <ServicesOverview />
     <BlogsOverview />

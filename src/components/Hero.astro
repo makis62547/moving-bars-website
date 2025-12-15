@@ -1,6 +1,9 @@
 ---
 // src/components/Hero.astro
 import CocktailIcon from "./icons/CocktailIcon.astro";
+const { title, intro } = Astro.props;
+const [titleLine1, rawTitleLine2] = title.split(" in ");
+const titleLine2 = rawTitleLine2 ? `IN ${rawTitleLine2}` : "";
 ---
 
 <section id="hero" class="hero">
@@ -21,8 +24,8 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
         <button
           class="hero-arrow"
           type="button"
-          aria-label="Zum Abschnitt: Mobile Cocktailbar mieten in Berlin"
-          title="Zum Abschnitt: Mobile Cocktailbar mieten in Berlin"
+          aria-label={`Zum Abschnitt: ${title}`}
+          title={`Zum Abschnitt: ${title}`}
         >
           ⌄
         </button>
@@ -37,18 +40,12 @@ import CocktailIcon from "./icons/CocktailIcon.astro";
       <div class="intro-text">
         <h1 id="intro-title" class="intro-title hero-heading display-heading display-size-h1">
           <span class="intro-title-line">
-            <span class="intro-title-accent">MOBILE COCKTAILBAR</span>
+            <span class="intro-title-accent">{(titleLine1 ?? "").toUpperCase()}</span>
           </span>
-          <span class="intro-title-line">MIETEN IN BERLIN</span>
+          <span class="intro-title-line">{(titleLine2 ?? "").toUpperCase()}</span>
         </h1>
 
-        <p class="intro-copy">
-          Wir lieben Cocktails, perfekten Getränke-Service und wir lieben Veranstaltungen. Miete unsere mobile Cocktailbar
-          in Berlin oder üBARall. Von der Vorbereitung und Planung bis zur Durchführung sind wir Dein begeisterter Partner, wenn
-          es darum geht ein besonderes Erlebnis für Deine Gäste entstehen zu lassen. Die mobile Cocktailbar, der perfekte Drink,
-          der schnelle Service, der Barkeeper, der bei der 2. Bestellung weiß, was man trinkt oder einfach das Lächeln, mit dem
-          das Getränk serviert wurde – wir wollen begeistern!
-        </p>
+        <p class="intro-copy">{intro}</p>
       </div>
 
       <div class="intro-divider" aria-hidden="true"></div>
