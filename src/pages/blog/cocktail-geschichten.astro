@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
 ---
 
 <BaseLayout>
@@ -12,6 +13,11 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   </Fragment>
 
   <main class="bg-black text-white">
+    <PageHero
+      title="Cocktail Geschichten – Herkunft, Geschichte & Hintergründe"
+      intro="Hintergründe zu klassischen Drinks, ihren Ursprüngen und den Menschen dahinter – als ruhige Sammlung für künftige Artikel."
+    />
+
     <section class="py-12 md:py-16 border-b border-[var(--border)]">
       <div class="site-container max-w-4xl space-y-6">
         <nav aria-label="Brotkrumen" class="text-sm text-[var(--text-muted-color)] flex gap-2">
@@ -20,8 +26,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           <span class="text-white">Cocktail Geschichten</span>
         </nav>
 
-        <header class="space-y-4">
-          <h1 class="display-size-h1">Cocktail Geschichten – Herkunft, Geschichte & Hintergründe</h1>
+        <div class="space-y-4">
           <p>
             Cocktails sind mehr als Rezepturen: Hinter jeder Mischung stehen Orte, Epochen und Menschen, die ihre Entstehung
             geprägt haben. Auf dieser Seite sammeln wir Hintergründe zu klassischen Drinks und beleuchten, wie sich Techniken
@@ -32,7 +37,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
             Barkultur zu werfen. Jede Notiz dient als Ausgangspunkt für spätere Artikel, die einzelne Drinks, Zubereitungsarten
             oder Barkeeper-Persönlichkeiten genauer vorstellen können.
           </p>
-        </header>
+        </div>
       </div>
     </section>
 

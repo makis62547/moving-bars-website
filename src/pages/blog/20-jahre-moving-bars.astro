@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../../components/PageHero.astro";
 ---
 
 <BaseLayout>
@@ -12,6 +13,11 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   </Fragment>
 
   <main class="bg-black text-white">
+    <PageHero
+      title="20 Jahre Moving Bars Mobile Cocktailbar"
+      intro="Ein ruhiger Rückblick auf zwei Jahrzehnte mobile Cocktailbar – von frühen Einsätzen bis zu aktuellen Projekten."
+    />
+
     <section class="py-12 md:py-16 border-b border-[var(--border)]">
       <div class="site-container max-w-4xl space-y-6">
         <nav aria-label="Brotkrumen" class="text-sm text-[var(--text-muted-color)] flex gap-2">
@@ -20,10 +26,9 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
           <span class="text-white">20 Jahre Moving Bars</span>
         </nav>
 
-        <header class="space-y-4">
-          <h1 class="display-size-h1">20 Jahre Moving Bars Mobile Cocktailbar</h1>
+        <div class="space-y-4">
           <p>
-            Zwei Jahrzehnte unterwegs mit der mobilen Cocktailbar bedeuten zahlreiche Orte, Menschen und Situationen, die unseren
+            Zwei Jahrzehnte unterwegs mit der mobilen Cocktailbar bedeuten zahlreiche Orte, Menschen und Situationen, die unsere
             Blick auf Veranstaltungen geprägt haben. Diese Seite sammelt Erinnerungen und Beobachtungen, die zeigen, wie sich
             Abläufe, Technik und Gästewünsche seit der Gründung verändert haben.
           </p>
@@ -32,7 +37,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
             aktuellen Projekten. Dabei geht es weniger um Selbstinszenierung, sondern um nachvollziehbare Erfahrungen, die künftige
             Events noch besser machen können.
           </p>
-        </header>
+        </div>
       </div>
     </section>
 
