@@ -1,7 +1,7 @@
 ---
 // src/components/Hero.astro
 import CocktailIcon from "./icons/CocktailIcon.astro";
-const { titleLine1, titleLine2, intro } = Astro.props;
+const { titleLine1, titleLine2, heroText, heroUsps = [] } = Astro.props;
 const heroTitle = [titleLine1, titleLine2].filter(Boolean).join(" ").trim();
 ---
 
@@ -14,10 +14,12 @@ const heroTitle = [titleLine1, titleLine2].filter(Boolean).join(" ").trim();
     <div class="hero-center">
       <div class="hero-shell">
         <ul class="hero-usp">
-          <li><span class="hero-check">✔</span><span>Faire Preise</span></li>
-          <li><span class="hero-check">✔</span><span>Langjährige Erfahrung</span></li>
-          <li><span class="hero-check">✔</span><span>Beste Cocktails & Longdrinks</span></li>
-          <li><span class="hero-check">✔</span><span>Für Privat & Firmen – Events</span></li>
+          {heroUsps.map((usp) => (
+            <li>
+              <span class="hero-check">✔</span>
+              <span>{usp}</span>
+            </li>
+          ))}
         </ul>
 
         <button
@@ -44,7 +46,7 @@ const heroTitle = [titleLine1, titleLine2].filter(Boolean).join(" ").trim();
           <span class="intro-title-line">{titleLine2}</span>
         </h1>
 
-        <p class="intro-copy">{intro}</p>
+        <p class="intro-copy">{heroText}</p>
       </div>
 
       <div class="intro-divider" aria-hidden="true"></div>
