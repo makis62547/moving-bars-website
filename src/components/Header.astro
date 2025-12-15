@@ -2,7 +2,7 @@
 // src/components/Header.astro
 import { i18n, type Lang } from "../i18n";
 
-const lang: Lang = Astro.url.searchParams.get("lang") === "en" ? "en" : "de";
+const { lang }: { lang: Lang } = Astro.props;
 const t = i18n[lang];
 
 const navLinks = [

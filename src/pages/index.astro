@@ -12,7 +12,7 @@ const lang: "de" | "en" =
 const t = i18n[lang];
 ---
 
-<BaseLayout>
+<BaseLayout lang={lang}>
   <main class="bg-black">
     {/* Regel: Neue Blocks immer unten anfügen, außer explizit anders gewünscht. Reihenfolge: ServicesOverview -> BlogsOverview */}
     <Hero
