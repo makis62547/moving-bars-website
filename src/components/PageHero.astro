@@ -2,7 +2,7 @@
 const {
   title,
   intro = "",
-  backgroundImage = "/images/hero-startseite.jpg", // GLEICHES Bild wie Startseite
+  backgroundImage = "/images/hero-startseite.jpg",
 } = Astro.props;
 ---
 
@@ -25,6 +25,7 @@ const {
   .page-hero {
     position: relative;
     height: var(--page-hero-height);
+    min-height: 18rem;
     overflow: hidden;
     background: #000;
   }
