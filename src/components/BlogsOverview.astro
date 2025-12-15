@@ -204,7 +204,7 @@ Viel Spaß beim Lesen wünscht…moving bars
   .blog-intro {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--blogs-intro-gap);
+    gap: var(--blogs-intro-gap, 0);
     min-height: var(--blogs-intro-min-height);
     align-items: stretch;
     border-radius: 0 !important;
@@ -212,7 +212,7 @@ Viel Spaß beim Lesen wünscht…moving bars
 
   .blog-intro-text {
     padding: var(--blogs-intro-text-pad);
-    background: #050505;
+    background: var(--blogs-intro-text-bg, #000);
     display: grid;
     align-content: center;
     gap: var(--blogs-gap);
@@ -246,6 +246,7 @@ Viel Spaß beim Lesen wünscht…moving bars
     overflow: hidden;
     min-height: var(--blogs-intro-min-height);
     height: 100%;
+    padding-inline: var(--blogs-intro-media-pad-inline, 0);
     border-radius: 0 !important;
   }
 
