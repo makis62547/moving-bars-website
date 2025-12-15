@@ -83,9 +83,17 @@ import BlogsOverview from "../components/BlogsOverview.astro";
       </div>
     </section>
 
-    <section class="divider-strip parallax-section" aria-hidden="true">
-      <div class="parallax-bg" role="presentation"></div>
-      <div class="parallax-overlay" role="presentation"></div>
+    <section
+      class="divider-strip parallax-section"
+      aria-hidden="true"
+      style="height: var(--divider-strip-height);"
+    >
+      <div
+        class="divider-strip-bg parallax-bg"
+        role="presentation"
+        style="background-image: url('/images/moving-bars-mobile-cocktailbar.jpg');"
+      ></div>
+      <div class="divider-strip-overlay" aria-hidden="true"></div>
     </section>
 
     <footer class="site-footer" id="kontakt">
@@ -274,38 +282,36 @@ import BlogsOverview from "../components/BlogsOverview.astro";
     letter-spacing: 0.02em;
   }
 
-  .divider-strip {
-    height: var(--divider-strip-height);
-    width: 100%;
-    position: relative;
-    background-position: var(--divider-strip-bg-pos);
-  }
-
-  .parallax-section {
+  .divider-strip{
     position: relative;
     overflow: hidden;
+
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
   }
 
-  .parallax-bg {
+  .divider-strip-bg{
     position: absolute;
-    inset: -25% 0 0 0;
-    height: 250%;
-    background-image: url("/images/moving-bars-mobile-cocktailbar.jpg");
+    inset: var(--divider-strip-bg-inset-top) 0 0 0;
+    height: var(--divider-strip-bg-height);
+    width: 100%;
+
     background-size: cover;
     background-repeat: no-repeat;
     background-position: var(--divider-strip-bg-pos);
   }
 
-  @media (hover: hover) and (pointer: fine) {
-    .parallax-bg {
-      background-attachment: fixed;
-    }
-  }
-
-  .parallax-overlay {
+  .divider-strip-overlay{
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.25);
+    background: var(--divider-strip-overlay);
+  }
+
+  @media (hover: hover) and (pointer: fine){
+    .divider-strip-bg{
+      background-attachment: fixed;
+    }
   }
 
   .site-footer {
