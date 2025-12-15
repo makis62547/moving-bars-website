@@ -15,7 +15,7 @@ const t = i18n[lang];
 <BaseLayout>
   <main class="bg-black">
     {/* Regel: Neue Blocks immer unten anfügen, außer explizit anders gewünscht. Reihenfolge: ServicesOverview -> BlogsOverview */}
-    <Hero title={t.hero.title} intro={t.hero.intro} />
+    <Hero titleLine1={t.hero.line1} titleLine2={t.hero.line2} intro={t.hero.intro} />
     <UnderHeroTiles />
     <ServicesOverview />
     <BlogsOverview />

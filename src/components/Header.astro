@@ -25,12 +25,15 @@ const navLinks = [
       {navLinks.map((link) => (
         <a href={link.href} class="nav-link">{link.label}</a>
       ))}
-      <a
-        href={lang === "de" ? "?lang=en" : "?lang=de"}
-        class="nav-link"
-      >
-        {lang === "de" ? "EN" : "DE"}
-      </a>
+      <div class="lang-switch">
+        <a href="?lang=de" class={`nav-link ${lang === "de" ? "active" : ""}`}>
+          DE
+        </a>
+        <span class="lang-divider">|</span>
+        <a href="?lang=en" class={`nav-link ${lang === "en" ? "active" : ""}`}>
+          EN
+        </a>
+      </div>
     </nav>
 
     <div class="nav-mobile">
@@ -61,12 +64,21 @@ const navLinks = [
         {navLinks.map((link) => (
           <a href={link.href} class="mobile-nav-link">{link.label}</a>
         ))}
-        <a
-          href={lang === "de" ? "?lang=en" : "?lang=de"}
-          class="mobile-nav-link"
-        >
-          {lang === "de" ? "EN" : "DE"}
-        </a>
+        <div class="mobile-lang-switch">
+          <a
+            href="?lang=de"
+            class={`mobile-nav-link ${lang === "de" ? "active" : ""}`}
+          >
+            DE
+          </a>
+          <span class="lang-divider">|</span>
+          <a
+            href="?lang=en"
+            class={`mobile-nav-link ${lang === "en" ? "active" : ""}`}
+          >
+            EN
+          </a>
+        </div>
       </nav>
     </div>
   </div>
@@ -185,6 +197,22 @@ const navLinks = [
     transition: color 150ms ease;
   }
 
+  .nav-link.active {
+    color: var(--accent);
+  }
+
+  .lang-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .lang-divider {
+    color: #fff;
+    opacity: 0.7;
+    padding: 0 0.1rem;
+  }
+
   .nav-link:hover,
   .nav-link:focus-visible {
     color: var(--accent);
@@ -292,6 +320,16 @@ const navLinks = [
     font-weight: 300;
     line-height: 1.7;
     transition: color 150ms ease;
+  }
+
+  .mobile-nav-link.active {
+    color: var(--accent);
+  }
+
+  .mobile-lang-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
   }
 
   .mobile-nav-link:hover,
