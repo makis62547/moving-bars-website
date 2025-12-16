@@ -31,6 +31,8 @@ export const de = {
       cocktailsText:
         "Wenn Du unsere mobile Cocktailbar mietest, mixen wir für Dich und Deine Gäste klassische und moderne Cocktails oder/und Longdrinks aus besten Zutaten. Wir arbeiten mit bekannten Markenspirituosen, hochwertigen Fruchtsäften der Marke Bauer Fruchtsaft, Fillern von Thomas Henry und frischen Zutaten, die wir mit Sachverstand aussuchen und verarbeiten. Hast Du genaue Vorstellungen oder einen Lieblingscocktail? Suchst Du einen farblich auf Dein Firmenlogo abgestimmten CI-Drink? Soll es etwas Besonderes sein, wie molekulare Cocktails? Wir helfen Dir bei der Auswahl! Sprich mit uns, wir beraten Dich gerne.",
       mobileBarTitle: "MOBILE BAR MIETEN IN BERLIN",
+      mobileBarText:
+        "Unsere mobile Bar ist das Ergebnis aus über 20 Jahren Erfahrung im Bereich Cocktail Catering und mobile Cocktailbar mieten in Berlin und üBARall in Deutschland. Das System stellt gleichermaßen beide Seiten zufrieden: Den Gast, durch das ansprechende, zeitlose Design und den Event-Profi durch kompromisslose Ausstattung und Flexibilität. Durch die unterschiedlichen Beleuchtungs- und Gestaltungsmöglichkeiten passt die mobile Bar sich jeder Situation und Umgebung an. Hochwertiger Edelstahl und weißes Acrylglas sorgen für ein zeitloses Design. Unsere mobile Bar ist mit moderner LED-RGBW-Technik hinterleuchtet und läßt sich auf jeden gewünschten Farbton einstellen.",
     },
   },
 };

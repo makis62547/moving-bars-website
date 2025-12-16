@@ -31,6 +31,8 @@ export const en = {
       cocktailsText:
         "When you hire our mobile cocktail bar, we shake and stir classic and contemporary cocktails and long drinks for you and your guests using only the finest ingredients. We work with renowned brand spirits, premium Bauer fruit juices, Thomas Henry mixers, and fresh produce selected and prepared with expertise. Do you already have a clear concept or a favorite cocktail? Looking for a CI drink that matches your corporate colors? Want something special, like molecular cocktails? We’ll guide you through the options—talk to us, we’ll be delighted to advise.",
       mobileBarTitle: "RENT A MOBILE BAR IN BERLIN",
+      mobileBarText:
+        "Our mobile bar is the result of over 20 years of cocktail catering expertise and mobile bar rentals in Berlin and across Germany. The concept delights both sides: guests enjoy a striking yet timeless design, while event pros benefit from uncompromising equipment and flexibility. With versatile lighting and styling options, the mobile bar seamlessly adapts to any setting. Premium stainless steel and white acrylic glass create a refined, enduring look. Backlit with modern LED RGBW technology, it can be set to any color you choose.",
     },
   },
 };
