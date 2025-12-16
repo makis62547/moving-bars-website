@@ -28,6 +28,8 @@ export const en = {
     },
     tiles: {
       cocktailsTitle: "FINEST COCKTAILS & LONG DRINKS",
+      cocktailsText:
+        "When you hire our mobile cocktail bar, we shake and stir classic and contemporary cocktails and long drinks for you and your guests using only the finest ingredients. We work with renowned brand spirits, premium Bauer fruit juices, Thomas Henry mixers, and fresh produce selected and prepared with expertise. Do you already have a clear concept or a favorite cocktail? Looking for a CI drink that matches your corporate colors? Want something special, like molecular cocktails? We’ll guide you through the options—talk to us, we’ll be delighted to advise.",
       mobileBarTitle: "RENT A MOBILE BAR IN BERLIN",
     },
   },

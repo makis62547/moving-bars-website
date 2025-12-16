@@ -28,6 +28,8 @@ export const de = {
     },
     tiles: {
       cocktailsTitle: "FEINSTE COCKTAILS & LONGDRINKS",
+      cocktailsText:
+        "Wenn Du unsere mobile Cocktailbar mietest, mixen wir für Dich und Deine Gäste klassische und moderne Cocktails oder/und Longdrinks aus besten Zutaten. Wir arbeiten mit bekannten Markenspirituosen, hochwertigen Fruchtsäften der Marke Bauer Fruchtsaft, Fillern von Thomas Henry und frischen Zutaten, die wir mit Sachverstand aussuchen und verarbeiten. Hast Du genaue Vorstellungen oder einen Lieblingscocktail? Suchst Du einen farblich auf Dein Firmenlogo abgestimmten CI-Drink? Soll es etwas Besonderes sein, wie molekulare Cocktails? Wir helfen Dir bei der Auswahl! Sprich mit uns, wir beraten Dich gerne.",
       mobileBarTitle: "MOBILE BAR MIETEN IN BERLIN",
     },
   },
