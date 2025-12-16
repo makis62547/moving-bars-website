@@ -1,4 +1,13 @@
----
+const { t } = Astro.props;
+
+const cocktailsTitle = t?.underHero?.tiles?.cocktailsTitle ?? "";
+const [cocktailsAccent, ...cocktailsRestParts] = cocktailsTitle.split(" ");
+const cocktailsRest = cocktailsRestParts.join(" ").trim();
+
+const mobileBarTitle = t?.underHero?.tiles?.mobileBarTitle ?? "";
+const [mobileBarAccent, ...mobileBarRestParts] = mobileBarTitle.split(" ");
+const mobileBarRest = mobileBarRestParts.join(" ").trim();
+
 const base = (import.meta.env.BASE_URL || "/").replace(/\/?$/, "/");
 const asset = (p) => `${base}${p.replace(/^\//, "")}`;
 
@@ -53,7 +62,8 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
         <article class="panel panel--text" aria-label="Feinste Cocktails Text">
           <div class="panel-inner">
             <h3 class="panel-title display-heading display-size-h1">
-              <span class="accent-text">FEINSTE</span> COCKTAILS & LONGDRINKS
+              <span class="accent-text">{cocktailsAccent || cocktailsTitle}</span>
+              {cocktailsRest ? ` ${cocktailsRest}` : ""}
             </h3>
             <div class="panel-sep" aria-hidden="true"></div>
 
@@ -94,7 +104,8 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
         <article class="panel panel--text" aria-label="Mobile Bar Text">
           <div class="panel-inner">
             <h3 class="panel-title display-heading display-size-h1">
-              <span class="accent-text">MOBILE BAR</span> MIETEN IN BERLIN
+              <span class="accent-text">{mobileBarAccent || mobileBarTitle}</span>
+              {mobileBarRest ? ` ${mobileBarRest}` : ""}
             </h3>
             <div class="panel-sep" aria-hidden="true"></div>
 

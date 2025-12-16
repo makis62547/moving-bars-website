@@ -19,4 +19,10 @@ export const en = {
   },
   heroText:
     "We love cocktails, outstanding drink service and unforgettable events. Rent our mobile cocktail bar in Berlin or üBARall. From preparation and planning to flawless execution, we are your passionate partner when it comes to creating a special experience for your guests. The mobile cocktail bar, the perfect drink, fast service, a bartender who remembers your order on the second round, or simply the smile with which a drink is served – our goal is to delight.",
+  underHero: {
+    tiles: {
+      cocktailsTitle: "FINEST COCKTAILS & LONG DRINKS",
+      mobileBarTitle: "RENT A MOBILE BAR IN BERLIN",
+    },
+  },
 };

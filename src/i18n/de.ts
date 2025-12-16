@@ -19,4 +19,10 @@ export const de = {
   },
   heroText:
     "Wir lieben Cocktails, perfekten Getränke-Service und wir lieben Veranstaltungen. Miete unsere mobile Cocktailbar in Berlin oder üBARall. Von der Vorbereitung und Planung bis zur Durchführung sind wir Dein begeisterter Partner, wenn es darum geht, ein besonderes Erlebnis für Deine Gäste entstehen zu lassen. Die mobile Cocktailbar, der perfekte Drink, der schnelle Service, der Barkeeper, der bei der zweiten Bestellung weiß, was man trinkt oder einfach das Lächeln, mit dem das Getränk serviert wurde – wir wollen begeistern!",
+  underHero: {
+    tiles: {
+      cocktailsTitle: "FEINSTE COCKTAILS & LONGDRINKS",
+      mobileBarTitle: "MOBILE BAR MIETEN IN BERLIN",
+    },
+  },
 };
