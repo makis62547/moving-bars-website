@@ -117,9 +117,10 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
   .under-hero-tiles {
     background: #000 !important;
     color: var(--text-color);
-    padding-top: var(--under-hero-pad-top);
-    padding-bottom: var(--under-hero-pad-bottom);
-    padding-inline: var(--section-pad-inline);
+    padding-top: var(--under-hero-pad-block);
+    padding-bottom: var(--under-hero-pad-bottom, 0);
+    padding-left: var(--section-pad-inline);
+    padding-right: var(--section-pad-inline);
     margin: 0;
     overflow-x: clip; /* verhindert 1px Scroll durch 100vw */
   }
