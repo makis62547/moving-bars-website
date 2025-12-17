@@ -115,24 +115,30 @@ const movingBarsPosts = [
     </div>
 
     <div class="blog-posts" aria-label="Neueste Cocktail Stories">
-      <div class="posts-grid">
-        {selectPosts(cocktailPosts).map((post) => (
-          <article class="post-card">
-            <div class="post-media">
-              <img src={post.image} alt={post.alt} loading="lazy" />
-            </div>
-            <div class="post-body">
-              <h3 class="post-title">{post.title}</h3>
-              <p class="post-meta">{post.date}</p>
-              <p class="post-excerpt">{post.excerpt}</p>
-              <button class="post-cta" type="button">Mehr lesen</button>
-            </div>
-          </article>
-        ))}
+      <div class="blog-posts-inner">
+        <div class="blog-posts-row">
+          <div class="posts-grid">
+            {selectPosts(cocktailPosts).map((post) => (
+              <article class="post-card">
+                <div class="post-media">
+                  <img src={post.image} alt={post.alt} loading="lazy" />
+                </div>
+                <div class="post-body">
+                  <h3 class="post-title">{post.title}</h3>
+                  <p class="post-meta">{post.date}</p>
+                  <p class="post-excerpt">{post.excerpt}</p>
+                  <button class="post-cta" type="button">Mehr lesen</button>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div class="blog-overview-link">
+            <a class="blog-cta" href="/blog/cocktail-geschichten">Alle Artikel aus den Cocktail Geschichten</a>
+          </div>
+        </div>
       </div>
     </div>
-
-    <a class="blog-cta" href="/blog/cocktail-geschichten">Alle Artikel aus den Cocktail Geschichten</a>
   </section>
 
   <section class="blog-block">
@@ -159,24 +165,30 @@ Viel Spaß beim Lesen wünscht…moving bars
     </div>
 
     <div class="blog-posts" aria-label="Neueste Kaffee Momente">
-      <div class="posts-grid">
-        {selectPosts(movingBarsPosts).map((post) => (
-          <article class="post-card">
-            <div class="post-media">
-              <img src={post.image} alt={post.alt} loading="lazy" />
-            </div>
-            <div class="post-body">
-              <h3 class="post-title">{post.title}</h3>
-              <p class="post-meta">{post.date}</p>
-              <p class="post-excerpt">{post.excerpt}</p>
-              <button class="post-cta" type="button">Mehr lesen</button>
-            </div>
-          </article>
-        ))}
+      <div class="blog-posts-inner">
+        <div class="blog-posts-row">
+          <div class="posts-grid">
+            {selectPosts(movingBarsPosts).map((post) => (
+              <article class="post-card">
+                <div class="post-media">
+                  <img src={post.image} alt={post.alt} loading="lazy" />
+                </div>
+                <div class="post-body">
+                  <h3 class="post-title">{post.title}</h3>
+                  <p class="post-meta">{post.date}</p>
+                  <p class="post-excerpt">{post.excerpt}</p>
+                  <button class="post-cta" type="button">Mehr lesen</button>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div class="blog-overview-link">
+            <a class="blog-cta" href="/blog/20-jahre-moving-bars">Alle Artikel aus 20 Jahren moving bars</a>
+          </div>
+        </div>
       </div>
     </div>
-
-    <a class="blog-cta" href="/blog/20-jahre-moving-bars">Alle Artikel aus 20 Jahren moving bars</a>
   </section>
 </section>
 
@@ -300,10 +312,21 @@ Viel Spaß beim Lesen wünscht…moving bars
 
   .blog-posts {
     width: 100%;
-    max-width: var(--blogs-posts-max-width, var(--services-max-width));
     margin: 0 auto;
+    margin-top: var(--blogs-posts-top-gap, 0);
     padding-inline: clamp(1rem, 3vw, 2rem);
     border-radius: 0 !important;
+  }
+
+  .blog-posts-inner {
+    width: 100%;
+    max-width: var(--blogs-posts-max-width, var(--services-max-width));
+    margin-inline: auto;
+  }
+
+  .blog-posts-row {
+    display: grid;
+    gap: var(--blogs-gap);
   }
 
   .posts-grid {
@@ -325,6 +348,18 @@ Viel Spaß beim Lesen wünscht…moving bars
   .blog-cta:focus-visible {
     outline: 1px solid rgba(var(--accent-rgb), 0.55);
     outline-offset: 2px;
+  }
+
+  .blog-overview-link {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    height: 100%;
+  }
+
+  .blog-overview-link .blog-cta {
+    margin-top: 0;
+    text-align: right;
   }
 
   .post-card {
@@ -436,6 +471,12 @@ Viel Spaß beim Lesen wünscht…moving bars
   }
 
   @media (min-width: 1200px) {
+    .blog-posts-row {
+      grid-template-columns: 1fr auto;
+      column-gap: var(--blogs-gap);
+      align-items: end;
+    }
+
     .posts-grid {
       grid-template-columns: repeat(4, minmax(0, 1fr));
     }
