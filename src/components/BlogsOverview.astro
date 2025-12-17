@@ -2,11 +2,11 @@
 const cocktailImage = "/images/moving-bars-cocktail-geschichten.jpg";
 const movingBarsImage = "/images/20-jahre-mobile-cocktailbar.jpg";
 
-const selectPosts = (posts) => {
+const selectPosts = (posts, count = 4) => {
   const featuredPosts = posts.filter(({ featured }) => featured);
   const regularPosts = posts.filter(({ featured }) => !featured);
 
-  return [...featuredPosts, ...regularPosts].slice(0, 4);
+  return [...featuredPosts, ...regularPosts].slice(0, count);
 };
 
 const cocktailPosts = [
@@ -117,7 +117,7 @@ const movingBarsPosts = [
     <div class="blog-posts" aria-label="Neueste Cocktail Stories">
       <div class="blog-posts-inner">
         <div class="posts-grid">
-          {selectPosts(cocktailPosts).map((post) => (
+          {selectPosts(cocktailPosts, 3).map((post) => (
             <article class="post-card">
               <div class="post-media">
                 <img src={post.image} alt={post.alt} loading="lazy" />
@@ -384,10 +384,13 @@ Viel Spaß beim Lesen wünscht…moving bars
   }
 
   .post-body {
-    display: grid;
-    gap: clamp(0.45rem, 1vw, 0.75rem);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.45rem, 1vw, 0.85rem);
     align-content: start;
     min-height: 0;
+    height: 100%;
+    padding-top: clamp(0.9rem, 1.3vw, 1.2rem);
     border-radius: 0 !important;
   }
 
@@ -396,7 +399,7 @@ Viel Spaß beim Lesen wünscht…moving bars
     font-size: clamp(1.05rem, 1.6vw, 1.2rem);
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    color: var(--heading-color);
+    color: var(--accent);
   }
 
   .post-meta {
