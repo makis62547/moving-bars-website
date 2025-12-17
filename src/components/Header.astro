@@ -2,8 +2,8 @@
 // src/components/Header.astro
 import { i18n, type Lang } from "../i18n";
 
-const { lang }: { lang: Lang } = Astro.props;
-const t = i18n[lang];
+const { lang = "de" } = Astro.props as { lang?: Lang };
+const t = i18n[lang] ?? i18n.de;
 
 const navLinks = [
   { href: "/cocktail-catering", label: t.nav.cocktailCatering },

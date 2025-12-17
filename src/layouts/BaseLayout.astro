@@ -2,7 +2,7 @@
 import "../styles/globals.css";
 import Header from "../components/Header.astro";
 
-const { lang }: { lang: "de" | "en" } = Astro.props;
+const { lang = "de" } = Astro.props as { lang?: "de" | "en" };
 ---
 
 <html lang={lang}>
