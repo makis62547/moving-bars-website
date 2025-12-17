@@ -314,7 +314,8 @@ Viel Spaß beim Lesen wünscht…moving bars
     width: 100%;
     margin: 0 auto;
     margin-top: var(--blogs-posts-top-gap, 0);
-    padding-inline: clamp(1rem, 3vw, 2rem);
+    padding-inline: 0;
+    padding-bottom: var(--blogs-posts-bottom-gap);
     border-radius: 0 !important;
   }
 
@@ -322,10 +323,14 @@ Viel Spaß beim Lesen wünscht…moving bars
     width: 100%;
     max-width: var(--blogs-posts-max-width, var(--services-max-width));
     margin-inline: auto;
+    padding-inline: var(--section-pad-inline);
+    display: grid;
+    justify-content: start;
   }
 
   .blog-posts-row {
     display: grid;
+    column-gap: var(--blogs-gap);
     gap: var(--blogs-gap);
   }
 
@@ -377,7 +382,7 @@ Viel Spaß beim Lesen wünscht…moving bars
   .post-media {
     position: relative;
     width: 100%;
-    aspect-ratio: var(--blogs-post-media-ratio, 16 / 9);
+    height: var(--blogs-post-media-height);
     overflow: hidden;
     border-radius: 0 !important;
     border: 1px solid rgba(var(--accent-rgb), 0.35);
