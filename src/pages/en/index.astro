@@ -86,62 +86,6 @@ const t = i18n.en;
       ></div>
       <div class="divider-strip-overlay" aria-hidden="true"></div>
     </section>
-
-    <footer class="site-footer" id="kontakt">
-      <div class="site-container footer-inner">
-        <div class="footer-contact">
-<h2 class="section-title">
-  JETZT <span class="title-accent">KONTAKT</span><br />
-  AUFNEHMEN
-</h2>
-
-          <div class="section-divider" aria-hidden="true"></div>
-
-          <ul class="contact-list">
-            <li>
-              <span class="contact-ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" class="contact-ico-svg">
-                  <path d="M16 1H8C6.9 1 6 1.9 6 3v18c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2Zm-4 21.2c-.66 0-1.2-.54-1.2-1.2s.54-1.2 1.2-1.2 1.2.54 1.2 1.2-.54 1.2-1.2 1.2ZM18 18H6V4h12v14Z" />
-                </svg>
-              </span>
-              <a href="tel:+491752221140">+49 175 2221140</a>
-            </li>
-            <li>
-              <span class="contact-ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" class="contact-ico-svg">
-                  <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V21a1 1 0 0 1-1 1C10.07 22 2 13.93 2 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.24 1.02l-2.21 2.2Z" />
-                </svg>
-              </span>
-              <a href="tel:+493084108980">+49 30 8410898-0</a>
-            </li>
-            <li>
-              <span class="contact-ico" aria-hidden="true">
-                <svg viewBox="0 0 24 24" class="contact-ico-svg">
-                  <path d="M4.5 5.25h15c.7 0 1.25.56 1.25 1.25v11c0 .69-.56 1.25-1.25 1.25h-15c-.69 0-1.25-.56-1.25-1.25v-11c0-.69.56-1.25 1.25-1.25Zm0 2.05V17.5h15V7.3l-7.24 4.55a.75.75 0 0 1-.78 0L4.5 7.3Z" />
-                </svg>
-              </span>
-              <a href="mailto:info@moving-bars.de">info@moving-bars.de</a>
-            </li>
-          </ul>
-        </div>
-        <div class="section-divider section-divider--vertical" aria-hidden="true"></div>
-        <div class="footer-highlight" aria-hidden="true">
-          <div class="contact-big-icon">
-            <svg viewBox="0 0 24 24" class="contact-big-icon-svg">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2H9l-5 4v-4H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2Zm4 7a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm4 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm4 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z" />
-            </svg>
-            <!-- <div class="icon-placeholder">📣</div> -->
-          </div>
-        </div>
-      </div>
-      <div class="footer-meta">
-        <a href="#">Impressum</a>
-        <span aria-hidden="true">|</span>
-        <a href="#">Datenschutz</a>
-        <span aria-hidden="true">|</span>
-        <a href="#">AGB</a>
-      </div>
-    </footer>
   </main>
 </BaseLayout>
 
@@ -304,112 +248,6 @@ const t = i18n.en;
     }
   }
 
-  .site-footer {
-    background: #000;
-    padding: var(--section-pad-block) 0 var(--footer-pad-block);
-    color: var(--text-color);
-  }
-
-  .footer-inner {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(1.5rem, 3vw, 2rem);
-    align-items: stretch;
-  }
-
-  .footer-contact .section-title {
-    margin-bottom: 0.8rem;
-  }
-
-  .section-divider {
-    width: 100%;
-    height: 1px;
-    background: var(--accent);
-    opacity: 0.9;
-  }
-
-  .section-divider--vertical {
-    width: 1px;
-    height: 100%;
-    background: var(--accent);
-    opacity: 0.9;
-    margin-inline: auto;
-  }
-
-  .contact-list {
-    list-style: none;
-    padding: 0;
-    margin: 1.1rem 0 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .contact-list li {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    gap: 0.7rem;
-  }
-
-  .contact-ico {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--accent);
-    transform: translateY(1px);
-  }
-
-  .contact-ico-svg {
-    width: 1.1em;
-    height: 1.1em;
-    fill: currentColor;
-    display: block;
-  }
-
-  .contact-list a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-weight: 700;
-  }
-
-  .contact-list a:hover {
-    color: var(--accent);
-  }
-
-  .footer-highlight {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .contact-big-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .contact-big-icon-svg {
-    width: clamp(140px, 18vw, 240px);
-    height: auto;
-    fill: var(--accent);
-    display: block;
-  }
-
-  .footer-meta {
-    margin-top: clamp(2rem, 3.5vw, 3rem);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.6rem;
-    font-size: 0.95rem;
-    color: var(--text-muted-color);
-  }
-
-  .footer-meta a:hover {
-    color: var(--accent);
-  }
-
   @media (max-width: 860px) {
     .reviews-header {
       grid-template-columns: 1fr;
@@ -417,16 +255,6 @@ const t = i18n.en;
 
     .ghost-button {
       justify-self: start;
-    }
-
-    .footer-inner {
-      grid-template-columns: 1fr;
-      gap: 1.75rem;
-    }
-
-    .section-divider--vertical {
-      height: 1px;
-      width: 100%;
     }
   }
 </style>
