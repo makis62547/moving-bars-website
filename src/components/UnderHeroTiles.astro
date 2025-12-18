@@ -1,5 +1,5 @@
 ---
-const { t } = Astro.props;
+const { t, titleLine1, titleLine2, heroText } = Astro.props;
 
 const cocktailsTitle = t?.underHero?.tiles?.cocktailsTitle ?? "";
 const [cocktailsAccent, ...cocktailsRestParts] = cocktailsTitle.split(" ");
@@ -19,6 +19,32 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
 
 <section class="under-hero-tiles" aria-label="Ergänzende Informationen" data-uh-tiles>
   <div class="wide-rows" aria-label="Quadrat-Kacheln">
+    <div class="wide-row">
+      <!-- TEXT LINKS -->
+      <article class="panel panel--text">
+        <div class="panel-inner">
+          <h3 class="panel-title display-heading display-size-h1">
+            <span class="accent-text">{titleLine1}</span><br />
+            {titleLine2}
+          </h3>
+          <div class="panel-sep"></div>
+          <p class="panel-text">{heroText}</p>
+        </div>
+      </article>
+
+      <!-- ICON RECHTS -->
+      <article class="panel panel--icon">
+        <div class="icon-wrapper">
+          <svg class="icon-svg" viewBox="0 0 128 128">
+            <g fill="currentColor">
+              <circle cx="64" cy="42" r="18" />
+              <path d="M34 108c0-18 14-32 30-32s30 14 30 32H34z" />
+            </g>
+          </svg>
+        </div>
+      </article>
+    </div>
+
     <div class="wide-row">
      <article class="panel panel--slider is-align-left is-intro" data-panel-parallax data-speed="0.35">
   <div
@@ -303,6 +329,28 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
     outline: none;
     background: rgba(var(--accent-rgb), 0.14);
     border-color: rgba(var(--accent-rgb), 0.9);
+  }
+
+  .panel--icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    height: var(--tile-height);
+  }
+
+  .icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    height: 70%;
+  }
+
+  .icon-svg {
+    width: 70%;
+    height: auto;
+    color: var(--accent);
   }
 
 </style>
