@@ -12,48 +12,34 @@ const mobileBarRest = mobileBarRestParts.join(" ").trim();
 const base = (import.meta.env.BASE_URL || "/").replace(/\/?$/, "/");
 const asset = (p) => `${base}${p.replace(/^\//, "")}`;
 
+const introImage = asset("images/DEIN_INTRO_BILD.jpg");
 const cocktailImage = asset("images/russian-wild-berry-cocktail.jpg");
 const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
 ---
 
 <section class="under-hero-tiles" aria-label="Ergänzende Informationen" data-uh-tiles>
   <div class="tiles-shell">
-    <!-- ✅ H2 / INTRO BLOCK: unverändert -->
-    <article class="tile tile--intro">
-      <div class="intro">
-        <div class="intro__icon" aria-hidden="true">
-          <svg class="intro__svg" viewBox="0 0 128 128" role="img" aria-label="">
-            <g fill="currentColor">
-              <circle cx="64" cy="42" r="18" />
-              <path d="M34 108c0-18 14-32 30-32s30 14 30 32H34z" />
-              <circle cx="30" cy="50" r="14" opacity="0.95" />
-              <path d="M8 108c0-14 11-25 24-25s24 11 24 25H8z" opacity="0.95" />
-              <circle cx="98" cy="50" r="14" opacity="0.95" />
-              <path d="M72 108c0-14 11-25 24-25s24 11 24 25H72z" opacity="0.95" />
-            </g>
-          </svg>
-        </div>
-
-        <div class="intro__sep" aria-hidden="true"></div>
-
-        <div class="intro__copy">
-          <h2 class="intro-display display-heading display-size-h1">
-            <span class="h2-line1">
-              <span class="accent-text">{t.underHero.intro.h2Line1}</span>
-            </span>
-            <br />
-            {t.underHero.intro.h2Line2}
-          </h2>
-
-          <p class="intro__paragraph">
-            {t.underHero.intro.paragraph}
-          </p>
-        </div>
-      </div>
-    </article>
-
-    <!-- ✅ NUR das was danach kommt: 2×2 Quadrate, full-bleed -->
     <div class="wide-rows" aria-label="Quadrat-Kacheln">
+      <div class="wide-row">
+        <article class="panel panel--slider is-align-left" data-panel-parallax data-speed="0.35">
+          <div class="panel-bg" role="presentation" style={`background-image: url(${introImage});`}></div>
+        </article>
+
+        <article class="panel panel--text">
+          <div class="panel-inner">
+            <h3 class="panel-title display-heading display-size-h1">
+              PRIVATE FEIER – MESSEPARTY –
+              <br />
+              GROSSVERANSTALTUNG
+            </h3>
+            <div class="panel-sep"></div>
+            <p class="panel-text">
+              {t.underHero.intro.paragraph}
+            </p>
+          </div>
+        </article>
+      </div>
+
       <!-- ROW 1: Text | Bild -->
       <div class="wide-row">
         <article class="panel panel--text" aria-label="Feinste Cocktails Text">
