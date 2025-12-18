@@ -1,4 +1,6 @@
 ---
+import CocktailIcon from "../components/icons/CocktailIcon.astro";
+
 const { t, titleLine1, titleLine2, heroText } = Astro.props;
 
 const cocktailsTitle = t?.underHero?.tiles?.cocktailsTitle ?? "";
@@ -35,12 +37,7 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
       <!-- ICON RECHTS -->
       <article class="panel panel--icon">
         <div class="icon-wrapper">
-          <svg class="icon-svg" viewBox="0 0 128 128">
-            <g fill="currentColor">
-              <circle cx="64" cy="42" r="18" />
-              <path d="M34 108c0-18 14-32 30-32s30 14 30 32H34z" />
-            </g>
-          </svg>
+          <CocktailIcon class="big-cocktail-icon" />
         </div>
       </article>
     </div>
@@ -343,12 +340,12 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 70%;
-    height: 70%;
+    width: 100%;
+    height: 100%;
   }
 
-  .icon-svg {
-    width: 70%;
+  .big-cocktail-icon {
+    width: clamp(180px, 24vw, 360px);
     height: auto;
     color: var(--accent);
   }
