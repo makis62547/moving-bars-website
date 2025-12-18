@@ -220,13 +220,15 @@
     color: var(--accent);
   }
 
-  .contact-link--mail {
-    color: var(--accent);
-  }
+.contact-link--mail {
+  color: #fff;
+}
 
-  .contact-link--mail:hover {
-    color: #fff;
-  }
+.contact-link--mail:hover,
+.contact-link--mail:focus-visible {
+  color: var(--accent);
+  outline: none;
+}
 
   .footer-highlight {
     display: flex;
