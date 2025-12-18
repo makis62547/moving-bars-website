@@ -23,7 +23,7 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
   <div class="wide-rows" aria-label="Quadrat-Kacheln">
     <div class="wide-row">
       <!-- TEXT LINKS -->
-      <article class="panel panel--text panel--h1">
+      <article class="panel panel--text h1-panel">
         <div class="panel-inner">
           <h3 class="panel-title display-heading display-size-h1">
             <span class="accent-text">{titleLine1}</span><br />
@@ -355,6 +355,37 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
     width: clamp(180px, 24vw, 360px);
     height: auto;
     color: var(--accent);
+  }
+
+  /* Text tiles top-aligned */
+  .panel--text {
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+  }
+
+  /* Icon tile left-aligned */
+  .panel--icon {
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+  }
+
+  .icon-wrapper {
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    width: auto !important;
+  }
+
+  /* Vertical divider in H1 panel */
+  .panel--text.h1-panel {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 1px !important;
+    align-items: start !important;
+  }
+
+  .panel--text.h1-panel .panel-sep {
+    width: 1px !important;
+    height: 100% !important;
+    align-self: stretch !important;
   }
 
 </style>
