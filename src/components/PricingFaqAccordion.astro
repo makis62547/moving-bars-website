@@ -1,0 +1,206 @@
+---
+import { pricing } from "../data/pricing/pricing";
+
+const formatMoney = (value: number | null) => {
+  if (value === null) return "auf Anfrage";
+
+  return new Intl.NumberFormat("de-DE", {
+    style: "currency",
+    currency: pricing.currency,
+    minimumFractionDigits: 2,
+  }).format(value / 100);
+};
+
+const faqItems = [
+  {
+    question: "Was bringt ihr zu meinem Event mit?",
+    answer:
+      "Wir liefern die mobile Bar, professionelles Barequipment, frische Zutaten und erfahrene Barkeeper. Du stellst lediglich ausreichend Platz und einen regulären Stromanschluss bereit.",
+  },
+  {
+    question: "Sind individuelle Drinks oder Markenwünsche möglich?",
+    answer:
+      "Ja. Neben den hier aufgeführten Paketen passen wir Rezepte, Spirituosen und Garnituren auf Wunsch an – von CI-Drinks bis zu alkoholfreien Varianten.",
+  },
+  {
+    question: "In welchen Regionen seid ihr buchbar?",
+    answer:
+      "Unser Kerngebiet ist Berlin und Brandenburg. Deutschlandweite Einsätze sind nach Absprache jederzeit möglich; Fahrtkosten fallen erst ab den angegebenen Freikilometern an.",
+  },
+];
+---
+
+<div class="h1-accordion">
+  <details class="accordion-item">
+    <summary class="panel-cta">Hier alle Pakete und Preise</summary>
+    <div class="accordion-content">
+      <div class="table-wrapper">
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th scope="col">Paket</th>
+              <th scope="col">Empfohlen für</th>
+              <th scope="col">Drinks inkl.</th>
+              <th scope="col">Barkeeper</th>
+              <th scope="col">Bar-Setup</th>
+              <th scope="col">Ohne Rückbuffet</th>
+              <th scope="col">Mit Rückbuffet</th>
+            </tr>
+          </thead>
+          <tbody>
+            {pricing.packages.map((pkg) => (
+              <tr id={pkg.id}>
+                <th scope="row">{pkg.title}</th>
+                <td>{pkg.recommendedFor}</td>
+                <td>{pkg.drinksIncluded}</td>
+                <td>{pkg.bartenders}</td>
+                <td>{pkg.barSetup}</td>
+                <td
+                  data-price-no-backbar-cents={pkg.priceNoBackbarCents ?? undefined}
+                  data-currency={pricing.currency}
+                >
+                  {formatMoney(pkg.priceNoBackbarCents)}
+                </td>
+                <td
+                  data-price-with-backbar-cents={pkg.priceWithBackbarCents ?? undefined}
+                  data-currency={pricing.currency}
+                >
+                  {formatMoney(pkg.priceWithBackbarCents)}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pricing-notes">
+        <p class="note-kicker">Hinweise</p>
+        <p class="note-text">{pricing.vatNote}</p>
+        <p class="note-text">Jeder weitere Cocktail/Longdrink: {formatMoney(pricing.notes.extraDrinkNetCents)}</p>
+        <p class="note-text">Gläserschwund: {formatMoney(pricing.notes.glassLossNetCents)} pro Glas</p>
+        <p class="note-text">Fahrtkosten: erst ab {pricing.notes.freeKm} km (nach Aufwand)</p>
+      </div>
+    </div>
+  </details>
+
+  <details class="accordion-item">
+    <summary class="panel-cta">FAQ Mobile Cocktailbar mieten</summary>
+    <div class="accordion-content faq-list">
+      {faqItems.map((item) => (
+        <div class="faq-item">
+          <h3>{item.question}</h3>
+          <p>{item.answer}</p>
+        </div>
+      ))}
+    </div>
+  </details>
+</div>
+
+<style>
+  .h1-accordion {
+    width: min(100%, var(--h1-accordion-width));
+    display: flex;
+    flex-direction: column;
+    gap: var(--h1-accordion-gap);
+    padding-top: var(--h1-accordion-pad-top);
+  }
+
+  .accordion-item {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: clamp(0.75rem, 1.5vw, 1rem);
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .accordion-item + .accordion-item {
+    margin-top: var(--h1-accordion-gap);
+  }
+
+  .accordion-item summary {
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .accordion-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .accordion-content {
+    display: grid;
+    gap: var(--h1-accordion-gap);
+    padding-top: var(--h1-accordion-pad-top);
+  }
+
+  .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .pricing-table {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+    color: var(--text-color);
+  }
+
+  .pricing-table th,
+  .pricing-table td {
+    text-align: left;
+    padding: 0.8rem 0.65rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    vertical-align: top;
+    font-family: var(--body-font-family);
+  }
+
+  .pricing-table thead th {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .pricing-table tbody th {
+    font-weight: 700;
+    width: 22%;
+  }
+
+  .pricing-table tbody td {
+    color: rgba(255, 255, 255, 0.86);
+  }
+
+  .pricing-notes {
+    display: grid;
+    gap: 0.4rem;
+    padding: clamp(0.85rem, 1.4vw, 1rem);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .note-kicker {
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .note-text {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.6;
+  }
+
+  .faq-list {
+    display: grid;
+    gap: var(--h1-accordion-gap);
+  }
+
+  .faq-item h3 {
+    margin: 0 0 0.35rem 0;
+    font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+  }
+
+  .faq-item p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.7;
+  }
+</style>
