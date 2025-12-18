@@ -344,6 +344,16 @@ const heroTitle = [titleLine1, titleLine2].filter(Boolean).join(" ").trim();
       min-height: var(--intro-panel-min, clamp(400px, 34vw, 520px));
     }
   }
+  /* Intro-Banner komplett deaktivieren – sicher & reversibel */
+.intro-banner,
+.intro-banner-bg {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  display: none !important;
+}
+
 </style>
 
 <script>
