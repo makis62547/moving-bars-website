@@ -1,5 +1,6 @@
 ---
 import CocktailIcon from "../components/icons/CocktailIcon.astro";
+import PricingFaqAccordion from "./PricingFaqAccordion.astro";
 
 const { t, titleLine1, titleLine2, heroText } = Astro.props;
 
@@ -30,6 +31,7 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
               {titleLine2}
             </h3>
             <p class="panel-text">{heroText}</p>
+            <PricingFaqAccordion />
           </div>
 
           <div class="h1-divider"></div>
@@ -318,7 +320,7 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
     font-family: "Inter", system-ui, sans-serif;
   }
 
-  .panel-cta {
+  :global(.panel-cta) {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -333,8 +335,8 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
     width: min(520px, 100%);
   }
 
-  .panel-cta:hover,
-  .panel-cta:focus-visible {
+  :global(.panel-cta:hover),
+  :global(.panel-cta:focus-visible) {
     outline: none;
     background: rgba(var(--accent-rgb), 0.14);
     border-color: rgba(var(--accent-rgb), 0.9);
