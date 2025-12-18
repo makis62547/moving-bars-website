@@ -18,83 +18,81 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
 ---
 
 <section class="under-hero-tiles" aria-label="Ergänzende Informationen" data-uh-tiles>
-  <div class="tiles-shell">
-    <div class="wide-rows" aria-label="Quadrat-Kacheln">
-      <div class="wide-row">
-        <article class="panel panel--slider is-align-left" data-panel-parallax data-speed="0.35">
-          <div class="panel-bg" role="presentation" style={`background-image: url(${introImage});`}></div>
-        </article>
+  <div class="wide-rows" aria-label="Quadrat-Kacheln">
+    <div class="wide-row">
+      <article class="panel panel--slider is-align-left is-intro" data-panel-parallax data-speed="0.35">
+        <div class="panel-bg" role="presentation" style={`background-image: url(${introImage});`}></div>
+      </article>
 
-        <article class="panel panel--text">
-          <div class="panel-inner">
-            <h3 class="panel-title display-heading display-size-h1">
-              PRIVATE FEIER – MESSEPARTY –
-              <br />
-              GROSSVERANSTALTUNG
-            </h3>
-            <div class="panel-sep"></div>
-            <p class="panel-text">
-              {t.underHero.intro.paragraph}
-            </p>
-          </div>
-        </article>
-      </div>
+      <article class="panel panel--text" aria-label="Private Feier Text">
+        <div class="panel-inner">
+          <h3 class="panel-title display-heading display-size-h1">
+            PRIVATE FEIER – MESSEPARTY –
+            <br />
+            GROSSVERANSTALTUNG
+          </h3>
+          <div class="panel-sep" aria-hidden="true"></div>
+          <p class="panel-text">
+            {t.underHero.intro.paragraph}
+          </p>
+        </div>
+      </article>
+    </div>
 
-      <!-- ROW 1: Text | Bild -->
-      <div class="wide-row">
-        <article class="panel panel--text" aria-label="Feinste Cocktails Text">
-          <div class="panel-inner">
-            <h3 class="panel-title display-heading display-size-h1">
-              <span class="accent-text">{cocktailsAccent || cocktailsTitle}</span>
-              {cocktailsRest ? ` ${cocktailsRest}` : ""}
-            </h3>
-            <div class="panel-sep" aria-hidden="true"></div>
+    <!-- ROW 1: Text | Bild -->
+    <div class="wide-row">
+      <article class="panel panel--text" aria-label="Feinste Cocktails Text">
+        <div class="panel-inner">
+          <h3 class="panel-title display-heading display-size-h1">
+            <span class="accent-text">{cocktailsAccent || cocktailsTitle}</span>
+            {cocktailsRest ? ` ${cocktailsRest}` : ""}
+          </h3>
+          <div class="panel-sep" aria-hidden="true"></div>
 
-            <p class="panel-text">
-              {t.underHero.tiles.cocktailsText}
-            </p>
+          <p class="panel-text">
+            {t.underHero.tiles.cocktailsText}
+          </p>
 
-            <a class="panel-cta" href="#" aria-label="Cocktail Menüs ansehen">HIER UNSERE COCKTAIL MENUS ANSEHEN</a>
-          </div>
-        </article>
+          <a class="panel-cta" href="#" aria-label="Cocktail Menüs ansehen">HIER UNSERE COCKTAIL MENUS ANSEHEN</a>
+        </div>
+      </article>
 
-        <article
-          class="panel panel--slider is-align-left is-cocktail"
-          aria-label="Feinste Cocktails Bild"
-          data-panel-parallax
-          data-speed="0.35"
-        >
-          <div class="panel-bg" role="presentation" style={`background-image: url(${cocktailImage});`}></div>
-        </article>
-      </div>
+      <article
+        class="panel panel--slider is-align-left is-cocktail"
+        aria-label="Feinste Cocktails Bild"
+        data-panel-parallax
+        data-speed="0.35"
+      >
+        <div class="panel-bg" role="presentation" style={`background-image: url(${cocktailImage});`}></div>
+      </article>
+    </div>
 
-      <!-- ROW 2: Bild | Text -->
-      <div class="wide-row">
-        <article
-          class="panel panel--slider is-align-right is-bar"
-          aria-label="Mobile Bar Bild"
-          data-panel-parallax
-          data-speed="0.35"
-        >
-          <div class="panel-bg" role="presentation" style={`background-image: url(${mobileBarImage});`}></div>
-        </article>
+    <!-- ROW 2: Bild | Text -->
+    <div class="wide-row">
+      <article
+        class="panel panel--slider is-align-right is-bar"
+        aria-label="Mobile Bar Bild"
+        data-panel-parallax
+        data-speed="0.35"
+      >
+        <div class="panel-bg" role="presentation" style={`background-image: url(${mobileBarImage});`}></div>
+      </article>
 
-        <article class="panel panel--text" aria-label="Mobile Bar Text">
-          <div class="panel-inner">
-            <h3 class="panel-title display-heading display-size-h1">
-              <span class="accent-text">{mobileBarAccent || mobileBarTitle}</span>
-              {mobileBarRest ? ` ${mobileBarRest}` : ""}
-            </h3>
-            <div class="panel-sep" aria-hidden="true"></div>
+      <article class="panel panel--text" aria-label="Mobile Bar Text">
+        <div class="panel-inner">
+          <h3 class="panel-title display-heading display-size-h1">
+            <span class="accent-text">{mobileBarAccent || mobileBarTitle}</span>
+            {mobileBarRest ? ` ${mobileBarRest}` : ""}
+          </h3>
+          <div class="panel-sep" aria-hidden="true"></div>
 
-            <p class="panel-text">
-              {t.underHero.tiles.mobileBarText}
-            </p>
+          <p class="panel-text">
+            {t.underHero.tiles.mobileBarText}
+          </p>
 
-            <a class="panel-cta" href="/anfrage" aria-label="Jetzt anfragen">JETZT ANFRAGEN</a>
-          </div>
-        </article>
-      </div>
+          <a class="panel-cta" href="/anfrage" aria-label="Jetzt anfragen">JETZT ANFRAGEN</a>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -103,19 +101,12 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
   .under-hero-tiles {
     background: #000 !important;
     color: var(--text-color);
-    padding-top: var(--under-hero-pad-block);
+    padding-top: 0;
     padding-bottom: var(--under-hero-pad-bottom, 0);
     padding-left: var(--section-pad-inline);
     padding-right: var(--section-pad-inline);
     margin: 0;
     overflow-x: clip; /* verhindert 1px Scroll durch 100vw */
-  }
-
-  .tiles-shell {
-    max-width: min(1400px, 94vw);
-    margin: 0 auto;
-    display: grid;
-    gap: var(--under-hero-pad-block);
   }
 
   /* ---------- INTRO / H2 (unverändert) ---------- */
@@ -227,15 +218,22 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
     height: var(--tile-height);
   }
 
-  .panel--slider.is-cocktail {
-    --bg-zoom: 70%;   /* vorher war’s zu wenig -> jetzt deutlich mehr */
+  .panel--slider {
+    --bg-zoom: 24%;
     --bg-x: 50%;
     --bg-y: 50%;
   }
 
-  .panel--slider.is-cocktail .panel-bg {
-    background-size: auto calc(100% + var(--bg-zoom));
-    background-position: var(--bg-x) calc(var(--bg-y) + var(--py, 0px));
+  .panel--slider.is-intro {
+    --bg-zoom: 26%;
+    --bg-x: 52%;
+    --bg-y: 50%;
+  }
+
+  .panel--slider.is-cocktail {
+    --bg-zoom: 70%;   /* vorher war’s zu wenig -> jetzt deutlich mehr */
+    --bg-x: 50%;
+    --bg-y: 50%;
   }
 
   .panel--slider.is-bar {
@@ -244,18 +242,13 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
     --bg-y: 50%;
   }
 
-  .panel--slider.is-bar .panel-bg {
-    background-size: auto calc(100% + var(--bg-zoom));
-    background-position: var(--bg-x) calc(var(--bg-y) + var(--py, 0px));
-  }
-
   .panel--slider .panel-bg {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    background-size: contain;
-    background-position: center calc(50% + var(--py, 0px));
+    background-size: auto calc(100% + var(--bg-zoom));
+    background-position: var(--bg-x) calc(var(--bg-y) + var(--py, 0px));
     background-repeat: no-repeat;
     background-color: #000;
     background-attachment: scroll;
@@ -271,9 +264,10 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
     line-height: var(--heading-line-height);
     color: var(--heading-color);
   }
-.panel-title.display-size-h1 {
-  font-size: clamp(2.25rem, 4.4vw, 3.25rem);
-}
+
+  .panel-title.display-size-h1 {
+    font-size: clamp(2.25rem, 4.4vw, 3.25rem);
+  }
 
   .panel-sep { height: 1px; background: rgba(var(--accent-rgb), 0.75); width: 100%; }
 
