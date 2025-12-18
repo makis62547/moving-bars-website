@@ -126,7 +126,7 @@ const movingBarsPosts = [
                 <h3 class="post-title">{post.title}</h3>
                 <p class="post-meta">{post.date}</p>
                 <p class="post-excerpt">{post.excerpt}</p>
-                <button class="post-cta" type="button">Mehr lesen</button>
+                <a class="post-cta" href="#">Mehr lesen</a>
               </div>
             </article>
           ))}
@@ -174,7 +174,7 @@ Viel Spaß beim Lesen wünscht…moving bars
                 <h3 class="post-title">{post.title}</h3>
                 <p class="post-meta">{post.date}</p>
                 <p class="post-excerpt">{post.excerpt}</p>
-                <button class="post-cta" type="button">Mehr lesen</button>
+                <a class="post-cta" href="#">Mehr lesen</a>
               </div>
             </article>
           ))}
@@ -331,6 +331,7 @@ Viel Spaß beim Lesen wünscht…moving bars
     grid-template-columns: repeat(1, minmax(0, 1fr));
     gap: var(--blogs-post-grid-gap, var(--blogs-gap));
     justify-items: stretch;
+    grid-auto-rows: 1fr;
   }
 
   .blog-cta {
@@ -362,6 +363,7 @@ Viel Spaß beim Lesen wünscht…moving bars
     grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
     gap: 0;
     min-height: var(--blogs-post-card-height);
+    height: 100%;
     border-radius: 0 !important;
   }
 
@@ -413,10 +415,6 @@ Viel Spaß beim Lesen wünscht…moving bars
     margin: 0;
     color: rgba(247, 247, 247, 0.82);
     line-height: 1.5;
-    display: -webkit-box;
-    -webkit-line-clamp: 6;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
   }
 
   .post-cta {
