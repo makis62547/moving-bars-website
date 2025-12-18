@@ -359,8 +359,7 @@ Viel Spaß beim Lesen wünscht…moving bars
     border: var(--services-card-border);
     box-shadow: var(--services-card-glow);
     padding: var(--blogs-post-card-pad, clamp(1rem, 2vw, 1.4rem));
-    display: flex;
-    flex-direction: column;
+    display: grid;
     gap: 0;
     min-height: var(--blogs-post-card-height);
     height: 100%;
@@ -387,8 +386,8 @@ Viel Spaß beim Lesen wünscht…moving bars
 
   .post-body {
     display: flex;
-    flex: 1;
     flex-direction: column;
+    flex: 1;
     gap: clamp(0.45rem, 1vw, 0.85rem);
     align-content: start;
     min-height: 0;
@@ -421,28 +420,20 @@ Viel Spaß beim Lesen wünscht…moving bars
   .post-cta {
     margin-top: auto;
     align-self: start;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: var(--blogs-btn-height);
-    background: rgba(var(--accent-rgb), 0.12);
+    display: inline-block;
     color: var(--accent);
-    border: 1px solid rgba(var(--accent-rgb), 0.65);
-    box-shadow: 0 0 22px rgba(var(--accent-rgb), 0.28);
-    text-transform: uppercase;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
     letter-spacing: 0.08em;
-    padding: 0 1.2rem;
+    padding: 0;
     border-radius: 0 !important;
-    cursor: pointer;
-    transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+    transition: color 160ms ease;
   }
 
   .post-cta:hover,
   .post-cta:focus-visible {
-    outline: none;
-    background: rgba(var(--accent-rgb), 0.2);
-    border-color: rgba(var(--accent-rgb), 0.95);
     color: #fff;
+    text-decoration: underline;
   }
 
   @media (min-width: 900px) {
