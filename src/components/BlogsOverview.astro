@@ -126,7 +126,7 @@ const movingBarsPosts = [
                 <h3 class="post-title">{post.title}</h3>
                 <p class="post-meta">{post.date}</p>
                 <p class="post-excerpt">{post.excerpt}</p>
-                <a class="post-link" href="#">Mehr lesen</a>
+                <button class="post-cta" type="button">Mehr lesen</button>
               </div>
             </article>
           ))}
@@ -174,7 +174,7 @@ Viel Spaß beim Lesen wünscht…moving bars
                 <h3 class="post-title">{post.title}</h3>
                 <p class="post-meta">{post.date}</p>
                 <p class="post-excerpt">{post.excerpt}</p>
-                <a class="post-link" href="#">Mehr lesen</a>
+                <button class="post-cta" type="button">Mehr lesen</button>
               </div>
             </article>
           ))}
@@ -358,10 +358,9 @@ Viel Spaß beim Lesen wünscht…moving bars
     border: var(--services-card-border);
     box-shadow: var(--services-card-glow);
     padding: var(--blogs-post-card-pad, clamp(1rem, 2vw, 1.4rem));
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
     gap: 0;
-    height: 100%;
     min-height: var(--blogs-post-card-height);
     border-radius: 0 !important;
   }
@@ -390,7 +389,7 @@ Viel Spaß beim Lesen wünscht…moving bars
     gap: clamp(0.45rem, 1vw, 0.85rem);
     align-content: start;
     min-height: 0;
-    flex: 1;
+    height: 100%;
     padding-top: clamp(0.9rem, 1.3vw, 1.2rem);
     border-radius: 0 !important;
   }
@@ -420,7 +419,7 @@ Viel Spaß beim Lesen wünscht…moving bars
     overflow: hidden;
   }
 
-  .post-link {
+  .post-cta {
     margin-top: auto;
     align-self: start;
     display: inline-flex;
@@ -435,12 +434,12 @@ Viel Spaß beim Lesen wünscht…moving bars
     letter-spacing: 0.08em;
     padding: 0 1.2rem;
     border-radius: 0 !important;
-    text-decoration: none;
+    cursor: pointer;
     transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
   }
 
-  .post-link:hover,
-  .post-link:focus-visible {
+  .post-cta:hover,
+  .post-cta:focus-visible {
     outline: none;
     background: rgba(var(--accent-rgb), 0.2);
     border-color: rgba(var(--accent-rgb), 0.95);
@@ -482,7 +481,7 @@ Viel Spaß beim Lesen wünscht…moving bars
   .post-card,
   .post-media,
   .post-body,
-  .post-link,
+  .post-cta,
   .post-card *,
   .blog-posts,
   .blogs-overview,
