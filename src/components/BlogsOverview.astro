@@ -359,8 +359,8 @@ Viel Spaß beim Lesen wünscht…moving bars
     border: var(--services-card-border);
     box-shadow: var(--services-card-glow);
     padding: var(--blogs-post-card-pad, clamp(1rem, 2vw, 1.4rem));
-    display: grid;
-    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+    display: flex;
+    flex-direction: column;
     gap: 0;
     min-height: var(--blogs-post-card-height);
     height: 100%;
@@ -387,6 +387,7 @@ Viel Spaß beim Lesen wünscht…moving bars
 
   .post-body {
     display: flex;
+    flex: 1;
     flex-direction: column;
     gap: clamp(0.45rem, 1vw, 0.85rem);
     align-content: start;
