@@ -106,18 +106,17 @@ const faqItems = [
   }
 
   .accordion-item {
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    padding: clamp(0.75rem, 1.5vw, 1rem);
-    background: rgba(255, 255, 255, 0.02);
-  }
-
-  .accordion-item + .accordion-item {
-    margin-top: var(--h1-accordion-gap);
+    border: 0;
+    padding: 0;
+    background: none;
   }
 
   .accordion-item summary {
     list-style: none;
     cursor: pointer;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .accordion-item summary::-webkit-details-marker {
@@ -128,6 +127,10 @@ const faqItems = [
     display: grid;
     gap: var(--h1-accordion-gap);
     padding-top: var(--h1-accordion-pad-top);
+  }
+
+  details[open] {
+    margin-bottom: var(--h1-accordion-open-gap-bottom);
   }
 
   .table-wrapper {

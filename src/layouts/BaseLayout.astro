@@ -77,6 +77,10 @@ const { lang = "de" } = Astro.props as { lang?: "de" | "en" };
         --h1-accordion-gap: clamp(0.75rem, 1vw, 1rem);
         --h1-accordion-pad-top: 0.75rem;
 
+        --h1-accordion-width: var(--intro-text-width);
+        --h1-accordion-gap: clamp(0.9rem, 1vw, 1.1rem);
+        --h1-accordion-open-gap-bottom: clamp(1.2rem, 2vw, 2.2rem);
+
         /* Basis für alle Sections */
         --section-pad-block: clamp(5.5rem, 9.5vw, 7.5rem);
         --section-pad-inline: var(--content-pad);
