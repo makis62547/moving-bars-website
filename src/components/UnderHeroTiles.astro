@@ -23,7 +23,7 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
   <div class="wide-rows" aria-label="Quadrat-Kacheln">
     <div class="wide-row">
       <!-- TEXT LINKS -->
-      <article class="panel panel--text">
+      <article class="panel panel--text panel--h1">
         <div class="panel-inner">
           <h3 class="panel-title display-heading display-size-h1">
             <span class="accent-text">{titleLine1}</span><br />
@@ -230,8 +230,9 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
   }
 
   .panel--text {
-    display: grid;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     min-height: var(--tile-height);
     height: var(--tile-height);
     padding: clamp(1.25rem, 3vw, 2.25rem);
@@ -331,9 +332,15 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
   .panel--icon {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-left: clamp(1rem, 3vw, 2rem);
     background: #000;
     height: var(--tile-height);
+  }
+
+  .panel--h1 .panel-sep {
+    width: 1px;
+    height: 100%;
   }
 
   .icon-wrapper {
