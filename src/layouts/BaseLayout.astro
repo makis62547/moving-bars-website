@@ -66,7 +66,7 @@ const { lang = "de" } = Astro.props as { lang?: "de" | "en" };
         --intro-icon-offset-y: -50px;
         --intro-icon-align: center;
 
-        --intro-text-width: 90ch;
+        --intro-text-width: var(--tile-text-width);
         --section-text-width: 90ch;
         --tile-text-width: 74ch;
         --paragraph-text-width: 72ch;
