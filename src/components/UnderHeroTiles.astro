@@ -22,17 +22,19 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
 <section class="under-hero-tiles" aria-label="Ergänzende Informationen" data-uh-tiles>
   <div class="wide-rows" aria-label="Quadrat-Kacheln">
     <div class="wide-row wide-row--h1">
-      <article class="panel panel--text h1-panel">
-        <div class="panel-inner">
-          <h3 class="panel-title display-heading display-size-h1">
-            <span class="accent-text">{titleLine1}</span><br />
-            {titleLine2}
-          </h3>
-          <p class="panel-text">{heroText}</p>
+      <article class="panel panel--text panel--h1">
+        <div class="panel-inner h1-grid">
+          <div class="h1-text">
+            <h3 class="panel-title display-heading display-size-h1">
+              <span class="accent-text">{titleLine1}</span><br />
+              {titleLine2}
+            </h3>
+            <p class="panel-text">{heroText}</p>
+          </div>
+
+          <div class="h1-divider"></div>
         </div>
       </article>
-
-      <div class="h1-divider"></div>
 
       <article class="panel panel--icon">
         <div class="icon-wrapper">
@@ -220,14 +222,8 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
 
   .wide-row--h1 {
     display: grid;
-    grid-template-columns: 1fr auto 1fr; /* text | divider | icon */
+    grid-template-columns: 1fr 1fr; /* text | icon */
     align-items: stretch;
-  }
-
-  .h1-divider {
-    width: 1px;
-    background: rgba(var(--accent-rgb), 0.7);
-    height: 100%;
   }
 
   .panel {
@@ -353,11 +349,6 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
     height: var(--tile-height);
   }
 
-  .panel--h1 .panel-sep {
-    width: 1px;
-    height: 100%;
-  }
-
   .icon-wrapper {
     display: flex;
     align-items: center;
@@ -391,19 +382,6 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
     width: auto !important;
   }
 
-  /* Vertical divider in H1 panel */
-  .panel--text.h1-panel {
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) 1px !important;
-    align-items: start !important;
-  }
-
-  .panel--text.h1-panel .panel-sep {
-    width: 1px !important;
-    height: 100% !important;
-    align-self: stretch !important;
-  }
-
   /* Separate height for the first tile row */
   .top-row-panel {
     height: var(--tile-height-top-row) !important;
@@ -415,41 +393,24 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
     margin-right: auto;
   }
 
-  .panel--h1 .panel-inner {
+  .h1-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    column-gap: clamp(1.25rem, 2vw, 2rem);
-    align-items: start;
+    grid-template-columns: 1fr auto; /* text | divider */
+    column-gap: clamp(1.5rem, 3vw, 2.5rem);
+    align-items: stretch; /* ensures divider follows text content height */
   }
 
-  .panel--h1 .panel-sep {
-    width: 1px;
-    background: rgba(var(--accent-rgb), 0.75);
-    height: 100%;
-    align-self: stretch;
-    margin: 0;
-  }
-
-  .panel--h1 .panel-title,
-  .panel--h1 .panel-text {
-    grid-column: 1;
-  }
-
-  .panel--h1 {
+  .h1-text {
     display: flex;
-    align-items: stretch;
+    flex-direction: column;
+    gap: var(--text-block-gap);
   }
 
-  .panel--h1 .panel-inner {
-    height: 100%;
-    align-items: start;
-  }
-
-  .panel--h1 .panel-sep {
+  .h1-divider {
     width: 1px;
-    height: 100%;
     background: rgba(var(--accent-rgb), 0.75);
-    align-self: stretch;
+    margin-top: var(--h1-divider-top, 0);       /* optional tuning */
+    margin-bottom: var(--h1-divider-bottom, 0); /* optional tuning */
   }
 
 </style>
