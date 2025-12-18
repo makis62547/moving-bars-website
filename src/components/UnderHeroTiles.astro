@@ -23,7 +23,7 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
   <div class="wide-rows" aria-label="Quadrat-Kacheln">
     <div class="wide-row">
       <!-- TEXT LINKS -->
-      <article class="panel panel--text h1-panel">
+      <article class="panel panel--text h1-panel top-row-panel">
         <div class="panel-inner">
           <h3 class="panel-title display-heading display-size-h1">
             <span class="accent-text">{titleLine1}</span><br />
@@ -35,7 +35,7 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
       </article>
 
       <!-- ICON RECHTS -->
-      <article class="panel panel--icon">
+      <article class="panel panel--icon top-row-panel">
         <div class="icon-wrapper">
           <CocktailIcon class="big-cocktail-icon" />
         </div>
@@ -126,6 +126,10 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
 </section>
 
 <style>
+  :root {
+    --tile-height-top-row: 420px;  /* adjustable height for first row */
+  }
+
   .under-hero-tiles {
     background: #000 !important;
     color: var(--text-color);
@@ -386,6 +390,12 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
     width: 1px !important;
     height: 100% !important;
     align-self: stretch !important;
+  }
+
+  /* Separate height for the first tile row */
+  .top-row-panel {
+    height: var(--tile-height-top-row) !important;
+    min-height: var(--tile-height-top-row) !important;
   }
 
 </style>
