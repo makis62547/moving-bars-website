@@ -251,6 +251,7 @@ const faqButtonLabel = t?.cta?.faqMobileCocktailbar ?? faq?.buttonLabel ?? "FAQ"
   }
 
   .faq-block {
+    width: min(100%, var(--h1-faq-max-width));
     max-width: var(--h1-faq-max-width);
     margin-inline: auto;
     margin-block: 0;
@@ -258,10 +259,9 @@ const faqButtonLabel = t?.cta?.faqMobileCocktailbar ?? faq?.buttonLabel ?? "FAQ"
 
   @media (min-width: 900px) {
     .faq-block {
-      width: 100%;
-      max-width: var(--services-max-width);
+      width: min(100%, var(--h1-accordion-width, var(--tile-text-width)));
+      max-width: var(--h1-accordion-width, var(--tile-text-width));
       margin-inline: auto;
-      margin-block: 0;
     }
   }
 
