@@ -1,3 +1,4 @@
+---
 import PricingFaqAccordion from "./PricingFaqAccordion.astro";
 
 const { t, titleLine1, titleLine2, heroText } = Astro.props;
@@ -11,7 +12,7 @@ const [mobileBarAccent, ...mobileBarRestParts] = mobileBarTitle.split(" ");
 const mobileBarRest = mobileBarRestParts.join(" ").trim();
 
 const base = (import.meta.env.BASE_URL || "/").replace(/\/?$/, "/");
-const asset = (p) => `${base}${p.replace(/^\//, "")}`;
+const asset = (p: string) => `${base}${p.replace(/^\//, "")}`;
 
 const introImage = asset("images/DEIN_INTRO_BILD.jpg");
 const cocktailImage = asset("images/russian-wild-berry-cocktail.jpg");

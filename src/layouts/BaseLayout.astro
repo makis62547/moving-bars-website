@@ -20,6 +20,10 @@ const { lang = "de" } = Astro.props as { lang?: "de" | "en" };
     />
 
     <style is:global>
+      @import "/src/design/typography.css" layer(design);
+      @import "/src/design/spacing.css" layer(design);
+      @import "/src/design/layout.css" layer(design);
+
       :root {
         --accent: #e07501;
         --accent-rgb: 224, 117, 1;
@@ -170,9 +174,6 @@ const { lang = "de" } = Astro.props as { lang?: "de" | "en" };
         --footer-divider-width: 3px;
         --reviews-card-radius: 14px;
       }
-      @import "/src/design/typography.css" layer(design);
-      @import "/src/design/spacing.css" layer(design);
-      @import "/src/design/layout.css" layer(design);
     </style>
 
     <title>Moving Bars · Mobile Cocktailbar & Catering Berlin</title>
