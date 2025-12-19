@@ -221,12 +221,14 @@ const headlineSep = headline?.sep ?? t.services?.headline?.sep ?? "–";
 
   .service-body {
     display: grid;
-    gap: clamp(0.5rem, 1.2vw, 0.85rem);
+    gap: var(--services-card-body-gap);
   }
 
   .service-title {
     margin: 0;
     font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+    line-height: var(--services-card-title-line-height);
+    min-height: calc(var(--services-card-title-min-lines) * 1em * var(--services-card-title-line-height));
     text-transform: uppercase;
     letter-spacing: 0.04em;
     color: var(--accent);
