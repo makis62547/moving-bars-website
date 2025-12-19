@@ -8,7 +8,8 @@ const [cocktailsAccent, ...cocktailsRestParts] = cocktailsTitle.split(" ");
 const cocktailsRest = cocktailsRestParts.join(" ").trim();
 
 const mobileBarTitle = t?.underHero?.tiles?.mobileBarTitle ?? "";
-const [mobileBarAccent, ...mobileBarRestParts] = mobileBarTitle.split(" ");
+const [mobileBarAccentFirst, mobileBarAccentSecond, ...mobileBarRestParts] = mobileBarTitle.split(" ");
+const mobileBarAccent = [mobileBarAccentFirst, mobileBarAccentSecond].filter(Boolean).join(" ");
 const mobileBarRest = mobileBarRestParts.join(" ").trim();
 
 const viewCocktailMenusCta = t?.cta?.viewCocktailMenus ?? "HIER UNSERE COCKTAIL MENUS ANSEHEN";
@@ -53,7 +54,7 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
       <article class="panel panel--text" aria-label="Private Feier Text">
         <div class="panel-inner">
           <h3 class="panel-title display-heading display-size-h1">
-            PRIVATE FEIER – MESSEPARTY –
+            PRIVATE FEIER – <span class="accent-text">MESSEPARTY</span> –
             <br />
             GROSSVERANSTALTUNG
           </h3>

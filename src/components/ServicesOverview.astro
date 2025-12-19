@@ -13,6 +13,9 @@ const {
   lang?: Lang;
 };
 
+const [headlineAccent, ...headlineRestParts] = headline.split(" – ");
+const headlineRest = headlineRestParts.join(" – ").trim();
+
 const pathLang = Astro.url?.pathname?.split("/")[1];
 const lang = (passedLang ?? (pathLang === "en" ? "en" : pathLang === "de" ? "de" : undefined) ?? "de") as Lang;
 const t = passedT ?? i18n[lang] ?? i18n.de;
@@ -82,7 +85,10 @@ const visible = servicesWithCtas.filter((service) => service.slug !== exclude);
     <div class="services-shell">
       <header class="services-heading">
         <div class="services-head">
-          <h2 class="services-title">{headline}</h2>
+          <h2 class="services-title">
+            <span class="accent-text">{headlineAccent}</span>
+            {headlineRest ? ` – ${headlineRest}` : ""}
+          </h2>
           <span class="services-divider" aria-hidden="true"></span>
         </div>
       </header>
