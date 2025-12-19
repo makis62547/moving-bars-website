@@ -25,16 +25,15 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
         <article class="panel panel--text panel--h1">
           <div class="panel-inner h1-grid">
             <div class="h1-text">
-            <h3 class="panel-title display-heading display-size-h1">
-              <span class="accent-text">{titleLine1}</span><br />
-              {titleLine2}
-            </h3>
-            <p class="panel-text">{heroText}</p>
-            <PricingFaqAccordion />
+              <h3 class="panel-title display-heading display-size-h1">
+                <span class="accent-text">{titleLine1}</span><br />
+                {titleLine2}
+              </h3>
+              <div class="panel-sep" aria-hidden="true"></div>
+              <p class="panel-text">{heroText}</p>
+              <PricingFaqAccordion />
+            </div>
           </div>
-
-          <div class="h1-divider"></div>
-        </div>
       </article>
     </div>
 
@@ -396,9 +395,7 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
 
   .h1-grid {
     display: grid;
-    grid-template-columns: 1fr auto; /* text | divider */
-    column-gap: clamp(1.5rem, 3vw, 2.5rem);
-    align-items: stretch; /* ensures divider follows text content height */
+    grid-template-columns: 1fr; /* text only */
     transform: translate(var(--h1-block-offset-x), var(--h1-block-offset-y));
     padding-inline: calc(var(--h1-block-pad-inline));
     padding-top: var(--h1-block-pad-top);
@@ -409,13 +406,6 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
     display: flex;
     flex-direction: column;
     gap: var(--text-block-gap);
-  }
-
-  .h1-divider {
-    width: 1px;
-    background: rgba(var(--accent-rgb), 0.75);
-    margin-top: var(--h1-divider-top, 0);       /* optional tuning */
-    margin-bottom: var(--h1-divider-bottom, 0); /* optional tuning */
   }
 
 </style>
