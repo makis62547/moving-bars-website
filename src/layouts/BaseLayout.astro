@@ -81,6 +81,17 @@ const { lang = "de" } = Astro.props as { lang?: "de" | "en" };
         --h1-accordion-gap: clamp(0.9rem, 1vw, 1.1rem);
         --h1-accordion-open-gap-bottom: clamp(1.2rem, 2vw, 2.2rem);
 
+        --h1-accordion-fullbleed-max-width: none;
+        --h1-accordion-fullbleed-pad-inline: var(--section-pad-inline);
+        --h1-accordion-fullbleed-gap-top: clamp(0.75rem, 1vw, 1rem);
+
+        --h1-block-offset-x: 0px;
+        --h1-block-offset-y: 0px;
+        --h1-block-pad-inline: 0px;
+        --h1-block-pad-block: 0px;
+        --h1-block-pad-top: var(--h1-block-pad-block);
+        --h1-block-pad-bottom: var(--h1-block-pad-block);
+
         /* Basis für alle Sections */
         --section-pad-block: clamp(5.5rem, 9.5vw, 7.5rem);
         --section-pad-inline: var(--content-pad);
