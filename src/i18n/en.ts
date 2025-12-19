@@ -37,6 +37,16 @@ export const en = {
         signoff: "Enjoy reading — moving bars.",
       },
     },
+    movingBars20Years: {
+      title: {
+        accent: "20 YEARS OF MOVING BARS",
+        rest: " MOBILE COCKTAIL BAR",
+      },
+      intro: {
+        p1: "For over 20 years, we’ve been on the road with our mobile cocktail bar in Berlin and across Germany. If we had been counting since the company was founded in 2000, we could proudly put a number here—so instead, we’ll say we’ve accompanied “countless” events during that time. Because our 20th anniversary fell in the pandemic year 2020, we decided to celebrate these 20 years of events in a different way and give all the highlights and stories from that time a place here. We’ll take you back in time and share insights into the fascinating and varied world around our mobile cocktail bar. Distant countries, cities, and unusual venues will play a role—because we really have been truly mobile over the years. Sometimes it’s simply quirky situations or moments that we think are fun to read about. We also cover current topics and share tips related to renting and planning a mobile cocktail bar.",
+      },
+      signoff: "Enjoy reading — moving bars",
+    },
   },
   services: {
     ariaLabel: "Our services",
