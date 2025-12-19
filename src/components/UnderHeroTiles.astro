@@ -19,8 +19,8 @@ const base = (import.meta.env.BASE_URL || "/").replace(/\/?$/, "/");
 const asset = (p: string) => `${base}${p.replace(/^\//, "")}`;
 
 const introImage = asset("images/DEIN_INTRO_BILD.jpg");
-const cocktailImage = asset("images/russian-wild-berry-cocktail.jpg");
-const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
+const cocktailImage = "/images/russian-wild-berry-cocktail.jpg";
+const mobileBarImage = "/images/mobile-cocktailbar-mit-rueckbuffet.jpg";
 ---
 
 <section class="under-hero-tiles" aria-label="Ergänzende Informationen" data-uh-tiles>
@@ -130,6 +130,12 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
 <style>
   :root {
     --tile-height-top-row: 720px;  /* adjustable height for first row */
+  }
+
+  @media (max-width: 900px) {
+    .wide-row { grid-template-columns: 1fr; }
+    .wide-row > .panel--slider { order: 0; }
+    .wide-row > .panel--text { order: 1; }
   }
 
   .under-hero-tiles {
@@ -405,12 +411,30 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
     gap: var(--text-block-gap);
   }
 
+  @media (max-width: 900px) {
+    .panel--slider .panel-bg {
+      background-size: cover;
+      background-position: center center;
+    }
+  }
+
 </style>
 
 <script>
   const panels = Array.from(document.querySelectorAll("[data-panel-parallax]"));
 
   const updateParallax = () => {
+    const isMobile = window.matchMedia("(max-width: 900px)").matches;
+    const isCoarse = window.matchMedia("(pointer: coarse)").matches;
+    if (isMobile || isCoarse) {
+      panels.forEach((panel) => {
+        if (panel instanceof HTMLElement) {
+          panel.style.setProperty("--py", "0px");
+        }
+      });
+      return;
+    }
+
     const viewportCenter = window.innerHeight / 2;
 
     panels.forEach((panel) => {
