@@ -19,6 +19,51 @@ export const de = {
     bookNow: "Jetzt buchen",
     viewAll: "Alles ansehen",
   },
+  services: {
+    ariaLabel: "Unsere Leistungen",
+    headline: {
+      accent: "DEINE WÜNSCHE",
+      rest: "UNSERE LEISTUNGEN",
+      sep: "–",
+    },
+    cards: [
+      {
+        slug: "cocktail-catering",
+        title: "Full Service Cocktail Catering",
+        excerpt:
+          "Profitiere von 20 Jahren Erfahrung im Bereich Cocktail Catering und mobile Cocktailbar mieten in Berlin und Deutschland. Wir bieten Dir ein RundumSorglos-Paket, das alles enthält und Du Dich um nichts weiter kümmern müssen. Die mobile Cocktailbar, alle benötigten Zutaten, Gläser und Eis werden von uns geliefert. Professionelle Barkeeper kümmern sich um Deine Gäste.",
+        ctaKey: "cta.learnMore",
+      },
+      {
+        slug: "mobile-bar",
+        title: "Mobile Bar mieten",
+        excerpt:
+          "Du suchst eine mobile Bar für Deine Feier, Veranstaltung oder Deinen Event in Berlin? Dann haben wir ganz sicher eine passende Lösung für Dich. Unser Barsystem passt sich jeder Veranstaltungsgröße an. Verschiedene Kombinationsmöglichkeiten und flexible Beleuchtung lassen keine Wünsche offen. Mit oder ohne beleuchtetes Rückbuffet ist unsere mobile Bar das optische Highlight Deiner Veranstaltung.",
+        ctaKey: "cta.viewDetails",
+      },
+      {
+        slug: "cocktail-show",
+        title: "Cocktail Show & Showbarkeeper",
+        excerpt:
+          "Du willst noch mehr? Entertainment und Unterhaltung für Deine Gäste? Buche zusätzlich für die mobile Cocktailbar in Berlin einen Showbarkeeper oder eine Cocktailshow. Wirbelnde Flaschen und Shaker, Cocktailartistik während der Herstellung der Cocktails oder eröffne die mobile Cocktailbar mit einer Cocktailshow.",
+        ctaKey: "cta.toShow",
+      },
+      {
+        slug: "cocktailkurse",
+        title: "Mobiler Cocktailkurs",
+        excerpt:
+          "Cocktailkurs, Schulung oder Cocktailworkshop - Wir geben unser Wissen weiter. Vom Einsteiger bis zum Profi - Wir haben für jeden das passende Programm. Als Highlight auf Deiner privaten Feier oder als Incentive mit Deinen Mitarbeitern. Wir bringen alles mit und zeigen Euch wie man Cocktails mixt. Analog in Berlin, Leipzig, Hamburg, München...deutschlandweit oder ONLINE als Teil Deines virtuellen Teamevents.",
+        ctaKey: "cta.bookNow",
+      },
+      {
+        slug: "kaffeecatering",
+        title: "Kaffee Catering & Barista Service",
+        excerpt:
+          "Auch bei Heißgetränken wie Kaffee, Espresso, Latte Macchiato, Cappuccino und Tee-Spezialitäten sind wir Dein kompetenter Ansprechpartner für Berlin und Deutschland. Wir bieten Dir den perfekten Service bei bester Qualität! Espresso Maschinen, Personal, Kaffee-Auswahl - Wir beraten Dich gerne! Unsere zertifizierten Kaffee Barista und Latte Art Künstler verwöhnen Dich und Deine Gäste mit feinstem Kaffee - Genuss.",
+        ctaKey: "cta.viewAll",
+      },
+    ],
+  },
   heroUsps: [
     "FAIRE PREISE",
     "LANGJÄHRIGE ERFAHRUNG",
