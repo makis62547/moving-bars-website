@@ -16,6 +16,13 @@ html, body {
   font-family: "Montserrat", "Inter", system-ui, sans-serif;
   margin: 0;
   scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+@supports not (overflow: clip) {
+  html, body {
+    overflow-x: hidden;
+  }
 }
 
 body {
@@ -36,6 +43,7 @@ a:hover {
 :is(.panel-cta, .service-cta, .ghost-button) {
   display: inline-flex !important;
   width: 100% !important;
+  max-width: 100% !important;
   justify-content: center !important;
   align-items: center !important;
   text-decoration: none !important;
