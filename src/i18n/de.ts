@@ -19,6 +19,13 @@ export const de = {
     bookNow: "Jetzt buchen",
     viewAll: "Alles ansehen",
   },
+  footer: {
+    contactHeadline: {
+      prefix: "JETZT",
+      accent: "KONTAKT",
+      line2: "AUFNEHMEN",
+    },
+  },
   blog: {
     readMoreCta: "Mehr lesen",
     cocktailStories: {
