@@ -19,6 +19,51 @@ export const en = {
     bookNow: "Book now",
     viewAll: "View all",
   },
+  services: {
+    ariaLabel: "Our services",
+    headline: {
+      accent: "YOUR WISHES",
+      rest: "OUR SERVICES",
+      sep: "—",
+    },
+    cards: [
+      {
+        slug: "cocktail-catering",
+        title: "Full-Service Cocktail Catering",
+        excerpt:
+          "Benefit from 20 years of experience in cocktail catering and mobile cocktail bar rentals in Berlin and across Germany. We offer a worry-free, all-inclusive package—so you don’t have to think about a thing. We provide the mobile cocktail bar, all ingredients, glassware and ice. Professional bartenders take care of your guests.",
+        ctaKey: "cta.learnMore",
+      },
+      {
+        slug: "mobile-bar",
+        title: "Rent a Mobile Bar",
+        excerpt:
+          "Looking to rent a mobile bar for your party or corporate event in Berlin? We’ll find the right setup. Our modular bar system adapts to any event size. Flexible configurations and lighting options leave nothing to be desired. With or without a lit back bar, our mobile bar is the visual highlight of your event.",
+        ctaKey: "cta.viewDetails",
+      },
+      {
+        slug: "cocktail-show",
+        title: "Cocktail Show & Flair Bartender",
+        excerpt:
+          "Want more? Add entertainment for your guests: book a flair bartender or a cocktail show for your mobile cocktail bar in Berlin. Spinning bottles and shakers, cocktail artistry during service—or open the bar with a show.",
+        ctaKey: "cta.toShow",
+      },
+      {
+        slug: "cocktailkurse",
+        title: "Cocktail Workshop",
+        excerpt:
+          "Cocktail course, training or workshop—we love sharing our know-how. From beginners to pros, we have the right program. Perfect as a highlight at a private party or as a team incentive. We bring everything and show you how to mix cocktails. On-site in Berlin, Leipzig, Hamburg, Munich and nationwide—or ONLINE as part of a virtual team event.",
+        ctaKey: "cta.bookNow",
+      },
+      {
+        slug: "kaffeecatering",
+        title: "Coffee Catering & Barista Service",
+        excerpt:
+          "We’re also your expert partner for hot drinks: coffee, espresso, latte macchiato, cappuccino and specialty teas—across Berlin and Germany. Top quality and seamless service. Espresso machines, staff and coffee selection—we’ll advise you. Our certified baristas and latte-art artists treat you and your guests to exceptional coffee.",
+        ctaKey: "cta.viewAll",
+      },
+    ],
+  },
   heroUsps: [
     "FAIR PRICING",
     "YEARS OF EXPERIENCE",
