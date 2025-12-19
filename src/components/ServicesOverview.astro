@@ -99,6 +99,9 @@ const headlineSep = headline?.sep ?? t.services?.headline?.sep ?? "–";
 <style>
   .services-overview {
     --services-card-radius: 0px;
+    --service-title-lines: 2;
+    --service-title-line-height: 1.12;
+    --service-body-gap: clamp(0.55rem, 1vw, 0.8rem);
 
     position: relative;
     width: 100vw;
@@ -221,14 +224,18 @@ const headlineSep = headline?.sep ?? t.services?.headline?.sep ?? "–";
 
   .service-body {
     display: grid;
-    gap: var(--services-card-body-gap);
+    gap: var(--service-body-gap);
   }
 
   .service-title {
     margin: 0;
     font-size: clamp(1.15rem, 1.6vw, 1.35rem);
-    line-height: var(--services-card-title-line-height);
-    min-height: calc(var(--services-card-title-min-lines) * 1em * var(--services-card-title-line-height));
+    line-height: var(--service-title-line-height) !important;
+    min-height: calc(var(--service-title-lines) * 1em * var(--service-title-line-height));
+    display: -webkit-box;
+    -webkit-line-clamp: var(--service-title-lines);
+    -webkit-box-orient: vertical;
+    overflow: hidden;
     text-transform: uppercase;
     letter-spacing: 0.04em;
     color: var(--accent);
