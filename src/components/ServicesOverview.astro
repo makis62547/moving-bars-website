@@ -186,9 +186,9 @@ const headlineSep = headline?.sep ?? t.services?.headline?.sep ?? "–";
     border-radius: 0;
     box-shadow: var(--services-card-glow);
     padding: clamp(1.25rem, 2.2vw, 1.6rem);
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    gap: clamp(1rem, 1.8vw, 1.25rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
     height: 100%;
     align-self: stretch;
   }
@@ -225,6 +225,7 @@ const headlineSep = headline?.sep ?? t.services?.headline?.sep ?? "–";
   }
 
   .service-body {
+    flex: 1 1 auto;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -253,7 +254,8 @@ const headlineSep = headline?.sep ?? t.services?.headline?.sep ?? "–";
   }
 
   .service-cta {
-    justify-self: stretch;
+    margin-top: auto;
+    width: 100%;
   }
 
   @media (min-width: 900px) {
