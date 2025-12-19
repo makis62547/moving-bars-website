@@ -127,7 +127,9 @@ const faqButtonLabel = t?.cta?.faqMobileCocktailbar ?? faq?.buttonLabel ?? "FAQ"
 
 <style>
   .h1-accordion {
-    width: 100%;
+    width: min(100%, var(--h1-accordion-width, var(--tile-text-width)));
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     flex-direction: column;
     gap: var(--h1-accordion-gap);
@@ -145,7 +147,11 @@ const faqButtonLabel = t?.cta?.faqMobileCocktailbar ?? faq?.buttonLabel ?? "FAQ"
     list-style: none;
     cursor: pointer;
     box-sizing: border-box;
-    width: min(100%, var(--h1-accordion-width, var(--tile-text-width)));
+  }
+
+  .h1-acc-item summary.mb-btn {
+    width: auto !important;
+    max-width: var(--h1-accordion-width, var(--tile-text-width));
     margin-left: auto;
     margin-right: auto;
   }
@@ -159,9 +165,10 @@ const faqButtonLabel = t?.cta?.faqMobileCocktailbar ?? faq?.buttonLabel ?? "FAQ"
   }
 
   .h1-acc-fullbleed {
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
+    width: 100vw;
+    max-width: none;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
     padding-inline: var(--h1-accordion-fullbleed-pad-inline, var(--section-pad-inline));
     margin-top: var(--h1-accordion-fullbleed-gap-top);
     box-sizing: border-box;
@@ -178,11 +185,11 @@ const faqButtonLabel = t?.cta?.faqMobileCocktailbar ?? faq?.buttonLabel ?? "FAQ"
     display: grid;
     gap: var(--h1-accordion-gap);
     padding-top: var(--h1-accordion-pad-top);
-    padding-left: var(--h1-accordion-content-pad-inline);
-    padding-right: var(--h1-accordion-content-pad-inline);
+    padding-inline: var(--section-pad-inline);
     box-sizing: border-box;
-    max-width: 100%;
     width: 100%;
+    max-width: none;
+    margin: 0;
   }
 
   .table-wrapper {
@@ -250,30 +257,6 @@ const faqButtonLabel = t?.cta?.faqMobileCocktailbar ?? faq?.buttonLabel ?? "FAQ"
   }
 
   @media (min-width: 900px) {
-    .h1-accordion {
-      max-width: none;
-      margin: 0;
-    }
-
-    .h1-acc-fullbleed {
-      padding-inline: 0;
-    }
-
-    .h1-acc-fullbleed-inner {
-      width: 100%;
-      max-width: none;
-      margin: 0;
-      padding-inline: var(--section-pad-inline);
-    }
-
-    .accordion-content {
-      width: 100%;
-      max-width: none;
-      margin: 0;
-      padding-left: 0;
-      padding-right: 0;
-    }
-
     .faq-block {
       max-width: none;
       width: 100%;
