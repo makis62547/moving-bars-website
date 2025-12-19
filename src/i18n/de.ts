@@ -58,4 +58,39 @@ export const de = {
     q10: "WIE SCHNELL BEKOMMEN WIR EINE ANTWORT / EIN ANGEBOT?",
     a10: "Ihr erhaltet innerhalb von 24 Stunden eine Antwort bzw. ein Angebot – versprochen!",
   },
+  pricing: {
+    table: {
+      package: "Paket",
+      recommendedFor: "Empfohlen für",
+      drinksIncluded: "Drinks inkl.",
+      bartenders: "Barkeeper",
+      barSetup: "Bar-Setup",
+      price: "Preis",
+      withBackbar: "Mit Rückbuffet",
+    },
+    notes: {
+      title: "Hinweise",
+      vat: "Alle Preise netto, zzgl. MwSt.",
+      extraDrink: "Jeder weitere Cocktail/Longdrink: {price}",
+      glassLoss: "Gläserschwund: {price} pro Glas",
+      travel: "Fahrtkosten: erst ab {km} km (nach Aufwand)",
+    },
+    packages: {
+      small100: "SMALL 100",
+      small200: "SMALL 200",
+      medium200: "MEDIUM 200",
+      medium400: "MEDIUM 400",
+      maxi: "MAXI – auf Anfrage",
+    },
+    value: {
+      onRequest: "auf Anfrage",
+      custom: "individuell",
+      asNeeded: "nach Bedarf",
+      from300: "ab 300",
+    },
+    barSetup: {
+      bar150: "1× Bar 1,50 m (LED-RGB)",
+      bar300: "1× Bar 3,00 m (LED-RGB)",
+    },
+  },
 };

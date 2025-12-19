@@ -58,4 +58,39 @@ export const en = {
     q10: "HOW FAST WILL WE GET A REPLY / A QUOTE?",
     a10: "You’ll receive a reply or a quote within 24 hours — promised!",
   },
+  pricing: {
+    table: {
+      package: "Package",
+      recommendedFor: "Recommended for",
+      drinksIncluded: "Drinks incl.",
+      bartenders: "Bartenders",
+      barSetup: "Bar setup",
+      price: "Price",
+      withBackbar: "With back bar",
+    },
+    notes: {
+      title: "Notes",
+      vat: "All prices net, plus VAT.",
+      extraDrink: "Each additional cocktail/long drink: {price} (net)",
+      glassLoss: "Glass loss/breakage: {price} per glass",
+      travel: "Travel costs: from {km} km onwards (depending on effort)",
+    },
+    packages: {
+      small100: "SMALL 100",
+      small200: "SMALL 200",
+      medium200: "MEDIUM 200",
+      medium400: "MEDIUM 400",
+      maxi: "MAXI – on request",
+    },
+    value: {
+      onRequest: "on request",
+      custom: "custom",
+      asNeeded: "as needed",
+      from300: "300+",
+    },
+    barSetup: {
+      bar150: "1× bar 1.50 m (LED RGB)",
+      bar300: "1× bar 3.00 m (LED RGB)",
+    },
+  },
 };
