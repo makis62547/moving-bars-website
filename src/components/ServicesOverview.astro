@@ -100,8 +100,6 @@ const headlineSep = headline?.sep ?? t.services?.headline?.sep ?? "–";
   .services-overview {
     --services-card-radius: 0px;
     --service-title-lines: 2;
-    --service-title-line-height: 1.12;
-    --service-body-gap: clamp(0.55rem, 1vw, 0.8rem);
 
     position: relative;
     width: 100vw;
@@ -224,20 +222,20 @@ const headlineSep = headline?.sep ?? t.services?.headline?.sep ?? "–";
     background-image: url("/images/kaffee-catering.jpg");
   }
 
-  .service-body {
+  .services-overview .service-body {
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: var(--service-body-gap);
+    gap: var(--services-card-body-gap) !important;
   }
 
-  .service-title {
-    margin: 0;
+  .services-overview .service-title {
+    margin: 0 !important;
     font-size: clamp(1.15rem, 1.6vw, 1.35rem);
-    line-height: var(--service-title-line-height) !important;
-    min-height: calc(var(--service-title-lines) * 1em * var(--service-title-line-height));
+    line-height: var(--services-card-title-line-height) !important;
+    min-height: calc(var(--service-title-lines) * 1em * var(--services-card-title-line-height));
     display: -webkit-box;
     -webkit-line-clamp: var(--service-title-lines);
     -webkit-box-orient: vertical;
@@ -247,8 +245,8 @@ const headlineSep = headline?.sep ?? t.services?.headline?.sep ?? "–";
     color: var(--accent);
   }
 
-  .service-excerpt {
-    margin: 0;
+  .services-overview .service-excerpt {
+    margin: 0 !important;
     color: rgba(255, 255, 255, 0.82);
     line-height: 1.6;
   }
