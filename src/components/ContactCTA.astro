@@ -1,3 +1,18 @@
+---
+import { i18n, type Lang } from "../i18n";
+
+const { t: passedT, lang: passedLang } = Astro.props as {
+  t?: (typeof i18n)["de"];
+  lang?: Lang;
+};
+
+const pathLang = Astro.url?.pathname?.split("/")[1];
+const lang = (passedLang ?? (pathLang === "en" ? "en" : pathLang === "de" ? "de" : undefined) ?? "de") as Lang;
+const t = passedT ?? i18n[lang] ?? i18n.de;
+
+const sendInquiryLabel = t?.cta?.sendInquiry ?? "ANFRAGE SENDEN";
+---
+
 <section id="kontakt" class="contact-cta max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
   <div class="space-y-4">
     <p class="text-orange-300 uppercase tracking-[0.2em] text-sm">Kontakt</p>
@@ -33,12 +48,7 @@
         <input type="text" placeholder="Eventdatum" class="input" />
       </div>
       <textarea placeholder="Kurzbeschreibung des Events" class="input min-h-[120px]"></textarea>
-      <button
-        type="button"
-        class="w-full rounded-full bg-orange-500 px-6 py-3 text-black font-semibold uppercase tracking-wide hover:bg-orange-400 transition"
-      >
-        Anfrage senden
-      </button>
+      <button type="button" class="mb-btn">{sendInquiryLabel}</button>
       <p class="text-white/60">Wir melden uns innerhalb eines Werktags mit Rückfragen oder einem konkreten Angebot.</p>
     </form>
   </div>

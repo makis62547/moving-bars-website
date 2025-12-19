@@ -32,14 +32,14 @@ const faqItems = faq
     ]
   : [];
 
-const faqButtonLabel = faq?.buttonLabel ?? "FAQ";
-
 const translateKey = (key?: string) => key?.split(".").reduce((acc: Record<string, any> | undefined, part) => acc?.[part], t);
+const allPackagesLabel = t?.cta?.allPackagesAndPrices ?? "Hier alle Pakete und Preise";
+const faqButtonLabel = t?.cta?.faqMobileCocktailbar ?? faq?.buttonLabel ?? "FAQ";
 ---
 
 <div class="h1-accordion">
   <details class="h1-acc-item">
-    <summary class="panel-cta">Hier alle Pakete und Preise</summary>
+    <summary class="panel-cta mb-btn">{allPackagesLabel}</summary>
     <div class="h1-acc-fullbleed">
       <div class="h1-acc-fullbleed-inner">
         <div class="accordion-content">
@@ -107,7 +107,7 @@ const translateKey = (key?: string) => key?.split(".").reduce((acc: Record<strin
   </details>
 
   <details class="h1-acc-item">
-    <summary class="panel-cta">{faqButtonLabel}</summary>
+    <summary class="panel-cta mb-btn">{faqButtonLabel}</summary>
     <div class="h1-acc-fullbleed">
       <div class="h1-acc-fullbleed-inner">
         <div class="accordion-content">
@@ -144,8 +144,6 @@ const translateKey = (key?: string) => key?.split(".").reduce((acc: Record<strin
   .h1-acc-item summary {
     list-style: none;
     cursor: pointer;
-    display: block;
-    width: 100%;
     box-sizing: border-box;
   }
 
