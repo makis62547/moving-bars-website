@@ -150,10 +150,9 @@ const faqButtonLabel = t?.cta?.faqMobileCocktailbar ?? faq?.buttonLabel ?? "FAQ"
   }
 
   .h1-acc-item summary.mb-btn {
-    width: auto !important;
-    max-width: var(--h1-accordion-width, var(--tile-text-width));
-    margin-left: auto;
-    margin-right: auto;
+    width: 100% !important;
+    max-width: none !important;
+    margin-inline: 0;
   }
 
   .h1-acc-item summary::-webkit-details-marker {
@@ -258,9 +257,10 @@ const faqButtonLabel = t?.cta?.faqMobileCocktailbar ?? faq?.buttonLabel ?? "FAQ"
 
   @media (min-width: 900px) {
     .faq-block {
-      max-width: none;
       width: 100%;
-      margin: 0;
+      max-width: var(--services-max-width);
+      margin-inline: auto;
+      margin-block: 0;
     }
   }
 
