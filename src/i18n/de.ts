@@ -28,6 +28,7 @@ export const de = {
   },
   blog: {
     readMoreCta: "Mehr lesen",
+    readMore: "Mehr lesen",
     cocktailStories: {
       title: {
         accent: "COCKTAIL GESCHICHTEN",
@@ -44,13 +45,17 @@ export const de = {
         signoff: "Viel Spaß beim Lesen wünscht moving bars.",
       },
     },
-    movingBars20Years: {
+    movingBars20: {
       title: {
         accent: "20 JAHRE MOVING BARS",
         rest: " MOBILE COCKTAILBAR",
       },
       intro: {
-        p1: "Seit über 20 Jahren sind wir mit unserer mobilen Cocktailbar in Berlin und ganz Deutschland unterwegs. Hätten wir seit der Gründung der Firma im Jahr 2000 mitgezählt, dann könnten wir hier stolz eine Zahl schreiben…so bleibt es bei der Umschreibung „unzählige“ Veranstaltungen haben wir in dieser Zeit begleiten dürfen. Da das 20 jährige Firmenjubiläum in das Corona Jahr 2020 gefallen ist, haben wir uns entschlossen diese 20 Jahre Veranstaltung auf eine andere Art und Weise zu feiern und den vielen Highlights und Geschichten aus dieser Zeit hier einen Raum zu geben. So nehmen wir Euch mit zurück in der Zeit und geben Einblicke in die faszinierende und abwechslungsreiche Welt rund um unsere mobile Cocktailbar. Ferne Länder, Städte oder ungewöhnliche Orte werden eine Rolle spielen, denn wir sind in all den Jahren wirklich mobil gewesen. Manchmal sind es auch einfach nur skurrile Situationen oder Ereignisse von denen wir glauben, daß es Spaß macht darüber zu lesen. Ausserdem berichten wir über aktuelle Themen und geben Tipps rund um das Thema mobile Cocktailbar.",
+        preview:
+          "Seit über 20 Jahren sind wir mit unserer mobilen Cocktailbar in Berlin und ganz Deutschland unterwegs. Hätten wir seit der Gründung der Firma im Jahr 2000 mitgezählt, dann könnten wir hier stolz eine Zahl schreiben…so bleibt es bei der Umschreibung „unzählige“ Veranstaltungen haben wir in dieser Zeit begleiten dürfen. Da das 20 jährige Firmenjubiläum in das Corona Jahr 2020 gefallen ist, haben wir uns entschlossen diese 20 Jahre Veranstaltung auf eine andere Art und Weise zu feiern und den vielen Highlights und Geschichten aus dieser Zeit hier einen Raum zu geben. So nehmen wir Euch mit zurück in der Zeit und geben Einblicke in die faszinierende und abwechslungsreiche Welt rund um unsere mobile Cocktailbar.",
+        more: {
+          p1: "Ferne Länder, Städte oder ungewöhnliche Orte werden eine Rolle spielen, denn wir sind in all den Jahren wirklich mobil gewesen. Manchmal sind es auch einfach nur skurrile Situationen oder Ereignisse von denen wir glauben, daß es Spaß macht darüber zu lesen. Ausserdem berichten wir über aktuelle Themen und geben Tipps rund um das Thema mobile Cocktailbar.",
+        },
       },
       signoff: "Viel Spaß beim Lesen wünscht…moving bars",
     },
