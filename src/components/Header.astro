@@ -310,6 +310,25 @@ if (pathname.startsWith("/en")) {
     outline: none;
   }
 
+  @media (max-width: 1200px) {
+    .logo img {
+      transform: translateY(
+        var(--header-logo-offset-y-mobile, var(--header-logo-offset-y))
+      );
+    }
+
+    .menu-button {
+      border: none;
+      box-shadow: none;
+      background: transparent;
+    }
+
+    .menu-button:focus-visible {
+      outline: var(--btn-focus-outline);
+      outline-offset: var(--btn-focus-outline-offset);
+    }
+  }
+
   .menu-icon {
     display: inline-flex;
     flex-direction: column;
