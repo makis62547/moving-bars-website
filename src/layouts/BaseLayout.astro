@@ -96,7 +96,7 @@ const { lang = "de" } = Astro.props as { lang?: "de" | "en" };
         --h1-block-pad-inline: 0px;
         --h1-block-pad-block: 0px;
         --h1-block-pad-top: var(--h1-block-pad-block);
-        --h1-block-pad-bottom: var(--h1-block-pad-block);
+        --h1-block-pad-bottom: clamp(1.25rem, 2vw, 2.25rem);
 
         /* Basis für alle Sections */
         --section-pad-block: clamp(5.5rem, 9.5vw, 7.5rem);
