@@ -31,67 +31,75 @@ const faqItems = [
 ---
 
 <div class="h1-accordion">
-  <details class="accordion-item">
+  <details class="h1-acc-item">
     <summary class="panel-cta">Hier alle Pakete und Preise</summary>
-    <div class="accordion-content">
-      <div class="table-wrapper">
-        <table class="pricing-table">
-          <thead>
-            <tr>
-              <th scope="col">Paket</th>
-              <th scope="col">Empfohlen für</th>
-              <th scope="col">Drinks inkl.</th>
-              <th scope="col">Barkeeper</th>
-              <th scope="col">Bar-Setup</th>
-              <th scope="col">Ohne Rückbuffet</th>
-              <th scope="col">Mit Rückbuffet</th>
-            </tr>
-          </thead>
-          <tbody>
-            {pricing.packages.map((pkg) => (
-              <tr id={pkg.id}>
-                <th scope="row">{pkg.title}</th>
-                <td>{pkg.recommendedFor}</td>
-                <td>{pkg.drinksIncluded}</td>
-                <td>{pkg.bartenders}</td>
-                <td>{pkg.barSetup}</td>
-                <td
-                  data-price-no-backbar-cents={pkg.priceNoBackbarCents ?? undefined}
-                  data-currency={pricing.currency}
-                >
-                  {formatMoney(pkg.priceNoBackbarCents)}
-                </td>
-                <td
-                  data-price-with-backbar-cents={pkg.priceWithBackbarCents ?? undefined}
-                  data-currency={pricing.currency}
-                >
-                  {formatMoney(pkg.priceWithBackbarCents)}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+    <div class="h1-acc-fullbleed">
+      <div class="h1-acc-fullbleed-inner">
+        <div class="accordion-content">
+          <div class="table-wrapper">
+            <table class="pricing-table">
+              <thead>
+                <tr>
+                  <th scope="col">Paket</th>
+                  <th scope="col">Empfohlen für</th>
+                  <th scope="col">Drinks inkl.</th>
+                  <th scope="col">Barkeeper</th>
+                  <th scope="col">Bar-Setup</th>
+                  <th scope="col">Ohne Rückbuffet</th>
+                  <th scope="col">Mit Rückbuffet</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pricing.packages.map((pkg) => (
+                  <tr id={pkg.id}>
+                    <th scope="row">{pkg.title}</th>
+                    <td>{pkg.recommendedFor}</td>
+                    <td>{pkg.drinksIncluded}</td>
+                    <td>{pkg.bartenders}</td>
+                    <td>{pkg.barSetup}</td>
+                    <td
+                      data-price-no-backbar-cents={pkg.priceNoBackbarCents ?? undefined}
+                      data-currency={pricing.currency}
+                    >
+                      {formatMoney(pkg.priceNoBackbarCents)}
+                    </td>
+                    <td
+                      data-price-with-backbar-cents={pkg.priceWithBackbarCents ?? undefined}
+                      data-currency={pricing.currency}
+                    >
+                      {formatMoney(pkg.priceWithBackbarCents)}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
 
-      <div class="pricing-notes">
-        <p class="note-kicker">Hinweise</p>
-        <p class="note-text">{pricing.vatNote}</p>
-        <p class="note-text">Jeder weitere Cocktail/Longdrink: {formatMoney(pricing.notes.extraDrinkNetCents)}</p>
-        <p class="note-text">Gläserschwund: {formatMoney(pricing.notes.glassLossNetCents)} pro Glas</p>
-        <p class="note-text">Fahrtkosten: erst ab {pricing.notes.freeKm} km (nach Aufwand)</p>
+          <div class="pricing-notes">
+            <p class="note-kicker">Hinweise</p>
+            <p class="note-text">{pricing.vatNote}</p>
+            <p class="note-text">Jeder weitere Cocktail/Longdrink: {formatMoney(pricing.notes.extraDrinkNetCents)}</p>
+            <p class="note-text">Gläserschwund: {formatMoney(pricing.notes.glassLossNetCents)} pro Glas</p>
+            <p class="note-text">Fahrtkosten: erst ab {pricing.notes.freeKm} km (nach Aufwand)</p>
+          </div>
+        </div>
       </div>
     </div>
   </details>
 
-  <details class="accordion-item">
+  <details class="h1-acc-item">
     <summary class="panel-cta">FAQ Mobile Cocktailbar mieten</summary>
-    <div class="accordion-content faq-list">
-      {faqItems.map((item) => (
-        <div class="faq-item">
-          <h3>{item.question}</h3>
-          <p>{item.answer}</p>
+    <div class="h1-acc-fullbleed">
+      <div class="h1-acc-fullbleed-inner">
+        <div class="accordion-content faq-list">
+          {faqItems.map((item) => (
+            <div class="faq-item">
+              <h3>{item.question}</h3>
+              <p>{item.answer}</p>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
   </details>
 </div>
@@ -105,13 +113,14 @@ const faqItems = [
     padding-top: var(--h1-accordion-pad-top);
   }
 
-  .accordion-item {
+  .h1-acc-item {
     border: 0;
     padding: 0;
     background: none;
+    overflow: visible;
   }
 
-  .accordion-item summary {
+  .h1-acc-item summary {
     list-style: none;
     cursor: pointer;
     display: block;
@@ -119,18 +128,32 @@ const faqItems = [
     box-sizing: border-box;
   }
 
-  .accordion-item summary::-webkit-details-marker {
+  .h1-acc-item summary::-webkit-details-marker {
     display: none;
+  }
+
+  details[open] {
+    margin-bottom: var(--h1-accordion-open-gap-bottom);
+  }
+
+  .h1-acc-fullbleed {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding-left: var(--h1-accordion-fullbleed-pad-inline);
+    padding-right: var(--h1-accordion-fullbleed-pad-inline);
+    margin-top: var(--h1-accordion-fullbleed-gap-top);
+  }
+
+  .h1-acc-fullbleed-inner {
+    max-width: var(--h1-accordion-fullbleed-max-width);
+    margin: 0 auto;
   }
 
   .accordion-content {
     display: grid;
     gap: var(--h1-accordion-gap);
     padding-top: var(--h1-accordion-pad-top);
-  }
-
-  details[open] {
-    margin-bottom: var(--h1-accordion-open-gap-bottom);
   }
 
   .table-wrapper {
