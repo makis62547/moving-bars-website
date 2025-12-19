@@ -50,6 +50,20 @@ const { lang = "de" } = Astro.props as { lang?: "de" | "en" };
         --heading-color: #ffffff;
         --text-muted-color: #a7a7a7;
 
+        --btn-border: 1px solid rgba(var(--accent-rgb), 0.6);
+        --btn-bg: transparent;
+        --btn-text: #fff;
+        --btn-hover-bg: var(--accent);
+        --btn-hover-text: #000;
+        --btn-font-family: var(--body-font-family);
+        --btn-font-weight: 500;
+        --btn-letter-spacing: 0.08em;
+        --btn-font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+        --btn-pad-y: 0.95rem;
+        --btn-pad-x: 1.1rem;
+        --btn-focus-outline: 2px solid var(--accent);
+        --btn-focus-outline-offset: 6px;
+
         /* Typografie-System */
         --body-font-family: "Montserrat", system-ui, sans-serif;
         --body-font-size: 18px;

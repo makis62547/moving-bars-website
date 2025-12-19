@@ -7,6 +7,18 @@ export const en = {
     coffeeCatering: "Coffee Catering",
     request: "Request",
   },
+  cta: {
+    requestNow: "REQUEST A QUOTE",
+    viewCocktailMenus: "VIEW OUR COCKTAIL MENUS",
+    allPackagesAndPrices: "ALL PACKAGES & PRICES",
+    faqMobileCocktailbar: "FAQ MOBILE COCKTAIL BAR RENTAL",
+    sendInquiry: "SEND INQUIRY",
+    learnMore: "Learn more",
+    viewDetails: "View details",
+    toShow: "See the show",
+    bookNow: "Book now",
+    viewAll: "View all",
+  },
   heroUsps: [
     "FAIR PRICING",
     "YEARS OF EXPERIENCE",

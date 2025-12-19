@@ -32,6 +32,40 @@ a:hover {
   color: var(--accent);
 }
 
+.mb-btn,
+:is(.panel-cta, .service-cta, .ghost-button) {
+  display: inline-flex !important;
+  width: 100% !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+  letter-spacing: var(--btn-letter-spacing) !important;
+  font-family: var(--btn-font-family) !important;
+  font-weight: var(--btn-font-weight) !important;
+  font-size: var(--btn-font-size) !important;
+  padding: var(--btn-pad-y) var(--btn-pad-x) !important;
+  border: var(--btn-border) !important;
+  background: var(--btn-bg) !important;
+  color: var(--btn-text) !important;
+  border-radius: 0 !important;
+  cursor: pointer !important;
+  box-sizing: border-box;
+}
+
+.mb-btn:hover,
+:is(.panel-cta, .service-cta, .ghost-button):hover {
+  background: var(--btn-hover-bg) !important;
+  color: var(--btn-hover-text) !important;
+  border-color: rgba(var(--accent-rgb), 0.95) !important;
+}
+
+.mb-btn:focus-visible,
+:is(.panel-cta, .service-cta, .ghost-button):focus-visible {
+  outline: var(--btn-focus-outline);
+  outline-offset: var(--btn-focus-outline-offset);
+}
+
 img {
   display: block;
   max-width: 100%;

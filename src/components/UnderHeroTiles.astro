@@ -11,6 +11,9 @@ const mobileBarTitle = t?.underHero?.tiles?.mobileBarTitle ?? "";
 const [mobileBarAccent, ...mobileBarRestParts] = mobileBarTitle.split(" ");
 const mobileBarRest = mobileBarRestParts.join(" ").trim();
 
+const viewCocktailMenusCta = t?.cta?.viewCocktailMenus ?? "HIER UNSERE COCKTAIL MENUS ANSEHEN";
+const requestNowCta = t?.cta?.requestNow ?? "JETZT ANFRAGEN";
+
 const base = (import.meta.env.BASE_URL || "/").replace(/\/?$/, "/");
 const asset = (p: string) => `${base}${p.replace(/^\//, "")}`;
 
@@ -76,7 +79,9 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
             {t.underHero.tiles.cocktailsText}
           </p>
 
-          <a class="panel-cta" href="#" aria-label="Cocktail Menüs ansehen">HIER UNSERE COCKTAIL MENUS ANSEHEN</a>
+          <a class="panel-cta mb-btn" href="#" aria-label={viewCocktailMenusCta}>
+            {viewCocktailMenusCta}
+          </a>
         </div>
       </article>
 
@@ -113,7 +118,9 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
             {t.underHero.tiles.mobileBarText}
           </p>
 
-          <a class="panel-cta" href="/anfrage" aria-label="Jetzt anfragen">JETZT ANFRAGEN</a>
+          <a class="panel-cta mb-btn" href="/anfrage" aria-label={requestNowCta}>
+            {requestNowCta}
+          </a>
         </div>
       </article>
     </div>
@@ -310,28 +317,6 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
     color: rgba(247, 247, 247, 0.82);
     line-height: 1.7;
     font-family: "Inter", system-ui, sans-serif;
-  }
-
-  :global(.panel-cta) {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 0.95rem;
-    padding: 0.95rem 1.1rem;
-    border: 1px solid rgba(var(--accent-rgb), 0.6);
-    color: rgba(var(--accent-rgb), 0.95);
-    background: transparent;
-    width: min(520px, 100%);
-  }
-
-  :global(.panel-cta:hover),
-  :global(.panel-cta:focus-visible) {
-    outline: none;
-    background: rgba(var(--accent-rgb), 0.14);
-    border-color: rgba(var(--accent-rgb), 0.9);
   }
 
   .panel--icon {
