@@ -2,21 +2,20 @@
 import { pricing } from "../data/pricing/pricing";
 import { i18n, type Lang } from "../i18n";
 
-const formatMoney = (value: number | null) => {
-  if (value === null) return "auf Anfrage";
-
-  return new Intl.NumberFormat("de-DE", {
-    style: "currency",
-    currency: pricing.currency,
-    minimumFractionDigits: 2,
-  }).format(value / 100);
-};
-
 const { t: passedT, lang: passedLang } = Astro.props as { t?: (typeof i18n)["de"]; lang?: Lang };
 const pathLang = Astro.url?.pathname?.split("/")[1];
 const lang = (passedLang ?? (pathLang === "en" ? "en" : pathLang === "de" ? "de" : undefined) ?? "de") as Lang;
 const t = passedT ?? i18n[lang] ?? i18n.de;
 const faq = t?.faqMobileCocktailbar;
+const formatMoney = (value: number | null) => {
+  if (value === null) return t.pricing.value.onRequest;
+
+  return new Intl.NumberFormat(lang === "en" ? "en-US" : "de-DE", {
+    style: "currency",
+    currency: pricing.currency,
+    minimumFractionDigits: 2,
+  }).format(value / 100);
+};
 
 const faqItems = faq
   ? [
@@ -34,6 +33,8 @@ const faqItems = faq
   : [];
 
 const faqButtonLabel = faq?.buttonLabel ?? "FAQ";
+
+const translateKey = (key?: string) => key?.split(".").reduce((acc: Record<string, any> | undefined, part) => acc?.[part], t);
 ---
 
 <div class="h1-accordion">
@@ -46,47 +47,59 @@ const faqButtonLabel = faq?.buttonLabel ?? "FAQ";
             <table class="pricing-table">
               <thead>
                 <tr>
-                  <th scope="col">Paket</th>
-                  <th scope="col">Empfohlen für</th>
-                  <th scope="col">Drinks inkl.</th>
-                  <th scope="col">Barkeeper</th>
-                  <th scope="col">Bar-Setup</th>
-                  <th scope="col">Ohne Rückbuffet</th>
-                  <th scope="col">Mit Rückbuffet</th>
+                  <th scope="col">{t.pricing.table.package}</th>
+                  <th scope="col">{t.pricing.table.recommendedFor}</th>
+                  <th scope="col">{t.pricing.table.drinksIncluded}</th>
+                  <th scope="col">{t.pricing.table.bartenders}</th>
+                  <th scope="col">{t.pricing.table.barSetup}</th>
+                  <th scope="col">{t.pricing.table.price}</th>
+                  <th scope="col">{t.pricing.table.withBackbar}</th>
                 </tr>
               </thead>
               <tbody>
-                {pricing.packages.map((pkg) => (
-                  <tr id={pkg.id}>
-                    <th scope="row">{pkg.title}</th>
-                    <td>{pkg.recommendedFor}</td>
-                    <td>{pkg.drinksIncluded}</td>
-                    <td>{pkg.bartenders}</td>
-                    <td>{pkg.barSetup}</td>
-                    <td
-                      data-price-no-backbar-cents={pkg.priceNoBackbarCents ?? undefined}
-                      data-currency={pricing.currency}
-                    >
-                      {formatMoney(pkg.priceNoBackbarCents)}
-                    </td>
-                    <td
-                      data-price-with-backbar-cents={pkg.priceWithBackbarCents ?? undefined}
-                      data-currency={pricing.currency}
-                    >
-                      {formatMoney(pkg.priceWithBackbarCents)}
-                    </td>
-                  </tr>
-                ))}
+                {pricing.packages.map((pkg) => {
+                  const packageName = translateKey(pkg.nameKey) ?? pkg.nameKey;
+                  const recommendedFor = translateKey(pkg.recommendedForKey) ?? pkg.recommendedForRaw;
+                  const drinksIncluded = translateKey(pkg.drinksIncludedKey) ?? pkg.drinksIncludedRaw;
+                  const bartenders = translateKey(pkg.bartendersKey) ?? pkg.bartendersRaw;
+                  const barSetup = translateKey(pkg.barSetupKey) ?? pkg.barSetupRaw;
+
+                  return (
+                    <tr id={pkg.id}>
+                      <th scope="row" class="package-name">{packageName}</th>
+                      <td>{recommendedFor}</td>
+                      <td>{drinksIncluded}</td>
+                      <td>{bartenders}</td>
+                      <td>{barSetup}</td>
+                      <td
+                        data-price-no-backbar-cents={pkg.priceNoBackbarCents ?? undefined}
+                        data-currency={pricing.currency}
+                      >
+                        {formatMoney(pkg.priceNoBackbarCents)}
+                      </td>
+                      <td
+                        data-price-with-backbar-cents={pkg.priceWithBackbarCents ?? undefined}
+                        data-currency={pricing.currency}
+                      >
+                        {formatMoney(pkg.priceWithBackbarCents)}
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
 
           <div class="pricing-notes">
-            <p class="note-kicker">Hinweise</p>
-            <p class="note-text">{pricing.vatNote}</p>
-            <p class="note-text">Jeder weitere Cocktail/Longdrink: {formatMoney(pricing.notes.extraDrinkNetCents)}</p>
-            <p class="note-text">Gläserschwund: {formatMoney(pricing.notes.glassLossNetCents)} pro Glas</p>
-            <p class="note-text">Fahrtkosten: erst ab {pricing.notes.freeKm} km (nach Aufwand)</p>
+            <p class="note-kicker">{t.pricing.notes.title}</p>
+            <p class="note-text">{t.pricing.notes.vat}</p>
+            <p class="note-text">
+              {t.pricing.notes.extraDrink.replace("{price}", formatMoney(pricing.notes.extraDrinkNetCents))}
+            </p>
+            <p class="note-text">
+              {t.pricing.notes.glassLoss.replace("{price}", formatMoney(pricing.notes.glassLossNetCents))}
+            </p>
+            <p class="note-text">{t.pricing.notes.travel.replace("{km}", String(pricing.notes.freeKm))}</p>
           </div>
         </div>
       </div>
@@ -189,12 +202,13 @@ const faqButtonLabel = faq?.buttonLabel ?? "FAQ";
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.02em;
-    color: rgba(255, 255, 255, 0.92);
+    color: var(--accent);
   }
 
   .pricing-table tbody th {
     font-weight: 700;
     width: 22%;
+    color: var(--accent);
   }
 
   .pricing-table tbody td {
