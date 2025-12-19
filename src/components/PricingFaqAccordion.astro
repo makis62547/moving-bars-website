@@ -1,5 +1,6 @@
 ---
 import { pricing } from "../data/pricing/pricing";
+import { i18n, type Lang } from "../i18n";
 
 const formatMoney = (value: number | null) => {
   if (value === null) return "auf Anfrage";
@@ -11,23 +12,28 @@ const formatMoney = (value: number | null) => {
   }).format(value / 100);
 };
 
-const faqItems = [
-  {
-    question: "Was bringt ihr zu meinem Event mit?",
-    answer:
-      "Wir liefern die mobile Bar, professionelles Barequipment, frische Zutaten und erfahrene Barkeeper. Du stellst lediglich ausreichend Platz und einen regulären Stromanschluss bereit.",
-  },
-  {
-    question: "Sind individuelle Drinks oder Markenwünsche möglich?",
-    answer:
-      "Ja. Neben den hier aufgeführten Paketen passen wir Rezepte, Spirituosen und Garnituren auf Wunsch an – von CI-Drinks bis zu alkoholfreien Varianten.",
-  },
-  {
-    question: "In welchen Regionen seid ihr buchbar?",
-    answer:
-      "Unser Kerngebiet ist Berlin und Brandenburg. Deutschlandweite Einsätze sind nach Absprache jederzeit möglich; Fahrtkosten fallen erst ab den angegebenen Freikilometern an.",
-  },
-];
+const { t: passedT, lang: passedLang } = Astro.props as { t?: (typeof i18n)["de"]; lang?: Lang };
+const pathLang = Astro.url?.pathname?.split("/")[1];
+const lang = (passedLang ?? (pathLang === "en" ? "en" : pathLang === "de" ? "de" : undefined) ?? "de") as Lang;
+const t = passedT ?? i18n[lang] ?? i18n.de;
+const faq = t?.faqMobileCocktailbar;
+
+const faqItems = faq
+  ? [
+      { question: faq.q1, answer: faq.a1 },
+      { question: faq.q2, answer: faq.a2 },
+      { question: faq.q3, answer: faq.a3 },
+      { question: faq.q4, answer: faq.a4 },
+      { question: faq.q5, answer: faq.a5 },
+      { question: faq.q6, answer: faq.a6 },
+      { question: faq.q7, answer: faq.a7 },
+      { question: faq.q8, answer: faq.a8 },
+      { question: faq.q9, answer: faq.a9 },
+      { question: faq.q10, answer: faq.a10 },
+    ]
+  : [];
+
+const faqButtonLabel = faq?.buttonLabel ?? "FAQ";
 ---
 
 <div class="h1-accordion">
@@ -88,16 +94,18 @@ const faqItems = [
   </details>
 
   <details class="h1-acc-item">
-    <summary class="panel-cta">FAQ Mobile Cocktailbar mieten</summary>
+    <summary class="panel-cta">{faqButtonLabel}</summary>
     <div class="h1-acc-fullbleed">
       <div class="h1-acc-fullbleed-inner">
-        <div class="accordion-content faq-list">
-          {faqItems.map((item) => (
-            <div class="faq-item">
-              <h3>{item.question}</h3>
-              <p>{item.answer}</p>
-            </div>
-          ))}
+        <div class="accordion-content">
+          <div class="faq-block">
+            {faqItems.map((item) => (
+              <div class="faq-item">
+                <h3 class="faq-q">{item.question}</h3>
+                <p class="faq-a">{item.answer}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
@@ -214,19 +222,25 @@ const faqItems = [
     line-height: 1.6;
   }
 
-  .faq-list {
-    display: grid;
-    gap: var(--h1-accordion-gap);
+  .faq-block {
+    max-width: var(--h1-faq-max-width);
+    margin: 0 auto;
   }
 
-  .faq-item h3 {
+  .faq-item + .faq-item {
+    margin-top: var(--h1-faq-item-gap);
+  }
+
+  .faq-q {
     margin: 0 0 0.35rem 0;
-    font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+    color: var(--accent);
+    text-transform: uppercase;
+    font-size: clamp(1.05rem, 1.25vw, 1.25rem);
   }
 
-  .faq-item p {
-    margin: 0;
-    color: rgba(255, 255, 255, 0.88);
+  .faq-a {
+    margin: 0 0 1rem 0;
+    color: #fff;
     line-height: 1.7;
   }
 </style>
