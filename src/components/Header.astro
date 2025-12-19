@@ -13,6 +13,19 @@ const navLinks = [
   { href: "/kaffeecatering", label: t.nav.coffeeCatering },
   { href: "/anfrage", label: t.nav.request },
 ];
+
+const pathname = Astro.url?.pathname ?? "/";
+
+let toDeUrl = "/de/";
+let toEnUrl = "/en/";
+
+if (pathname.startsWith("/en")) {
+  toDeUrl = pathname.replace(/^\/en(?=\/|$)/, "/de");
+  toEnUrl = pathname;
+} else if (pathname.startsWith("/de")) {
+  toEnUrl = pathname.replace(/^\/de(?=\/|$)/, "/en");
+  toDeUrl = pathname;
+}
 ---
 
 <header class="site-header">
@@ -26,32 +39,48 @@ const navLinks = [
         <a href={link.href} class="nav-link">{link.label}</a>
       ))}
       <div class="lang-switch">
-        <a href="/de/" class={`nav-link ${lang === "de" ? "active" : ""}`}>
+        <a href={toDeUrl} class={`nav-link ${lang === "de" ? "active" : ""}`}>
           DE
         </a>
         <span class="lang-divider">|</span>
-        <a href="/en/" class={`nav-link ${lang === "en" ? "active" : ""}`}>
+        <a href={toEnUrl} class={`nav-link ${lang === "en" ? "active" : ""}`}>
           EN
         </a>
       </div>
     </nav>
 
     <div class="nav-mobile">
-      <button
-        type="button"
-        class="menu-button"
-        aria-label="Menü öffnen"
-        aria-expanded="false"
-        aria-controls="mobile-nav"
-        data-menu-button
-      >
-        <span class="menu-label">Menu</span>
-        <span class="menu-icon" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
-      </button>
+      <div class="header-controls">
+        <nav class="lang-toggle lang-toggle--header" aria-label="Language">
+          <a
+            class:list={{ "lang-link": true, "is-active": lang === "de" }}
+            href={toDeUrl}
+          >
+            DE
+          </a>
+          <span class="lang-sep" aria-hidden="true">/</span>
+          <a
+            class:list={{ "lang-link": true, "is-active": lang === "en" }}
+            href={toEnUrl}
+          >
+            EN
+          </a>
+        </nav>
+        <button
+          type="button"
+          class="menu-button"
+          aria-label="Menü öffnen"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          data-menu-button
+        >
+          <span class="menu-icon" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -66,14 +95,14 @@ const navLinks = [
         ))}
         <div class="mobile-lang-switch">
           <a
-            href="/de/"
+            href={toDeUrl}
             class={`mobile-nav-link ${lang === "de" ? "active" : ""}`}
           >
             DE
           </a>
           <span class="lang-divider">|</span>
           <a
-            href="/en/"
+            href={toEnUrl}
             class={`mobile-nav-link ${lang === "en" ? "active" : ""}`}
           >
             EN
@@ -240,6 +269,12 @@ const navLinks = [
     flex: 0 0 auto;
   }
 
+  .header-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--header-mobile-controls-gap, clamp(0.5rem, 1.2vw, 0.85rem));
+  }
+
   @media (min-width: 1200px) {
     .nav-desktop {
       display: flex;
@@ -253,8 +288,9 @@ const navLinks = [
   .menu-button {
     display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.65rem 0.85rem;
+    justify-content: center;
+    gap: 0;
+    padding: 0.7rem 0.85rem;
     color: var(--heading-color);
     font-size: 0.95rem;
     font-weight: 500;
@@ -272,11 +308,6 @@ const navLinks = [
     color: var(--accent);
     border-color: rgba(var(--accent-rgb), 0.7);
     outline: none;
-  }
-
-  .menu-label {
-    display: block;
-    letter-spacing: 0.12em;
   }
 
   .menu-icon {
@@ -341,6 +372,35 @@ const navLinks = [
     gap: 0.45rem;
   }
 
+  .lang-toggle--header {
+    display: none;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: var(--header-mobile-lang-size, 0.95rem);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .lang-toggle--header .lang-link {
+    color: #fff;
+    font-weight: 600;
+    transition: color 150ms ease;
+  }
+
+  .lang-toggle--header .lang-link.is-active {
+    color: var(--accent);
+  }
+
+  .lang-toggle--header .lang-link:hover,
+  .lang-toggle--header .lang-link:focus-visible {
+    color: rgba(var(--accent-rgb), 0.9);
+  }
+
+  .lang-toggle--header .lang-sep {
+    color: #fff;
+    opacity: 0.7;
+  }
+
   .mobile-nav-link:hover,
   .mobile-nav-link:focus-visible {
     color: var(--accent);
@@ -378,6 +438,12 @@ const navLinks = [
   @media (min-width: 1200px) {
     .mobile-overlay {
       display: none;
+    }
+  }
+
+  @media (max-width: 1199px) {
+    .lang-toggle--header {
+      display: inline-flex;
     }
   }
 </style>
