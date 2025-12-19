@@ -92,18 +92,6 @@ export const en = {
         "Our mobile bar is the result of over 20 years of cocktail catering expertise and mobile bar rentals in Berlin and across Germany. The concept delights both sides: guests enjoy a striking yet timeless design, while event pros benefit from uncompromising equipment and flexibility. With versatile lighting and styling options, the mobile bar seamlessly adapts to any setting. Premium stainless steel and white acrylic glass create a refined, enduring look. Backlit with modern LED RGBW technology, it can be set to any color you choose.",
     },
   },
-  blogs: {
-    cocktailIntro: {
-      title: "COCKTAIL STORIES — INTRODUCTION",
-      teaser: [
-        "In this blog, we want to take time again and again to write about the core topic of our work at the mobile cocktail bar:",
-        "Cocktails and mixed drinks.",
-        "It’s less about recipes or the actual preparation that we want to talk about. What has always been close to our hearts—and kept inspiring us over the years—are the stories behind those recipes. Cocktails aren’t just drinks that taste good and make you feel cheerful; they are part of human history, adventure, and world travel. Stories about the countries they come from, the eras they originate in, sea pirates who drank them, or bartenders who invented them. All of this background is what makes cocktails, in our view, such a truly fascinating topic.",
-      ],
-      readMoreLabel: "Read more",
-      body: "In the past, it was much harder to find information and background on cocktails. Old cocktail books were highly traded rarities, and searching for them in antiquarian bookshops was laborious, time-consuming, and expensive. The internet makes a vast amount of information easily and widely accessible. Wikipedia & co. are available to everyone and offer a wealth of knowledge. Many original sources have been digitized and provide the fascinating opportunity of a virtual journey through time. As with other topics, the art today lies in sorting this information and checking its relevance. Online, a hypothesis can quickly become a “fact” as people copy from one another and sources aren’t verified. In cocktail history we repeatedly encounter myths and bar folklore. We’ve set ourselves the goal of getting to the bottom of the origins—checking sources where possible, assessing them to the best of our knowledge, and summarizing what is known on each topic. We hope to provide interested readers with information without requiring hours of research. If we missed a source or an important detail, we welcome suggestions and feedback. Of course, every article includes full sources and links for anyone who wants to dig deeper. Enjoy reading — moving bars.",
-    },
-  },
   faqMobileCocktailbar: {
     buttonLabel: "FAQ Mobile Cocktail Bar Rental",
     q1: "WHAT’S INCLUDED IN THE COCKTAIL CATERING PACKAGE?",

@@ -92,18 +92,6 @@ export const de = {
         "Unsere mobile Bar ist das Ergebnis aus über 20 Jahren Erfahrung im Bereich Cocktail Catering und mobile Cocktailbar mieten in Berlin und üBARall in Deutschland. Das System stellt gleichermaßen beide Seiten zufrieden: Den Gast, durch das ansprechende, zeitlose Design und den Event-Profi durch kompromisslose Ausstattung und Flexibilität. Durch die unterschiedlichen Beleuchtungs- und Gestaltungsmöglichkeiten passt die mobile Bar sich jeder Situation und Umgebung an. Hochwertiger Edelstahl und weißes Acrylglas sorgen für ein zeitloses Design. Unsere mobile Bar ist mit moderner LED-RGBW-Technik hinterleuchtet und läßt sich auf jeden gewünschten Farbton einstellen.",
     },
   },
-  blogs: {
-    cocktailIntro: {
-      title: "COCKTAIL GESCHICHTEN – EINFÜHRUNG",
-      teaser: [
-        "In diesem Blog wollen wir uns immer wieder Zeit nehmen und über das Kernthema unserer Arbeit an der mobilen Cocktailbar schreiben:",
-        "Cocktails bzw. Mischgetränke.",
-        "Es sind weniger die Rezepturen oder die eigentliche Zubereitung über die wir erzählen wollen. Was uns am Herzen liegt und über all die Jahre immer wieder begeistert hat sind die Geschichten, die sich hinter diesen Rezepturen verbergen. Cocktails sind nicht einfach nur Getränke, die schmecken und lustig machen, sie sind ein Teil Menschheits-Geschichte, Abenteuer und Weltreise. Geschichten über die Länder aus denen sie stammen, die Zeit aus der sie kommen, Seeräubern, die sie getrunken oder Barkeepern, die sie erfunden haben. All diese Hintergründe machen Cocktails, wie wir meinen, erst zu dem was sie sind: ein wirklich spannendes Thema.",
-      ],
-      readMoreLabel: "Mehr lesen",
-      body: "Früher war es wesentlicher schwieriger Informationen und Hintergründe zum Thema Cocktails zu finden. Alte Cocktailbücher waren heiß gehandelte Raritäten und die Suche danach in Antiquariaten sehr mühsam, zeitaufreibend und kostspielig. Das Internet macht eine Vielzahl an Informationen leicht und umfänglich zugänglich. Wikipedia & Co sind für jeden erreichbar und bieten eine Fülle an Informationen. Viele Originalquellen sind digitalisiert und bieten die faszinierende Möglichkeit der virtuellen Zeitreise. Wie auch bei anderen Themen, besteht die Kunst heutzutage darin, diese Informationen zu sortieren und Ihre Relevanz zu prüfen. Aus einer These wird im Netz schnell eine Tatsache, indem der eine vom anderen übernimmt bzw. Quellen nicht überprüft werden. Beim Thema Cocktails und Ihrer Geschichte haben wir es immer wieder mit Mythen und Bar-Latein zu tun. Wir haben uns vorgenommen den Ursprüngen auf den Grund zu gehen, soweit möglich Quellen zu prüfen, nach unserem Wissen zu beurteilen und zusammen zu fassen was zum jeweiligen Thema bekannt ist. Dabei hoffen wir dem interessierten Leser Informationen zu vermitteln, ohne dass er sich die Mühe machen muss dafür stundenlang im Netz zu surfen. Sollten wir eine Quelle übersehen haben oder uns eine wichtige Information entgangen sein, freuen wir uns über Anregungen und Feedback. Selbstverständlich finden sich in jedem Artikel alle Quellenangaben und Links für alle die dann noch nicht genug haben. Viel Spaß beim Lesen wünscht moving bars.",
-    },
-  },
   faqMobileCocktailbar: {
     buttonLabel: "FAQ Mobile Cocktailbar mieten",
     q1: "WAS IST IM COCKTAIL CATERING PAKET ENTHALTEN?",
