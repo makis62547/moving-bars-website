@@ -156,22 +156,19 @@ const faqButtonLabel = t?.cta?.faqMobileCocktailbar ?? faq?.buttonLabel ?? "FAQ"
   }
 
   .h1-acc-fullbleed {
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-    width: 100svw;
-    margin-left: calc(50% - 50svw);
-    margin-right: calc(50% - 50svw);
-    padding-left: var(--h1-accordion-fullbleed-pad-inline);
-    padding-right: var(--h1-accordion-fullbleed-pad-inline);
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding-inline: var(--h1-accordion-fullbleed-pad-inline, var(--section-pad-inline));
     margin-top: var(--h1-accordion-fullbleed-gap-top);
     box-sizing: border-box;
-    max-width: 100%;
   }
 
   .h1-acc-fullbleed-inner {
-    max-width: var(--h1-accordion-fullbleed-max-width);
+    width: 100%;
+    max-width: var(--h1-accordion-fullbleed-max-width, var(--content-max, 1240px));
     margin: 0 auto;
+    box-sizing: border-box;
   }
 
   .accordion-content {
