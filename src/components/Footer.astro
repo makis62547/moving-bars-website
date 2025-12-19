@@ -1,9 +1,20 @@
+---
+import { i18n, type Lang } from "../i18n";
+
+const { lang: passedLang } = Astro.props as { lang?: Lang };
+
+const pathLang = Astro.url?.pathname?.split("/")[1];
+const lang = (passedLang ?? (pathLang === "en" ? "en" : "de")) as Lang;
+const t = i18n[lang] ?? i18n.de;
+---
+
 <footer class="site-footer" id="kontakt">
   <div class="site-container footer-inner">
     <div class="footer-contact">
       <h2 class="section-title">
-        JETZT <span class="title-accent">KONTAKT</span><br />
-        AUFNEHMEN
+        {t.footer.contactHeadline.prefix}{" "}
+        <span class="title-accent">{t.footer.contactHeadline.accent}</span><br />
+        {t.footer.contactHeadline.line2}
       </h2>
 
       <div class="section-divider" aria-hidden="true"></div>
