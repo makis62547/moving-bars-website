@@ -25,7 +25,7 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
 
 <section class="under-hero-tiles" aria-label="Ergänzende Informationen" data-uh-tiles>
     <div class="wide-rows" aria-label="Quadrat-Kacheln">
-      <div class="wide-row wide-row--h1">
+      <div class="wide-row wide-row--h1" id="hero-h1">
         <article class="panel panel--text panel--h1">
           <div class="panel-inner h1-grid">
             <div class="h1-text">
@@ -226,6 +226,10 @@ const mobileBarImage = asset("images/mobile-cocktailbar-mit-rueckbuffet.jpg");
     display: grid;
     grid-template-columns: 1fr; /* text only */
     align-items: stretch;
+  }
+
+  #hero-h1 {
+    scroll-margin-top: calc(var(--header-h) + 24px);
   }
 
   .panel {
