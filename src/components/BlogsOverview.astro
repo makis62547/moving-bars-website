@@ -355,9 +355,9 @@ Viel Spaß beim Lesen wünscht…moving bars
   }
 
   .post-card {
-    background: var(--services-card-bg);
-    border: var(--services-card-border);
-    box-shadow: var(--services-card-glow);
+    background: var(--blogs-post-card-bg, var(--services-card-bg));
+    border: none !important;
+    box-shadow: var(--blogs-post-card-glow, var(--services-card-glow));
     padding: var(--blogs-post-card-pad, clamp(1rem, 2vw, 1.4rem));
     display: grid;
     gap: 0;
@@ -372,7 +372,7 @@ Viel Spaß beim Lesen wünscht…moving bars
     height: 100%;
     overflow: hidden;
     border-radius: 0 !important;
-    border: 1px solid rgba(var(--accent-rgb), 0.35);
+    border: none !important;
     background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.25), rgba(var(--accent-rgb), 0.08));
   }
 
