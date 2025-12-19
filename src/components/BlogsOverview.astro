@@ -429,6 +429,16 @@ const movingBarsPosts = [
     text-decoration: underline;
   }
 
+  @media (max-width: 900px) {
+    .blog-intro {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .blog-intro > .blog-intro-media { order: 0; }
+    .blog-intro > .blog-intro-text { order: 1; }
+  }
+
   @media (min-width: 900px) {
     .blog-intro {
       grid-template-columns: 1fr 1fr;
