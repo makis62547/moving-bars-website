@@ -1,14 +1,3 @@
-export type PackageRow = {
-  id: string;
-  title: string;
-  recommendedFor: string;
-  drinksIncluded: string;
-  bartenders: string;
-  barSetup: string;
-  priceNoBackbarCents: number | null;
-  priceWithBackbarCents: number | null;
-};
-
 export const pricing = {
   currency: "EUR",
   vatNote: "Alle Preise netto, zzgl. MwSt.",
@@ -17,7 +6,7 @@ export const pricing = {
     glassLossNetCents: 280,
     freeKm: 50,
   },
-  packages: <PackageRow[]>[
+  packages: [
     {
       id: "cc-small-100",
       title: "Cocktail Catering SMALL 100",
