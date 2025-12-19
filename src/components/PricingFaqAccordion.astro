@@ -127,7 +127,7 @@ const faqButtonLabel = t?.cta?.faqMobileCocktailbar ?? faq?.buttonLabel ?? "FAQ"
 
 <style>
   .h1-accordion {
-    width: min(100%, var(--h1-accordion-width));
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: var(--h1-accordion-gap);
@@ -145,6 +145,9 @@ const faqButtonLabel = t?.cta?.faqMobileCocktailbar ?? faq?.buttonLabel ?? "FAQ"
     list-style: none;
     cursor: pointer;
     box-sizing: border-box;
+    width: min(100%, var(--h1-accordion-width, var(--tile-text-width)));
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .h1-acc-item summary::-webkit-details-marker {
@@ -179,6 +182,7 @@ const faqButtonLabel = t?.cta?.faqMobileCocktailbar ?? faq?.buttonLabel ?? "FAQ"
     padding-right: var(--h1-accordion-content-pad-inline);
     box-sizing: border-box;
     max-width: 100%;
+    width: 100%;
   }
 
   .table-wrapper {
@@ -243,6 +247,38 @@ const faqButtonLabel = t?.cta?.faqMobileCocktailbar ?? faq?.buttonLabel ?? "FAQ"
   .faq-block {
     max-width: var(--h1-faq-max-width);
     margin: 0 auto;
+  }
+
+  @media (min-width: 900px) {
+    .h1-accordion {
+      max-width: none;
+      margin: 0;
+    }
+
+    .h1-acc-fullbleed {
+      padding-inline: 0;
+    }
+
+    .h1-acc-fullbleed-inner {
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      padding-inline: var(--section-pad-inline);
+    }
+
+    .accordion-content {
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .faq-block {
+      max-width: none;
+      width: 100%;
+      margin: 0;
+    }
   }
 
   .faq-item + .faq-item {
