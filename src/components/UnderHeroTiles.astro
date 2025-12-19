@@ -411,30 +411,12 @@ const mobileBarImage = "/images/mobile-cocktailbar-mit-rueckbuffet.jpg";
     gap: var(--text-block-gap);
   }
 
-  @media (max-width: 900px) {
-    .panel--slider .panel-bg {
-      background-size: cover;
-      background-position: center center;
-    }
-  }
-
 </style>
 
 <script>
   const panels = Array.from(document.querySelectorAll("[data-panel-parallax]"));
 
   const updateParallax = () => {
-    const isMobile = window.matchMedia("(max-width: 900px)").matches;
-    const isCoarse = window.matchMedia("(pointer: coarse)").matches;
-    if (isMobile || isCoarse) {
-      panels.forEach((panel) => {
-        if (panel instanceof HTMLElement) {
-          panel.style.setProperty("--py", "0px");
-        }
-      });
-      return;
-    }
-
     const viewportCenter = window.innerHeight / 2;
 
     panels.forEach((panel) => {
