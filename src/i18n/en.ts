@@ -116,6 +116,8 @@ export const en = {
     intro: {
       h2Line1: "PRIVATE PARTY – TRADE FAIR –",
       h2Line2: "LARGE-SCALE EVENTS",
+      eventTitleLine1: "PRIVATE PARTY – TRADE FAIR AFTERPARTY –",
+      eventTitleLine2: "LARGE-SCALE EVENT",
       paragraph:
         "Since 2000, moving bars has been your trusted partner for cocktail catering and renting mobile cocktail bars at trade fairs and events in Berlin, across Germany, and throughout Europe. From a sparkling reception to a cocktail party with show program, we provide professional solutions and impress with the loving execution of your wishes. Our mobile cocktail bar pampers you and your guests so you can focus entirely on your event.",
     },
