@@ -148,7 +148,7 @@ const mobileBarImage = "/images/mobile-cocktailbar-mit-rueckbuffet.jpg";
     padding-left: var(--section-pad-inline);
     padding-right: var(--section-pad-inline);
     margin: 0;
-    overflow-x: clip; /* verhindert 1px Scroll durch 100vw */
+    overflow-x: visible; /* full-bleed grid handles overflow; page clamps at root */
   }
 
   /* ---------- INTRO / H2 (unverändert) ---------- */
@@ -311,7 +311,7 @@ const mobileBarImage = "/images/mobile-cocktailbar-mit-rueckbuffet.jpg";
     z-index: 0;
   }
 
-  .panel-inner { max-width: var(--tile-text-width); display: grid; gap: var(--text-block-gap); }
+  .panel-inner { max-width: var(--tile-text-width); display: grid; gap: var(--text-block-gap); min-width: 0; }
 
   .panel-inner.h1-grid {
     max-width: none;
@@ -413,12 +413,14 @@ const mobileBarImage = "/images/mobile-cocktailbar-mit-rueckbuffet.jpg";
     padding-inline: calc(var(--h1-block-pad-inline));
     padding-top: var(--h1-block-pad-top);
     padding-bottom: var(--h1-block-pad-bottom);
+    min-width: 0;
   }
 
   .h1-text {
     display: flex;
     flex-direction: column;
     gap: var(--text-block-gap);
+    min-width: 0;
   }
 
   .h1-text-inner {
