@@ -173,13 +173,13 @@ const headlineSep = headline?.sep ?? t.services?.headline?.sep ?? "–";
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(var(--services-card-width), 1fr));
     gap: var(--services-grid-gap);
-    justify-items: center;
+    justify-items: stretch;
   }
 
   .service-card {
     width: 100%;
-    max-width: var(--services-card-width, 320px);
-    background: var(--services-card-bg);
+    max-width: none;
+    background: var(--services-card-bg-opaque);
     border: none !important;
     border-radius: 0;
     box-shadow: var(--services-card-glow);
@@ -254,6 +254,19 @@ const headlineSep = headline?.sep ?? t.services?.headline?.sep ?? "–";
   .service-cta {
     margin-top: auto;
     width: 100%;
+  }
+
+  @media (max-width: 900px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: var(--services-grid-gap-mobile);
+      justify-items: stretch;
+    }
+
+    .service-card {
+      max-width: none;
+      width: 100%;
+    }
   }
 
   @media (min-width: 900px) {
