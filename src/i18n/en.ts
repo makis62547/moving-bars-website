@@ -182,6 +182,19 @@ export const en = {
     q10: "HOW DO I BOOK AND WHEN SHOULD I INQUIRE?",
     a10: "The earlier the better for preferred dates. We also handle short-notice requests subject to availability — you’ll get a quote within 24 hours.",
   },
+  faqCoffeeCatering: {
+    buttonLabel: "FAQ Coffee Catering & Barista Service",
+    q1: "WHAT EQUIPMENT DO YOU BRING FOR COFFEE CATERING?",
+    a1: "Portafilter machines, grinders, milk frothers, servers and all tools for espresso, cappuccino, latte macchiato and specialty teas. We align power and water needs in advance.",
+    q2: "WHO ARE YOUR BARISTAS?",
+    a2: "Certified coffee baristas with event, trade-fair and roadshow experience. Latte art is always part of the service.",
+    q3: "WHAT EVENTS IS THE COFFEE CATERING SUITABLE FOR?",
+    a3: "Trade fairs, daytime conferences, congresses, brand activations and as an add-on for evening bars — with a stationary coffee bar or flexible coffee bike.",
+    q4: "WHAT DRINKS DO YOU SERVE?",
+    a4: "Espresso, Americano, cappuccino, flat white, latte macchiato plus selected specialty teas. Plant-based milk options are available on request.",
+    q5: "DO YOU OFFER A COFFEE BIKE OR MOBILE COFFEE BAR?",
+    a5: "Yes, we can come with a mobile coffee bar or a coffee bike, sized to your venue and guest count.",
+  },
   pricing: {
     table: {
       package: "Package",
@@ -586,6 +599,112 @@ export const en = {
             panelClass: "is-intro",
             ariaLabel: "Team training at the mobile bar",
             bgImage: "/images/moving-bars-mobile-cocktailbar.jpg",
+            speed: 0.35,
+          },
+        },
+      ],
+      servicesHeadline: { accent: "NOT ENOUGH YET?", rest: "WE CAN DO EVEN MORE!", sep: "–" },
+    },
+    coffeeCatering: {
+      hero: {
+        titleLine1: "COFFEE CATERING",
+        titleLine2: "BARISTA SERVICE IN BERLIN",
+        heroText:
+          "Perfect espresso, latte art and specialty teas — our coffee catering delights your guests at trade fairs, events and corporate functions.",
+        heroUsps: [
+          "TOP-QUALITY COFFEE",
+          "PRO BARISTAS & LATTE ART",
+          "TRADE FAIR & EVENT SERVICE",
+          "MOBILE COFFEE BAR & COFFEE BIKE",
+        ],
+        bgImage: "/images/kaffee-catering-berlin.jpg",
+      },
+      intro: {
+        titleLine1: "COFFEE CATERING &",
+        titleLine2: "BARISTA SERVICE IN BERLIN",
+        heroText:
+          "For hot drinks like espresso, latte macchiato, cappuccino and specialty teas, we’re your reliable partner – with top quality and flawless service. Espresso machines, staff, coffee selection – we’ll be happy to advise you. Our certified baristas and latte art artists treat you and your guests to excellent coffee specialties and impress with their skills. Book our coffee catering for trade fairs and daytime events, or as an add-on to your bar program in the evening – in Berlin or everywhere.",
+        ctas: [
+          { label: "ALL PACKAGES & PRICES", href: "#pakete-preise" },
+          { label: "FAQ COFFEE CATERING & BARISTA SERVICE", href: "#faq" },
+        ],
+      },
+      tilesRows: [
+        {
+          left: {
+            kind: "text",
+            ariaLabel: "Coffee catering quality and setup",
+            html: `
+              <h3 class="panel-title display-heading display-size-h1">
+                <span class="accent-text">COFFEE</span> QUALITY & SETUP
+              </h3>
+              <p class="panel-text">
+                High-grade portafilter machines, dialed-in grinders and curated beans for consistently perfect espresso extraction.
+              </p>
+              <ul class="mb-bullets">
+                <li class="panel-text">Barista setup including power, water and logistics planning.</li>
+                <li class="panel-text">Latte art and silky foam for cappuccino and latte macchiato.</li>
+                <li class="panel-text">Consulting on coffee profile, roast and menu tailored to your event.</li>
+              </ul>
+            `,
+          },
+          right: {
+            kind: "image",
+            panelClass: "is-intro",
+            ariaLabel: "Barista preparing coffee",
+            bgImage: "/images/kaffee-catering.jpg",
+            speed: 0.35,
+          },
+        },
+        {
+          left: {
+            kind: "image",
+            panelClass: "is-bar",
+            ariaLabel: "Mobile coffee bar at an event",
+            bgImage: "/images/kaffee-catering-berlin.jpg",
+            speed: 0.35,
+          },
+          right: {
+            kind: "text",
+            ariaLabel: "Use cases for coffee catering",
+            html: `
+              <h3 class="panel-title display-heading display-size-h1">
+                <span class="accent-text">TRADE FAIR</span> & EVENT SERVICE
+              </h3>
+              <p class="panel-text">
+                For daytime events, conferences, trade fairs or as an evening add-on — we plan the right coffee setup.
+              </p>
+              <ul class="mb-bullets">
+                <li class="panel-text">Stationary mobile coffee bar or flexible coffee bike.</li>
+                <li class="panel-text">Fast service with a barista team for high guest volumes.</li>
+                <li class="panel-text">Branding options and a coordinated look for your booth.</li>
+              </ul>
+            `,
+          },
+        },
+        {
+          left: {
+            kind: "text",
+            ariaLabel: "Beverage selection and service",
+            html: `
+              <h3 class="panel-title display-heading display-size-h1">
+                <span class="accent-text">BEVERAGE</span> SELECTION & SERVICE
+              </h3>
+              <p class="panel-text">
+                Espresso, Americano, cappuccino, flat white, latte macchiato or specialty teas — we bring everything along.
+              </p>
+              <ul class="mb-bullets">
+                <li class="panel-text">Plant-based milk options and syrups available on request.</li>
+                <li class="panel-text">Service flow aligned with receptions, breaks or daytime schedules.</li>
+                <li class="panel-text">Optional combination with cocktail or bar service in the evening.</li>
+              </ul>
+            `,
+          },
+          right: {
+            kind: "image",
+            panelClass: "is-intro",
+            ariaLabel: "Coffee drinks with latte art",
+            bgImage: "/images/kaffee-catering.jpg",
             speed: 0.35,
           },
         },
