@@ -11,7 +11,7 @@ export const en = {
     requestNow: "REQUEST A QUOTE",
     viewCocktailMenus: "VIEW OUR COCKTAIL MENUS",
     allPackagesAndPrices: "ALL PACKAGES & PRICES",
-    faqMobileCocktailbar: "FAQ MOBILE BAR RENTAL",
+    faqMobileCocktailbar: "FAQ RENT A MOBILE BAR",
     sendInquiry: "SEND INQUIRY",
     learnMore: "Learn more",
     viewDetails: "View details",
@@ -216,10 +216,9 @@ export const en = {
           "Want to rent a mobile bar in Berlin for your party, wedding or corporate event? Then you’re in the right place!",
           {
             text: "You can find offers for our full-service cocktail catering with mobile bar, professional bartenders and delicious cocktails & long drinks here:",
-            cta: {
-              label: "COCKTAIL CATERING PACKAGE DEALS",
+            inlineLink: {
+              label: "Cocktail Catering Package Deals",
               href: "/en/cocktail-catering",
-              className: "cta-inline",
             },
           },
           "More about our flexible bar system, its many options and prices for renting the mobile bar modules without staff can be found on this page. We’re also happy to rent you cocktail tables, glassware and additional equipment.",
