@@ -263,3 +263,17 @@ h3,
 .wide-rows .panel--text:not(.panel--h1) details > summary::-webkit-details-marker {
   display: none;
 }
+
+/* ===== wide-rows text tiles: remove excessive top offset ===== */
+.wide-rows .panel--text:not(.panel--h1) {
+  padding-top: var(--tile-pad-y, clamp(1.25rem, 3vw, 2.25rem)) !important;
+  font-size: var(--body-font-size, 18px);
+  line-height: 1.7;
+}
+
+/* ===== wide-rows bullets: match paragraph font-size ===== */
+.wide-rows .panel--text:not(.panel--h1) ul,
+.wide-rows .panel--text:not(.panel--h1) li {
+  font-size: inherit !important;
+  line-height: inherit !important;
+}
