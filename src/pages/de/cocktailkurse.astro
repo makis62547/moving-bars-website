@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import { i18n } from "../../i18n";
+
+const lang = "de" as const;
+const t = i18n[lang];
+const pageT = {
+  ...t,
+  cta: {
+    ...t.cta,
+    faqMobileCocktailbar: "FAQ COCKTAILKURS",
+  },
+  faqMobileCocktailbar: t.faqCocktailCourses,
+};
+const page = pageT.pages.cocktailCourses;
+
+const heroProps = {
+  titleLine1: page.hero.titleLine1,
+  titleLine2: page.hero.titleLine2,
+  heroText: page.hero.heroText,
+  heroUsps: page.hero.heroUsps,
+  bgImage: page.hero.bgImage,
+};
+
+const introProps = {
+  t: pageT,
+  titleLine1: page.intro.titleLine1,
+  titleLine2: page.intro.titleLine2,
+  heroText: page.intro.heroText,
+  ctas: page.intro.ctas,
+};
+
+const servicesProps = {
+  exclude: "cocktailkurse",
+  headline: page.servicesHeadline,
+};
+
+const tilesRows = page.tilesRows;
+---
+
+<BaseLayout lang={lang}>
+  <StandardPageLayout
+    lang={lang}
+    t={pageT}
+    heroProps={heroProps}
+    introProps={introProps}
+    tilesRows={tilesRows}
+    services={servicesProps}
+  />
+</BaseLayout>
