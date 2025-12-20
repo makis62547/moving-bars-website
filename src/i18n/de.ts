@@ -195,6 +195,153 @@ export const de = {
     },
   },
   pages: {
+    cocktailShow: {
+      hero: {
+        titleLine1: "COCKTAILSHOW",
+        titleLine2: "IN BERLIN BUCHEN",
+        heroText:
+          "Showbarkeeper, Feuer, Synchro-Flair – wir bringen die Cocktailshow für Dein Event in Berlin oder deutschlandweit.",
+        heroUsps: [
+          "FASZINIERENDE COCKTAILSHOWS",
+          "ENTERTAINMENT AN DER BAR",
+          "SYNCHRON - UND FEUER - JONGLAGE",
+          "FÜR PRIVAT, MESSE UND EVENT",
+        ],
+        bgImage: "/images/cocktail-show-buchen-berlin.jpg",
+      },
+      intro: {
+        titleLine1: "COCKTAILSHOW & SHOWBARKEEPER",
+        titleLine2: "BUCHEN AUS BERLIN",
+        heroText: [
+          "Sie wollen noch mehr? Entertainment und Unterhaltung für Ihre Gäste? Buchen Sie zusätzlich zum Cocktail Catering einen Showbarkeeper oder eine Cocktailshow als Highlight für Ihre Veranstaltung in Berlin oder anderswo in Deutschland. Wirbelnde Flaschen und Shaker, Cocktailartistik während der Herstellung der Cocktails oder eröffnen Sie die mobile Cocktailbar mit einer Cocktailshow und leiten Sie so den Partyteil Ihrer Veranstaltung endgültig ein.",
+          "Buchen Sie unsere Cocktailshow aus Berlin und bieten Sie Ihren Gästen ein unvergessliches Erlebnis. Unsere preisgekrönten Showbarkeeper werden Sie begeistern. Working Flair oder Exhibition Flair, beim Gast und Zuschauer wird es einen bleibenden Eindruck hinterlassen. Alleine oder als Tandem, bieten Sie Ihren Gästen diese besondere Art der Unterhaltung. So wird die Wartezeit auf den eigenen Drink zur persönlichen Darbietung!",
+          {
+            text: "",
+            inlineLink: {
+              label: "Cocktail Catering ansehen",
+              href: "/de/cocktail-catering",
+            },
+          },
+        ],
+        ctas: [
+          {
+            href: "/de/anfrage",
+            label: "JETZT ANFRAGEN",
+          },
+        ],
+      },
+      tilesRows: [
+        {
+          left: {
+            kind: "text",
+            ariaLabel: "Cocktailshow für Events und Anlässe",
+            html: `
+              <h3 class="panel-title display-heading display-size-h1">
+                <span class="accent-text">COCKTAILSHOW</span> FÜR JEDEN ANLASS
+              </h3>
+              <p class="panel-text">
+                Was ist eine Cocktailshow? Wir verbinden Barkunst mit Entertainment – perfekt als Highlight für Privatfeiern, Messen oder Firmenevents.
+              </p>
+              <ul class="mb-bullets">
+                <li class="panel-text">Showbarkeeper mit spektakulären Bottle-Flips und Shaker-Jonglage.</li>
+                <li class="panel-text">Als Opening, Show-Spot oder laufend am Tresen einsetzbar.</li>
+                <li class="panel-text">Flexibel für Wohnzimmer, Messeparty oder Gala geeignet.</li>
+              </ul>
+            `,
+          },
+          right: {
+            kind: "image",
+            panelClass: "is-bar",
+            ariaLabel: "Cocktailshow mit Showbarkeeper",
+            bgImage: "/images/cocktailshow-berlin.jpg",
+            speed: 0.35,
+          },
+        },
+        {
+          left: {
+            kind: "image",
+            panelClass: "is-intro",
+            ariaLabel: "Flair Bartending mit Flaschen und Feuer",
+            bgImage: "/images/cocktail-show-buchen-berlin.jpg",
+            speed: 0.35,
+          },
+          right: {
+            kind: "text",
+            ariaLabel: "Working Flair oder Exhibition Flair",
+            html: `
+              <h3 class="panel-title display-heading display-size-h1">
+                <span class="accent-text">WORKING</span> & EXHIBITION FLAIR
+              </h3>
+              <p class="panel-text">
+                Working Flair für schnellen Service am Gast oder Exhibition Flair als Show-Act – wir liefern beides.
+              </p>
+              <ul class="mb-bullets">
+                <li class="panel-text">Solo oder im synchronen Tandem buchbar.</li>
+                <li class="panel-text">Feuer-Elemente und synchronisierte Choreos optional.</li>
+                <li class="panel-text">Ideal als Überraschung für Gäste und VIPs.</li>
+              </ul>
+            `,
+          },
+        },
+        {
+          left: {
+            kind: "text",
+            ariaLabel: "Ablauf und Timing der Cocktailshow",
+            html: `
+              <h3 class="panel-title display-heading display-size-h1">
+                <span class="accent-text">ABLAUF</span> & TIMING
+              </h3>
+              <p class="panel-text">
+                Wir planen die Show passend zu Deinem Ablauf: als Auftakt, Show-Slot oder eingebettet in den Service.
+              </p>
+              <ul class="mb-bullets">
+                <li class="panel-text">Show-Opener zur Eröffnung der Bar.</li>
+                <li class="panel-text">Flexibel an Raum, Bühne oder Barposition anpassbar.</li>
+                <li class="panel-text">Gäste werden Teil des Erlebnisses – ganz nah dran.</li>
+              </ul>
+              <p class="panel-text">
+                So wird aus Wartezeit eine Performance und Deine Bar zum Event-Magneten.
+              </p>
+            `,
+          },
+          right: {
+            kind: "image",
+            panelClass: "is-bar",
+            ariaLabel: "Showbarkeeper bei Event in Berlin",
+            bgImage: "/images/20-jahre-mobile-cocktailbar.jpg",
+            speed: 0.35,
+          },
+        },
+        {
+          left: {
+            kind: "image",
+            panelClass: "is-cocktail",
+            ariaLabel: "Cocktails während der Show",
+            bgImage: "/images/russian-wild-berry-cocktail.jpg",
+            speed: 0.35,
+          },
+          right: {
+            kind: "text",
+            ariaLabel: "Service und Show kombiniert",
+            html: `
+              <h3 class="panel-title display-heading display-size-h1">
+                <span class="accent-text">SHOW</span> & SERVICE KOMBINIEREN
+              </h3>
+              <p class="panel-text">
+                Während der Show mixen wir echte Drinks – kein Fake-Setup, sondern echter Cocktailgenuss.
+              </p>
+              <ul class="mb-bullets">
+                <li class="panel-text">Flüssiger Übergang vom Show-Moment in den Service.</li>
+                <li class="panel-text">Passende Menüs und Signature Drinks auf Wunsch.</li>
+                <li class="panel-text">Auftrittszeiten abgestimmt auf Deinen Ablaufplan.</li>
+              </ul>
+              <a class="panel-cta mb-btn" href="/de/anfrage">JETZT ANFRAGEN</a>
+            `,
+          },
+        },
+      ],
+      servicesHeadline: { accent: "NOCH NICHT GENUG?", rest: "WIR KÖNNEN NOCH MEHR!", sep: "–" },
+    },
     mobileBar: {
       hero: {
         titleLine1: "MOBILE BAR",
