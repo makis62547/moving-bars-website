@@ -182,6 +182,19 @@ export const de = {
     q10: "WIE KANN ICH BUCHEN UND WANN SOLLTE ICH ANFRAGEN?",
     a10: "Je früher desto besser für Wunschtermine. Kurzfristige Anfragen prüfen wir tagesaktuell – Ihr Angebot erhaltet ihr innerhalb von 24 Stunden.",
   },
+  faqCoffeeCatering: {
+    buttonLabel: "FAQ Kaffee Catering & Barista Service",
+    q1: "WAS BRINGT IHR FÜR DAS KAFFEE CATERING MIT?",
+    a1: "Siebträgermaschinen, Mühlen, Milchaufschäumer, Kannen und alle Tools für Espresso, Cappuccino, Latte Macchiato und Tee-Spezialitäten. Wasser- und Strombedarf stimmen wir vorab ab.",
+    q2: "WER SIND EURE BARISTAS?",
+    a2: "Zertifizierte Kaffee-Barista mit Erfahrung auf Events, Messen und Roadshows. Latte Art gehört selbstverständlich dazu.",
+    q3: "FÜR WELCHE EVENTS IST DAS KAFFEE CATERING GEEIGNET?",
+    a3: "Messen, Tages-Veranstaltungen, Kongresse, Brand-Aktivierungen sowie als Begleitprogramm am Abend – stationär oder mit mobilem Kaffee Bike.",
+    q4: "WELCHE GETRÄNKE BIETET IHR AN?",
+    a4: "Espresso, Americano, Cappuccino, Latte Macchiato, Flat White sowie ausgewählte Tee-Spezialitäten. Pflanzliche Milch-Alternativen sind auf Wunsch dabei.",
+    q5: "GIBT ES EIN KAFFEE BIKE ODER EINE MOBILE KAFFEE BAR?",
+    a5: "Ja, wir kommen mit mobiler Kaffee Bar oder Kaffee Bike und passen die Größe an Location und Gästezahl an.",
+  },
   pricing: {
     table: {
       package: "Paket",
@@ -586,6 +599,112 @@ export const de = {
             panelClass: "is-intro",
             ariaLabel: "Teamtraining an der mobilen Bar",
             bgImage: "/images/moving-bars-mobile-cocktailbar.jpg",
+            speed: 0.35,
+          },
+        },
+      ],
+      servicesHeadline: { accent: "NOCH NICHT GENUG?", rest: "WIR KÖNNEN NOCH MEHR!", sep: "–" },
+    },
+    coffeeCatering: {
+      hero: {
+        titleLine1: "KAFFEE CATERING",
+        titleLine2: "BARISTA SERVICE IN BERLIN",
+        heroText:
+          "Perfekter Espresso, Latte Art und Tee-Spezialitäten – unser Kaffee Catering verwöhnt Deine Gäste auf Messen, Events und Firmenfeiern.",
+        heroUsps: [
+          "BESTE KAFFEE QUALITÄT",
+          "PROFESSIONELLE BARISTA UND LATTE ART",
+          "MESSE UND EVENT SERVICE",
+          "MOBILE KAFFEE BAR UND KAFFEE BIKE",
+        ],
+        bgImage: "/images/kaffee-catering-berlin.jpg",
+      },
+      intro: {
+        titleLine1: "KAFFEE CATERING",
+        titleLine2: "UND BARISTA SERVICE BERLIN",
+        heroText:
+          "Auch bei Heißgetränken wie Espresso, Latte Macchiato, Cappuccino und Tee-Spezialitäten sind wir Ihr kompetenter Ansprechpartner und bieten Ihnen perfekten Service bei bester Qualität! Espresso Maschinen, Personal, Kaffee-Auswahl - wir beraten Sie gerne! Unsere zertifizierten Kaffee Barista und Latte Art Künstler verwöhnen Sie und Ihre Gäste mit feinsten Kaffeespezialitäten und verzaubern mit Ihren Künsten. Buchen Sie unser Kaffee Catering für Messen und Tages-Veranstaltungen oder als Begleitprogramm für die Bar am Abend - in Berlin oder üBARall.",
+        ctas: [
+          { label: "HIER ALLE PAKETE & PREISE", href: "#pakete-preise" },
+          { label: "FAQ KAFFEE CATERING & BARISTA SERVICE", href: "#faq" },
+        ],
+      },
+      tilesRows: [
+        {
+          left: {
+            kind: "text",
+            ariaLabel: "Kaffee Catering Qualität und Setup",
+            html: `
+              <h3 class="panel-title display-heading display-size-h1">
+                <span class="accent-text">KAFFEE</span> QUALITÄT & SETUP
+              </h3>
+              <p class="panel-text">
+                Hochwertige Siebträgermaschinen, präzise Mühlen und sorgfältig ausgewählte Bohnen – für konstant perfekte Espresso-Extraktion.
+              </p>
+              <ul class="mb-bullets">
+                <li class="panel-text">Barista-Setup inkl. Wasser-, Strom- und Logistikplanung.</li>
+                <li class="panel-text">Latte Art und individueller Milchschaum für Cappuccino & Latte Macchiato.</li>
+                <li class="panel-text">Beratung zu Kaffeeprofil, Röstung und Menü passend zu Ihrem Event.</li>
+              </ul>
+            `,
+          },
+          right: {
+            kind: "image",
+            panelClass: "is-intro",
+            ariaLabel: "Barista bei der Kaffeezubereitung",
+            bgImage: "/images/kaffee-catering.jpg",
+            speed: 0.35,
+          },
+        },
+        {
+          left: {
+            kind: "image",
+            panelClass: "is-bar",
+            ariaLabel: "Mobile Kaffee Bar auf Event",
+            bgImage: "/images/kaffee-catering-berlin.jpg",
+            speed: 0.35,
+          },
+          right: {
+            kind: "text",
+            ariaLabel: "Einsatzbereiche Kaffee Catering",
+            html: `
+              <h3 class="panel-title display-heading display-size-h1">
+                <span class="accent-text">MESSE</span> & EVENT SERVICE
+              </h3>
+              <p class="panel-text">
+                Für Tages-Events, Kongresse, Messen oder als Begleitung zur Abend-Bar – wir planen das passende Kaffee Setup.
+              </p>
+              <ul class="mb-bullets">
+                <li class="panel-text">Stationäre mobile Kaffee Bar oder flexibles Kaffee Bike.</li>
+                <li class="panel-text">Schneller Service mit Barista-Team für hohe Gästezahlen.</li>
+                <li class="panel-text">Branding-Optionen und abgestimmter Auftritt am Messestand.</li>
+              </ul>
+            `,
+          },
+        },
+        {
+          left: {
+            kind: "text",
+            ariaLabel: "Getränkeauswahl und Service",
+            html: `
+              <h3 class="panel-title display-heading display-size-h1">
+                <span class="accent-text">GETRÄNKE</span> AUSWAHL & SERVICE
+              </h3>
+              <p class="panel-text">
+                Espresso, Americano, Cappuccino, Flat White, Latte Macchiato oder Tee-Spezialitäten – wir bringen alles mit.
+              </p>
+              <ul class="mb-bullets">
+                <li class="panel-text">Milch-Alternativen und Sirups auf Wunsch verfügbar.</li>
+                <li class="panel-text">Serviceablauf abgestimmt auf Empfang, Breaks oder Tagesprogramm.</li>
+                <li class="panel-text">Optionale Kombination mit Cocktail- oder Barservice am Abend.</li>
+              </ul>
+            `,
+          },
+          right: {
+            kind: "image",
+            panelClass: "is-intro",
+            ariaLabel: "Kaffeegetränke mit Latte Art",
+            bgImage: "/images/kaffee-catering.jpg",
             speed: 0.35,
           },
         },
