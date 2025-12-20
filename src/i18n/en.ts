@@ -194,4 +194,142 @@ export const en = {
       bar300: "1× bar 3.00 m (LED RGB)",
     },
   },
+  pages: {
+    mobileBar: {
+      hero: {
+        titleLine1: "MOBILE BAR",
+        titleLine2: "RENTAL IN BERLIN",
+        heroText:
+          "Our modular illuminated bar scales to any event size — from 50 to 1000 guests.",
+        heroUsps: [
+          "MOBILE BARS FOR 50–1000 GUESTS",
+          "FLEXIBLY COMBINABLE",
+          "LED LIGHTING – ANY COLOR",
+          "PERFECT FOR BRANDING",
+        ],
+        bgImage: "/images/mobile-bar-mieten-berlin.jpg",
+      },
+      intro: {
+        titleLine1: "MOVING BARS",
+        titleLine2: "RENT A MOBILE BAR IN BERLIN",
+        heroText: [
+          "Want to rent a mobile bar in Berlin for your party, wedding or corporate event? Then you’re in the right place!",
+          "You can find offers for our full-service cocktail catering with mobile bar, professional bartenders and delicious cocktails & long drinks here:",
+          "More about our flexible bar system, its many options and prices for renting the mobile bar modules without staff can be found on this page. We’re also happy to rent you cocktail tables, glassware and additional equipment.",
+        ],
+        ctas: [
+          { label: "Cocktail Catering Package Deals", href: "/en/cocktail-catering" },
+          { label: "Bar System & Pricing", href: "#barsystem" },
+        ],
+      },
+      tilesRows: [
+        {
+          left: {
+            kind: "text",
+            ariaLabel: "Modular mobile bar",
+            html: `
+              <h3 class="panel-title display-heading display-size-h1">
+                <span class="accent-text">MODULAR</span> MOBILE BAR
+              </h3>
+              <p class="panel-text">
+                Our mobile bar scales from 50 to 1000 guests and adapts to any floor plan.
+              </p>
+              <ul class="mb-bullets">
+                <li class="panel-text">Straight setups, L- or U-shapes, or island bars — freely combinable.</li>
+                <li class="panel-text">Rent with or without a back bar.</li>
+                <li class="panel-text">Stainless steel and acrylic glass for a clean, premium look.</li>
+              </ul>
+            `,
+          },
+          right: {
+            kind: "image",
+            panelClass: "is-bar",
+            ariaLabel: "Mobile bar with LED lighting",
+            bgImage: "/images/mobile-bar-mieten.JPG",
+            speed: 0.35,
+          },
+        },
+        {
+          left: {
+            kind: "image",
+            panelClass: "is-bar",
+            ariaLabel: "Mobile bar with back bar",
+            bgImage: "/images/mobile-cocktailbar-mit-rueckbuffet.jpg",
+            speed: 0.35,
+          },
+          right: {
+            kind: "text",
+            ariaLabel: "LED lighting and branding",
+            html: `
+              <h3 class="panel-title display-heading display-size-h1">
+                <span class="accent-text">LED</span> LIGHTING & BRANDING
+              </h3>
+              <p class="panel-text">
+                RGBW LED lighting in any color — tailored precisely to your brand CI.
+              </p>
+              <ul class="mb-bullets">
+                <li class="panel-text">Backlit fronts and optional back bar.</li>
+                <li class="panel-text">Branding surfaces for logos and campaign colors.</li>
+                <li class="panel-text">Ideal for corporate events, trade fairs and promotions.</li>
+              </ul>
+            `,
+          },
+        },
+        {
+          left: {
+            kind: "text",
+            ariaLabel: "Bar system and pricing",
+            html: `
+              <h3 id="barsystem" class="panel-title display-heading display-size-h1">
+                <span class="accent-text">BAR</span> SYSTEM & PRICING
+              </h3>
+              <p class="panel-text">
+                You can rent our mobile bar modules without staff — we’ll advise you on the right size.
+              </p>
+              <p class="panel-text">
+                Optional equipment: cocktail tables, glassware, ice bins, back bar and more.
+              </p>
+              <p class="panel-text">
+                Pricing depends on module count, rental duration and logistics. We’ll send you a transparent quote.
+              </p>
+              <a class="panel-cta mb-btn" href="/en/request">REQUEST NOW</a>
+            `,
+          },
+          right: {
+            kind: "image",
+            panelClass: "is-bar",
+            ariaLabel: "Mobile bar setup in Berlin",
+            bgImage: "/images/20-jahre-mobile-cocktailbar.jpg",
+            speed: 0.35,
+          },
+        },
+        {
+          left: {
+            kind: "image",
+            panelClass: "is-intro",
+            ariaLabel: "Cocktail catering with mobile bar",
+            bgImage: "/images/cocktail-catering-moving-bars.jpg",
+            speed: 0.35,
+          },
+          right: {
+            kind: "text",
+            ariaLabel: "Full-service cocktail catering",
+            html: `
+              <h3 class="panel-title display-heading display-size-h1">
+                <span class="accent-text">COMBINE</span> COCKTAIL CATERING
+              </h3>
+              <p class="panel-text">
+                On request we deliver full-service cocktail catering with bartenders, prep and glassware.
+              </p>
+              <p class="panel-text">
+                Perfect if you want the rented bar plus instant drink expertise.
+              </p>
+              <a class="panel-cta mb-btn" href="/en/cocktail-catering">VIEW COCKTAIL CATERING</a>
+            `,
+          },
+        },
+      ],
+      servicesHeadline: { accent: "NOT ENOUGH YET?", rest: "WE CAN DO EVEN MORE!", sep: "–" },
+    },
+  },
 };
