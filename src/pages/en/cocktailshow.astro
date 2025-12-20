@@ -5,7 +5,18 @@ import { i18n } from "../../i18n";
 
 const lang = "en" as const;
 const t = i18n[lang];
-const page = t.pages.cocktailShow;
+const pageT = {
+  ...t,
+  cta: {
+    ...t.cta,
+    faqMobileCocktailbar: "FAQ COCKTAIL SHOW & SHOW BARTENDER",
+  },
+  faqMobileCocktailbar: {
+    ...t.faqMobileCocktailbar,
+    buttonLabel: "FAQ COCKTAIL SHOW & SHOW BARTENDER",
+  },
+};
+const page = pageT.pages.cocktailShow;
 
 const heroProps = {
   titleLine1: page.hero.titleLine1,
@@ -16,7 +27,7 @@ const heroProps = {
 };
 
 const introProps = {
-  t,
+  t: pageT,
   titleLine1: page.intro.titleLine1,
   titleLine2: page.intro.titleLine2,
   heroText: page.intro.heroText,
@@ -34,7 +45,7 @@ const tilesRows = page.tilesRows;
 <BaseLayout lang={lang}>
   <StandardPageLayout
     lang={lang}
-    t={t}
+    t={pageT}
     heroProps={heroProps}
     introProps={introProps}
     tilesRows={tilesRows}

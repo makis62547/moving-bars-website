@@ -215,18 +215,15 @@ export const en = {
         heroText: [
           "Want something extra? Entertainment and a real highlight for your guests? Book a show bartender or a cocktail show in addition to your cocktail catering – for your event in Berlin or anywhere in Germany. Spinning bottles and shakers, cocktail artistry during preparation, or kick off your mobile bar with a cocktail show and set the tone for the party.",
           "Book our cocktail show from Berlin and give your guests an unforgettable experience. Our award-winning show bartenders will impress you. Working Flair or Exhibition Flair – it leaves a lasting impression on every guest and spectator. Solo or as a duo, this special kind of entertainment turns the waiting time for a drink into a personal performance!",
-          {
-            text: "",
-            inlineLink: {
-              label: "View Cocktail Catering",
-              href: "/en/cocktail-catering",
-            },
-          },
         ],
         ctas: [
           {
-            href: "/en/request",
-            label: "REQUEST NOW",
+            href: "#pakete-preise",
+            label: "ALL PACKAGES & PRICES",
+          },
+          {
+            href: "#faq",
+            label: "FAQ COCKTAIL SHOW & SHOW BARTENDER",
           },
         ],
       },
@@ -335,7 +332,6 @@ export const en = {
                 <li class="panel-text">Curated menus and signature drinks on request.</li>
                 <li class="panel-text">Show times tailored to your event schedule.</li>
               </ul>
-              <a class="panel-cta mb-btn" href="/en/request">REQUEST NOW</a>
             `,
           },
         },
