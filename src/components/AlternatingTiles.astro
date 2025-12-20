@@ -357,6 +357,23 @@ const { rows } = Astro.props as { rows: Row[] };
 
   /* optional: falls irgendwo <strong> reinkommt */
   .wide-rows .panel--text strong { font-weight: 400; }
+
+  /* ===== wide-rows tiles: remove artificial grid gap between title/divider and first content ===== */
+  .wide-rows .panel--text:not(.panel--h1) .panel-inner {
+    gap: 0 !important;
+  }
+
+  /* Divider steuert Abstand (wie H1) */
+  .wide-rows .panel--text:not(.panel--h1) .panel-sep {
+    display: block !important;
+    margin-top: 0.5rem;
+    margin-bottom: 0.35rem;
+  }
+
+  /* Erster Content-Block darf keinen extra Top-Abstand haben */
+  .wide-rows .panel--text:not(.panel--h1) .panel-inner > :is(p, ul, ol):first-of-type {
+    margin-top: 0 !important;
+  }
 </style>
 
 <ParallaxPanelsScript />
