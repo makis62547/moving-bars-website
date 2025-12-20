@@ -55,10 +55,11 @@ const mobileBarImage = "/images/mobile-cocktailbar-mit-rueckbuffet.jpg";
 
       <article class="panel panel--text" aria-label="Private Feier Text">
         <div class="panel-inner">
-          <h3 class="panel-title display-heading display-size-h1 panel-title--event">
-            <span class="accent-text">{t.underHero.intro.eventTitleLine1}</span><br />
-            {t.underHero.intro.eventTitleLine2}
-          </h3>
+          <h2 class="panel-title display-heading display-size-h1 underhero-intro-title">
+            {t.underHero.intro.h2Line1}<br />
+            {t.underHero.intro.h2Line2}<br />
+            {t.underHero.intro.h2Line3}
+          </h2>
           <div class="panel-sep" aria-hidden="true"></div>
           <p class="panel-text">
             {t.underHero.intro.paragraph}
@@ -328,6 +329,13 @@ const mobileBarImage = "/images/mobile-cocktailbar-mit-rueckbuffet.jpg";
 
   .panel-title.display-size-h1 {
     font-size: clamp(2.25rem, 4.4vw, 3.25rem);
+  }
+
+  .underhero-intro-title {
+    hyphens: none;
+    -webkit-hyphens: none;
+    overflow-wrap: normal;
+    word-break: keep-all;
   }
 
   .panel-title--event {
