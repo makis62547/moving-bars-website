@@ -1,110 +1,25 @@
 ---
-import ParallaxPanelsScript from "./scripts/ParallaxPanelsScript.astro";
+import PricingFaqAccordion from "./PricingFaqAccordion.astro";
 
-const { t } = Astro.props;
-
-const cocktailsTitle = t?.underHero?.tiles?.cocktailsTitle ?? "";
-const [cocktailsAccent, ...cocktailsRestParts] = cocktailsTitle.split(" ");
-const cocktailsRest = cocktailsRestParts.join(" ").trim();
-
-const mobileBarTitle = t?.underHero?.tiles?.mobileBarTitle ?? "";
-const [mobileBarAccentFirst, mobileBarAccentSecond, ...mobileBarRestParts] = mobileBarTitle.split(" ");
-const mobileBarAccent = [mobileBarAccentFirst, mobileBarAccentSecond].filter(Boolean).join(" ");
-const mobileBarRest = mobileBarRestParts.join(" ").trim();
-
-const viewCocktailMenusCta = t?.cta?.viewCocktailMenus ?? "HIER UNSERE COCKTAIL MENUS ANSEHEN";
-const requestNowCta = t?.cta?.requestNow ?? "JETZT ANFRAGEN";
-
-const base = (import.meta.env.BASE_URL || "/").replace(/\/?$/, "/");
-const asset = (p: string) => `${base}${p.replace(/^\//, "")}`;
-
-const introImage = asset("images/DEIN_INTRO_BILD.jpg");
-const cocktailImage = "/images/russian-wild-berry-cocktail.jpg";
-const mobileBarImage = "/images/mobile-cocktailbar-mit-rueckbuffet.jpg";
+const { t, titleLine1, titleLine2, heroText } = Astro.props;
 ---
 
 <section class="under-hero-tiles" aria-label="Ergänzende Informationen" data-uh-tiles>
   <div class="wide-rows" aria-label="Quadrat-Kacheln">
-    <div class="wide-row">
-      <article class="panel panel--slider is-align-left is-intro" data-panel-parallax data-speed="0.35">
-        <div
-          class="panel-bg"
-          role="presentation"
-          style="background-image: url('/images/cocktail-catering-moving-bars.jpg');"
-        ></div>
-      </article>
-
-      <article class="panel panel--text" aria-label="Private Feier Text">
-        <div class="panel-inner">
-          <h2 class="panel-title display-heading display-size-h1 underhero-intro-title">
-            {t.underHero.intro.h2Line1}<br />
-            <span class="accent-text">{t.underHero.intro.h2Line2}</span><br />
-            {t.underHero.intro.h2Line3}
-          </h2>
-          <div class="panel-sep" aria-hidden="true"></div>
-          <p class="panel-text">
-            {t.underHero.intro.paragraph}
-          </p>
-        </div>
-      </article>
-    </div>
-
-    <!-- ROW 1: Text | Bild -->
-    <div class="wide-row">
-      <article class="panel panel--text" aria-label="Feinste Cocktails Text">
-        <div class="panel-inner">
-          <h3 class="panel-title display-heading display-size-h1">
-            <span class="accent-text">{cocktailsAccent || cocktailsTitle}</span>
-            {cocktailsRest ? ` ${cocktailsRest}` : ""}
-          </h3>
-          <div class="panel-sep" aria-hidden="true"></div>
-
-          <p class="panel-text">
-            {t.underHero.tiles.cocktailsText}
-          </p>
-
-          <a class="panel-cta mb-btn" href="#" aria-label={viewCocktailMenusCta}>
-            {viewCocktailMenusCta}
-          </a>
-        </div>
-      </article>
-
-      <article
-        class="panel panel--slider is-align-left is-cocktail"
-        aria-label="Feinste Cocktails Bild"
-        data-panel-parallax
-        data-speed="0.35"
-      >
-        <div class="panel-bg" role="presentation" style={`background-image: url(${cocktailImage});`}></div>
-      </article>
-    </div>
-
-    <!-- ROW 2: Bild | Text -->
-    <div class="wide-row">
-      <article
-        class="panel panel--slider is-align-right is-bar"
-        aria-label="Mobile Bar Bild"
-        data-panel-parallax
-        data-speed="0.35"
-      >
-        <div class="panel-bg" role="presentation" style={`background-image: url(${mobileBarImage});`}></div>
-      </article>
-
-      <article class="panel panel--text" aria-label="Mobile Bar Text">
-        <div class="panel-inner">
-          <h3 class="panel-title display-heading display-size-h1">
-            <span class="accent-text">{mobileBarAccent || mobileBarTitle}</span>
-            {mobileBarRest ? ` ${mobileBarRest}` : ""}
-          </h3>
-          <div class="panel-sep" aria-hidden="true"></div>
-
-          <p class="panel-text">
-            {t.underHero.tiles.mobileBarText}
-          </p>
-
-          <a class="panel-cta mb-btn" href="/anfrage" aria-label={requestNowCta}>
-            {requestNowCta}
-          </a>
+    <div class="wide-row wide-row--h1" id="hero-h1">
+      <article class="panel panel--text panel--h1">
+        <div class="panel-inner h1-grid">
+          <div class="h1-text">
+            <div class="h1-text-inner">
+              <h3 class="panel-title display-heading display-size-h1">
+                <span class="accent-text">{titleLine1}</span><br />
+                {titleLine2}
+              </h3>
+              <div class="panel-sep" aria-hidden="true"></div>
+              <p class="panel-text">{heroText}</p>
+            </div>
+            <PricingFaqAccordion t={t} />
+          </div>
         </div>
       </article>
     </div>
@@ -423,5 +338,3 @@ const mobileBarImage = "/images/mobile-cocktailbar-mit-rueckbuffet.jpg";
   }
 
 </style>
-
-<ParallaxPanelsScript />
