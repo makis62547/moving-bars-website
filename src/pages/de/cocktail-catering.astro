@@ -116,13 +116,17 @@ const tileRundumSorglosDE = `
 const tilesRows = [
   {
     left: {
+      kind: "text",
+      ariaLabel: "Rundum-Sorglos-Paket",
+      html: tileRundumSorglosDE,
+    },
+    right: {
       kind: "image",
       panelClass: "is-align-left is-intro",
       ariaLabel: "Cocktail Catering Impression",
-      bgImage: "/images/cocktail-catering-moving-bars.jpg",
+      bgImage: "/images/hero.jpg",
       speed: 0.35,
     },
-    right: { kind: "text", ariaLabel: "Cocktail Catering Beschreibung", html: introTileHtml },
   },
   {
     left: { kind: "text", ariaLabel: "Menüs und Produkte", html: menusTileHtml },
@@ -143,16 +147,6 @@ const tilesRows = [
       speed: 0.35,
     },
     right: { kind: "text", ariaLabel: "Setups und Logistik", html: logisticsTileHtml },
-  },
-  {
-    left: { kind: "text", ariaLabel: "Rundum-Sorglos-Paket", html: tileRundumSorglosDE },
-    right: {
-      kind: "image",
-      panelClass: "is-align-left is-intro",
-      ariaLabel: "Cocktail Catering Bild",
-      bgImage: "/images/hero.jpg",
-      speed: 0.35,
-    },
   },
 ];
 
