@@ -25,18 +25,36 @@ const heroTextBlocks = Array.isArray(heroText)
               {heroTextBlocks.map((copy) => {
                 const inlineCta =
                   typeof copy === "object" && copy !== null && "cta" in copy ? copy?.cta : undefined;
+                const inlineLink =
+                  typeof copy === "object" && copy !== null && "inlineLink" in copy
+                    ? copy?.inlineLink
+                    : undefined;
                 const copyText = typeof copy === "string" ? copy : copy?.text ?? "";
+
+                const inlineLinkClass = ["text-accent-link", inlineLink?.className]
+                  .filter(Boolean)
+                  .join(" ");
 
                 return (
                   <p class="panel-text">
                     {copyText}
-                    {inlineCta?.href && inlineCta?.label && (
-                      <a
-                        class={`mb-btn ${inlineCta.className ?? ""}`.trim()}
-                        href={inlineCta.href}
-                      >
-                        {inlineCta.label}
-                      </a>
+                    {inlineLink?.href && inlineLink?.label ? (
+                      <>
+                        {" "}
+                        <a class={inlineLinkClass} href={inlineLink.href}>
+                          {inlineLink.label}
+                        </a>
+                      </>
+                    ) : (
+                      inlineCta?.href &&
+                      inlineCta?.label && (
+                        <a
+                          class={`mb-btn ${inlineCta.className ?? ""}`.trim()}
+                          href={inlineCta.href}
+                        >
+                          {inlineCta.label}
+                        </a>
+                      )
                     )}
                   </p>
                 );
@@ -292,6 +310,13 @@ const heroTextBlocks = Array.isArray(heroText)
     color: rgba(247, 247, 247, 0.82);
     line-height: 1.7;
     font-family: "Inter", system-ui, sans-serif;
+  }
+  .panel-text .text-accent-link {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .panel-text .text-accent-link:hover {
+    text-decoration: underline;
   }
 
   .panel--icon {

@@ -216,10 +216,9 @@ export const de = {
           "Du willst eine mobile Bar mieten in Berlin für Deine Feier, Hochzeit oder Firmen-Veranstaltung? Dann bist Du hier genau richtig!",
           {
             text: "Angebote für unser Full-Service-Cocktail-Catering mit mobiler Bar, professionellem Barkeeper und leckeren Cocktails & Longdrinks findest Du hier:",
-            cta: {
-              label: "COCKTAIL CATERING PAKET ANGEBOTE",
+            inlineLink: {
+              label: "Cocktail Catering Paket Angebote",
               href: "/de/cocktail-catering",
-              className: "cta-inline",
             },
           },
           "Mehr über unser flexibles Barsystem, seine umfangreichen Möglichkeiten und Preise für die Vermietung der mobilen Bar-Module ohne Personal findest Du auf dieser Seite. Gerne vermieten wir Dir auch Stehtische, Gläser und weitere Ausstattung.",
