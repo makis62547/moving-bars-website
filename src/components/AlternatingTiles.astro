@@ -7,35 +7,48 @@ type Panel = ImagePanel | TextPanel;
 type Row = { left: Panel; right: Panel };
 
 const { rows } = Astro.props as { rows: Row[] };
-
-const renderPanel = (panel: Panel) => {
-  if (panel.kind === "image") {
-    return (
-      <article
-        class={`panel panel--slider ${panel.panelClass}`}
-        aria-label={panel.ariaLabel}
-        data-panel-parallax
-        data-speed={`${panel.speed ?? 0.35}`}
-      >
-        <div class="panel-bg" role="presentation" style={`background-image: url('${panel.bgImage}');`}></div>
-      </article>
-    );
-  }
-
-  return (
-    <article class="panel panel--text" aria-label={panel.ariaLabel}>
-      <div class="panel-inner" set:html={panel.html}></div>
-    </article>
-  );
-};
 ---
 
 <section class="under-hero-tiles" aria-label="Ergänzende Informationen" data-uh-tiles>
   <div class="wide-rows" aria-label="Quadrat-Kacheln">
     {rows.map((row) => (
       <div class="wide-row">
-        {renderPanel(row.left)}
-        {renderPanel(row.right)}
+        {row.left.kind === "image" ? (
+          <article
+            class={`panel panel--slider ${row.left.panelClass}`}
+            aria-label={row.left.ariaLabel}
+            data-panel-parallax
+            data-speed={`${row.left.speed ?? 0.35}`}
+          >
+            <div
+              class="panel-bg"
+              role="presentation"
+              style={`background-image: url('${row.left.bgImage}');`}
+            ></div>
+          </article>
+        ) : (
+          <article class="panel panel--text" aria-label={row.left.ariaLabel}>
+            <div class="panel-inner" set:html={row.left.html}></div>
+          </article>
+        )}
+        {row.right.kind === "image" ? (
+          <article
+            class={`panel panel--slider ${row.right.panelClass}`}
+            aria-label={row.right.ariaLabel}
+            data-panel-parallax
+            data-speed={`${row.right.speed ?? 0.35}`}
+          >
+            <div
+              class="panel-bg"
+              role="presentation"
+              style={`background-image: url('${row.right.bgImage}');`}
+            ></div>
+          </article>
+        ) : (
+          <article class="panel panel--text" aria-label={row.right.ariaLabel}>
+            <div class="panel-inner" set:html={row.right.html}></div>
+          </article>
+        )}
       </div>
     ))}
   </div>
