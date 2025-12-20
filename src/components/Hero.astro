@@ -1,12 +1,12 @@
 ---
 // src/components/Hero.astro
 import CocktailIcon from "./icons/CocktailIcon.astro";
-const { titleLine1, titleLine2, heroText, heroUsps = [] } = Astro.props;
+const { titleLine1, titleLine2, heroText, heroUsps = [], bgImage = "/images/hero.jpg" } = Astro.props;
 const heroTitle = [titleLine1, titleLine2].filter(Boolean).join(" ").trim();
 ---
 
 <section id="hero" class="hero">
-  <div class="hero-bg parallax-bg" role="presentation"></div>
+  <div class="hero-bg parallax-bg" role="presentation" style={`background-image: url('${bgImage}');`}></div>
 
   <div class="hero-overlay" aria-hidden="true"></div>
 

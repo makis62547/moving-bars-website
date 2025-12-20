@@ -1,0 +1,114 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import { i18n } from "../../i18n";
+
+const lang = "en" as const;
+const t = i18n[lang];
+
+const heroProps = {
+  titleLine1: t.hero.line1,
+  titleLine2: t.hero.line2,
+  heroText: t.heroText,
+  heroUsps: [
+    "FULL-SERVICE COCKTAIL BAR & TEAM",
+    "PRO BARTENDERS, BAR MANAGERS & SUPPORT",
+    "SIGNATURE MENUS FOR LAUNCHES AND GALAS",
+    "NATIONWIDE LOGISTICS WITH PREMIUM SETUPS",
+  ],
+  bgImage: "/images/cocktail-catering-moving-bars.jpg",
+};
+
+const introProps = { t, titleLine1: t.hero.line1, titleLine2: t.hero.line2, heroText: t.heroText };
+
+const introTileHtml = `
+  <h3 class="panel-title display-heading display-size-h1">
+    <span class="accent-text">COCKTAIL</span> CATERING
+  </h3>
+  <div class="panel-sep" aria-hidden="true"></div>
+  <p class="panel-text">
+    Full-service mobile bars with bartenders, backbar, glassware, ice and prep included.
+  </p>
+  <p class="panel-text">
+    We choreograph menus, delivery routes and timing so receptions, dinners and parties flow without waiting lines.
+  </p>
+`;
+
+const menusTileHtml = `
+  <h3 class="panel-title display-heading display-size-h1">
+    <span class="accent-text">MENUS</span> & PRODUCT QUALITY
+  </h3>
+  <div class="panel-sep" aria-hidden="true"></div>
+  <p class="panel-text">
+    Classics, signatures or zero-proof: we tailor every cocktail menu to guests, occasion and brand.
+  </p>
+  <p class="panel-text">
+    Fresh juices, clear ice, premium spirits and skilled execution are our baseline – themed specials on request.
+  </p>
+  <a class="panel-cta mb-btn" href="/en/request" aria-label="${t.cta.requestNow}">
+    ${t.cta.requestNow}
+  </a>
+`;
+
+const logisticsTileHtml = `
+  <h3 class="panel-title display-heading display-size-h1">
+    <span class="accent-text">SETUPS</span> & LOGISTICS
+  </h3>
+  <div class="panel-sep" aria-hidden="true"></div>
+  <p class="panel-text">
+    Modular bars, illuminated backbars and tidy stations keep service fast and on-brand.
+  </p>
+  <p class="panel-text">
+    We supply glassware, ice, garnishes and backup production – plus teams built for high volumes and long nights.
+  </p>
+`;
+
+const tilesRows = [
+  {
+    left: {
+      kind: "image",
+      panelClass: "is-align-left is-intro",
+      ariaLabel: "Cocktail Catering Impression",
+      bgImage: "/images/cocktail-catering-moving-bars.jpg",
+      speed: 0.35,
+    },
+    right: { kind: "text", ariaLabel: "Cocktail Catering Description", html: introTileHtml },
+  },
+  {
+    left: { kind: "text", ariaLabel: "Menus and Quality", html: menusTileHtml },
+    right: {
+      kind: "image",
+      panelClass: "is-align-left is-cocktail",
+      ariaLabel: "Cocktail Detail",
+      bgImage: "/images/russian-wild-berry-cocktail.jpg",
+      speed: 0.35,
+    },
+  },
+  {
+    left: {
+      kind: "image",
+      panelClass: "is-align-right is-bar",
+      ariaLabel: "Mobile Bar Setup",
+      bgImage: "/images/mobile-cocktailbar-mit-rueckbuffet.jpg",
+      speed: 0.35,
+    },
+    right: { kind: "text", ariaLabel: "Setups and Logistics", html: logisticsTileHtml },
+  },
+];
+
+const servicesProps = {
+  exclude: "cocktail-catering",
+  headline: { accent: "NOT ENOUGH YET?", rest: "WE CAN DO MORE!", sep: "–" },
+};
+---
+
+<BaseLayout lang={lang}>
+  <StandardPageLayout
+    lang={lang}
+    t={t}
+    heroProps={heroProps}
+    introProps={introProps}
+    tilesRows={tilesRows}
+    services={servicesProps}
+  />
+</BaseLayout>
