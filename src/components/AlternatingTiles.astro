@@ -460,6 +460,31 @@ const { rows } = Astro.props as { rows: Row[] };
 
   .wide-rows .panel--text:not(.panel--h1) .mb-bullets { margin: 0 0 0.6rem 0; padding: 0; list-style: none; }
   .wide-rows .panel--text:not(.panel--h1) .mb-bullets li { margin: 0 0 0.35rem 0; }
+
+  /* ===== GLOBAL overrides for set:html tile headings ===== */
+  :global(.wide-rows .panel--text:not(.panel--h1) h2.panel-title),
+  :global(.wide-rows .panel--text:not(.panel--h1) h3.panel-title) {
+    margin: 0 !important;
+    margin-block: 0 !important;
+    line-height: 1.05 !important;
+  }
+
+  :global(.wide-rows .panel--text:not(.panel--h1) h2.panel-title::after),
+  :global(.wide-rows .panel--text:not(.panel--h1) h3.panel-title::after) {
+    content: none !important;
+  }
+
+  :global(.wide-rows .panel--text:not(.panel--h1) .panel-sep) {
+    display: block !important;
+    margin-top: 0.35rem !important;
+    margin-bottom: 0.35rem !important;
+  }
+
+  :global(.wide-rows .panel--text:not(.panel--h1) ul),
+  :global(.wide-rows .panel--text:not(.panel--h1) li) {
+    font-size: inherit !important;
+    line-height: inherit !important;
+  }
 </style>
 
 <ParallaxPanelsScript />
