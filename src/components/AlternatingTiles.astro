@@ -168,7 +168,7 @@ const { rows } = Astro.props as { rows: Row[] };
     margin: 0;
 
     min-height: var(--tile-height);
-    height: var(--tile-height);
+    height: auto;
   }
 
   .panel--text {
@@ -176,7 +176,7 @@ const { rows } = Astro.props as { rows: Row[] };
     flex-direction: column;
     justify-content: center;
     min-height: var(--tile-height);
-    height: var(--tile-height);
+    height: auto;
     padding: clamp(1.25rem, 3vw, 2.25rem);
     padding-top: var(--tile-text-top-offset);
     padding-bottom: var(--tile-pad-y);
@@ -186,7 +186,7 @@ const { rows } = Astro.props as { rows: Row[] };
     position: relative;
     overflow: hidden;
     min-height: var(--tile-height);
-    height: var(--tile-height);
+    height: auto;
   }
 
   .panel--slider {
