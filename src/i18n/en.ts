@@ -195,6 +195,153 @@ export const en = {
     },
   },
   pages: {
+    cocktailShow: {
+      hero: {
+        titleLine1: "COCKTAIL SHOW",
+        titleLine2: "BOOK IN BERLIN",
+        heroText:
+          "Flair bartenders, fire and sync choreography – we bring the cocktail show to your event in Berlin or anywhere in Germany.",
+        heroUsps: [
+          "FASCINATING COCKTAIL SHOWS",
+          "ENTERTAINMENT AT THE BAR",
+          "SYNCHRONIZED & FIRE JUGGLING",
+          "FOR PRIVATE, TRADE FAIRS & EVENTS",
+        ],
+        bgImage: "/images/cocktail-show-buchen-berlin.jpg",
+      },
+      intro: {
+        titleLine1: "BOOK A COCKTAIL SHOW",
+        titleLine2: "& SHOW BARTENDER FROM BERLIN",
+        heroText: [
+          "Want something extra? Entertainment and a real highlight for your guests? Book a show bartender or a cocktail show in addition to your cocktail catering – for your event in Berlin or anywhere in Germany. Spinning bottles and shakers, cocktail artistry during preparation, or kick off your mobile bar with a cocktail show and set the tone for the party.",
+          "Book our cocktail show from Berlin and give your guests an unforgettable experience. Our award-winning show bartenders will impress you. Working Flair or Exhibition Flair – it leaves a lasting impression on every guest and spectator. Solo or as a duo, this special kind of entertainment turns the waiting time for a drink into a personal performance!",
+          {
+            text: "",
+            inlineLink: {
+              label: "View Cocktail Catering",
+              href: "/en/cocktail-catering",
+            },
+          },
+        ],
+        ctas: [
+          {
+            href: "/en/request",
+            label: "REQUEST NOW",
+          },
+        ],
+      },
+      tilesRows: [
+        {
+          left: {
+            kind: "text",
+            ariaLabel: "Cocktail show for events and occasions",
+            html: `
+              <h3 class="panel-title display-heading display-size-h1">
+                <span class="accent-text">COCKTAIL SHOW</span> FOR ANY OCCASION
+              </h3>
+              <p class="panel-text">
+                What is a cocktail show? We combine bartending artistry with entertainment – perfect as a highlight for private parties, trade fairs or corporate events.
+              </p>
+              <ul class="mb-bullets">
+                <li class="panel-text">Flair bartenders with spectacular bottle flips and shaker juggling.</li>
+                <li class="panel-text">Use it as an opening, featured show slot or right at the bar.</li>
+                <li class="panel-text">Fits living rooms, trade-fair parties or gala setups.</li>
+              </ul>
+            `,
+          },
+          right: {
+            kind: "image",
+            panelClass: "is-bar",
+            ariaLabel: "Cocktail show with flair bartender",
+            bgImage: "/images/cocktailshow-berlin.jpg",
+            speed: 0.35,
+          },
+        },
+        {
+          left: {
+            kind: "image",
+            panelClass: "is-intro",
+            ariaLabel: "Flair bartending with bottles and fire",
+            bgImage: "/images/cocktail-show-buchen-berlin.jpg",
+            speed: 0.35,
+          },
+          right: {
+            kind: "text",
+            ariaLabel: "Working flair or exhibition flair",
+            html: `
+              <h3 class="panel-title display-heading display-size-h1">
+                <span class="accent-text">WORKING</span> & EXHIBITION FLAIR
+              </h3>
+              <p class="panel-text">
+                Working flair for fast service at the guest or exhibition flair as a show act – we provide both.
+              </p>
+              <ul class="mb-bullets">
+                <li class="panel-text">Bookable solo or as a synchronized tandem.</li>
+                <li class="panel-text">Fire elements and choreographed sequences on request.</li>
+                <li class="panel-text">Ideal as a surprise for guests and VIPs.</li>
+              </ul>
+            `,
+          },
+        },
+        {
+          left: {
+            kind: "text",
+            ariaLabel: "Show timing and flow",
+            html: `
+              <h3 class="panel-title display-heading display-size-h1">
+                <span class="accent-text">TIMING</span> & SHOW FLOW
+              </h3>
+              <p class="panel-text">
+                We schedule the show to match your run of show: as opener, spotlight act or embedded in service.
+              </p>
+              <ul class="mb-bullets">
+                <li class="panel-text">Show opener to kick off the bar.</li>
+                <li class="panel-text">Adaptable to room, stage or bar position.</li>
+                <li class="panel-text">Guests become part of the experience – up close.</li>
+              </ul>
+              <p class="panel-text">
+                Waiting for a drink turns into a performance and your bar becomes the event magnet.
+              </p>
+            `,
+          },
+          right: {
+            kind: "image",
+            panelClass: "is-bar",
+            ariaLabel: "Show bartender at an event in Berlin",
+            bgImage: "/images/20-jahre-mobile-cocktailbar.jpg",
+            speed: 0.35,
+          },
+        },
+        {
+          left: {
+            kind: "image",
+            panelClass: "is-cocktail",
+            ariaLabel: "Cocktails served during the show",
+            bgImage: "/images/russian-wild-berry-cocktail.jpg",
+            speed: 0.35,
+          },
+          right: {
+            kind: "text",
+            ariaLabel: "Show and service combined",
+            html: `
+              <h3 class="panel-title display-heading display-size-h1">
+                <span class="accent-text">SHOW</span> MEETS SERVICE
+              </h3>
+              <p class="panel-text">
+                We mix real drinks during the show – no fake setup, just genuine cocktail enjoyment.
+              </p>
+              <ul class="mb-bullets">
+                <li class="panel-text">Seamless transition from show moment into service.</li>
+                <li class="panel-text">Curated menus and signature drinks on request.</li>
+                <li class="panel-text">Show times tailored to your event schedule.</li>
+              </ul>
+              <a class="panel-cta mb-btn" href="/en/request">REQUEST NOW</a>
+            `,
+          },
+        },
+      ],
+      servicesHeadline: { accent: "NOT ENOUGH YET?", rest: "WE CAN DO EVEN MORE!", sep: "—" },
+    },
     mobileBar: {
       hero: {
         titleLine1: "MOBILE BAR",
