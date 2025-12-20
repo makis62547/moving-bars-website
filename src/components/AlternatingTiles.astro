@@ -388,7 +388,7 @@ const { rows } = Astro.props as { rows: Row[] };
     height: 1px;
     width: 100%;
     background: rgba(var(--accent-rgb), 0.75);
-    margin: 0.25rem 0 0.35rem !important;
+    margin: 0.35rem 0 0.55rem !important;
   }
 
   /* erster Contentblock direkt unter Divider: kein extra Abstand */
@@ -424,7 +424,7 @@ const { rows } = Astro.props as { rows: Row[] };
     height: 1px;
     width: 100%;
     background: rgba(var(--accent-rgb), 0.75);
-    margin: 0.25rem 0 0.35rem !important;
+    margin: 0.35rem 0 0.55rem !important;
   }
 
   /* if any pseudo-divider exists globally, disable it in tiles */
@@ -476,7 +476,11 @@ const { rows } = Astro.props as { rows: Row[] };
     height: 1px;
     width: 100%;
     background: rgba(var(--accent-rgb), 0.75);
-    margin: 0.25rem 0 0.35rem;
+    margin: 0.35rem 0 0.55rem;
+  }
+
+  :global(.wide-rows .panel--text:not(.panel--h1) .panel-sep + :is(p, ul, ol)) {
+    margin-top: 0;
   }
 
   :global(.wide-rows .panel--text:not(.panel--h1) ul),
