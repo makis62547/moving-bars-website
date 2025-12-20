@@ -178,13 +178,14 @@ h3,
 }
 
 .wide-rows .panel--text:not(.panel--h1) .panel-title::after {
+  /* Tiles: Divider unter Title, kompakte Abstände */
   content: "";
   display: block;
   height: 1px;
   width: 100%;
   background: rgba(var(--accent-rgb), 0.75);
-  margin-top: 0.65rem;
-  margin-bottom: 0.55rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.35rem;
 }
 
 .wide-rows .panel--text:not(.panel--h1) .panel-sep {
@@ -195,21 +196,24 @@ h3,
   font-weight: 400;
 }
 
+.wide-rows .panel--text:not(.panel--h1) .panel-inner {
+  /* Tiles: kein grid-gap zwischen Title/Divider und erstem Content */
+  gap: 0 !important;
+}
+
+.wide-rows .panel--text:not(.panel--h1) .panel-text,
+.wide-rows .panel--text:not(.panel--h1) ul {
+  /* Tiles: Content startet ohne zusätzlichen top-margin */
+  margin-top: 0 !important;
+}
+
 .wide-rows .panel--text:not(.panel--h1) .panel-text {
-  margin: 0.65rem 0 0;
+  /* Stattdessen dezente Abstände NACH Content-Blöcken (natürlicher Lesefluss) */
+  margin-bottom: 0.6rem;
 }
 
 .wide-rows .panel--text:not(.panel--h1) ul {
-  margin: 0.65rem 0 0;
-}
-
-.wide-rows .panel--text:not(.panel--h1) .panel-inner > :first-child {
-  margin-top: 0 !important;
-}
-
-.wide-rows .panel--text:not(.panel--h1) .panel-inner > p.panel-text:first-child,
-.wide-rows .panel--text:not(.panel--h1) .panel-inner > ul:first-child {
-  margin-top: 0 !important;
+  margin-bottom: 0.75rem;
 }
 
 .wide-rows .panel--text:not(.panel--h1) li.panel-text {
@@ -222,7 +226,6 @@ h3,
   display: inline;
   list-style: none;
   font-weight: 400;
-  text-transform: none;
 }
 
 .wide-rows .panel--text:not(.panel--h1) details > summary::-webkit-details-marker {
