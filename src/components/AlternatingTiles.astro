@@ -5,13 +5,42 @@ type ImagePanel = { kind: "image"; panelClass: string; ariaLabel?: string; bgIma
 type TextPanel = { kind: "text"; ariaLabel?: string; html: string };
 type Panel = ImagePanel | TextPanel;
 type Row = { left: Panel; right: Panel };
+type NormalizedTextPanel = TextPanel & { titleHtml: string; bodyHtml: string };
+type NormalizedPanel = ImagePanel | NormalizedTextPanel;
+type NormalizedRow = { left: NormalizedPanel; right: NormalizedPanel };
 
 const { rows } = Astro.props as { rows: Row[] };
+
+const stripPanelInnerWrapper = (html: string) =>
+  html.replace(/<div[^>]*class="panel-inner"[^>]*>/i, "").replace(/<\/div>\s*$/i, "");
+
+const normalizeTextPanel = (panel: TextPanel): NormalizedTextPanel => {
+  const rawHtml = panel.html ?? "";
+  const withoutWrapper = stripPanelInnerWrapper(rawHtml);
+  const headingMatch = withoutWrapper.match(/<(h[1-6])[^>]*>[\s\S]*?<\/\1>/i);
+  const titleHtml = headingMatch?.[0]?.trim() ?? "";
+  const bodyWithoutTitle = withoutWrapper.replace(headingMatch?.[0] ?? "", "");
+  const bodyWithoutDivider = bodyWithoutTitle.replace(/<div[^>]*class="panel-sep"[^>]*>\s*<\/div>/gi, "");
+
+  return {
+    ...panel,
+    titleHtml,
+    bodyHtml: bodyWithoutDivider.trim(),
+  };
+};
+
+const normalizePanel = (panel: Panel): NormalizedPanel =>
+  panel.kind === "text" ? normalizeTextPanel(panel) : panel;
+
+const normalizedRows: NormalizedRow[] = rows.map((row) => ({
+  left: normalizePanel(row.left),
+  right: normalizePanel(row.right),
+}));
 ---
 
 <section class="under-hero-tiles" aria-label="Ergänzende Informationen" data-uh-tiles>
   <div class="wide-rows" aria-label="Quadrat-Kacheln">
-    {rows.map((row) => (
+    {normalizedRows.map((row) => (
       <div class="wide-row">
         {row.left.kind === "image" ? (
           <article
@@ -23,12 +52,20 @@ const { rows } = Astro.props as { rows: Row[] };
             <div
               class="panel-bg"
               role="presentation"
-              style={`background-image: url('${row.left.bgImage}');`}
+            style={`background-image: url('${row.left.bgImage}');`}
             ></div>
           </article>
         ) : (
           <article class="panel panel--text" aria-label={row.left.ariaLabel}>
-            <div class="panel-inner" set:html={row.left.html}></div>
+            <div class="panel-inner alt-tiles-text">
+              {row.left.titleHtml && (
+                <div class="alt-tiles-title" set:html={row.left.titleHtml}></div>
+              )}
+              <div class="panel-sep alt-tiles-divider" aria-hidden="true"></div>
+              {row.left.bodyHtml && (
+                <div class="alt-tiles-body" set:html={row.left.bodyHtml}></div>
+              )}
+            </div>
           </article>
         )}
         {row.right.kind === "image" ? (
@@ -41,12 +78,20 @@ const { rows } = Astro.props as { rows: Row[] };
             <div
               class="panel-bg"
               role="presentation"
-              style={`background-image: url('${row.right.bgImage}');`}
+            style={`background-image: url('${row.right.bgImage}');`}
             ></div>
           </article>
         ) : (
           <article class="panel panel--text" aria-label={row.right.ariaLabel}>
-            <div class="panel-inner" set:html={row.right.html}></div>
+            <div class="panel-inner alt-tiles-text">
+              {row.right.titleHtml && (
+                <div class="alt-tiles-title" set:html={row.right.titleHtml}></div>
+              )}
+              <div class="panel-sep alt-tiles-divider" aria-hidden="true"></div>
+              {row.right.bodyHtml && (
+                <div class="alt-tiles-body" set:html={row.right.bodyHtml}></div>
+              )}
+            </div>
           </article>
         )}
       </div>
@@ -327,7 +372,7 @@ const { rows } = Astro.props as { rows: Row[] };
 
   /* B) Abstand Titel/Divider -> erster Text muss natürlich sein */
   .wide-rows .panel--text .panel-inner {
-    gap: 0 !important; /* killt --text-block-gap in Tiles */
+    gap: var(--alt-tiles-text-gap) !important;
   }
 
   /* C) Divider wieder wie früher (echtes Element), nicht pseudo-magie */
@@ -360,7 +405,7 @@ const { rows } = Astro.props as { rows: Row[] };
 
   /* ===== wide-rows tiles: remove artificial grid gap between title/divider and first content ===== */
   .wide-rows .panel--text:not(.panel--h1) .panel-inner {
-    gap: 0 !important;
+    gap: var(--alt-tiles-text-gap) !important;
   }
 
   /* Erster Content-Block darf keinen extra Top-Abstand haben */
@@ -370,10 +415,10 @@ const { rows } = Astro.props as { rows: Row[] };
 
   /* ===== wide-rows tiles: kill the artificial spacing block (grid-gap / pseudo divider) ===== */
   .wide-rows .panel--text:not(.panel--h1) .panel-inner {
-    /* statt Grid + gap => flex ohne gap */
+    /* statt Grid + gap => flex mit kontrolliertem gap */
     display: flex !important;
     flex-direction: column !important;
-    gap: 0 !important;
+    gap: var(--alt-tiles-text-gap) !important;
   }
 
   /* falls irgendwo global ein Divider via ::after kommt: in Tiles deaktivieren,
@@ -469,6 +514,48 @@ const { rows } = Astro.props as { rows: Row[] };
   :global(.wide-rows .panel--text:not(.panel--h1) h2.panel-title::after),
   :global(.wide-rows .panel--text:not(.panel--h1) h3.panel-title::after) {
     content: none !important;
+  }
+
+  /* ===== Alternating tiles: dedicated layout container + divider spacing ===== */
+  .wide-rows .panel--text .panel-inner.alt-tiles-text {
+    display: flex !important;
+    flex-direction: column;
+    gap: var(--alt-tiles-text-gap) !important;
+    max-width: var(--tile-text-width);
+    min-width: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .wide-rows .panel--text .alt-tiles-title :is(h1, h2, h3, h4, h5, h6) {
+    margin: 0 !important;
+    line-height: var(--heading-line-height);
+  }
+
+  .wide-rows .panel--text .panel-sep.alt-tiles-divider {
+    display: block !important;
+    width: 100%;
+    height: 1px;
+    background: rgba(var(--accent-rgb), 0.75);
+    margin-top: var(--alt-tiles-divider-gap-top) !important;
+    margin-bottom: var(--alt-tiles-divider-gap-bottom) !important;
+  }
+
+  .wide-rows .panel--text .alt-tiles-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--alt-tiles-text-gap);
+  }
+
+  .wide-rows .panel--text .alt-tiles-body :is(p, ul, ol, li, .panel-text) {
+    margin: 0 !important;
+    font-size: inherit !important;
+    line-height: 1.7 !important;
+  }
+
+  .wide-rows .panel--text .alt-tiles-body ul,
+  .wide-rows .panel--text .alt-tiles-body ol {
+    padding-left: 1.25rem;
   }
 
   :global(.wide-rows .panel--text:not(.panel--h1) .panel-sep) {
