@@ -1,69 +1,42 @@
 ---
-import Hero from "../components/Hero.astro";
-import PageHero from "../components/PageHero.astro";
-import HeroIntroBlock from "../components/HeroIntroBlock.astro";
 import AlternatingTiles from "../components/AlternatingTiles.astro";
 import GoogleReviewsBlock from "../components/GoogleReviewsBlock.astro";
+import Hero from "../components/Hero.astro";
+import HeroIntroBlock from "../components/HeroIntroBlock.astro";
 import ServicesOverview from "../components/ServicesOverview.astro";
 import type { Lang } from "../i18n";
 
-type HeroVariant = "hero" | "pageHero";
-type HeroConfig = { variant: HeroVariant; props: Record<string, any> };
-type IntroBlockProps = { titleLine1?: string; titleLine2?: string; heroText?: string; t?: Record<string, any> };
-type TilesProps = { rows?: Parameters<typeof AlternatingTiles>[0]["rows"] };
-type ServicesProps = {
-  show?: boolean;
-  exclude?: string;
-  headline?: {
-    accent?: string;
-    rest?: string;
-    sep?: string;
-  };
-  t?: Record<string, any>;
-  lang?: Lang;
+type HeadlineOverride = {
+  accent?: string;
+  rest?: string;
+  sep?: string;
 };
 
-const {
-  lang,
-  hero,
-  introBlock,
-  tiles,
-  showReviews = true,
-  services = {},
-  extrasSlot,
-} = Astro.props as {
+type StandardPageLayoutProps = {
   lang: Lang;
-  hero: HeroConfig;
-  introBlock?: IntroBlockProps;
-  tiles?: TilesProps;
+  t?: Record<string, any>;
+  heroProps: Parameters<typeof Hero>[0];
+  introProps: Parameters<typeof HeroIntroBlock>[0];
+  tilesRows?: Parameters<typeof AlternatingTiles>[0]["rows"];
+  services?: { exclude?: string; headline?: HeadlineOverride };
   showReviews?: boolean;
-  services?: ServicesProps;
-  extrasSlot?: boolean;
 };
 
-const { show: servicesShowProp, ...servicesRest } = services ?? {};
-const servicesShow = servicesShowProp ?? true;
-const shouldRenderExtras = extrasSlot ?? Boolean(Astro.slots?.default);
-
-const renderHero = () => {
-  if (hero.variant === "pageHero") {
-    return <PageHero {...hero.props} />;
-  }
-
-  return <Hero {...hero.props} />;
-};
+const { lang, t, heroProps, introProps, tilesRows = [], services = {}, showReviews = true } =
+  Astro.props as StandardPageLayoutProps;
+const shouldRenderExtras = Boolean(Astro.slots?.default);
 ---
 
 <main class="bg-black">
-  {renderHero()}
+  <Hero {...heroProps} />
 
-  {introBlock && <HeroIntroBlock {...introBlock} />}
+  <HeroIntroBlock {...introProps} />
 
-  {tiles?.rows && <AlternatingTiles rows={tiles.rows} />}
+  {tilesRows?.length > 0 && <AlternatingTiles rows={tilesRows} />}
 
-  {showReviews !== false && <GoogleReviewsBlock lang={lang} />}
+  {showReviews !== false && <GoogleReviewsBlock lang={lang} t={t} />}
 
-  {servicesShow && <ServicesOverview lang={lang} {...servicesRest} />}
+  <ServicesOverview exclude={services?.exclude} headline={services?.headline} lang={lang} />
 
   {shouldRenderExtras && <slot />}
 </main>

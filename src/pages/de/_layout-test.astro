@@ -25,10 +25,11 @@ const tilesRows = [
 <BaseLayout lang={lang}>
   <StandardPageLayout
     lang={lang}
-    hero={{ variant: "pageHero", props: { title: `${t.hero.line1} ${t.hero.line2}`, intro: t.heroText } }}
-    introBlock={{ t, titleLine1: t.hero.line1, titleLine2: t.hero.line2, heroText: t.heroText }}
-    tiles={{ rows: tilesRows }}
-    services={{ show: true }}
+    t={t}
+    heroProps={{ titleLine1: t.hero.line1, titleLine2: t.hero.line2, heroText: t.heroText }}
+    introProps={{ t, titleLine1: t.hero.line1, titleLine2: t.hero.line2, heroText: t.heroText }}
+    tilesRows={tilesRows}
+    services={{}}
   >
     <section class="test-extra" aria-label="Extra Section">
       <div class="site-container">
