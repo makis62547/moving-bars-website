@@ -70,6 +70,49 @@ const logisticsTileHtml = `
   </p>
 `;
 
+const tileRundumSorglosDE = `
+  <h3 class="panel-title display-heading display-size-h1">RUNDUM-SORGLOS-PAKET</h3>
+  <div class="panel-sep" aria-hidden="true"></div>
+
+  <p class="panel-text">
+    Profitiere von 20 Jahren Erfahrung im Bereich Cocktail Catering und mobile Cocktailbar aus Berlin.
+    Wir bieten Dir ein Rundum-Sorglos-Paket, das alles enthält und Du Dich um nichts kümmern musst.
+  </p>
+
+  <p class="panel-text"><strong>DAS COCKTAIL CATERING PAKET BEINHALTET:</strong></p>
+
+  <ul style="list-style:none; padding-left:0; margin:0.75rem 0 1rem; display:grid; gap:0.5rem;">
+    <li class="panel-text"><span class="accent-text">▸</span> die mobile Cocktailbar</li>
+    <li class="panel-text"><span class="accent-text">▸</span> professionelle Barkeeper</li>
+    <li class="panel-text"><span class="accent-text">▸</span> eine Auswahl an Cocktails und Longdrinks</li>
+  </ul>
+
+  <p class="panel-text">
+    Gläser, Eis, eine Getränkekarte und sämtliche Zutaten, sowie der Auf- und Abbau sind im Preis enthalten.
+  </p>
+
+  <p class="panel-text" style="margin-top:1.1rem;"><strong>IHRE VORTEILE:</strong></p>
+
+  <ul style="list-style:none; padding-left:0; margin:0.75rem 0 0; display:grid; gap:0.5rem;">
+    <li class="panel-text"><span class="accent-text">▸</span> PÜNKTLICHE LIEFERUNG bevor die Gäste eintreffen.</li>
+    <li class="panel-text"><span class="accent-text">▸</span> KEINE ZEITLICHE BESCHRÄNKUNG – wir bleiben solange Sie feiern.</li>
+    <li class="panel-text"><span class="accent-text">▸</span> IMMER RESERVEN DABEI – sollten die vereinbarten Getränke nicht ausreichen.</li>
+    <li class="panel-text"><span class="accent-text">▸</span> ABBAU AM FOLGETAG OHNE AUFPREIS – damit Sie Ihre Feier in Ruhe ausklingen lassen können.</li>
+  </ul>
+
+  <details style="margin-top:1rem;">
+    <summary class="mb-btn panel-cta" style="display:inline-flex; cursor:pointer;">Mehr lesen…</summary>
+    <p class="panel-text" style="margin-top:1rem;">
+      Am Tag Ihrer Veranstaltung liefern wir unser Cocktail Catering nach Absprache rechtzeitig, damit,
+      wenn Ihre Gäste kommen, alles bereit ist. In der Regel vereinbaren wir mit Ihnen vorab eine, der
+      Anzahl der Gäste angemessene Drinkanzahl und halten unverbindlich weitere Getränke auf Vorrat bereit.
+      So haben Sie im Vorfeld eine konkrete Übersicht über die Kosten und haben zusätzlich die Möglichkeit
+      während der Veranstaltung, weitere Getränke hinzu zu buchen. Falls gewünscht kommen wir, ohne Aufpreis,
+      erst am folgenden Tag und holen alles wieder ab, damit Sie die Feier in Ruhe ausklingen lassen können.
+    </p>
+  </details>
+`;
+
 const tilesRows = [
   {
     left: {
@@ -100,6 +143,16 @@ const tilesRows = [
       speed: 0.35,
     },
     right: { kind: "text", ariaLabel: "Setups und Logistik", html: logisticsTileHtml },
+  },
+  {
+    left: { kind: "text", ariaLabel: "Rundum-Sorglos-Paket", html: tileRundumSorglosDE },
+    right: {
+      kind: "image",
+      panelClass: "is-align-left is-intro",
+      ariaLabel: "Cocktail Catering Bild",
+      bgImage: "/images/hero.jpg",
+      speed: 0.35,
+    },
   },
 ];
 
