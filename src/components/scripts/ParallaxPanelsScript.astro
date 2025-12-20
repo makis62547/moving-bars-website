@@ -1,0 +1,70 @@
+<script is:inline>
+  (() => {
+    if (typeof window === "undefined") return;
+
+    type ParallaxWindow = Window & { __mbParallaxPanelsInit?: boolean };
+    const w = window as ParallaxWindow;
+
+    if (w.__mbParallaxPanelsInit) return;
+
+    w.__mbParallaxPanelsInit = true;
+
+    let panels: HTMLElement[] = [];
+    let ticking = false;
+    let listenersAttached = false;
+    const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    const setStaticParallax = () => {
+      panels.forEach((panel) => {
+        panel.style.setProperty("--py", "0px");
+      });
+    };
+
+    const updateParallax = () => {
+      const viewportCenter = window.innerHeight / 2;
+
+      panels.forEach((panel) => {
+        const rect = panel.getBoundingClientRect();
+        const distanceFromCenter = rect.top + rect.height / 2 - viewportCenter;
+        const speed = Number(panel.dataset.speed ?? "0.3");
+
+        panel.style.setProperty("--py", `${-distanceFromCenter * speed}px`);
+      });
+
+      ticking = false;
+    };
+
+    const scheduleUpdate = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(updateParallax);
+    };
+
+    const initParallax = () => {
+      panels = Array.from(document.querySelectorAll("[data-panel-parallax]")).filter(
+        (panel): panel is HTMLElement => panel instanceof HTMLElement,
+      );
+
+      if (reduceMotionQuery.matches) {
+        setStaticParallax();
+        return;
+      }
+
+      scheduleUpdate();
+
+      if (!listenersAttached) {
+        window.addEventListener("scroll", scheduleUpdate, { passive: true });
+        window.addEventListener("resize", scheduleUpdate);
+        listenersAttached = true;
+      }
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initParallax, { once: true });
+    } else {
+      initParallax();
+    }
+
+    window.addEventListener("astro:page-load", initParallax);
+  })();
+</script>

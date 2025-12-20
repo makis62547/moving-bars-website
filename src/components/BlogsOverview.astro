@@ -1,5 +1,6 @@
 ---
 import { i18n, type Lang } from "../i18n";
+import ParallaxPanelsScript from "./scripts/ParallaxPanelsScript.astro";
 
 const pathLang = Astro.url?.pathname?.split("/")[1];
 const lang = (pathLang === "en" ? "en" : "de") as Lang;
@@ -487,26 +488,4 @@ const movingBarsPosts = [
   }
 </style>
 
-<script>
-  const panels = Array.from(document.querySelectorAll("[data-panel-parallax]"));
-
-  const updateParallax = () => {
-    const viewportCenter = window.innerHeight / 2;
-
-    panels.forEach((panel) => {
-      const rect = panel.getBoundingClientRect();
-      const distanceFromCenter = rect.top + rect.height / 2 - viewportCenter;
-      const speed = Number(panel.dataset.speed ?? "0.3");
-
-      panel.style.setProperty("--py", `${-distanceFromCenter * speed}px`);
-    });
-  };
-
-  const scheduleUpdate = () => {
-    requestAnimationFrame(updateParallax);
-  };
-
-  updateParallax();
-  window.addEventListener("scroll", scheduleUpdate, { passive: true });
-  window.addEventListener("resize", scheduleUpdate);
-</script>
+<ParallaxPanelsScript />

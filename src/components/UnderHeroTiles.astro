@@ -1,5 +1,6 @@
 ---
 import PricingFaqAccordion from "./PricingFaqAccordion.astro";
+import ParallaxPanelsScript from "./scripts/ParallaxPanelsScript.astro";
 
 const { t, titleLine1, titleLine2, heroText } = Astro.props;
 
@@ -443,28 +444,4 @@ const mobileBarImage = "/images/mobile-cocktailbar-mit-rueckbuffet.jpg";
 
 </style>
 
-<script>
-  const panels = Array.from(document.querySelectorAll("[data-panel-parallax]"));
-
-  const updateParallax = () => {
-    const viewportCenter = window.innerHeight / 2;
-
-    panels.forEach((panel) => {
-      if (panel instanceof HTMLElement) {
-        const rect = panel.getBoundingClientRect();
-        const distanceFromCenter = rect.top + rect.height / 2 - viewportCenter;
-        const speed = Number(panel.dataset.speed ?? "0.3");
-
-        panel.style.setProperty("--py", `${-distanceFromCenter * speed}px`);
-      }
-    });
-  };
-
-  const scheduleUpdate = () => {
-    requestAnimationFrame(updateParallax);
-  };
-
-  updateParallax();
-  window.addEventListener("scroll", scheduleUpdate, { passive: true });
-  window.addEventListener("resize", scheduleUpdate);
-</script>
+<ParallaxPanelsScript />
