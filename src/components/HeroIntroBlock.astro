@@ -1,7 +1,13 @@
 ---
 import PricingFaqAccordion from "./PricingFaqAccordion.astro";
 
-const { t, titleLine1, titleLine2, heroText } = Astro.props;
+const { t, titleLine1, titleLine2, heroText, ctas = [] } = Astro.props;
+
+const heroTextBlocks = Array.isArray(heroText)
+  ? heroText.filter(Boolean)
+  : heroText
+    ? [heroText]
+    : [];
 ---
 
 <section class="under-hero-tiles" aria-label="Ergänzende Informationen" data-uh-tiles>
@@ -16,7 +22,16 @@ const { t, titleLine1, titleLine2, heroText } = Astro.props;
                 {titleLine2}
               </h3>
               <div class="panel-sep" aria-hidden="true"></div>
-              <p class="panel-text">{heroText}</p>
+              {heroTextBlocks.map((copy) => (
+                <p class="panel-text">{copy}</p>
+              ))}
+              {ctas.length > 0 && (
+                <div class="h1-cta-group">
+                  {ctas.map((cta) => (
+                    <a class="mb-btn" href={cta.href}>{cta.label}</a>
+                  ))}
+                </div>
+              )}
             </div>
             <PricingFaqAccordion t={t} />
           </div>
@@ -137,6 +152,13 @@ const { t, titleLine1, titleLine2, heroText } = Astro.props;
 
   #hero-h1 {
     scroll-margin-top: calc(var(--header-h) + 24px);
+  }
+
+  .h1-cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--h1-cta-gap, 0.75rem);
+    margin-top: var(--h1-cta-margin-top, 1.1rem);
   }
 
   .panel {
