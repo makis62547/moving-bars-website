@@ -10,7 +10,7 @@ export const de = {
   cta: {
     requestNow: "JETZT ANFRAGEN",
     viewCocktailMenus: "HIER UNSERE COCKTAIL MENUS ANSEHEN",
-    allPackagesAndPrices: "HIER ALLE PAKETE UND PREISE",
+    allPackagesAndPrices: "HIER ALLE PAKETE & PREISE",
     faqMobileCocktailbar: "FAQ MOBILE BAR MIETEN",
     sendInquiry: "ANFRAGE SENDEN",
     learnMore: "Mehr erfahren",
@@ -215,18 +215,15 @@ export const de = {
         heroText: [
           "Sie wollen noch mehr? Entertainment und Unterhaltung für Ihre Gäste? Buchen Sie zusätzlich zum Cocktail Catering einen Showbarkeeper oder eine Cocktailshow als Highlight für Ihre Veranstaltung in Berlin oder anderswo in Deutschland. Wirbelnde Flaschen und Shaker, Cocktailartistik während der Herstellung der Cocktails oder eröffnen Sie die mobile Cocktailbar mit einer Cocktailshow und leiten Sie so den Partyteil Ihrer Veranstaltung endgültig ein.",
           "Buchen Sie unsere Cocktailshow aus Berlin und bieten Sie Ihren Gästen ein unvergessliches Erlebnis. Unsere preisgekrönten Showbarkeeper werden Sie begeistern. Working Flair oder Exhibition Flair, beim Gast und Zuschauer wird es einen bleibenden Eindruck hinterlassen. Alleine oder als Tandem, bieten Sie Ihren Gästen diese besondere Art der Unterhaltung. So wird die Wartezeit auf den eigenen Drink zur persönlichen Darbietung!",
-          {
-            text: "",
-            inlineLink: {
-              label: "Cocktail Catering ansehen",
-              href: "/de/cocktail-catering",
-            },
-          },
         ],
         ctas: [
           {
-            href: "/de/anfrage",
-            label: "JETZT ANFRAGEN",
+            href: "#pakete-preise",
+            label: "HIER ALLE PAKETE & PREISE",
+          },
+          {
+            href: "#faq",
+            label: "FAQ COCKTAIL SHOW & SHOWBARKEEPER",
           },
         ],
       },
@@ -335,7 +332,6 @@ export const de = {
                 <li class="panel-text">Passende Menüs und Signature Drinks auf Wunsch.</li>
                 <li class="panel-text">Auftrittszeiten abgestimmt auf Deinen Ablaufplan.</li>
               </ul>
-              <a class="panel-cta mb-btn" href="/de/anfrage">JETZT ANFRAGEN</a>
             `,
           },
         },
