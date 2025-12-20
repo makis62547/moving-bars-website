@@ -374,6 +374,47 @@ const { rows } = Astro.props as { rows: Row[] };
   .wide-rows .panel--text:not(.panel--h1) .panel-inner > :is(p, ul, ol):first-of-type {
     margin-top: 0 !important;
   }
+
+  /* ===== wide-rows tiles: kill the artificial spacing block (grid-gap / pseudo divider) ===== */
+  .wide-rows .panel--text:not(.panel--h1) .panel-inner {
+    /* statt Grid + gap => flex ohne gap */
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+
+  /* falls irgendwo global ein Divider via ::after kommt: in Tiles deaktivieren,
+     damit wir nur den echten .panel-sep haben (sonst doppelte Abstände) */
+  .wide-rows .panel--text:not(.panel--h1) .panel-title::after {
+    content: none !important;
+  }
+
+  /* echten Divider sichtbar + kleinere Abstände */
+  .wide-rows .panel--text:not(.panel--h1) .panel-sep {
+    display: block !important;
+    margin-top: 0.35rem !important;
+    margin-bottom: 0.35rem !important;
+  }
+
+  /* erster Contentblock direkt unter Divider: kein extra Abstand */
+  .wide-rows .panel--text:not(.panel--h1) .panel-inner > :is(p, ul, ol):first-of-type {
+    margin-top: 0 !important;
+  }
+
+  /* einheitliches Spacing zwischen Absätzen/Listen */
+  .wide-rows .panel--text:not(.panel--h1) :is(p.panel-text, ul, ol) {
+    margin: 0 0 0.6rem 0 !important;
+  }
+
+  /* ===== Bullet-Fontgröße = Fließtext ===== */
+  .wide-rows .panel--text:not(.panel--h1) {
+    font-size: var(--body-font-size, 18px);
+  }
+  .wide-rows .panel--text:not(.panel--h1) :is(.panel-text, ul, ol, li) {
+    font-size: inherit !important;
+    line-height: 1.7 !important;
+    font-weight: 400 !important;
+  }
 </style>
 
 <ParallaxPanelsScript />
