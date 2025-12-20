@@ -2,6 +2,7 @@
 import { i18n } from "../../i18n";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/Hero.astro";
+import HeroIntroBlock from "../../components/HeroIntroBlock.astro";
 import UnderHeroTiles from "../../components/UnderHeroTiles.astro";
 import ServicesOverview from "../../components/ServicesOverview.astro";
 import BlogsOverview from "../../components/BlogsOverview.astro";
@@ -19,12 +20,8 @@ const t = i18n.de;
       heroText={t.heroText}
       heroUsps={t.heroUsps}
     />
-    <UnderHeroTiles
-      t={t}
-      titleLine1={t.hero.line1}
-      titleLine2={t.hero.line2}
-      heroText={t.heroText}
-    />
+    <HeroIntroBlock t={t} titleLine1={t.hero.line1} titleLine2={t.hero.line2} heroText={t.heroText} />
+    <UnderHeroTiles t={t} />
     <ServicesOverview />
     <section class="reviews-section" id="google-reviews">
       <div class="site-container reviews-inner">
