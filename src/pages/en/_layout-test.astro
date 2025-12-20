@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import { i18n } from "../../i18n";
+
+const lang = "en" as const;
+const t = i18n[lang];
+
+const tilesRows = [
+  {
+    left: {
+      kind: "image",
+      panelClass: "is-align-left is-intro",
+      bgImage: "/images/cocktail-catering-moving-bars.jpg",
+    },
+    right: {
+      kind: "text",
+      ariaLabel: "Intro Text",
+      html: `<div class="panel-inner"><h3 class="panel-title display-heading display-size-h1">${t.hero.line1}<br /><span class="accent-text">${t.hero.line2}</span></h3><div class="panel-sep" aria-hidden="true"></div><p class="panel-text">${t.heroText}</p></div>`
+    }
+  }
+];
+---
+
+<BaseLayout lang={lang}>
+  <StandardPageLayout
+    lang={lang}
+    hero={{ variant: "pageHero", props: { title: `${t.hero.line1} ${t.hero.line2}`, intro: t.heroText } }}
+    introBlock={{ t, titleLine1: t.hero.line1, titleLine2: t.hero.line2, heroText: t.heroText }}
+    tiles={{ rows: tilesRows }}
+    services={{ show: true }}
+  >
+    <section class="test-extra" aria-label="Extra Section">
+      <div class="site-container">
+        <h2>Extraslot Test</h2>
+        <p>This is a test section following the StandardPageLayout.</p>
+      </div>
+    </section>
+  </StandardPageLayout>
+</BaseLayout>
