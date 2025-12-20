@@ -201,6 +201,10 @@ h3,
   gap: 0 !important;
 }
 
+.wide-rows .panel--text:not(.panel--h1) .panel-inner > :first-child {
+  margin-top: 0 !important;
+}
+
 .wide-rows .panel--text:not(.panel--h1) .panel-text,
 .wide-rows .panel--text:not(.panel--h1) ul {
   /* Tiles: Content startet ohne zusätzlichen top-margin */
@@ -219,13 +223,13 @@ h3,
 .wide-rows .panel--text:not(.panel--h1) ul,
 .wide-rows .panel--text:not(.panel--h1) li {
   font-family: "Inter", system-ui, sans-serif;
-  font-size: inherit;
+  font-size: 1em;
   line-height: 1.7;
+  font-weight: 400;
   color: rgba(247, 247, 247, 0.82);
 }
 
 .wide-rows .panel--text:not(.panel--h1) li.panel-text {
-  margin: 0;
   font-size: 1em;
   line-height: 1.7;
 }
