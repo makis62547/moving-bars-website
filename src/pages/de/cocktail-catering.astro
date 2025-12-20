@@ -41,33 +41,51 @@ const introTileHtml = `
   </p>
 `;
 
-const menusTileHtml = `
+const tileCocktailsLongdrinksDE = `
   <h3 class="panel-title display-heading display-size-h1">
-    <span class="accent-text">MENÜS</span> & PRODUKTE
+    <span class="accent-text">COCKTAILS</span> &amp; LONGDRINKS
   </h3>
-  <div class="panel-sep" aria-hidden="true"></div>
-  <p class="panel-text">
-    Klassiker, Signatures oder komplett alkoholfrei: Wir stimmen jedes Cocktail Menu auf Gäste, Anlass und Branding ab.
-  </p>
-  <p class="panel-text">
-    Frische Säfte, klare Eisblöcke, Premium-Spirituosen und Handwerk sind Standard – gerne auch mit thematischen Specials.
-  </p>
-  <a class="panel-cta mb-btn" href="/anfrage" aria-label="${t.cta.requestNow}">
-    ${t.cta.requestNow}
-  </a>
-`;
 
-const logisticsTileHtml = `
-  <h3 class="panel-title display-heading display-size-h1">
-    <span class="accent-text">SETUPS</span> & LOGISTIK
-  </h3>
-  <div class="panel-sep" aria-hidden="true"></div>
   <p class="panel-text">
-    Modulare Bars, beleuchtetes Rückbuffet und saubere Stationen sorgen für Tempo und eine starke Bühne.
+    Wenn Sie unser Cocktail Catering mieten, mixen wir für Sie und Ihre Gäste klassische und moderne Cocktails oder/und Longdrinks aus besten Zutaten.
+    Wir arbeiten mit bekannten Markenspirituosen, hochwertigen Fruchtsäften der Marke Bauer Fruchtsaft, Fillern von Thomas Henry und frischen Zutaten,
+    die wir mit Sachverstand aussuchen und verarbeiten.
   </p>
+
   <p class="panel-text">
-    Wir bringen Gläser, Eis, Garnituren und Backup-Produktion mit – inklusive Team für große Gästezahlen und lange Events.
+    Haben Sie genaue Vorstellungen für Ihr Cocktail Catering oder einen Lieblingscocktail? Wir helfen Ihnen bei der Auswahl!
   </p>
+
+  <p class="panel-text">
+    Vertrauen Sie unserer Erfahrung und wählen Sie eines unserer Cocktailmenus.
+  </p>
+
+  <ul style="list-style:none; padding-left:0; margin:0;">
+    <li class="panel-text">
+      <span class="accent-text" style="font-size:1.25em; line-height:1; display:inline-block; margin-right:0.35rem;">▸</span>
+      Cocktailmenus
+    </li>
+    <li class="panel-text">
+      <span class="accent-text" style="font-size:1.25em; line-height:1; display:inline-block; margin-right:0.35rem;">▸</span>
+      Teilen Sie uns Ihre Wünsche mit und wir setzen Sie um!
+    </li>
+    <li class="panel-text">
+      <span class="accent-text" style="font-size:1.25em; line-height:1; display:inline-block; margin-right:0.35rem;">▸</span>
+      Auf Wunsch individuelles Getränkekonzept.
+    </li>
+    <li class="panel-text">
+      <span class="accent-text" style="font-size:1.25em; line-height:1; display:inline-block; margin-right:0.35rem;">▸</span>
+      Eine Cocktailkarte für die mobile Cocktailbar gestalten wir Ihnen kostenfrei!
+    </li>
+  </ul>
+
+  <p class="panel-text">
+    Sprechen Sie mit uns und lassen Sie sich beraten.
+  </p>
+
+  <a class="panel-cta mb-btn" href="#menus" style="margin-top:0.25rem;">
+    COCKTAIL MENU AUSWAHL ANSEHEN
+  </a>
 `;
 
 const tileRundumSorglosDE = `
@@ -137,17 +155,7 @@ const tilesRows = [
       bgImage: "/images/russian-wild-berry-cocktail.jpg",
       speed: 0.35,
     },
-    right: { kind: "text", ariaLabel: "Menüs und Produkte", html: menusTileHtml },
-  },
-  {
-    left: { kind: "text", ariaLabel: "Setups und Logistik", html: logisticsTileHtml },
-    right: {
-      kind: "image",
-      panelClass: "is-align-right is-bar",
-      ariaLabel: "Mobile Bar Setup",
-      bgImage: "/images/mobile-cocktailbar-mit-rueckbuffet.jpg",
-      speed: 0.35,
-    },
+    right: { kind: "text", ariaLabel: "Cocktails & Longdrinks", html: tileCocktailsLongdrinksDE },
   },
 ];
 

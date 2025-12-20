@@ -41,33 +41,51 @@ const introTileHtml = `
   </p>
 `;
 
-const menusTileHtml = `
+const tileCocktailsLongdrinksEN = `
   <h3 class="panel-title display-heading display-size-h1">
-    <span class="accent-text">MENUS</span> & PRODUCT QUALITY
+    <span class="accent-text">COCKTAILS</span> &amp; LONG DRINKS
   </h3>
-  <div class="panel-sep" aria-hidden="true"></div>
-  <p class="panel-text">
-    Classics, signatures or zero-proof: we tailor every cocktail menu to guests, occasion and brand.
-  </p>
-  <p class="panel-text">
-    Fresh juices, clear ice, premium spirits and skilled execution are our baseline – themed specials on request.
-  </p>
-  <a class="panel-cta mb-btn" href="/en/request" aria-label="${t.cta.requestNow}">
-    ${t.cta.requestNow}
-  </a>
-`;
 
-const logisticsTileHtml = `
-  <h3 class="panel-title display-heading display-size-h1">
-    <span class="accent-text">SETUPS</span> & LOGISTICS
-  </h3>
-  <div class="panel-sep" aria-hidden="true"></div>
   <p class="panel-text">
-    Modular bars, illuminated backbars and tidy stations keep service fast and on-brand.
+    When you hire our cocktail catering, we mix classic and modern cocktails and/or long drinks for you and your guests using the best ingredients.
+    We work with well-known premium spirit brands, high-quality fruit juices (Bauer Fruchtsaft), Thomas Henry mixers, and fresh ingredients that we
+    select and prepare with care and expertise.
   </p>
+
   <p class="panel-text">
-    We supply glassware, ice, garnishes and backup production – plus teams built for high volumes and long nights.
+    Do you have a specific idea for your cocktail catering — or a favourite cocktail? We’ll help you choose the perfect selection.
   </p>
+
+  <p class="panel-text">
+    Trust our experience and choose one of our cocktail menus.
+  </p>
+
+  <ul style="list-style:none; padding-left:0; margin:0;">
+    <li class="panel-text">
+      <span class="accent-text" style="font-size:1.25em; line-height:1; display:inline-block; margin-right:0.35rem;">▸</span>
+      Cocktail menus
+    </li>
+    <li class="panel-text">
+      <span class="accent-text" style="font-size:1.25em; line-height:1; display:inline-block; margin-right:0.35rem;">▸</span>
+      Tell us what you want — we’ll make it happen.
+    </li>
+    <li class="panel-text">
+      <span class="accent-text" style="font-size:1.25em; line-height:1; display:inline-block; margin-right:0.35rem;">▸</span>
+      Custom drink concept available on request.
+    </li>
+    <li class="panel-text">
+      <span class="accent-text" style="font-size:1.25em; line-height:1; display:inline-block; margin-right:0.35rem;">▸</span>
+      We create a cocktail menu card for your mobile bar free of charge.
+    </li>
+  </ul>
+
+  <p class="panel-text">
+    Get in touch — we’ll be happy to advise you.
+  </p>
+
+  <a class="panel-cta mb-btn" href="#menus" style="margin-top:0.25rem;">
+    VIEW COCKTAIL MENU OPTIONS
+  </a>
 `;
 
 const tileRundumSorglosEN = `
@@ -137,17 +155,7 @@ const tilesRows = [
       bgImage: "/images/russian-wild-berry-cocktail.jpg",
       speed: 0.35,
     },
-    right: { kind: "text", ariaLabel: "Menus and Quality", html: menusTileHtml },
-  },
-  {
-    left: { kind: "text", ariaLabel: "Setups and Logistics", html: logisticsTileHtml },
-    right: {
-      kind: "image",
-      panelClass: "is-align-right is-bar",
-      ariaLabel: "Mobile Bar Setup",
-      bgImage: "/images/mobile-cocktailbar-mit-rueckbuffet.jpg",
-      speed: 0.35,
-    },
+    right: { kind: "text", ariaLabel: "Cocktails & Longdrinks", html: tileCocktailsLongdrinksEN },
   },
 ];
 
