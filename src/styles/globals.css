@@ -205,19 +205,14 @@ h3,
   margin-top: 0 !important;
 }
 
-.wide-rows .panel--text:not(.panel--h1) .panel-text,
-.wide-rows .panel--text:not(.panel--h1) ul {
-  /* Tiles: Content startet ohne zusätzlichen top-margin */
-  margin-top: 0 !important;
-}
-
 .wide-rows .panel--text:not(.panel--h1) .panel-text {
   /* Stattdessen dezente Abstände NACH Content-Blöcken (natürlicher Lesefluss) */
-  margin-bottom: 0.6rem;
+  margin: 0 0 0.6rem 0 !important;
 }
 
 .wide-rows .panel--text:not(.panel--h1) ul {
-  margin-bottom: 0.75rem;
+  margin: 0 0 0.75rem 0 !important;
+  padding-left: 0 !important;
 }
 
 .wide-rows .panel--text:not(.panel--h1) ul,
@@ -232,6 +227,29 @@ h3,
 .wide-rows .panel--text:not(.panel--h1) li.panel-text {
   font-size: 1em;
   line-height: 1.7;
+}
+
+.wide-rows .panel--text:not(.panel--h1) ul.mb-bullets {
+  list-style: none;
+}
+
+.wide-rows .panel--text:not(.panel--h1) ul.mb-bullets li {
+  position: relative;
+  padding-left: 1.05rem;
+}
+
+.wide-rows .panel--text:not(.panel--h1) ul.mb-bullets li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 1em;
+  line-height: 1.7;
+}
+
+.wide-rows .panel--text:not(.panel--h1) details {
+  margin: 0 0 0.75rem 0 !important;
 }
 
 .wide-rows .panel--text:not(.panel--h1) details > summary {
