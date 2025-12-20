@@ -316,6 +316,47 @@ const { rows } = Astro.props as { rows: Row[] };
     margin-right: auto;
     min-width: 0;
   }
+
+  /* ===== wide-rows: make tiles typography + spacing consistent ===== */
+
+  /* A) Text-Tiles dürfen nicht mit dem globalen Top-Offset "runtergedrückt" werden */
+  .wide-rows .panel--text {
+    padding-top: var(--tile-pad-y) !important; /* statt --tile-text-top-offset */
+    justify-content: flex-start !important;
+  }
+
+  /* B) Abstand Titel/Divider -> erster Text muss natürlich sein */
+  .wide-rows .panel--text .panel-inner {
+    gap: 0 !important; /* killt --text-block-gap in Tiles */
+  }
+
+  /* C) Divider wieder wie früher (echtes Element), nicht pseudo-magie */
+  .wide-rows .panel--text .panel-sep {
+    display: block !important;
+    margin-top: 0.5rem;
+    margin-bottom: 0.35rem;
+  }
+
+  /* Falls irgendwo ein ::after Divider aktiv ist: in wide-rows deaktivieren */
+  .wide-rows .panel--text .panel-title::after {
+    content: none !important;
+  }
+
+  /* D) Fließtextgröße vereinheitlichen: Tiles laufen auf body-font-size (18px) */
+  .wide-rows .panel--text {
+    font-size: var(--body-font-size, 18px);
+    line-height: 1.7;
+  }
+
+  /* E) Bullets dürfen NICHT kleiner sein: ul/li erben exakt vom Tile */
+  .wide-rows .panel--text ul,
+  .wide-rows .panel--text li {
+    font-size: inherit !important;
+    line-height: inherit !important;
+  }
+
+  /* optional: falls irgendwo <strong> reinkommt */
+  .wide-rows .panel--text strong { font-weight: 400; }
 </style>
 
 <ParallaxPanelsScript />
