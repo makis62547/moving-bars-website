@@ -159,6 +159,29 @@ export const de = {
     q10: "WIE SCHNELL BEKOMMEN WIR EINE ANTWORT / EIN ANGEBOT?",
     a10: "Ihr erhaltet innerhalb von 24 Stunden eine Antwort bzw. ein Angebot – versprochen!",
   },
+  faqCocktailCourses: {
+    buttonLabel: "FAQ COCKTAILKURS",
+    q1: "WAS IST IN EINEM COCKTAILKURS ENTHALTEN?",
+    a1: "Mobile Bar oder Stationen, professionelle Barkeeper, Eis, Gläser, Shaker, Zutaten, Garnish sowie Rezepte und Step-by-Step-Anleitung.",
+    q2: "FÜR WELCHE ANLÄSSE GEEIGNET?",
+    a2: "Perfekt für Teamevents, Workshops, Junggesellenabschiede, private Feiern oder als Incentive für Kunden und Mitarbeiter.",
+    q3: "WO FINDET DER KURS STATT?",
+    a3: "Bei euch vor Ort in Berlin, Leipzig, München oder deutschlandweit. Alternativ in unseren Partner-Locations oder als Online Cocktailkurs.",
+    q4: "WIE LANGE DAUERT EIN KURS?",
+    a4: "In der Regel 90–120 Minuten je nach Paket (Basic oder Premium) zzgl. Aufbau und Abbau vor Ort.",
+    q5: "WIE VIELE PERSONEN KÖNNEN TEILNEHMEN?",
+    a5: "Kleingruppen ab ca. 6 Personen sind ideal. Für große Teams organisieren wir mehrere Stationen oder Rotationsgruppen.",
+    q6: "WAS BRINGT IHR MIT?",
+    a6: "Wir bringen Bar-Setup, Shaker, Jigger, Siebe, Eis, Säfte, Sirups und frische Zutaten mit. Gläser und Mobiliar nach Absprache.",
+    q7: "WIE LÄUFT EIN ONLINE COCKTAILKURS AB?",
+    a7: "Live-Session mit mehreren Kameraperspektiven, Moderation und Q&A. Auf Wunsch inkl. Versandbox (Basic) oder Premium-Box mit Spirituosen.",
+    q8: "GIBT ES ALKOHOLFREIE ODER VEGANE OPTIONEN?",
+    a8: "Ja, Mocktails und vegane Varianten sind möglich. Wir passen Rezepte an Unverträglichkeiten oder alkoholfreie Wünsche an.",
+    q9: "IN WELCHEN SPRACHEN BIETET IHR KURSE AN?",
+    a9: "Deutsch und Englisch. Inhalte und Schwierigkeitsgrad passen wir an Einsteiger, Fortgeschrittene oder Profis an.",
+    q10: "WIE KANN ICH BUCHEN UND WANN SOLLTE ICH ANFRAGEN?",
+    a10: "Je früher desto besser für Wunschtermine. Kurzfristige Anfragen prüfen wir tagesaktuell – Ihr Angebot erhaltet ihr innerhalb von 24 Stunden.",
+  },
   pricing: {
     table: {
       package: "Paket",
@@ -462,6 +485,108 @@ export const de = {
               </p>
               <a class="panel-cta mb-btn" href="/de/cocktail-catering">COCKTAIL CATERING ANSEHEN</a>
             `,
+          },
+        },
+      ],
+      servicesHeadline: { accent: "NOCH NICHT GENUG?", rest: "WIR KÖNNEN NOCH MEHR!", sep: "–" },
+    },
+    cocktailCourses: {
+      hero: {
+        titleLine1: "COCKTAILKURSE",
+        titleLine2: "IN BERLIN & ONLINE",
+        heroText: "Mobiler Cocktailkurs, Workshop oder Online Class – perfekt für Teams, Events und private Feiern.",
+        heroUsps: [
+          "COCKTAILKURSE FÜR PRIVAT & EVENT",
+          "TEAMBUILDING & ENTERTAINMENT",
+          "ONLINE COCKTAILKURS BASIC & PREMIUM",
+          "FORTBILDUNG FÜR DIE GASTRONOMIE",
+        ],
+        bgImage: "/images/cocktailkurse-berlin.jpg",
+      },
+      intro: {
+        titleLine1: "COCKTAILKURS",
+        titleLine2: "BUCHEN IN BERLIN",
+        heroText:
+          "Cocktailkurs, Schulung oder Cocktailworkshop - Wir geben unser Wissen weiter. Vom Einsteiger bis zum Profi - Wir haben für jeden den passenden Cocktailkurs. Als Highlight auf Ihrer privaten Feier oder als Incentive mit Ihren Mitarbeitern. Wir bringen alles mit und zeigen Ihnen wie man Cocktails mixt - analog in Berlin, Leipzig, München....deutschlandweit oder ONLINE als Teil Ihres virtuellen Teamevents.",
+        ctas: [],
+      },
+      tilesRows: [
+        {
+          left: {
+            kind: "text",
+            ariaLabel: "Cocktailkurse für Events und private Gruppen",
+            html: `
+              <h3 class="panel-title display-heading display-size-h1">
+                <span class="accent-text">COCKTAILKURSE</span> FÜR TEAMEVENT & PRIVAT
+              </h3>
+              <p class="panel-text">
+                Live in Berlin, Leipzig, München oder deutschlandweit – für Teams, JGAs, Incentives und private Feiern.
+              </p>
+              <ul class="mb-bullets">
+                <li class="panel-text">Formate ab ca. 6 Personen, auf Wunsch auch 50+ in Rotationen.</li>
+                <li class="panel-text">Vom Einsteiger-Crashkurs bis zum Profi-Workshop mit Flair-Elementen.</li>
+                <li class="panel-text">Entertainment inklusive: Wir zeigen, erklären und mixen gemeinsam.</li>
+              </ul>
+            `,
+          },
+          right: {
+            kind: "image",
+            panelClass: "is-intro",
+            ariaLabel: "Mobiler Cocktailkurs in Berlin",
+            bgImage: "/images/mobiler-cocktailkurs-berlin.jpg",
+            speed: 0.35,
+          },
+        },
+        {
+          left: {
+            kind: "image",
+            panelClass: "is-intro",
+            ariaLabel: "Cocktailkurs mit Shaker und Bar-Setup",
+            bgImage: "/images/cocktail-catering-moving-bars.jpg",
+            speed: 0.35,
+          },
+          right: {
+            kind: "text",
+            ariaLabel: "Online Cocktailkurse Basic und Premium",
+            html: `
+              <h3 class="panel-title display-heading display-size-h1">
+                <span class="accent-text">ONLINE</span> COCKTAILKURSE
+              </h3>
+              <p class="panel-text">
+                Basic & Premium live aus unserer Bar. Wir streamen mit mehreren Kameras, moderieren den Kurs und beantworten Fragen in Echtzeit.
+              </p>
+              <ul class="mb-bullets">
+                <li class="panel-text">Optional mit Versandbox: Zutaten, Sirups, Garnish und auf Wunsch Spirituosen.</li>
+                <li class="panel-text">Step-by-Step Anleitungen, Rezeptkarten und Technik-Support inklusive.</li>
+                <li class="panel-text">Perfekt für Remote-Teams oder hybride Veranstaltungen.</li>
+              </ul>
+            `,
+          },
+        },
+        {
+          left: {
+            kind: "text",
+            ariaLabel: "Schulungen und Fortbildungen für Bars und Gastronomie",
+            html: `
+              <h3 class="panel-title display-heading display-size-h1">
+                <span class="accent-text">TRAINING</span> FÜR DIE GASTRONOMIE
+              </h3>
+              <p class="panel-text">
+                Wir schulen Bar- und Service-Teams in Rezeptur-Standards, Mise en Place, Speed-Drinks und effizientem Arbeiten.
+              </p>
+              <ul class="mb-bullets">
+                <li class="panel-text">Menu-Entwicklung, Signature Drinks und kalkulationssichere Rezepte.</li>
+                <li class="panel-text">Qualitäts-Checks, Tastings und Trainings direkt vor Ort.</li>
+                <li class="panel-text">Up-Selling an der Bar, Gastansprache und Team-Workflows.</li>
+              </ul>
+            `,
+          },
+          right: {
+            kind: "image",
+            panelClass: "is-intro",
+            ariaLabel: "Teamtraining an der mobilen Bar",
+            bgImage: "/images/moving-bars-mobile-cocktailbar.jpg",
+            speed: 0.35,
           },
         },
       ],

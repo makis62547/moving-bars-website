@@ -159,6 +159,29 @@ export const en = {
     q10: "HOW FAST WILL WE GET A REPLY / A QUOTE?",
     a10: "You’ll receive a reply or a quote within 24 hours — promised!",
   },
+  faqCocktailCourses: {
+    buttonLabel: "FAQ COCKTAIL CLASS",
+    q1: "WHAT’S INCLUDED IN A COCKTAIL CLASS?",
+    a1: "Mobile bar or stations, pro bartenders, ice, glassware, shakers, ingredients, garnish plus recipes and step-by-step guidance.",
+    q2: "WHAT OCCASIONS IS IT FOR?",
+    a2: "Ideal for team events, workshops, bachelor/ette parties, private celebrations or as an incentive for clients and staff.",
+    q3: "WHERE DOES THE CLASS TAKE PLACE?",
+    a3: "At your venue in Berlin, Leipzig, Munich or anywhere in Germany. Alternatively in our partner locations or as an online cocktail class.",
+    q4: "HOW LONG DOES A CLASS LAST?",
+    a4: "Typically 90–120 minutes depending on the package (Basic or Premium) plus setup and teardown on site.",
+    q5: "HOW MANY PEOPLE CAN JOIN?",
+    a5: "Small groups from around 6 people work great. For larger teams we set up multiple stations or rotations.",
+    q6: "WHAT DO YOU BRING?",
+    a6: "We supply the bar setup, shakers, jiggers, strainers, ice, juices, syrups and fresh ingredients. Glassware and furniture on request.",
+    q7: "HOW DO ONLINE CLASSES WORK?",
+    a7: "Live session with multi-camera setup, moderation and Q&A. Optional shipping boxes: Basic (mixers) or Premium including spirits.",
+    q8: "DO YOU OFFER ALCOHOL-FREE OR VEGAN OPTIONS?",
+    a8: "Yes, mocktails and vegan builds are available. We adapt recipes for dietary needs or alcohol-free requests.",
+    q9: "WHAT LANGUAGES DO YOU OFFER?",
+    a9: "German and English. We tailor content and difficulty for beginners, advanced groups or professionals.",
+    q10: "HOW DO I BOOK AND WHEN SHOULD I INQUIRE?",
+    a10: "The earlier the better for preferred dates. We also handle short-notice requests subject to availability — you’ll get a quote within 24 hours.",
+  },
   pricing: {
     table: {
       package: "Package",
@@ -462,6 +485,108 @@ export const en = {
               </p>
               <a class="panel-cta mb-btn" href="/en/cocktail-catering">VIEW COCKTAIL CATERING</a>
             `,
+          },
+        },
+      ],
+      servicesHeadline: { accent: "NOT ENOUGH YET?", rest: "WE CAN DO EVEN MORE!", sep: "–" },
+    },
+    cocktailCourses: {
+      hero: {
+        titleLine1: "COCKTAIL CLASSES",
+        titleLine2: "IN BERLIN & ONLINE",
+        heroText: "Mobile cocktail class, workshop or online session — ideal for teams, events and private groups.",
+        heroUsps: [
+          "COCKTAIL CLASSES FOR PRIVATE & EVENTS",
+          "TEAMBUILDING & ENTERTAINMENT",
+          "ONLINE COCKTAIL CLASS – BASIC & PREMIUM",
+          "TRAINING FOR HOSPITALITY TEAMS",
+        ],
+        bgImage: "/images/cocktailkurse-berlin.jpg",
+      },
+      intro: {
+        titleLine1: "BOOK A COCKTAIL",
+        titleLine2: "CLASS IN BERLIN",
+        heroText:
+          "Cocktail class, training or workshop – we share our knowledge. From beginner to pro, we offer the right format for everyone. Perfect as a highlight at a private celebration or as an incentive with your team. We bring everything and show you how to mix cocktails – on-site in Berlin, Leipzig, Munich and across Germany, or ONLINE as part of your virtual team event.",
+        ctas: [],
+      },
+      tilesRows: [
+        {
+          left: {
+            kind: "text",
+            ariaLabel: "Cocktail classes for team events and private groups",
+            html: `
+              <h3 class="panel-title display-heading display-size-h1">
+                <span class="accent-text">COCKTAIL CLASSES</span> FOR TEAM EVENTS & PRIVATE GROUPS
+              </h3>
+              <p class="panel-text">
+                On-site in Berlin, Leipzig, Munich or anywhere in Germany — for teams, incentives, bachelor/ette parties and celebrations.
+              </p>
+              <ul class="mb-bullets">
+                <li class="panel-text">Formats from roughly 6 guests, or 50+ with rotating stations.</li>
+                <li class="panel-text">From beginner crash course to advanced workshop with flair elements.</li>
+                <li class="panel-text">Built-in entertainment: we demo, explain and shake side by side.</li>
+              </ul>
+            `,
+          },
+          right: {
+            kind: "image",
+            panelClass: "is-intro",
+            ariaLabel: "Mobile cocktail class in Berlin",
+            bgImage: "/images/mobiler-cocktailkurs-berlin.jpg",
+            speed: 0.35,
+          },
+        },
+        {
+          left: {
+            kind: "image",
+            panelClass: "is-intro",
+            ariaLabel: "Cocktail workshop with shaker setup",
+            bgImage: "/images/cocktail-catering-moving-bars.jpg",
+            speed: 0.35,
+          },
+          right: {
+            kind: "text",
+            ariaLabel: "Online cocktail classes Basic and Premium",
+            html: `
+              <h3 class="panel-title display-heading display-size-h1">
+                <span class="accent-text">ONLINE</span> COCKTAIL CLASSES
+              </h3>
+              <p class="panel-text">
+                Basic & Premium streamed live from our bar. Multi-camera view, moderation and real-time Q&A included.
+              </p>
+              <ul class="mb-bullets">
+                <li class="panel-text">Optional shipping box: mixers, syrups, garnish and spirits on request.</li>
+                <li class="panel-text">Step-by-step guidance, recipe cards and tech support included.</li>
+                <li class="panel-text">Perfect for remote teams or hybrid events.</li>
+              </ul>
+            `,
+          },
+        },
+        {
+          left: {
+            kind: "text",
+            ariaLabel: "Training and education for bars and hospitality",
+            html: `
+              <h3 class="panel-title display-heading display-size-h1">
+                <span class="accent-text">TRAINING</span> FOR HOSPITALITY
+              </h3>
+              <p class="panel-text">
+                We train bar and service teams on recipe standards, mise en place, speed drinks and efficient workflows.
+              </p>
+              <ul class="mb-bullets">
+                <li class="panel-text">Menu creation, signature drinks and reliable costing.</li>
+                <li class="panel-text">Quality checks, tastings and hands-on coaching on site.</li>
+                <li class="panel-text">Upselling at the bar, guest engagement and team routines.</li>
+              </ul>
+            `,
+          },
+          right: {
+            kind: "image",
+            panelClass: "is-intro",
+            ariaLabel: "Team training at the mobile bar",
+            bgImage: "/images/moving-bars-mobile-cocktailbar.jpg",
+            speed: 0.35,
           },
         },
       ],
