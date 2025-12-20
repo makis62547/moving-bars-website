@@ -216,16 +216,6 @@ export const de = {
           "Sie wollen noch mehr? Entertainment und Unterhaltung für Ihre Gäste? Buchen Sie zusätzlich zum Cocktail Catering einen Showbarkeeper oder eine Cocktailshow als Highlight für Ihre Veranstaltung in Berlin oder anderswo in Deutschland. Wirbelnde Flaschen und Shaker, Cocktailartistik während der Herstellung der Cocktails oder eröffnen Sie die mobile Cocktailbar mit einer Cocktailshow und leiten Sie so den Partyteil Ihrer Veranstaltung endgültig ein.",
           "Buchen Sie unsere Cocktailshow aus Berlin und bieten Sie Ihren Gästen ein unvergessliches Erlebnis. Unsere preisgekrönten Showbarkeeper werden Sie begeistern. Working Flair oder Exhibition Flair, beim Gast und Zuschauer wird es einen bleibenden Eindruck hinterlassen. Alleine oder als Tandem, bieten Sie Ihren Gästen diese besondere Art der Unterhaltung. So wird die Wartezeit auf den eigenen Drink zur persönlichen Darbietung!",
         ],
-        ctas: [
-          {
-            href: "#pakete-preise",
-            label: "HIER ALLE PAKETE & PREISE",
-          },
-          {
-            href: "#faq",
-            label: "FAQ COCKTAIL SHOW & SHOWBARKEEPER",
-          },
-        ],
       },
       tilesRows: [
         {
