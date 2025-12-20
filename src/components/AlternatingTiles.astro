@@ -363,13 +363,6 @@ const { rows } = Astro.props as { rows: Row[] };
     gap: 0 !important;
   }
 
-  /* Divider steuert Abstand (wie H1) */
-  .wide-rows .panel--text:not(.panel--h1) .panel-sep {
-    display: block !important;
-    margin-top: 0.5rem;
-    margin-bottom: 0.35rem;
-  }
-
   /* Erster Content-Block darf keinen extra Top-Abstand haben */
   .wide-rows .panel--text:not(.panel--h1) .panel-inner > :is(p, ul, ol):first-of-type {
     margin-top: 0 !important;
@@ -392,8 +385,10 @@ const { rows } = Astro.props as { rows: Row[] };
   /* echten Divider sichtbar + kleinere Abstände */
   .wide-rows .panel--text:not(.panel--h1) .panel-sep {
     display: block !important;
-    margin-top: 0.35rem !important;
-    margin-bottom: 0.35rem !important;
+    height: 1px;
+    width: 100%;
+    background: rgba(var(--accent-rgb), 0.75);
+    margin: 0.25rem 0 0.35rem !important;
   }
 
   /* erster Contentblock direkt unter Divider: kein extra Abstand */
@@ -426,8 +421,10 @@ const { rows } = Astro.props as { rows: Row[] };
   /* ensure divider is the only controlled spacing */
   .wide-rows .panel--text:not(.panel--h1) .panel-sep {
     display: block !important;
-    margin-top: 0.35rem !important;
-    margin-bottom: 0.35rem !important;
+    height: 1px;
+    width: 100%;
+    background: rgba(var(--accent-rgb), 0.75);
+    margin: 0.25rem 0 0.35rem !important;
   }
 
   /* if any pseudo-divider exists globally, disable it in tiles */
@@ -476,8 +473,10 @@ const { rows } = Astro.props as { rows: Row[] };
 
   :global(.wide-rows .panel--text:not(.panel--h1) .panel-sep) {
     display: block !important;
-    margin-top: 0.35rem !important;
-    margin-bottom: 0.35rem !important;
+    height: 1px;
+    width: 100%;
+    background: rgba(var(--accent-rgb), 0.75);
+    margin: 0.25rem 0 0.35rem;
   }
 
   :global(.wide-rows .panel--text:not(.panel--h1) ul),
