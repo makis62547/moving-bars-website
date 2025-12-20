@@ -1,0 +1,308 @@
+---
+import ParallaxPanelsScript from "./scripts/ParallaxPanelsScript.astro";
+
+type ImagePanel = { kind: "image"; panelClass: string; ariaLabel?: string; bgImage: string; speed?: number };
+type TextPanel = { kind: "text"; ariaLabel?: string; html: string };
+type Panel = ImagePanel | TextPanel;
+type Row = { left: Panel; right: Panel };
+
+const { rows } = Astro.props as { rows: Row[] };
+
+const renderPanel = (panel: Panel) => {
+  if (panel.kind === "image") {
+    return (
+      <article
+        class={`panel panel--slider ${panel.panelClass}`}
+        aria-label={panel.ariaLabel}
+        data-panel-parallax
+        data-speed={`${panel.speed ?? 0.35}`}
+      >
+        <div class="panel-bg" role="presentation" style={`background-image: url('${panel.bgImage}');`}></div>
+      </article>
+    );
+  }
+
+  return (
+    <article class="panel panel--text" aria-label={panel.ariaLabel}>
+      <div class="panel-inner" set:html={panel.html}></div>
+    </article>
+  );
+};
+---
+
+<section class="under-hero-tiles" aria-label="Ergänzende Informationen" data-uh-tiles>
+  <div class="wide-rows" aria-label="Quadrat-Kacheln">
+    {rows.map((row) => (
+      <div class="wide-row">
+        {renderPanel(row.left)}
+        {renderPanel(row.right)}
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  :root {
+    --tile-height-top-row: 720px;  /* adjustable height for first row */
+  }
+
+  @media (max-width: 900px) {
+    .wide-row { grid-template-columns: 1fr; }
+    .wide-row > .panel--slider { order: 0; }
+    .wide-row > .panel--text { order: 1; }
+  }
+
+  .under-hero-tiles {
+    background: #000 !important;
+    color: var(--text-color);
+    padding-top: 0;
+    padding-bottom: var(--under-hero-pad-bottom, 0);
+    padding-left: var(--section-pad-inline);
+    padding-right: var(--section-pad-inline);
+    margin: 0;
+    overflow-x: visible; /* full-bleed grid handles overflow; page clamps at root */
+  }
+
+  /* ---------- INTRO / H2 (unverändert) ---------- */
+  .tile--intro { border: none; background: transparent; padding: 0; }
+
+  .tile--intro .intro {
+    display: grid;
+    grid-template-columns: clamp(240px, 20vw, 320px) 1px minmax(0, 1fr);
+    column-gap: clamp(1.25rem, 3vw, 3rem);
+    align-items: center;
+    width: 100%;
+  }
+
+  .tile--intro .intro__icon {
+    justify-self: end;
+    display: grid;
+    place-items: center end;
+    /* Icon-Farbe an die Akzent-Variable anbinden */
+    color: var(--accent);
+  }
+
+  .tile--intro .intro__svg {
+    width: min(260px, 100%);
+    height: auto;
+    display: block;
+  }
+
+  .tile--intro .intro__sep {
+    align-self: stretch;
+    background: rgba(var(--accent-rgb), 0.75);
+  }
+
+  .tile--intro .intro__copy { width: 100%; max-width: var(--section-text-width) !important; min-width: 0; }
+
+  .tile--intro .intro__copy h2 {
+    margin: 0;
+    color: var(--heading-color);
+    text-transform: uppercase;
+  }
+
+  .tile--intro .intro__copy .h2-line1 { white-space: nowrap; }
+
+  .under-hero-tiles .tile--intro .intro__copy .intro__paragraph {
+    margin: 1rem 0 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    max-inline-size: none !important;
+    justify-self: stretch !important;
+    color: rgba(247, 247, 247, 0.8);
+    line-height: 1.7;
+  }
+
+  /* ---------- 2×2 Quadrate full-bleed ---------- */
+  .wide-rows {
+    /* echtes full-bleed: ignoriert Containerbreite und content pad */
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    width: 100svw;
+    margin-left: calc(50% - 50svw);
+    margin-right: calc(50% - 50svw);
+    display: grid;
+    gap: 0;
+    padding: 0;
+    background: #000;
+  }
+
+  .wide-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;              /* ✅ kein Spalt */
+    background: #000;    /* ✅ falls rounding, bleibt schwarz */
+    align-items: stretch;
+    margin: 0;
+  }
+
+  .wide-row + .wide-row { margin-top: 0; }
+
+  @media (min-width: 900px) {
+    .wide-row { grid-template-columns: 1fr 1fr; }
+  }
+
+  .panel {
+    background: #000 !important;
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+
+    min-height: var(--tile-height);
+    height: var(--tile-height);
+  }
+
+  .panel--text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: var(--tile-height);
+    height: var(--tile-height);
+    padding: clamp(1.25rem, 3vw, 2.25rem);
+    padding-top: var(--tile-text-top-offset);
+    padding-bottom: var(--tile-pad-y);
+  }
+
+  .panel--slider {
+    position: relative;
+    overflow: hidden;
+    min-height: var(--tile-height);
+    height: var(--tile-height);
+  }
+
+  .panel--slider {
+    --bg-zoom: 24%;
+    --bg-x: 50%;
+    --bg-y: 50%;
+  }
+
+  .panel--slider.is-intro {
+    --bg-zoom: 26%;
+    --bg-x: 52%;
+    --bg-y: 50%;
+  }
+
+  .panel--slider.is-cocktail {
+    --bg-zoom: 70%;   /* vorher war’s zu wenig -> jetzt deutlich mehr */
+    --bg-x: 50%;
+    --bg-y: 50%;
+  }
+
+  .panel--slider.is-bar {
+    --bg-zoom: 18%; /* Startwert: sollte die schwarzen Ränder killen */
+    --bg-x: 50%;
+    --bg-y: 50%;
+  }
+
+  .panel--slider .panel-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-size: auto calc(100% + var(--bg-zoom));
+    background-position: var(--bg-x) calc(var(--bg-y) + var(--py, 0px));
+    background-repeat: no-repeat;
+    background-color: #000;
+    background-attachment: scroll;
+    z-index: 0;
+  }
+
+  .panel-inner { max-width: var(--tile-text-width); display: grid; gap: var(--text-block-gap); min-width: 0; }
+
+  .panel-title {
+    margin: 0;
+    text-transform: uppercase;
+    font-size: clamp(1.6rem, 2.4vw, 2.6rem);
+    line-height: var(--heading-line-height);
+    color: var(--heading-color);
+  }
+
+  .panel-title.display-size-h1 {
+    font-size: clamp(2.25rem, 4.4vw, 3.25rem);
+  }
+
+  .underhero-intro-title {
+    hyphens: none;
+    -webkit-hyphens: none;
+    overflow-wrap: normal;
+    word-break: keep-all;
+  }
+
+  .panel-title--event {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    hyphens: auto;
+  }
+
+  .panel-sep { height: 1px; background: rgba(var(--accent-rgb), 0.75); width: 100%; }
+
+  .panel-text {
+    margin: 0;
+    color: rgba(247, 247, 247, 0.82);
+    line-height: 1.7;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  .panel--icon {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: clamp(1rem, 3vw, 2rem);
+    background: #000;
+    height: var(--tile-height);
+  }
+
+  .icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  :global(.big-cocktail-icon) {
+    width: clamp(180px, 24vw, 360px);
+    height: auto;
+    color: var(--accent);
+    transform: translateY(var(--tile-icon-offset-y));
+  }
+
+  /* Text tiles top-aligned */
+  .panel--text {
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+  }
+
+  /* Icon tile left-aligned */
+  .panel--icon {
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+  }
+
+  .icon-wrapper {
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    width: auto !important;
+  }
+
+  /* Separate height for the first tile row */
+  .top-row-panel {
+    height: var(--tile-height-top-row) !important;
+    min-height: var(--tile-height-top-row) !important;
+  }
+
+  .panel--text .panel-inner {
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 0;
+  }
+</style>
+
+<ParallaxPanelsScript />
