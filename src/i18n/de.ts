@@ -11,7 +11,7 @@ export const de = {
     requestNow: "JETZT ANFRAGEN",
     viewCocktailMenus: "HIER UNSERE COCKTAIL MENUS ANSEHEN",
     allPackagesAndPrices: "HIER ALLE PAKETE UND PREISE",
-    faqMobileCocktailbar: "FAQ MOBILE COCKTAILBAR MIETEN",
+    faqMobileCocktailbar: "FAQ MOBILE BAR MIETEN",
     sendInquiry: "ANFRAGE SENDEN",
     learnMore: "Mehr erfahren",
     viewDetails: "Details ansehen",
@@ -137,7 +137,7 @@ export const de = {
     },
   },
   faqMobileCocktailbar: {
-    buttonLabel: "FAQ Mobile Cocktailbar mieten",
+    buttonLabel: "FAQ Mobile Bar mieten",
     q1: "WAS IST IM COCKTAIL CATERING PAKET ENTHALTEN?",
     a1: "Mobile Bar, Personal, Eis, Gläser, Zutaten, Deko, Auf- und Abbau sowie eine Menükarte.",
     q2: "WIE LÄUFT DAS COCKTAIL CATERING AM EVENT AB?",
@@ -214,13 +214,17 @@ export const de = {
         titleLine2: "MOBILE BAR MIETEN IN BERLIN",
         heroText: [
           "Du willst eine mobile Bar mieten in Berlin für Deine Feier, Hochzeit oder Firmen-Veranstaltung? Dann bist Du hier genau richtig!",
-          "Angebote für unser Full-Service-Cocktail-Catering mit mobiler Bar, professionellem Barkeeper und leckeren Cocktails & Longdrinks findest Du hier:",
+          {
+            text: "Angebote für unser Full-Service-Cocktail-Catering mit mobiler Bar, professionellem Barkeeper und leckeren Cocktails & Longdrinks findest Du hier:",
+            cta: {
+              label: "COCKTAIL CATERING PAKET ANGEBOTE",
+              href: "/de/cocktail-catering",
+              className: "cta-inline",
+            },
+          },
           "Mehr über unser flexibles Barsystem, seine umfangreichen Möglichkeiten und Preise für die Vermietung der mobilen Bar-Module ohne Personal findest Du auf dieser Seite. Gerne vermieten wir Dir auch Stehtische, Gläser und weitere Ausstattung.",
         ],
-        ctas: [
-          { label: "Cocktail Catering Paket Angebote", href: "/de/cocktail-catering" },
-          { label: "Barsystem & Preise", href: "#barsystem" },
-        ],
+        ctas: [],
       },
       tilesRows: [
         {

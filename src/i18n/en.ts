@@ -11,7 +11,7 @@ export const en = {
     requestNow: "REQUEST A QUOTE",
     viewCocktailMenus: "VIEW OUR COCKTAIL MENUS",
     allPackagesAndPrices: "ALL PACKAGES & PRICES",
-    faqMobileCocktailbar: "FAQ MOBILE COCKTAIL BAR RENTAL",
+    faqMobileCocktailbar: "FAQ MOBILE BAR RENTAL",
     sendInquiry: "SEND INQUIRY",
     learnMore: "Learn more",
     viewDetails: "View details",
@@ -137,7 +137,7 @@ export const en = {
     },
   },
   faqMobileCocktailbar: {
-    buttonLabel: "FAQ Mobile Cocktail Bar Rental",
+    buttonLabel: "FAQ Mobile Bar Rental",
     q1: "WHAT’S INCLUDED IN THE COCKTAIL CATERING PACKAGE?",
     a1: "Mobile bar, staff, ice, glassware, ingredients, decoration, setup and teardown, plus a menu card.",
     q2: "HOW DOES THE COCKTAIL CATERING WORK AT THE EVENT?",
@@ -214,13 +214,17 @@ export const en = {
         titleLine2: "RENT A MOBILE BAR IN BERLIN",
         heroText: [
           "Want to rent a mobile bar in Berlin for your party, wedding or corporate event? Then you’re in the right place!",
-          "You can find offers for our full-service cocktail catering with mobile bar, professional bartenders and delicious cocktails & long drinks here:",
+          {
+            text: "You can find offers for our full-service cocktail catering with mobile bar, professional bartenders and delicious cocktails & long drinks here:",
+            cta: {
+              label: "COCKTAIL CATERING PACKAGE DEALS",
+              href: "/en/cocktail-catering",
+              className: "cta-inline",
+            },
+          },
           "More about our flexible bar system, its many options and prices for renting the mobile bar modules without staff can be found on this page. We’re also happy to rent you cocktail tables, glassware and additional equipment.",
         ],
-        ctas: [
-          { label: "Cocktail Catering Package Deals", href: "/en/cocktail-catering" },
-          { label: "Bar System & Pricing", href: "#barsystem" },
-        ],
+        ctas: [],
       },
       tilesRows: [
         {
