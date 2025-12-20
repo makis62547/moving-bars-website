@@ -2,26 +2,44 @@
   (() => {
     if (typeof window === "undefined") return;
 
-    type ParallaxWindow = Window & { __mbParallaxPanelsInit?: boolean };
-    const w = window as ParallaxWindow;
+    if (window.__mbParallaxPanelsInit) return;
 
-    if (w.__mbParallaxPanelsInit) return;
+    window.__mbParallaxPanelsInit = true;
 
-    w.__mbParallaxPanelsInit = true;
+    const prefersReducedMotionQuery =
+      typeof window.matchMedia === "function"
+        ? window.matchMedia("(prefers-reduced-motion: reduce)")
+        : null;
 
-    let panels: HTMLElement[] = [];
+    const getPanels = () =>
+      Array.from(document.querySelectorAll("[data-panel-parallax]")).filter(
+        (panel) => panel instanceof HTMLElement,
+      );
+
+    let panels = getPanels();
     let ticking = false;
     let listenersAttached = false;
 
     const updateParallax = () => {
+      if (prefersReducedMotionQuery?.matches) {
+        ticking = false;
+        return;
+      }
+
       const viewportCenter = window.innerHeight / 2;
 
       panels.forEach((panel) => {
         const rect = panel.getBoundingClientRect();
         const distanceFromCenter = rect.top + rect.height / 2 - viewportCenter;
-        const speed = Number(panel.dataset.speed ?? "0.3");
+        const speed = parseFloat(panel.getAttribute("data-speed") || "") || 0.35;
+        const py = -distanceFromCenter * speed;
 
-        panel.style.setProperty("--py", `${-distanceFromCenter * speed}px`);
+        panel.style.setProperty("--py", `${py}px`);
+
+        const panelBg = panel.querySelector(".panel-bg");
+        if (panelBg instanceof HTMLElement) {
+          panelBg.style.setProperty("--py", `${py}px`);
+        }
       });
 
       ticking = false;
@@ -34,11 +52,9 @@
     };
 
     const initParallax = () => {
-      panels = Array.from(document.querySelectorAll("[data-panel-parallax]")).filter(
-        (panel): panel is HTMLElement => panel instanceof HTMLElement,
-      );
+      panels = getPanels();
 
-      scheduleUpdate();
+      updateParallax();
 
       if (!listenersAttached) {
         window.addEventListener("scroll", scheduleUpdate, { passive: true });
@@ -54,5 +70,6 @@
     }
 
     window.addEventListener("astro:page-load", initParallax);
+    prefersReducedMotionQuery?.addEventListener("change", updateParallax);
   })();
 </script>
