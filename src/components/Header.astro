@@ -3,7 +3,16 @@
 import { i18n, type Lang } from "../i18n";
 
 const { lang = "de" } = Astro.props as { lang?: Lang };
-const t = i18n[lang] ?? i18n.de;
+const pathname = Astro.url?.pathname ?? "/";
+
+const effectiveLang = pathname.startsWith("/en")
+  ? "en"
+  : pathname.startsWith("/de")
+    ? "de"
+    : lang;
+
+const t = i18n[effectiveLang] ?? i18n.de;
+const basePrefix = effectiveLang === "en" ? "/en" : "/de";
 
 const navLinks = [
   { href: "/cocktail-catering", label: t.nav.cocktailCatering },
@@ -12,9 +21,7 @@ const navLinks = [
   { href: "/cocktailkurse", label: t.nav.cocktailCourses },
   { href: "/kaffeecatering", label: t.nav.coffeeCatering },
   { href: "/anfrage", label: t.nav.request },
-];
-
-const pathname = Astro.url?.pathname ?? "/";
+].map((link) => ({ ...link, href: `${basePrefix}${link.href}` }));
 
 let toDeUrl = "/de/";
 let toEnUrl = "/en/";
@@ -30,7 +37,7 @@ if (pathname.startsWith("/en")) {
 
 <header class="site-header">
   <div class="header-inner site-container">
-    <a href="/" class="logo" aria-label="Startseite">
+    <a href={`${basePrefix}/`} class="logo" aria-label="Startseite">
       <img src="/images/logo-white.png" alt="moving bars logo" />
     </a>
 
@@ -39,11 +46,17 @@ if (pathname.startsWith("/en")) {
         <a href={link.href} class="nav-link">{link.label}</a>
       ))}
       <div class="lang-switch">
-        <a href={toDeUrl} class={`nav-link ${lang === "de" ? "active" : ""}`}>
+        <a
+          href={toDeUrl}
+          class={`nav-link ${effectiveLang === "de" ? "active" : ""}`}
+        >
           DE
         </a>
         <span class="lang-divider">|</span>
-        <a href={toEnUrl} class={`nav-link ${lang === "en" ? "active" : ""}`}>
+        <a
+          href={toEnUrl}
+          class={`nav-link ${effectiveLang === "en" ? "active" : ""}`}
+        >
           EN
         </a>
       </div>
@@ -53,14 +66,14 @@ if (pathname.startsWith("/en")) {
       <div class="header-controls">
         <nav class="lang-toggle lang-toggle--header" aria-label="Language">
           <a
-            class:list={{ "lang-link": true, "is-active": lang === "de" }}
+            class:list={{ "lang-link": true, "is-active": effectiveLang === "de" }}
             href={toDeUrl}
           >
             DE
           </a>
           <span class="lang-sep" aria-hidden="true">/</span>
           <a
-            class:list={{ "lang-link": true, "is-active": lang === "en" }}
+            class:list={{ "lang-link": true, "is-active": effectiveLang === "en" }}
             href={toEnUrl}
           >
             EN
@@ -96,14 +109,14 @@ if (pathname.startsWith("/en")) {
         <div class="mobile-lang-switch">
           <a
             href={toDeUrl}
-            class={`mobile-nav-link ${lang === "de" ? "active" : ""}`}
+            class={`mobile-nav-link ${effectiveLang === "de" ? "active" : ""}`}
           >
             DE
           </a>
           <span class="lang-divider">|</span>
           <a
             href={toEnUrl}
-            class={`mobile-nav-link ${lang === "en" ? "active" : ""}`}
+            class={`mobile-nav-link ${effectiveLang === "en" ? "active" : ""}`}
           >
             EN
           </a>
