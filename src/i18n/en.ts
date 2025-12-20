@@ -119,8 +119,9 @@ export const en = {
     "We love cocktails, outstanding drink service and unforgettable events. Rent our mobile cocktail bar in Berlin or üBARall. From preparation and planning to flawless execution, we are your passionate partner when it comes to creating a special experience for your guests. The mobile cocktail bar, the perfect drink, fast service, a bartender who remembers your order on the second round, or simply the smile with which a drink is served – our goal is to delight.",
   underHero: {
     intro: {
-      h2Line1: "PRIVATE PARTY – TRADE FAIR –",
-      h2Line2: "LARGE-SCALE EVENTS",
+      h2Line1: "PRIVATE PARTY –",
+      h2Line2: "TRADE FAIR PARTY –",
+      h2Line3: "EVENT",
       eventTitleLine1: "PRIVATE PARTY – TRADE FAIR AFTERPARTY –",
       eventTitleLine2: "LARGE-SCALE EVENT",
       paragraph:
