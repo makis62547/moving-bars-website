@@ -1,7 +1,11 @@
 ---
 import AlternatingTiles from "./AlternatingTiles.astro";
+import type { Lang } from "../i18n";
 
-const { t } = Astro.props;
+const { t, lang: passedLang } = Astro.props as {
+  t: typeof import("../i18n").i18n["de"];
+  lang?: Lang;
+};
 
 const cocktailsTitle = t?.underHero?.tiles?.cocktailsTitle ?? "";
 const [cocktailsAccent, ...cocktailsRestParts] = cocktailsTitle.split(" ");
@@ -14,6 +18,9 @@ const mobileBarRest = mobileBarRestParts.join(" ").trim();
 
 const viewCocktailMenusCta = t?.cta?.viewCocktailMenus ?? "HIER UNSERE COCKTAIL MENUS ANSEHEN";
 const requestNowCta = t?.cta?.requestNow ?? "JETZT ANFRAGEN";
+const pathLang = Astro.url?.pathname?.split("/")[1];
+const lang = (passedLang ?? (pathLang === "en" ? "en" : "de")) as Lang;
+const requestHref = lang === "en" ? "/en/request" : "/de/anfrage";
 
 const cocktailImage = "/images/russian-wild-berry-cocktail.jpg";
 const mobileBarImage = "/images/mobile-cocktailbar-mit-rueckbuffet.jpg";
@@ -57,7 +64,7 @@ const mobileBarTextHtml = `
     ${escapeHTML(t.underHero.tiles.mobileBarText)}
   </p>
 
-  <a class="panel-cta mb-btn" href="/anfrage" aria-label="${escapeHTML(requestNowCta)}">
+  <a class="panel-cta mb-btn" href="${requestHref}" aria-label="${escapeHTML(requestNowCta)}">
     ${escapeHTML(requestNowCta)}
   </a>
 `;
