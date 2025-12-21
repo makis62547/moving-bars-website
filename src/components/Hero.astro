@@ -1,11 +1,21 @@
 ---
 // src/components/Hero.astro
 import CocktailIcon from "./icons/CocktailIcon.astro";
-const { titleLine1, titleLine2, heroText, heroUsps = [], bgImage = "/images/hero.jpg" } = Astro.props;
+const {
+  titleLine1,
+  titleLine2,
+  heroText,
+  heroUsps = [],
+  bgImage = "/images/hero.jpg",
+  compact = false,
+  variant,
+} = Astro.props;
+
+const isCompact = compact || variant === "compact";
 const heroTitle = [titleLine1, titleLine2].filter(Boolean).join(" ").trim();
 ---
 
-<section id="hero" class="hero">
+<section id="hero" class={`hero ${isCompact ? "is-compact" : ""}`.trim()}>
   <div class="hero-bg parallax-bg" role="presentation" style={`background-image: url('${bgImage}');`}></div>
 
   <div class="hero-overlay" aria-hidden="true"></div>
@@ -13,14 +23,16 @@ const heroTitle = [titleLine1, titleLine2].filter(Boolean).join(" ").trim();
   <div class="hero-content">
     <div class="hero-center">
       <div class="hero-shell">
-        <ul class="hero-usp">
-          {heroUsps.map((usp) => (
-            <li>
-              <span class="hero-check">✔</span>
-              <span>{usp}</span>
-            </li>
-          ))}
-        </ul>
+        {heroUsps?.length > 0 && (
+          <ul class="hero-usp">
+            {heroUsps.map((usp) => (
+              <li>
+                <span class="hero-check">✔</span>
+                <span>{usp}</span>
+              </li>
+            ))}
+          </ul>
+        )}
 
         <button
           class="hero-arrow"
@@ -155,6 +167,15 @@ const heroTitle = [titleLine1, titleLine2].filter(Boolean).join(" ").trim();
   .hero-arrow:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 6px;
+  }
+
+  .hero.is-compact {
+    --hero-min-height: var(--hero-compact-min-height, 60vh);
+  }
+
+  .hero.is-compact .hero-shell {
+    gap: clamp(1.4rem, 2vw, 1.9rem);
+    padding-top: max(var(--header-h), 4rem);
   }
 
   @keyframes arrowBounce {

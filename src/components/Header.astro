@@ -13,6 +13,7 @@ const effectiveLang = pathname.startsWith("/en")
 
 const t = i18n[effectiveLang] ?? i18n.de;
 const basePrefix = effectiveLang === "en" ? "/en" : "/de";
+const requestPath = effectiveLang === "en" ? "/request" : "/anfrage";
 
 const navLinks = [
   { href: "/cocktail-catering", label: t.nav.cocktailCatering },
@@ -20,7 +21,7 @@ const navLinks = [
   { href: "/cocktailshow", label: t.nav.cocktailShow },
   { href: "/cocktailkurse", label: t.nav.cocktailCourses },
   { href: "/kaffee-catering", label: t.nav.coffeeCatering },
-  { href: "/anfrage", label: t.nav.request },
+  { href: requestPath, label: t.nav.request },
 ].map((link) => ({ ...link, href: `${basePrefix}${link.href}` }));
 
 let toDeUrl = "/de/";

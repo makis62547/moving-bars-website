@@ -117,6 +117,24 @@ export const de = {
   },
   heroText:
     "Wir lieben Cocktails, perfekten Getränke-Service und wir lieben Veranstaltungen. Miete unsere mobile Cocktailbar in Berlin oder üBARall. Von der Vorbereitung und Planung bis zur Durchführung sind wir Dein begeisterter Partner, wenn es darum geht, ein besonderes Erlebnis für Deine Gäste entstehen zu lassen. Die mobile Cocktailbar, der perfekte Drink, der schnelle Service, der Barkeeper, der bei der zweiten Bestellung weiß, was man trinkt oder einfach das Lächeln, mit dem das Getränk serviert wurde – wir wollen begeistern!",
+  requestPage: {
+    hero: {
+      line1: "DEIN WUNSCHPAKET",
+      line2: "ANFRAGEN",
+      bgImage: "/images/hero.jpg",
+    },
+    intro: {
+      title: "JETZT DEIN WUNSCHPAKET ANFRAGEN",
+      paragraphs: [
+        "Du hast es fast geschafft. Wähle einfach die gewünschte Leistung aus – unser interaktives Formular führt Dich Schritt für Schritt durch alle Optionen.",
+        "Stelle Dein individuelles Paket aus Leistungen und Add-ons zusammen. Der integrierte Kalkulator hilft Dir dabei, Mengen realistisch einzuschätzen und Dein Budget im Blick zu behalten.",
+        "Am Ende erhältst Du einen transparenten Richtpreis für Dein Event. Deine Anfrage ist unverbindlich – wir melden uns innerhalb von 24 Stunden bei Dir.",
+      ],
+    },
+    form: {
+      placeholderNote: "Hier wird das React-Formular eingebunden.",
+    },
+  },
   underHero: {
     intro: {
       h2Line1: "PRIVATE FEIER –",
