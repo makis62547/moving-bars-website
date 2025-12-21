@@ -22,8 +22,10 @@ const heroProps = {
     <Hero {...heroProps} />
 
     <section id="hero-h1" class="request-intro">
-      <div class="site-container intro-shell">
-        <h1 class="display-heading display-size-h1 intro-title">{pageCopy.intro.title}</h1>
+      <div class="request-intro-shell">
+        <h1 class="display-heading display-size-h1 intro-title">
+          <span class="h-accent">JETZT</span> DEIN WUNSCHPAKET <span class="h-accent">ANFRAGEN</span>
+        </h1>
         <div class="intro-copy">
           {pageCopy.intro.paragraphs.map((paragraph) => (
             <p class="intro-paragraph">{paragraph}</p>
@@ -57,32 +59,39 @@ const heroProps = {
   }
 
   .request-intro {
-    padding: var(--section-pad-block) var(--section-pad-inline) calc(var(--section-pad-block) * 0.85);
+    padding: var(--section-pad-block) var(--section-pad-inline) calc(var(--section-pad-block) * 0.65);
   }
 
-  .intro-shell {
+  .request-intro-shell {
     display: grid;
-    gap: clamp(1.5rem, 3vw, 2.4rem);
-    max-width: var(--tile-text-width);
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+    max-width: 1240px;
+    width: 100%;
     margin: 0 auto;
+    padding-inline: clamp(1.25rem, 3vw, 2.5rem);
   }
 
   .intro-title {
     margin: 0;
     text-transform: uppercase;
     line-height: var(--heading-line-height);
+    letter-spacing: 0.01em;
   }
 
   .intro-copy {
     display: grid;
-    gap: var(--text-block-gap);
+    gap: clamp(0.9rem, 1.8vw, 1.35rem);
   }
 
   .intro-paragraph {
     margin: 0;
     color: rgba(247, 247, 247, 0.88);
-    line-height: 1.8;
+    line-height: 1.65;
     font-family: "Inter", system-ui, sans-serif;
+  }
+
+  .h-accent {
+    color: var(--accent);
   }
 
   .request-form {
