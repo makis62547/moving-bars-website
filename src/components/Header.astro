@@ -24,16 +24,26 @@ const navLinks = [
   { href: requestPath, label: t.nav.request },
 ].map((link) => ({ ...link, href: `${basePrefix}${link.href}` }));
 
-let toDeUrl = "/de/";
-let toEnUrl = "/en/";
+const normalizePathname = (path: string | undefined) => {
+  if (!path) return "/";
+  const trimmed = path.replace(/\/+$/, "");
+  return trimmed === "" ? "/" : trimmed;
+};
 
-if (pathname.startsWith("/en")) {
-  toDeUrl = pathname.replace(/^\/en(?=\/|$)/, "/de");
-  toEnUrl = pathname;
-} else if (pathname.startsWith("/de")) {
-  toEnUrl = pathname.replace(/^\/de(?=\/|$)/, "/en");
-  toDeUrl = pathname;
-}
+const normalizedPath = normalizePathname(pathname);
+
+const mapLangSwitchPath = (target: Lang) => {
+  if (target === "en" && normalizedPath === "/de/anfrage") return "/en/request";
+  if (target === "de" && normalizedPath === "/en/request") return "/de/anfrage";
+
+  if (target === "en" && pathname.startsWith("/de")) return pathname.replace(/^\/de(?=\/|$)/, "/en");
+  if (target === "de" && pathname.startsWith("/en")) return pathname.replace(/^\/en(?=\/|$)/, "/de");
+
+  return target === "en" ? "/en/" : "/de/";
+};
+
+const toDeUrl = mapLangSwitchPath("de");
+const toEnUrl = mapLangSwitchPath("en");
 ---
 
 <header class="site-header">
