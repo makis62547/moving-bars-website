@@ -26,6 +26,7 @@ const heroProps = {
         <h1 class="display-heading display-size-h1 intro-title">
           <span class="h-accent">REQUEST</span> YOUR CUSTOM PACKAGE <span class="h-accent">NOW</span>
         </h1>
+        <div class="panel-sep" aria-hidden="true"></div>
         <div class="intro-copy">
           {pageCopy.intro.paragraphs.map((paragraph) => (
             <p class="intro-paragraph">{paragraph}</p>
@@ -76,6 +77,12 @@ const heroProps = {
     text-transform: uppercase;
     line-height: var(--heading-line-height);
     letter-spacing: 0.01em;
+  }
+
+  .panel-sep {
+    height: 1px;
+    background: rgba(var(--accent-rgb), 0.75);
+    width: 100%;
   }
 
   .intro-copy {
