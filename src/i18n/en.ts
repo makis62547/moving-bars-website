@@ -117,6 +117,24 @@ export const en = {
   },
   heroText:
     "We love cocktails, outstanding drink service and unforgettable events. Rent our mobile cocktail bar in Berlin or üBARall. From preparation and planning to flawless execution, we are your passionate partner when it comes to creating a special experience for your guests. The mobile cocktail bar, the perfect drink, fast service, a bartender who remembers your order on the second round, or simply the smile with which a drink is served – our goal is to delight.",
+  requestPage: {
+    hero: {
+      line1: "REQUEST",
+      line2: "YOUR CUSTOM PACKAGE",
+      bgImage: "/images/hero.jpg",
+    },
+    intro: {
+      title: "REQUEST YOUR CUSTOM PACKAGE",
+      paragraphs: [
+        "You’re almost there. Just choose the service you want – our interactive form will guide you step by step through all options.",
+        "Build your individual package from services and add-ons. The built-in calculator helps you estimate quantities realistically and keep your budget in view.",
+        "In the end you’ll receive a transparent price estimate for your event. Your request is non-binding – we’ll get back to you within 24 hours.",
+      ],
+    },
+    form: {
+      placeholderNote: "This is where the React form will be embedded.",
+    },
+  },
   underHero: {
     intro: {
       h2Line1: "PRIVATE PARTY –",

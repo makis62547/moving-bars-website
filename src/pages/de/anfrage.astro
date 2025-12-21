@@ -1,0 +1,127 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import GoogleReviewsBlock from "../../components/GoogleReviewsBlock.astro";
+import { i18n } from "../../i18n";
+
+const lang = "de";
+const t = i18n[lang];
+const pageCopy = t.requestPage;
+
+const heroProps = {
+  titleLine1: pageCopy.hero.line1,
+  titleLine2: pageCopy.hero.line2,
+  heroUsps: [],
+  bgImage: pageCopy.hero.bgImage,
+  compact: true,
+};
+---
+
+<BaseLayout lang={lang}>
+  <main class="bg-black request-page">
+    <Hero {...heroProps} />
+
+    <section id="hero-h1" class="request-intro">
+      <div class="site-container intro-shell">
+        <h1 class="display-heading display-size-h1 intro-title">{pageCopy.intro.title}</h1>
+        <div class="intro-copy">
+          {pageCopy.intro.paragraphs.map((paragraph) => (
+            <p class="intro-paragraph">{paragraph}</p>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="formular" class="request-form">
+      <div class="site-container">
+        <div class="form-shell">
+          <div class="form-placeholder">
+            <p class="form-placeholder__title">Formular</p>
+            <p class="form-placeholder__hint">{pageCopy.form.placeholderNote}</p>
+            <p class="form-placeholder__todo">
+              TODO: React-Formular Einbettung folgt hier zwischen Intro und Bewertungen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <GoogleReviewsBlock />
+  </main>
+</BaseLayout>
+
+<style>
+  .request-page {
+    background: #000;
+    color: var(--text-color);
+  }
+
+  .request-intro {
+    padding: var(--section-pad-block) var(--section-pad-inline) calc(var(--section-pad-block) * 0.85);
+  }
+
+  .intro-shell {
+    display: grid;
+    gap: clamp(1.5rem, 3vw, 2.4rem);
+    max-width: var(--tile-text-width);
+    margin: 0 auto;
+  }
+
+  .intro-title {
+    margin: 0;
+    text-transform: uppercase;
+    line-height: var(--heading-line-height);
+  }
+
+  .intro-copy {
+    display: grid;
+    gap: var(--text-block-gap);
+  }
+
+  .intro-paragraph {
+    margin: 0;
+    color: rgba(247, 247, 247, 0.88);
+    line-height: 1.8;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  .request-form {
+    padding: calc(var(--section-pad-block) * 0.5) var(--section-pad-inline) var(--section-pad-block);
+    background: #080808;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .form-shell {
+    max-width: var(--tile-text-width);
+    margin: 0 auto;
+  }
+
+  .form-placeholder {
+    display: grid;
+    gap: 0.5rem;
+    padding: clamp(1.25rem, 2.5vw, 1.8rem);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px dashed rgba(var(--accent-rgb), 0.6);
+    color: rgba(247, 247, 247, 0.9);
+  }
+
+  .form-placeholder__title {
+    margin: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .form-placeholder__hint,
+  .form-placeholder__todo {
+    margin: 0;
+    line-height: 1.7;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  .form-placeholder__todo {
+    color: rgba(247, 247, 247, 0.75);
+    font-style: italic;
+  }
+</style>
