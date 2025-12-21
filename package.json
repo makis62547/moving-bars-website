@@ -1,30 +1,9 @@
 {
-  "name": "astronautical-antimatter",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro",
-    "vr:baseline": "node scripts/vr.mjs baseline",
-    "vr": "node scripts/vr.mjs run",
-    "vr:update": "node scripts/vr.mjs update"
-  },
-  "dependencies": {
-    "@astrojs/react": "^4.4.2",
-    "@tailwindcss/vite": "^4.1.17",
-    "@types/react": "^19.2.7",
-    "@types/react-dom": "^19.2.3",
-    "astro": "^5.16.4",
-    "gsap": "file:vendor/gsap",
-    "react": "^19.2.1",
-    "react-dom": "^19.2.1",
-    "tailwindcss": "^4.1.17"
-  },
-  "devDependencies": {
-    "pixelmatch": "^5.3.0",
-    "playwright": "^1.50.1",
-    "pngjs": "^7.0.0"
-  }
+  "name": "moving-bars-monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
 }
